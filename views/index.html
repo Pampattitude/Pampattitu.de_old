@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pampattitu.de<% if ('undefined' !== typeof title) { %> - <%= title %><% } %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta charset="utf-8" />
+
+    <script type="application/javascript" src="/js/jquery"></script>
+    <script type="application/javascript" src="/js/bootstrap"></script>
+
+    <link rel="stylesheet" href="/css/bootstrap" />
+    <link rel="stylesheet" href="/css/icomoon" />
+
+    <link rel="icon" type="image/png" href="/favicon" />
+
+    <style>
+      body {
+      background-color: #1d4d7e;
+      background-image: url('/img/background');
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div id="pmp-head" class="row">
+      <div class="hidden-xs hidden-sm col-md-8">
+	<center>
+	  <a href="/"><img src="http://burke-works.com/styles/art_ultra_blue/imageset/logo.png" alt="Burke Works" /></a>
+	</center>
+      </div>
+      <div class="col-xs-12 col-md-4">
+	<div class="well">
+	  <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." />
+	  <div class="input-group">
+	    <input type="password" name="password" class="form-control" placeholder="Password..." style="border-top-left-radius:0;" />
+	    <span class="input-group-btn">
+	      <button type="submit" name="loginButton" class="btn btn-success" style="border-top-right-radius:0;"><span class="glyphicon glyphicon-ok"></span></button>
+	    </span>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div id="pmp-content">
+      <div class="well">
+	<div class="row">
+	  <div class="col-xs-8 content">
+	    <% if ('undefined' !== typeof contentPath) { %>
+	    <% include contentPath %>
+	    <% } %>
+	  </div>
+	  <div class="col-xs-4 menu">
+	    <div class="page-menu">
+	      <% include pages/page-menu %>
+	    </div>
+	    <div class="site-menu">
+	      <% include pages/site-menu %>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div id="pmp-foot">
+      <div class="well">
+	<center>
+	  Made by&nbsp;&nbsp;<a href="http://pampattitu.de/"><span class="glyphicon glyphicon-star-empty"></span>Pampattitude</a>.
+	</center>
+      </div>
+    </div>
+  </body>
+</html>

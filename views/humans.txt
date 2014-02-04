@@ -1,0 +1,10 @@
+/* TEAM */
+    Leader: Guillaume "Pampa" Delahodde
+    From:Paris, Ile-de-France, France
+
+/* THANKS */
+
+/* SITE */
+    Language: English
+    Doctype: HTML5
+    IDE: emacs

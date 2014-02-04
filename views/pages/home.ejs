@@ -1,0 +1,17 @@
+<div class="row">
+  <% if ('undefined' !== typeof articleList) {
+     for (var i = 0 ; articleList.length > i ; ++i) {
+  var article = articleList[i]; %>
+  <% if (true === article.featured) { %>
+  <div class="thumbnail col-xs-12">
+  <% } else { %>
+  <div class="thumbnail col-xs-6">
+  <% } %>
+    <h2><%= article.title %></h2>
+    <div>
+      <%- article.content %>
+    </div>
+  </div>
+  <% } %>
+  <% } %>
+</div>

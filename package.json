@@ -1,0 +1,36 @@
+{
+  "name": "PmpHome",
+  "version": "0.0.0-48",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "dot": "~1.0.2",
+    "express-debug": "~1.0.3",
+    "express-dot": "~0.1.0",
+    "JSON": "~1.0.0",
+    "memory-cache": "~0.0.5",
+    "mongoose": "~3.8.3",
+    "npm": "~1.3.17",
+    "winston": "~0.7.2",
+    "express": "~3.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pampattitude/PmpHome.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Pampattitude/PmpHome/issues"
+  },
+  "homepage": "https://github.com/Pampattitude/PmpHome",
+  "subdomain": "pampattitude-pmphome",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
