@@ -1,1 +1,11 @@
-Site menu
+<div class="thumbnail">
+  <h3>Latest articles</h3>
+  <% if ('undefined' !== typeof latestArticleList) {
+     for (var i = 0 ; latestArticleList.length > i ; ++i) {
+  var article = latestArticleList[i]; %>
+  <div>
+    <a href="#"><%= article.title %></a>
+  </div>
+  <% } %>
+  <% } %>
+</div>
