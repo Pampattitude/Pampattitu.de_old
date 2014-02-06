@@ -1,5 +1,6 @@
 var asyncLib = require('async');
 
+var consoleLib = require(__dirname + '/../lib/console');
 var constantsLib = require(__dirname + '/../lib/constants');
 var utilsLib = require(__dirname + '/../lib/utils');
 
@@ -25,7 +26,7 @@ var render_ = function(modules, req, res) {
     },
     function(err) {
         if (err) {
-            winston.error(__dirname + '/' + __basename + ': ' + err);
+            consoleLib.error(err);
             return res.redirect('/404');
         }
 

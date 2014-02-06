@@ -13,23 +13,25 @@ winstonLib.add(winstonLib.transports.Console, {level: 'silly', prettyPrint: true
 
 var mongooseLib = require('mongoose');
 
+var consoleLib = require('./lib/console');
+
 var databaseUri = 'mongodb://localhost/bmb-home';
 
 mongooseLib.connect(databaseUri);
 mongooseLib.connection.on('error', function (err) {
 	// Handle error
-	console.error('Could not open DB connection: ' + err);
+	consoleLib.error('Could not open DB connection: ' + err);
 
 	mongooseLib.close();
 	mongooseLib.connect(databaseUri);
 });
 mongooseLib.connection.once('open', function () {
 	// Handle open;
-	console.log('DB connection open');
+	consoleLib.log('DB connection open');
 
 	require('./models/articles.js').model;
 	require('./scripts/createArticle.js');
-	console.log('Collections sync\'ed');
+	consoleLib.log('Collections sync\'ed');
 });
 
 var serverApp = expressLib();

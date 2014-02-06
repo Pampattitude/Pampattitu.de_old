@@ -1,8 +1,10 @@
 var mongooseLib = require('mongoose');
 
+var consoleLib = require('../lib/console');
+
 var Article = require('../models/articles.js').model;
 mongooseLib.connection.collections['articles'].drop();
-console.log('Emptied articles collection.');
+consoleLib.log('Emptied articles collection.');
 
 var elem = new Article({});
 
@@ -33,7 +35,7 @@ elem.featured = true;
 elem.lastUpdated = new Date().toISOString();
 
 elem.save();
-console.log('Created new article.');
+consoleLib.log('Created new article.');
 
 for (var i = 0 ; 10 > i ; i++) {
     elem = new Article({});
@@ -64,5 +66,5 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
     elem.lastUpdated = new Date().toISOString();
 
     elem.save();
-    console.log('Created new article.');
+    consoleLib.log('Created new article.');
 }

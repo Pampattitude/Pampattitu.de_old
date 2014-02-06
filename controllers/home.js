@@ -1,6 +1,7 @@
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
+var consoleLib = require(__dirname + '/../lib/console');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
@@ -9,7 +10,7 @@ var controller_ = function() {
 
 	return Article.find({}).limit(5).exec(function(err, articles) {
 	    if (err) {
-		winston.error(err);
+		consoleLib.error(err);
 		return renderCallback(err);
 	    }
 
