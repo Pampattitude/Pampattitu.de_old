@@ -15,6 +15,13 @@
 
     <link rel="icon" type="image/png" href="/favicon" />
 
+    <% if ('undefined' !== typeof inlineStyles) {
+    for (var i = 0 ; inlineStyles.length > i ; ++i) {
+    var inlineStyle = inlineStyles[i]; %>
+    <link rel="stylesheet" href="/css/inline/<%= inlineStyle %>" />
+    <% } %>
+    <% } %>
+
     <style>
       body {
       background-color: #1d4d7e;
