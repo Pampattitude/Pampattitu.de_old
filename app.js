@@ -7,6 +7,10 @@ var fsLib = require('fs');
 var ejsLib = require('ejs');
 var jsonLib = require('JSON');
 
+var winstonLib = require('winston');
+winstonLib.remove(winstonLib.transports.Console);
+winstonLib.add(winstonLib.transports.Console, {level: 'silly', prettyPrint: true, colorize: true, timestamp: true});
+
 var mongooseLib = require('mongoose');
 
 var databaseUri = 'mongodb://localhost/bmb-home';
