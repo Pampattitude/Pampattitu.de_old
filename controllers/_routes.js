@@ -1,10 +1,10 @@
 var pathLib = require('path');
 
-var init_ = function (serverApp) {
-    var viewTemplate = 'index.html';
-    var viewFolder = pathLib.resolve(__dirname + '/../views');
+var constantsLib = require('../lib/constants');
+var utilsLib = require('../lib/utils');
 
-    serverApp.set('views', viewFolder);
+var init_ = function (serverApp) {
+    serverApp.set('views', constantsLib.viewPath);
     serverApp.engine('html', require('ejs').renderFile);
 
     var simpleGet = function (req, res, file) {
@@ -12,7 +12,7 @@ var init_ = function (serverApp) {
 	    res.locals = {};
 	res.locals.inlineStyles = [];
 
-	return res.sendfile(viewFolder + '/' + file);
+	return res.sendfile(constantsLib.viewPath + '/' + file);
     };
 
     var errorGet = function (req, res, errorCode) {
@@ -21,26 +21,18 @@ var init_ = function (serverApp) {
 	res.locals.inlineStyles = [];
 	res.locals.contentPath = 'views/' + errorCode + '.ejs';
 
-	return res.render(viewTemplate, res, function (err, data) {
+	return res.render(constantsLib.viewTemplate, res, function (err, data) {
 	    res.writeHead(200, {'Content-Type': 'text/html'});
 	    return res.end(data);
 	});
     };
 
-    var render = function(renderFct, req, res) {
-	if (!res.locals)
-	    res.locals = {};
-	res.locals.privileges = 'user';
-	res.locals.inlineStyles = [];
+    var pagesEngine = require('./_pages.js');
 
-	return renderFct(req, res);
-    }
+    var homeController = new (require('./home.js').Controller)();
 
-    var homeModule = require('./home.js');
-    var homeController = new homeModule.Controller();
-
-    serverApp.get('/', function(req, res) { return render(homeController.render, req, res); });
-    serverApp.get('/home', function(req, res) { return render(homeController.render, req, res); });
+    serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
+    serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
 
     serverApp.get('/favicon', function (req, res) {
 	return simpleGet(req, res, 'img/favicon.ico');
@@ -84,19 +76,23 @@ var init_ = function (serverApp) {
 
     serverApp.get('/js/*', function (req, res) {
 	res.writeHead(404, {});
-	return res.end(data);
+	return res.end();
     });
     serverApp.get('/css/*', function (req, res) {
 	res.writeHead(404, {});
-	return res.end(data);
+	return res.end();
     });
     serverApp.get('/img/*', function (req, res) {
 	res.writeHead(404, {});
-	return res.end(data);
+	return res.end();
     });
     serverApp.get('/fonts/*', function (req, res) {
 	res.writeHead(404, {});
-	return res.end(data);
+	return res.end();
+    });
+
+    serverApp.get('/404', function (req, res) {
+	return errorGet(req, res, 404);
     });
 
     serverApp.get('*', function (req, res) {
