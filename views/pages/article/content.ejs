@@ -1,0 +1,26 @@
+<% if ('undefined' !== typeof article) { %>
+<img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" />
+<h2>
+  <% if (article.featured) { %><span class="glyphicon glyphicon-star" style="color:#ED0;text-shadow:0 1px 2px #000;"></span><% } %>
+  <%= article.title %>
+</h2>
+<p><i>
+  <%= article.caption %>
+</i></p>
+<br />
+<br />
+<div style="overflow:hidden;">
+  <%- article.content %>
+</div>
+<% for (var i = 0 ; article.tags.length > i ; ++i) { %>
+<span class="label"><%= article.tags[i] %></span>
+<% } %>
+
+<% } %>
+
+<nav>
+  <a href="/home"><button class="btn btn-primary"><span class="glyphicon glyphicon-tower"></span> Home</button></a>
+  <a href="/search/"><button class="btn"><span class="glyphicon glyphicon-tags"></span> Search by similar tags</button></a>
+  <a href="/pseudo-random"><button class="btn"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
+  <button class="btn btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Help</button>
+</nav>
