@@ -15,21 +15,11 @@ var init_ = function (serverApp) {
 	return res.sendfile(constantsLib.viewPath + '/' + file);
     };
 
-    var errorGet = function (req, res, errorCode) {
-	if (!res.locals)
-	    res.locals = {};
-	res.locals.inlineStyles = [];
-	res.locals.contentPath = 'views/' + errorCode + '.ejs';
-
-	return res.render(constantsLib.viewTemplate, res, function (err, data) {
-	    res.writeHead(200, {'Content-Type': 'text/html'});
-	    return res.end(data);
-	});
-    };
-
     var pagesEngine = require('./_pages.js');
 
     var homeController = new (require('./home.js').Controller)();
+    var articleController = new (require('./article.js').Controller)();
+    var errorController = new (require('./error.js').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
     serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
@@ -92,14 +82,14 @@ var init_ = function (serverApp) {
     });
 
     serverApp.get('/404', function (req, res) {
-	return errorGet(req, res, 404);
+	return pagesEngine.render({content: errorController.render404}, req, res);
     });
 
     serverApp.get('*', function (req, res) {
-	return errorGet(req, res, 404);
+	return pagesEngine.render({content: errorController.render404}, req, res);
     });
     serverApp.post('*', function (req, res) {
-	return errorGet(req, res, 404);
+	return pagesEngine.render({content: errorController.render404}, req, res);
     });
 };
 

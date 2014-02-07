@@ -1,0 +1,14 @@
+<div class="jumbotron">
+<h1><span class="label label-danger">404</span> Not Found</h1>
+<p>
+  It seems that the page you are looking for doesn't exist.
+  <br />
+  <% var prevPageLink = '/home';
+     if ('undefined' !== typeof previousPage) {
+     prevPageLink = previousPage;
+     } %>
+  From this point on, you can either <a href="<%= prevPageLink %>">go back to previous page</a>, <a href="/bug-report/">report the error</a> or make your way through the menus of the website!
+  <br />
+  <small>But, let's face it, I would love some feedback. I need it.</small>
+</p>
+</div>
