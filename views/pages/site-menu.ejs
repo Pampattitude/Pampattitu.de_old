@@ -9,3 +9,27 @@
   <% } %>
   <% } %>
 </div>
+
+<div class="thumbnail">
+  <h3>Hypestest articles</h3>
+  <% if ('undefined' !== typeof hypestArticleList) {
+     for (var i = 0 ; hypestArticleList.length > i ; ++i) {
+  var article = hypestArticleList[i]; %>
+  <div>
+    <a href="#"><%= article.title %></a>
+  </div>
+  <% } %>
+  <% } %>
+</div>
+
+<div class="thumbnail">
+  <h3>Most used tags</h3>
+  <% if ('undefined' !== typeof mostUsedTag) {
+     for (var i = 0 ; mostUsedTag.length > i ; ++i) {
+  var tag = mostUsedTag[i]; %>
+  <div>
+    <a href="#"><%= tag.name %></a>
+  </div>
+  <% } %>
+  <% } %>
+</div>

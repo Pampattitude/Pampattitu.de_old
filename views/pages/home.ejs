@@ -1,4 +1,16 @@
 <div class="row">
+  <% if ('undefined' !== typeof featuredArticle) { %>
+  <div class="thumbnail col-xs-12">
+    <h2><%= featuredArticle.title %></h2>
+    <div>
+      <%- featuredArticle.caption %>
+      <a href="#">Continue reading...</a>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<div class="row">
   <% if ('undefined' !== typeof articleList) {
      for (var i = 0 ; articleList.length > i ; ++i) {
   var article = articleList[i]; %>
@@ -9,7 +21,8 @@
   <% } %>
     <h2><%= article.title %></h2>
     <div>
-      <%- article.content %>
+      <%- article.caption %>
+      <a href="#">Continue reading...</a>
     </div>
   </div>
   <% } %>
