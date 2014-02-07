@@ -24,12 +24,10 @@
 
 <div class="thumbnail">
   <h3>Most used tags</h3>
-  <% if ('undefined' !== typeof mostUsedTag) {
-     for (var i = 0 ; mostUsedTag.length > i ; ++i) {
-  var tag = mostUsedTag[i]; %>
-  <div>
-    <a href="#"><%= tag.name %></a>
-  </div>
+  <% if ('undefined' !== typeof mostUsedTagList) {
+     for (var i = 0 ; mostUsedTagList.length > i ; ++i) {
+  var tag = mostUsedTagList[i]; %>
+  <a href="#"><%= tag.name %></a>
   <% } %>
   <% } %>
 </div>
