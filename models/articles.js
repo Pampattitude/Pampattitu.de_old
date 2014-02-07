@@ -8,16 +8,11 @@ var schema = new mongooseLib.Schema({
     caption: {type: String, required: true},
     content: {type: String, required: true},
 
-    tweet: {type: String},
-    tweetLink: {type: String},
-    facebookStatus: {type: String},
-    facebookUrl: {type: String},
-
     views: {type: Number, default: 0},
 
-    lastUpdated: {type: Date, default: new Date().toISOString()},
+    lastUpdated: {type: Date, default: new Date()},
     history: {
-	type: [Date], default: [new Date().toISOString()]
+	type: [Date], default: [new Date()]
     },
     featured: {type: Boolean, default: false}
 });
