@@ -35,7 +35,7 @@ var init_ = function (serverApp) {
     serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
 
     serverApp.get('/favicon', function (req, res) {
-	return simpleGet(req, res, 'img/favicon.ico');
+	return simpleGet(req, res, 'img/Pmp.ico');
     });
 
     serverApp.get('/css/bootstrap', function (req, res) {
