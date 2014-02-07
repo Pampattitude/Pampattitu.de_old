@@ -30,6 +30,7 @@ mongooseLib.connection.once('open', function () {
 	consoleLib.log('DB connection open');
 
 	require('./models/articles.js').model;
+	require('./models/tags.js').model;
 	require('./scripts/createArticle.js');
 	consoleLib.log('Collections sync\'ed');
 });

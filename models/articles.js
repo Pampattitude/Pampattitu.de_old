@@ -13,6 +13,8 @@ var schema = new mongooseLib.Schema({
     facebookStatus: {type: String},
     facebookUrl: {type: String},
 
+    views: {type: Number, default: 0},
+
     lastUpdated: {type: Date, default: new Date().toISOString()},
     history: {
 	type: [Date], default: [new Date().toISOString()]
@@ -51,4 +53,3 @@ exports.findWithTags = findWithTags;
 exports.findOneWithTags = findOneWithTags;
 exports.getFeatured = getFeatured;
 exports.getLatest = getLatest;
-
