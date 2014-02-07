@@ -31,7 +31,10 @@ mongooseLib.connection.once('open', function () {
 
 	require('./models/articles.js').model;
 	require('./models/tags.js').model;
+
 	require('./scripts/createArticle.js');
+	require('./scripts/createTags.js');
+
 	consoleLib.log('Collections sync\'ed');
 });
 
