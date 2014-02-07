@@ -1,0 +1,45 @@
+<div class="row">
+  <% if ('undefined' !== typeof featuredArticle) { %>
+  <div class="thumbnail col-xs-12">
+    <a href="/article/<%= featuredArticle.technicalName %>">
+      <h2><%= featuredArticle.title %></h2>
+    </a>
+    <div>
+      <%- featuredArticle.caption %>
+    </div>
+    <div style="float:right;">
+      <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<div class="row">
+  <% if ('undefined' !== typeof articleList) {
+     for (var i = 0 ; articleList.length > i ; ++i) {
+  var article = articleList[i]; %>
+  <% if (true === article.featured) { %>
+  <div class="thumbnail col-xs-12">
+  <% } else { %>
+  <div class="thumbnail col-xs-6">
+  <% } %>
+    <a href="/article/<%= article.technicalName %>">
+      <h2><%= article.title %></h2>
+    </a>
+    <div>
+      <%- article.caption %>
+    </div>
+    <div style="float:right;">
+      <a href="/article/<%= article.technicalName %>">Continue reading...</a>
+    </div>
+  </div>
+  <% } %>
+  <% } %>
+</div>
+
+<nav>
+  <a href="/home"><button class="btn btn-primary"><span class="glyphicon glyphicon-tower"></span> Home</button></a>
+  <a href="/articles/"><button class="btn"><span class="glyphicon glyphicon-list"></span> Article list</button></a>
+  <a href="/pseudo-random"><button class="btn"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
+  <button class="btn btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Help</button>
+</nav>
