@@ -4,7 +4,7 @@
      for (var i = 0 ; latestArticleList.length > i ; ++i) {
   var article = latestArticleList[i]; %>
   <div>
-    <a href="#"><%= article.title %></a>
+    <a href="/article/<%= article.technicalName %>"><%= article.title %></a>
   </div>
   <% } %>
   <% } %>
@@ -16,7 +16,7 @@
      for (var i = 0 ; hypestArticleList.length > i ; ++i) {
   var article = hypestArticleList[i]; %>
   <div>
-    <a href="#"><%= article.title %></a>
+    <a href="/article/<%= article.technicalName %>"><%= article.title %></a>
   </div>
   <% } %>
   <% } %>
@@ -27,7 +27,7 @@
   <% if ('undefined' !== typeof mostUsedTagList) {
      for (var i = 0 ; mostUsedTagList.length > i ; ++i) {
   var tag = mostUsedTagList[i]; %>
-  <a href="#"><%= tag.name %></a>
+  <a href="#"><span class="label label-success"><%= tag.name %></span></a>
   <% } %>
   <% } %>
 </div>
