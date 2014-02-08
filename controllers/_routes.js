@@ -1,5 +1,6 @@
 var pathLib = require('path');
 
+var consoleLib = require('../lib/console');
 var constantsLib = require('../lib/constants');
 var utilsLib = require('../lib/utils');
 
@@ -19,6 +20,7 @@ var init_ = function (serverApp) {
 
     var homeController = new (require('./home.js').Controller)();
     var articleController = new (require('./article.js').Controller)();
+    var userController = new (require('./user.js').Controller)();
     var errorController = new (require('./error.js').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
@@ -26,6 +28,9 @@ var init_ = function (serverApp) {
 
     serverApp.get('/articles/:page?', function(req, res) { return pagesEngine.render({content: articleController.renderList}, req, res); });
     serverApp.get('/article/:technicalName', function(req, res) { return pagesEngine.render({content: articleController.render}, req, res); });
+
+    serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
+    serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });
 
     serverApp.get('/favicon', function (req, res) {
 	return simpleGet(req, res, 'img/Pmp.ico');
