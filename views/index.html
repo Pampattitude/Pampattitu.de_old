@@ -38,19 +38,33 @@
       </div>
       <div class="col-xs-12 col-md-4">
 	<div class="well">
-	  <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." />
-	  <div class="input-group">
-	    <input type="password" name="password" class="form-control" placeholder="Password..." style="border-top-left-radius:0;" />
-	    <span class="input-group-btn">
-	      <button type="submit" name="loginButton" class="btn btn-success" style="border-top-right-radius:0;"><span class="glyphicon glyphicon-ok"></span></button>
-	    </span>
-	  </div>
+	  <% if ('undefined' !== typeof login) { %>
+	  Hello, <span class="label label-success"><%= login %></span>!
+	  <br />
+	  <form method="POST" action="/logout">
+	    <small><button type="submit" class="btn btn-warning">Logout</button></small>
+	  </form>
+	  <% } else { %>
+	  <form method="POST" action="/login">
+	    <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." />
+	    <div class="input-group">
+	      <input type="password" name="password" class="form-control" placeholder="Password..." style="border-top-left-radius:0;" />
+	      <span class="input-group-btn">
+		<button type="submit" name="loginButton" class="btn btn-success" style="border-top-right-radius:0;"><span class="glyphicon glyphicon-ok"></span></button>
+	      </span>
+	    </div>
+	  </form>
+	  <% } %>
 	</div>
       </div>
     </div>
 
     <div id="pmp-content">
       <div class="well">
+	<% if ('undefined' !== typeof previousPage) { %>
+	(Previous page: <a href="<%= previousPage %>"><%= previousPage %></a>)
+	<% } %>
+
 	<div class="row">
 	  <div class="col-xs-8 content">
 	    <% if ('undefined' !== typeof contentPath) { %>
