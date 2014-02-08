@@ -1,21 +1,25 @@
 var mongooseLib = require('mongoose');
 
+var schemaOptions = {
+    autoIndex: true,
+};
+
 var schema = new mongooseLib.Schema({
     technicalName: {type: String, required: true},
     title: {type: String, required: true},
     img: {type: String},
-    tags: {type: [String]},
+    tags: {type: [String], default: [], index: true},
     caption: {type: String, required: true},
     content: {type: String, required: true},
 
-    views: {type: Number, default: 0},
+    views: {type: Number, default: 0, index: true},
 
-    lastUpdated: {type: Date, default: new Date()},
+    lastUpdated: {type: Date, default: new Date(), index: true},
     history: {
 	type: [Date], default: [new Date()]
     },
-    featured: {type: Boolean, default: false}
-});
+    featured: {type: Boolean, default: false, index: true}
+}, schemaOptions);
 
 exports.model = mongooseLib.model('Article', schema);
 
