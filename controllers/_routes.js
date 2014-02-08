@@ -24,6 +24,7 @@ var init_ = function (serverApp) {
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
     serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
 
+    serverApp.get('/articles/:page?', function(req, res) { return pagesEngine.render({content: articleController.renderList}, req, res); });
     serverApp.get('/article/:technicalName', function(req, res) { return pagesEngine.render({content: articleController.render}, req, res); });
 
     serverApp.get('/favicon', function (req, res) {

@@ -7,7 +7,7 @@ var utilsLib = require(__dirname + '/../lib/utils');
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
-        var articlesModel = require('../models/articles.js');
+	var articlesModel = require('../models/articles.js');
 
 	var technicalName = req.params.technicalName;
 
@@ -20,6 +20,29 @@ var controller_ = function() {
 	    res.locals.article = article;
 	    res.locals.inlineStyles.push('article');
 	    res.locals.contentPath = 'pages/article/content.ejs';
+
+            return renderCallback();
+	});
+    };
+
+    this.renderList = function(req, res, renderCallback) {
+	var Article = mongooseLib.model('Article');
+	var articlesModel = require('../models/articles.js');
+
+	var articlesPerPage = 3;
+
+	var pageNumber = ((req.params.page - 1) >= 0) ? (req.params.page - 1) : 0;
+	var offset = (pageNumber || 0) * articlesPerPage;
+
+	return Article.find({}).sort({lastUpdated: -1}).exec(function(err, articleList) {
+	    if (err)
+		return renderCallback(err);
+
+	    res.locals.articleList = articleList.slice(offset, offset + articlesPerPage);
+	    res.locals.pageCount = articleList.length / articlesPerPage;
+	    res.locals.actualPage = pageNumber;
+	    res.locals.inlineStyles.push('articles');
+	    res.locals.contentPath = 'pages/articles/content.ejs';
 
             return renderCallback();
 	});
