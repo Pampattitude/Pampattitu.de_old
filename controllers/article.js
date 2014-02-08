@@ -41,7 +41,7 @@ var controller_ = function() {
 	    res.locals.articleList = articleList.slice(offset, offset + articlesPerPage);
 	    res.locals.pageCount = articleList.length / articlesPerPage;
 	    res.locals.actualPage = pageNumber;
-	    res.locals.inlineStyles.push('articles');
+	    // res.locals.inlineStyles.push('articles');
 	    res.locals.contentPath = 'pages/articles/content.ejs';
 
             return renderCallback();

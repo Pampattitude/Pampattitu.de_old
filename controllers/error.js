@@ -8,7 +8,7 @@ var controller_ = function() {
     var self = this;
 
     this.render_ = function(req, res, errorCode, renderCallback) {
-	res.locals.inlineStyles.push('error');
+	// res.locals.inlineStyles.push('error');
 	res.locals.contentPath = 'pages/error/' + errorCode + '.ejs';
 
         return renderCallback();

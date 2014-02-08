@@ -36,7 +36,7 @@ var controller_ = function() {
                     }
 
 	            res.locals.articleList = articles;
-	            res.locals.inlineStyles.push('home');
+	            // res.locals.inlineStyles.push('home');
 	            res.locals.contentPath = 'pages/home/content.ejs';
 
                     return serieCallback();
