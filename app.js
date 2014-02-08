@@ -31,16 +31,35 @@ mongooseLib.connection.once('open', function () {
 
 	require('./models/articles.js').model;
 	require('./models/tags.js').model;
+	require('./models/users.js').model;
 
 	require('./scripts/createArticle.js');
 	require('./scripts/createTags.js');
+	require('./scripts/createUser.js');
 
 	consoleLib.log('Collections sync\'ed');
 });
 
 var serverApp = expressLib();
 
-require('./controllers/_routes.js').init(serverApp);
-serverApp.use(serverApp.router);
+serverApp.configure(function() {
+    serverApp.use(expressLib.bodyParser());
+    serverApp.use(expressLib.methodOverride());
+
+    serverApp.use(expressLib.cookieParser());
+    serverApp.use(expressLib.session({secret: '7iGofFxdVeCafeq35BDrOdoV'}));
+
+    serverApp.use(function(req, res, next) {
+	if (!req.params)  req.params = {};
+	if (!req.body)    req.body = {};
+	if (!req.session) req.session = {};
+	if (!res.locals)  res.locals = {};
+	return next();
+    });
+
+    require('./controllers/_routes.js').init(serverApp);
+    serverApp.use(serverApp.router);
+    serverApp.enable('jsonp callback');
+});
 
 serverApp.listen(7337);
