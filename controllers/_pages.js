@@ -4,11 +4,12 @@ var consoleLib = require(__dirname + '/../lib/console');
 var constantsLib = require(__dirname + '/../lib/constants');
 var utilsLib = require(__dirname + '/../lib/utils');
 
-var render_ = function(modules, req, res) {
-    if (!res.locals)
-        res.locals = {};
-    res.locals.privileges = 'user';
+var render_ = function(modules, req, res, doNotSavePageAsPrevious) {
+    res.locals.rights = req.session.rights;
     res.locals.inlineStyles = [];
+    res.locals.previousPage = req.session.previousPage;
+    if (req.session.login)
+	res.locals.login = req.session.login;
 
     // Add default site menu data
     if (!modules.siteMenu) {
@@ -30,8 +31,29 @@ var render_ = function(modules, req, res) {
             return res.redirect('/404');
         }
 
+	if (!doNotSavePageAsPrevious) {
+	    req.session.previousPage = req.path;
+	}
+
         return res.render(constantsLib.viewTemplateFull);
     });
 };
 
+var post_ = function(modules, req, res) {
+    return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
+        return fct(req, res, callback);
+    },
+    function(err) {
+        if (err) {
+            consoleLib.error(err);
+            return res.redirect('/404');
+        }
+
+	if (!req.session)
+	    return res.redirect('/home');
+	return res.redirect(req.session.previousPage || '/home');
+    });
+};
+
 exports.render = render_;
+exports.post = post_;
