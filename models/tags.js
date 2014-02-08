@@ -5,7 +5,7 @@ var schemaOptions = {
 };
 
 var schema = new mongooseLib.Schema({
-    name: {type: String, required: true, index: true},
+    name: {type: String, required: true, index: true, unique: true},
     count: {type: Number, default: 0, index: true},
     hype: {type: Number, default: 0, index: true},
 

@@ -5,7 +5,7 @@ var schemaOptions = {
 };
 
 var schema = new mongooseLib.Schema({
-    technicalName: {type: String, required: true},
+    technicalName: {type: String, required: true, unique: true},
     title: {type: String, required: true},
     img: {type: String},
     tags: {type: [String], default: [], index: true},
