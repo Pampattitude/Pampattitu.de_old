@@ -55,5 +55,28 @@ var post_ = function(modules, req, res) {
     });
 };
 
+var ajax_ = function(modules, req, res) {
+    var resp = {};
+
+    return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
+        return fct(req, res, function(err, data) {
+            if (err)
+                return callback(err);
+
+            resp = utilsLib.mergeObjects(resp, data);
+            return callback();
+        });
+    },
+    function(err) {
+        if (err) {
+            consoleLib.error(err);
+            return res.json(500, {text: err});
+        }
+
+        return res.json(200, resp);
+    });
+};
+
 exports.render = render_;
 exports.post = post_;
+exports.ajax = ajax_;
