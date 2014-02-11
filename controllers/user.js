@@ -17,7 +17,7 @@ var controller_ = function() {
 	    else if (!user)
 		return loginCallback(new Error('User ' + req.body.login + ' unknown'));
 
-            var pass = ''
+            var pass = '';
             if (req.body.password.length) {
 	        var crypto = require('crypto');
 	        var shasum = crypto.createHash('sha1');
@@ -36,7 +36,8 @@ var controller_ = function() {
     };
 
     this.logout = function(req, res, logoutCallback) {
-	req.session.destroy();
+	delete req.session.login;
+	delete req.session.rights;
 	return logoutCallback();
     };
 };
