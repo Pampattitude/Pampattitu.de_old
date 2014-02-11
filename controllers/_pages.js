@@ -4,7 +4,7 @@ var consoleLib = require(__dirname + '/../lib/console');
 var constantsLib = require(__dirname + '/../lib/constants');
 var utilsLib = require(__dirname + '/../lib/utils');
 
-var render_ = function(modules, req, res, doNotSavePageAsPrevious) {
+var render_ = function(modules, req, res) {
     res.locals.rights = req.session.rights;
     res.locals.inlineStyles = [];
     res.locals.previousPage = req.session.previousPage;
@@ -31,10 +31,7 @@ var render_ = function(modules, req, res, doNotSavePageAsPrevious) {
             return res.redirect('/404');
         }
 
-	if (!doNotSavePageAsPrevious) {
-	    req.session.previousPage = req.path;
-	}
-
+	req.session.previousPage = req.path;
         return res.render(constantsLib.viewTemplateFull);
     });
 };
