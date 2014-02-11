@@ -27,6 +27,20 @@
       background-color: #1d4d7e;
       background-image: url('/img/background');
       }
+
+      [contenteditable="true"] {
+      display: block;
+      background-color: white;
+      border: 1px solid #888;
+      border-radius: 2px;
+      box-shadow: 0 0 3px rgba(128, 128, 128, .5);
+      transition: border 200ms linear, box-shadow 200ms linear;
+      }
+      [contenteditable="true"]:focus {
+      border: 1px solid rgba(0, 64, 255, .8);
+      box-shadow: 0 0 6px rgba(0, 64, 255, .5);
+      transition: border 200ms linear, box-shadow 200ms linear;
+      }
     </style>
   </head>
   <body class="container">

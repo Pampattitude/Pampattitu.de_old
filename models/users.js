@@ -8,16 +8,7 @@ var schema = new mongooseLib.Schema({
     login: {type: String, required: true, index: true, unique: true},
     password: {type: String, default: ''}, // Commentors do not have to be registered
 
-    rights: {type: Number, default: 0, enum: [0, 1, 2, 3, 4]},
+    rights: {type: String, default: 'guest', enum: ['guest', 'registered', 'priviledged', 'admin']},
 }, schemaOptions);
 
 exports.model = mongooseLib.model('User', schema);
-
-/*
-  Rights:
-  0 -> reader / commentor / guest
-  1 -> registered user
-  2 -> priviledged user
-  3 -> ?placeholder?
-  4 -> admin
-*/
