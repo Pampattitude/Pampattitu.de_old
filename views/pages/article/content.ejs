@@ -1,27 +1,85 @@
-<% if ('undefined' !== typeof article) { %>
-<a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
-<h2>
-  <% if (article.featured) { %><span class="glyphicon glyphicon-star" style="color:#ED0;text-shadow:0 1px 2px #000;"></span><% } %>
-  <%= article.title %>
-</h2>
-<p><i>
-  <%= article.caption %>
-</i></p>
-<br />
-<br />
-<div style="overflow:hidden;">
-  <%- article.content %>
+<% if ('undefined' !== typeof rights &&
+   4 /* admin */ <= rights) { %>
+   <div id="contentControl">
+     <button class="btn btn-primary" onclick="$('#contentContent').toggle();$('#contentModify').toggle();">Edit</button>
+   </div>
+   <br />
+<% } %>
+
+<div id="contentContent">
+  <% if ('undefined' !== typeof article) { %>
+  <a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
+  <h2>
+    <% if (article.featured) { %><span class="glyphicon glyphicon-star" style="color:#ED0;text-shadow:0 1px 2px #000;"></span><% } %>
+    <%= article.title %>
+  </h2>
+  <p><i>
+      <%= article.caption %>
+  </i></p>
+  <br />
+  <br />
+  <div style="overflow:hidden;">
+    <%- article.content %>
+  </div>
+  <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
+    <span class="label label-primary"><%= article.tags[i] %></span>
+  <% } %>
+  <br /><br />
+
+  <% } %>
+
+  <nav>
+    <a href="/home"><button class="btn btn-primary"><span class="glyphicon glyphicon-tower"></span> Home</button></a>
+    <a href="/search/"><button class="btn"><span class="glyphicon glyphicon-tags"></span> Search by similar tags</button></a>
+    <a href="/pseudo-random"><button class="btn"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
+    <button class="btn btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Help</button>
+  </nav>
 </div>
-<% for (var i = 0 ; article.tags.length > i ; ++i) { %>
-<span class="label label-primary"><%= article.tags[i] %></span>
-<% } %>
-<br /><br />
 
-<% } %>
-
-<nav>
-  <a href="/home"><button class="btn btn-primary"><span class="glyphicon glyphicon-tower"></span> Home</button></a>
-  <a href="/search/"><button class="btn"><span class="glyphicon glyphicon-tags"></span> Search by similar tags</button></a>
-  <a href="/pseudo-random"><button class="btn"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
-  <button class="btn btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Help</button>
-</nav>
+<div id="contentModify" style="display:none;" onload="$('#contentModify').hide();">
+  <% if ('undefined' !== typeof article) { %>
+  <form method="POST" action="/article/modify" class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="articleTitle" class="col-xs-2 control-label">Title</label>
+      <div class="col-xs-10">
+        <input type="text" name="title" id="articleTitle" class="form-control" value="<%= article.title %>" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="articleTechnicalName" class="col-xs-2 control-label">Technical name</label>
+      <div class="col-xs-10">
+        <input type="text" name="technicalName" id="articleTechnicalName" class="form-control" value="<%= article.technicalName %>" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="articleImage" class="col-xs-2 control-label">Image URL</label>
+      <div class="col-xs-10">
+        <input type="url" name="image" id="articleImage" class="form-control" value="<%= article.img %>" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="articleCaption" class="col-xs-2 control-label">Caption</label>
+      <div class="col-xs-10">
+        <textarea name="caption" id="articleCaption" class="form-control" rows="4"><%= article.caption %></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="articleContent" class="col-xs-2 control-label">Content</label>
+      <div class="col-xs-10">
+        <textarea name="content" id="articleContent" class="form-control" rows="8"><%= article.content %></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="articleFeatured" class="col-xs-2 control-label">Featured</label>
+      <div class="col-xs-10">
+        <input type="checkbox" name="featured" id="articleFeatured" <% if (true === article.featured) { %><%= 'checked="checked"' %><% } %> />
+      </div>
+    </div>
+    <div class="form-group">
+      <center class="col-xs-12">
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Apply</button>
+      </center>
+    </div>
+  </form>
+  <% } %>
+</div>
