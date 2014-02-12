@@ -29,11 +29,11 @@ var article = articleList[i]; %>
 <center class="row">
   <div class="col-xs-2">
     <% if ('undefined' !== typeof actualPage && 0 < actualPage) { %>
-    <a href="/articles/1"><button class="btn">
+    <a href="/articles/1"><button class="btn btn-default">
 	<span class="glyphicon glyphicon-fast-backward"></span>
     </button></a>
 
-    <a href="/articles/<%= actualPage %>"><button class="btn">
+    <a href="/articles/<%= actualPage %>"><button class="btn btn-default">
 	<span class="glyphicon glyphicon-backward"></span>
     </button></a>
     <% } %>
@@ -46,7 +46,7 @@ var article = articleList[i]; %>
       <%= i+1 %>
     </button>
     <% } else { %>
-    <a href="/articles/<%= i+1 %>"><button class="btn">
+    <a href="/articles/<%= i+1 %>"><button class="btn btn-default">
 	<%= i+1 %>
     </button></a>
     <% } %>
@@ -55,11 +55,11 @@ var article = articleList[i]; %>
 
   <div class="col-xs-2">
     <% if ('undefined' !== typeof actualPage && i-1 > actualPage) { %>
-    <a href="/articles/<%= actualPage+2 %>"><button class="btn">
+    <a href="/articles/<%= actualPage+2 %>"><button class="btn btn-default">
 	<span class="glyphicon glyphicon-forward"></span>
     </button></a>
 
-    <a href="/articles/<%= i %>"><button class="btn">
+    <a href="/articles/<%= i %>"><button class="btn btn-default">
 	<span class="glyphicon glyphicon-fast-forward"></span>
     </button></a>
     <% } %>
@@ -71,7 +71,7 @@ var article = articleList[i]; %>
 
 <nav>
   <a href="/home"><button class="btn btn-primary"><span class="glyphicon glyphicon-tower"></span> Home</button></a>
-  <a href="/articles/"><button class="btn"><span class="glyphicon glyphicon-list"></span> Article list</button></a>
-  <a href="/pseudo-random"><button class="btn"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
+  <a href="/articles/"><button class="btn btn-default"><span class="glyphicon glyphicon-list"></span> Article list</button></a>
+  <a href="/pseudo-random"><button class="btn btn-default"><span class="glyphicon glyphicon-flash"></span> Magic random</button></a>
   <button class="btn btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Help</button>
 </nav>
