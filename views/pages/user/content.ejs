@@ -1,0 +1,29 @@
+<div class="row">
+  <% if ('undefined' !== typeof user) { %>
+  <% if ('undefined' !== typeof user.pictureUrl) { %>
+  <div class="col-xs-3">
+    <img src="<%= user.pictureUrl %>" alt="user picture" style="max-width:100%;float:left;padding-right:24px;" />
+  </div>
+  <div class="col-xs-9">
+  <% } else { %>
+  <div class="col-xs-12">
+  <% } %>
+    <% if ('guest' === user.rights) { %>
+    <h2><small>Let's call him </small> <%= user.login %></h2>
+    <% } else { %>
+    <h2><%= user.login %></h2>
+    <% } %>
+    <% if ('admin' === user.rights) { %>
+    <h4 style="margin-left: 15%;"><span style="color:#d9534f;">Administrator</span></h4>
+    <% } else if ('priviledged' === user.rights) { %>
+    <h4 style="margin-left: 15%;"><span style="color:#5cb85c;">Priviledged user</span></h4>
+    <% } else if ('registered' === user.rights) { %>
+    <h4 style="margin-left: 15%;"><span style="color:#428bca;">Registered user</span></h4>
+    <% } else if ('guest' === user.rights) { %>
+    <h4 style="margin-left: 15%;">Guest</h4>
+    <% } else { %>
+    <h4 style="margin-left: 15%;"><%= user.rights %></h4>
+    <% } %>
+  </div>
+  <% } %>
+</div>
