@@ -1,45 +1,21 @@
-<% var isAdmin = 'undefined' !== typeof rights && 'admin' == rights; %>
 <div id="contentContent">
-  <form method="POST" action="/editArticle">
     <% if ('undefined' !== typeof article) { %>
-    <% if (isAdmin) { %>
     <a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
-    <br />
-    <h4><b>Image URL</b>:</h4>
-    <p contenteditable="true"><%= article.img %></span>
-    <% } else { %>
-    <a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
-    <% } %>
-    <% if (isAdmin) { %><h4 style="margin-bottom:-12px;"><b>Title</b>:</h4><% } %>
-    <h2<% if (isAdmin) { %> contenteditable="true"<% } %>>
+    <h2>
       <%= article.title %>
     </h2>
-    <% if (isAdmin) { %><h4><b>Caption</b>:</h4><% } %>
-    <p><i<% if (isAdmin) { %> contenteditable="true"<% } %>>
+    <h4 style="margin-left:10%;">by <a href="/user/<%= article.author %>"><%= article.author %></a></h4>
+    <p><i>
 	<%= article.caption %>
     </i></p>
     <br />
-    <% if (isAdmin) { %><h4><b>Content</b>:</h4><% } %>
-    <div style="overflow:hidden;"<% if (isAdmin) { %> contenteditable="true"<% } %>>
+    <div style="overflow:hidden;">
       <%- article.content %>
     </div>
-    <% if (isAdmin) { %>
-    <br />
-    <% if (isAdmin) { %><h4><b>Tags</b>:</h4><% } %>
     <p contenteditable="true">
-      <% } %>
       <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
-      <% if (isAdmin) { %>
-      <%= article.tags[i] %>
-      <% } else { %>
       <span class="label label-primary"><%= article.tags[i] %></span>
       <% } %>
-      <% } %>
-      <% if (isAdmin) { %>
-    </p>
-    <button type="button" class="btn btn-success" style="float:right;" onclick="var pf=$(this).parent('form');pf.find('[contenteditable=\'true\']').each(function(elem){pf.append('<input type=\'hidden\' name=\'' + $(this).name + '\' value=\'' + $(this).html() + ' />')});pf.submit();"><span class="glyphicon glyphicon-save"></span> Save</button>
-  </form>
-  <% } %>
   <br /><br />
 
   <% } %>
