@@ -11,6 +11,7 @@ var schema = new mongooseLib.Schema({
     tags: {type: [String], default: [], index: true},
     caption: {type: String, required: true},
     content: {type: String, required: true},
+    author: {type: String, required: true},
 
     views: {type: Number, default: 0, index: true},
 
