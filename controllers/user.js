@@ -5,6 +5,25 @@ var consoleLib = require(__dirname + '/../lib/console');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
+    this.render = function(req, res, renderCallback) {
+	var User = mongooseLib.model('User');
+
+	var login = req.params.login;
+
+	return User.findOne({login: login}, function(err, user) {
+	    if (err)
+		return renderCallback(err);
+	    else if (!user)
+		return renderCallback('Could not find user ' + login);
+
+	    res.locals.user = user;
+	    res.locals.inlineStyles.push('user');
+	    res.locals.contentPath = 'pages/user/content.ejs';
+
+	    return renderCallback();
+	});
+    };
+
     this.login = function(req, res, loginCallback) {
 	if (!req.body.login)
 	    return loginCallback(new Error('Missing login'));
