@@ -18,7 +18,7 @@ var controller_ = function() {
 		return renderCallback('Could not find article ' + technicalName);
 
 	    res.locals.article = article;
-	    res.locals.inlineStyles.push('article');
+	    // res.locals.inlineStyles.push('article');
 	    res.locals.contentPath = 'pages/article/content.ejs';
 
             return renderCallback();

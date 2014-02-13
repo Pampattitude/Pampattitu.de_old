@@ -17,7 +17,7 @@ var controller_ = function() {
 		return renderCallback('Could not find user ' + login);
 
 	    res.locals.user = user;
-	    res.locals.inlineStyles.push('user');
+	    // res.locals.inlineStyles.push('user');
 	    res.locals.contentPath = 'pages/user/content.ejs';
 
 	    return renderCallback();
