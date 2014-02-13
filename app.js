@@ -43,6 +43,9 @@ mongooseLib.connection.once('open', function () {
 var serverApp = expressLib();
 
 serverApp.configure(function() {
+    serverApp.use(expressLib.errorHandler({ dumpExceptions: true, showStack: true }));
+    serverApp.use(expressLib.logger('dev'));
+
     serverApp.use(expressLib.bodyParser());
     serverApp.use(expressLib.methodOverride());
 
