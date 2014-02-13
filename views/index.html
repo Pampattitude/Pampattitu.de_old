@@ -162,11 +162,11 @@
       <div class="col-xs-12 col-sm-4">
 	<div class="well">
 	  <% if ('undefined' !== typeof login) { %>
-	  Hello, <span class="label label-success"><%= login %></span>!
-	  <br />
-	  <form method="POST" action="/logout">
-	    <small><button type="submit" class="btn btn-warning">Logout</button></small>
+	  <form method="POST" action="/logout" style="float:right;margin-left:8px;margin-bottom:8px;">
+	    <small><button type="submit" class="btn btn-primary">Logout</button></small>
 	  </form>
+	  <p>Hello, <span class="label label-success"><%= login %></span>!</p>
+          <p>Does being <%= /[aeiou]/.test('' + rights[0]) ? 'an' : 'a' %> <b><%= rights %></b> feel good? I sure envy you. 'cause <i>I'm just a website</i>, y'know.</p>
 	  <% } else { %>
 	  <form method="POST" action="/login">
 	    <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." />
