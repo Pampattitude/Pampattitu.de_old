@@ -40,7 +40,11 @@ var findOneWithTags = function (tagList, callback) {
 };
 
 var getFeatured = function (callback) {
-    return exports.model.findOne({featured: true}, callback);
+    return exports.model.find({featured: true}).sort({lastUpdated: -1}).limit(1).exec(function(err, res) {
+        if (err)
+            return callback(err);
+        return callback(err, res[0]);
+    });
 };
 
 var getLatest = function (limit, callback) {

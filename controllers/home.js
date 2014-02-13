@@ -20,7 +20,7 @@ var controller_ = function() {
                 })
             },
             function(serieCallback) {
-	        return Article.find({}).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
+	        return Article.find({_id: {$ne: res.locals.featuredArticle.id}}).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
 	            if (err)
                         return serieCallback(err);
 
