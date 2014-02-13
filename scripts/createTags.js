@@ -6,7 +6,14 @@ var Tag = require('../models/tags.js').model;
 mongooseLib.connection.collections['tags'].drop();
 consoleLib.log('Emptied tags collection.');
 
-var tagList = ['this', 'is', 'a', 'test'];
+var tagList = [
+    'this', 'is', 'a', 'test',
+    'c++', 'cpp', 'boost', 'sfml', 'qt',
+    'javascript', 'node.js', 'nodejs', 'node', 'js',
+    'html', 'css',
+    'python',
+    'article', 'pmp', 'pampa', 'pampattitude',
+];
 
 for (var i = 0 ; tagList.length > i ; ++i) {
     var elem = new Tag({});
