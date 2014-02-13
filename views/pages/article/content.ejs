@@ -4,7 +4,15 @@
   <h2>
     <%= article.title %>
   </h2>
-  <h4 style="margin-left:10%;">by <a href="/user/<%= article.author %>"><%= article.author %></a></h4>
+  <h4 style="margin-left:10%;">
+    by <a href="/user/<%= article.author %>"><%= article.author %></a>,<br/>
+    <small>
+      <%= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][article.lastUpdated.getDay()] %>,
+      <%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][article.lastUpdated.getMonth()] %>
+      <%= article.lastUpdated.getDate() %><sup><%= ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][article.lastUpdated.getDate() - 1] %></sup>
+      <%= article.lastUpdated.getFullYear() %>
+    </small>
+  </h4>
   <p><i>
       <%= article.caption %>
   </i></p>
