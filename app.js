@@ -33,10 +33,6 @@ mongooseLib.connection.once('open', function () {
 	require('./models/tags.js').model;
 	require('./models/users.js').model;
 
-	require('./scripts/createArticle.js');
-	require('./scripts/createTags.js');
-	require('./scripts/createUser.js');
-
 	consoleLib.log('Collections sync\'ed');
 });
 
