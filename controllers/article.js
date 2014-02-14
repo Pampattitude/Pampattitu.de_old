@@ -11,7 +11,7 @@ var controller_ = function() {
 
 	var technicalName = req.params.technicalName;
 
-	return Article.findOne({technicalName: technicalName}, function(err, article) {
+	return Article.getByTechnicalName(technicalName, function(err, article) {
 	    if (err)
 		return renderCallback(err);
 	    else if (!article)

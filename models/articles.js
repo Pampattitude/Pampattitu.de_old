@@ -22,8 +22,6 @@ var schema = new mongooseLib.Schema({
     featured: {type: Boolean, default: false, index: true}
 }, schemaOptions);
 
-exports.model = mongooseLib.model('Article', schema);
-
 var getById = function (id, callback) {
     return exports.model.findOne({_id: id}, callback);
 };
@@ -52,8 +50,21 @@ var getLatest = function (limit, callback) {
 };
 
 exports.getById = getById;
+schema.statics.getById = getById;
+
 exports.getByTechnicalName = getByTechnicalName;
+schema.statics.getByTechnicalName = getByTechnicalName;
+
 exports.findWithTags = findWithTags;
+schema.statics.findWithTags = findWithTags;
+
 exports.findOneWithTags = findOneWithTags;
+schema.statics.findOneWithTags = findOneWithTags;
+
 exports.getFeatured = getFeatured;
+schema.statics.getFeatured = getFeatured;
+
 exports.getLatest = getLatest;
+schema.statics.getLatest = getLatest;
+
+exports.model = mongooseLib.model('Article', schema);
