@@ -13,4 +13,8 @@ var schema = new mongooseLib.Schema({
     rights: {type: String, default: 'guest', enum: ['guest', 'registered', 'priviledged', 'admin']},
 }, schemaOptions);
 
+var getAdminList = function(callback) {
+    return db.model('User').find({rights: 'admin'}, callback);
+};
+
 exports.model = mongooseLib.model('User', schema);
