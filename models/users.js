@@ -10,6 +10,8 @@ var schema = new mongooseLib.Schema({
     pictureUrl: {type: String},
     description: {type: String},
 
+    emailAddress: {type: String},
+
     rights: {type: String, default: 'guest', enum: ['guest', 'registered', 'priviledged', 'admin']},
 }, schemaOptions);
 
