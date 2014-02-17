@@ -47,6 +47,29 @@ var controller_ = function() {
             return renderCallback();
 	});
     };
+
+    this.renderMagic = function(req, res, renderCallback) {
+	var Article = mongooseLib.model('Article');
+	var articlesModel = require('../models/articles.js');
+
+	var technicalName = req.params.technicalName;
+
+	return Article.find({}, function(err, articles) {
+	    if (err)
+		return renderCallback(err);
+	    else if (!articles || !articles.length)
+		return renderCallback('Could not find an article');
+
+	    console.log(articles[Math.floor(Math.random() * articles.length)]);
+
+	    res.locals.article = articles[Math.floor(Math.random() * articles.length)];
+	    // res.locals.inlineStyles.push('article');
+	    res.locals.contentPath = 'pages/article/content.ejs';
+
+	    return renderCallback();
+	});
+    };
+
 };
 
 exports.Controller = controller_;

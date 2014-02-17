@@ -28,6 +28,7 @@ var init_ = function (serverApp) {
 
     serverApp.get('/articles/:page?', function(req, res) { return pagesEngine.render({content: articleController.renderList}, req, res); });
     serverApp.get('/article/:technicalName', function(req, res) { return pagesEngine.render({content: articleController.render}, req, res); });
+    serverApp.get('/magic-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
     serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
