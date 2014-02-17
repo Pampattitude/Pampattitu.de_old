@@ -1,0 +1,68 @@
+<div id="contentContent">
+  <% if ('undefined' !== typeof login) { %>
+  <div class="row">
+    <div class="image-preview col-xs-2">
+      <div class="thumbnail">
+	<% if ('undefined' !== typeof article) { %>
+	<img src="<%= article.img %>" alt="" />
+	<% } else { %>
+	<img src="http://i.imgur.com/k0cyv46.png" alt="" />
+	<% } %>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <% if ('undefined' !== typeof article) { %>
+      <input type="url" data-name="imageUrl" class="form-control" value="<%= article.img %>" placeholder="http://i.imgur.com/k0cyv46.png" onchange="$('#contentContent').find('.image-preview').find('img').attr('src', $(this).val());" />
+      <% } else { %>
+      <input type="url" data-name="imageUrl" class="form-control" placeholder="http://i.imgur.com/k0cyv46.png" onchange="$('#contentContent').find('.image-preview').find('img').attr('src', $(this).val());" />
+      <% } %>
+    </div>
+  </div>
+  <h2 contenteditable="true" data-name="title" onload="var pmp-title = false;" onclick="if (!pmp-title) { $(this).text(''); pmp-title = true; }">
+    <% if ('undefined' !== typeof article) { %><%- article.title %>
+    <% } else { %>Title<% } %>
+  </h2>
+  <h4 style="margin-left:10%;">
+    by you, <b><%= login %></b>,<br/>
+    <small>
+      <span id="pmp-edit-date"></span>
+      <script type="application/javascript">
+	(function() {
+	var actDate = new Date();
+	var text = 'Today, ';
+	text +=    ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][actDate.getDay()] + ', ';
+	text +=    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][actDate.getMonth()] + ' ';
+	text +=    actDate.getDate() + '<sup>' + ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][actDate.getDate() - 1] + '</sup> ';
+	text +=    actDate.getFullYear();
+
+	$('span#pmp-edit-date').html(text);
+	})();
+      </script>
+    </small>
+  </h4>
+  <p><i contenteditable="true" data-name="caption" onload="var pmp-caption = false;" onclick="if (!pmp-caption) { $(this).text(''); pmp-caption = true; }" style="min-height:50px;">
+      <% if ('undefined' !== typeof article) { %><%- article.caption %>
+      <% } else { %>Caption<% } %>
+  </i></p>
+  <br />
+  <br />
+  <div contenteditable="true" data-name="content" onload="var pmp-content = false;" onclick="if (!pmp-content) { $(this).text(''); pmp-content = true; }" style="min-height:110px;">
+    <% if ('undefined' !== typeof article) { %><%- article.content %>
+    <% } else { %>Content<% } %>
+  </div>
+  <br />
+  <div>
+    <% var tagsText = '' %>
+    <% if ('undefined' !== typeof article) {
+       for (var i = 0 ; article.tags.length > i ; ++i) {
+    tagsText += article.tags[i] + ' ';
+    }
+    tagsText = tagsText.trim();
+    } %>
+    <input type="text" data-name="tags" class="form-control" value="<%= tagsText %>" placeholder="i love poneys" />
+  </div>
+  <br />
+
+  <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Save</button>
+  <% } %>
+</div>
