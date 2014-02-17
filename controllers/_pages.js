@@ -21,6 +21,11 @@ var render_ = function(modules, req, res) {
         var pageMenuController = new (require('./page-menu.js').Controller)();
         modules.pageMenu = pageMenuController.render;
     }
+    // Add default site menu data
+    if (!modules.buttonMenu) {
+        var buttonMenuController = new (require('./button-menu.js').Controller)();
+        modules.buttonMenu = buttonMenuController.render;
+    }
 
     return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
         return fct(req, res, callback);
