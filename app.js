@@ -45,8 +45,17 @@ app.configure(function() {
     app.use(expressLib.bodyParser());
     app.use(expressLib.methodOverride());
 
+    var mongoStore = require('connect-mongo')(expressLib);
     app.use(expressLib.cookieParser());
-    app.use(expressLib.session({secret: '7iGofFxdVeCafeq35BDrOdoV'}));
+    app.use(expressLib.session({
+        store: new mongoStore ({
+            url: databaseUri + '/sessions'
+        },
+        function() {
+            consoleLib.info("MongoStore connected!");
+        }),
+        secret: '7iGofFxdVeCafeq35BDrOdoV',
+    }));
 
     app.use(function(req, res, next) {
 	if (!req.params)  req.params = {};
