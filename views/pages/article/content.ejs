@@ -1,13 +1,21 @@
 <div id="contentContent">
-  <% if ('undefined' !== typeof rights &&
-     'admin' == rights) { %>
-  <a href="/article/edit" class="btn btn-primary"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
-  <% } %>
-  <% if ('undefined' !== typeof article) { %>
-  <% if ('undefined' !== typeof rights &&
-     'admin' == rights) { %>
-  <a href="/article/edit/<%= article.technicalName %>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit article</a>
-  <% } %>
+  <div class="row">
+    <% if ('undefined' !== typeof rights &&
+       'admin' == rights) { %>
+    <div class="col-xs-6">
+      <a href="/article/edit" class="btn btn-primary" style="display:block;"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
+    </div>
+    <% } %>
+    <% if ('undefined' !== typeof article) { %>
+    <% if ('undefined' !== typeof rights &&
+       'admin' == rights) { %>
+    <div class="col-xs-6">
+      <a href="/article/edit/<%= article.technicalName %>" class="btn btn-primary" style="display:block;"><span class="glyphicon glyphicon-pencil"></span> Edit article</a>
+    </div>
+    <br />
+    <br />
+    <% } %>
+  </div>
 
   <a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
   <h2>
