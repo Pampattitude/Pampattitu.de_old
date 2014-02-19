@@ -113,26 +113,50 @@ var controller_ = function() {
             caption: req.body.caption.trim(),
             content: req.body.content.trim(),
         };
-        var dbCallback = function(err, hasData) {
-	    if (err) {
-		sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
-		return editCallback(err);
-	    }
-            if (!hasData) {
-                consoleLib.warn('No data has been modified');
-		sessionLib.pushMessage(req, 'warning', 'No data has been modified.');
-		return editCallback();
-	    }
+        ;
 
-	    sessionLib.pushMessage(req, 'success', 'Article edited!');
-	    return editCallback();
-        };
+        if (req.body.id) {
+            return Article.update({_id: req.body.id}, {$set: data}, function(err, hasData) {
+		if (err) {
+		    sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
+		    return editCallback(err);
+		}
+		if (!hasData) {
+                    consoleLib.warn('No data has been modified');
+		    sessionLib.pushMessage(req, 'warning', 'No data has been modified.');
+		    return editCallback();
+		}
 
-        if (req.body.id)
-            return Article.update({_id: req.body.id}, {$set: data}, dbCallback);
+		sessionLib.pushMessage(req, 'success', 'Article edited!');
+
+		Article.findOne({_id: req.body.id}, function(err, article) {
+		    if (err) {
+			sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
+			return editCallback(err);
+		    }
+
+		    sessionLib.setRedirection(req, '/article/' + article.technicalName);
+		    return editCallback();
+		});
+            });
+	}
         else {
             data.technicalName = (req.body.title.toLowerCase().trim() + '_' + new Date().getFullYear() + '_' + (new Date().getMonth() + 1) + '_' + new Date().getDate()).trim().replace(/\s/, '_');
-            return Article.create(data, dbCallback);
+            return Article.create(data, function(err, article) {
+		if (err) {
+		    sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
+		    return editCallback(err);
+		}
+		if (!article) {
+                    consoleLib.warn('No data has been modified');
+		    sessionLib.pushMessage(req, 'warning', 'No data has been modified.');
+		    return editCallback();
+		}
+
+		sessionLib.pushMessage(req, 'success', 'Article edited!');
+		sessionLib.setRedirection(req, '/article/' + article.technicalName);
+		return editCallback();
+            });
         }
     };
 };

@@ -60,12 +60,12 @@ var post_ = function(modules, req, res) {
 	    sessionLib.setPreviousFormData(req, req.body);
 	    if (!req.session)
 		return res.redirect('/home');
-	    return res.redirect(req.session.previousPage || '/home');
+	    return res.redirect(req.session.redirectTo || req.session.previousPage || '/home');
         }
 
 	if (!req.session)
 	    return res.redirect('/home');
-	return res.redirect(req.session.previousPage || '/home');
+	return res.redirect(req.session.redirectTo || req.session.previousPage || '/home');
     });
 };
 
