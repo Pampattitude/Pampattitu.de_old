@@ -99,8 +99,6 @@ var controller_ = function() {
 
         if (!req.body.title ||
             !req.session.login ||
-            !req.body.imageUrl ||
-            !req.body.tags ||
             !req.body.caption ||
             !req.body.content) {
 	    sessionLib.pushMessage(req, 'danger', 'Invalid form.');

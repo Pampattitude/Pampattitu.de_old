@@ -2,6 +2,7 @@ var asyncLib = require('async');
 
 var consoleLib = require(__dirname + '/../lib/console');
 var constantsLib = require(__dirname + '/../lib/constants');
+var sessionLib = require(__dirname + '/../lib/session');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var render_ = function(modules, req, res) {
@@ -13,6 +14,10 @@ var render_ = function(modules, req, res) {
     if (req.session.alerts) {
 	res.locals.alerts = req.session.alerts;
 	req.session.alerts = [];
+    }
+    if (req.session.previousFormData) {
+	res.locals.previousFormData = req.session.previousFormData;
+	req.session.previousFormData = [];
     }
 
     // Add default site menu data
@@ -52,7 +57,10 @@ var post_ = function(modules, req, res) {
     function(err) {
         if (err) {
             consoleLib.error(err);
-            return res.redirect('/404');
+	    sessionLib.setPreviousFormData(req, req.body);
+	    if (!req.session)
+		return res.redirect('/home');
+	    return res.redirect(req.session.previousPage || '/home');
         }
 
 	if (!req.session)

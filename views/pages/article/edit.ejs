@@ -3,7 +3,10 @@
   <div class="row">
     <div class="image-preview col-xs-2">
       <div class="thumbnail">
-	<% if ('undefined' !== typeof article) { %>
+	<% if ('undefined' !== typeof previousFormData &&
+	   'undefined' !== typeof previousFormData.imageUrl) { %>
+	<img src="<%= previousFormData.imageUrl %>" alt="" />
+	<% } else if ('undefined' !== typeof article) { %>
 	<img src="<%= article.img %>" alt="" />
 	<% } else { %>
 	<img src="http://i.imgur.com/k0cyv46.png" alt="" />
@@ -11,7 +14,10 @@
       </div>
     </div>
     <div class="col-xs-10">
-      <% if ('undefined' !== typeof article) { %>
+      <% if ('undefined' !== typeof previousFormData &&
+	 'undefined' !== typeof previousFormData.imageUrl) { %>
+      <input type="url" data-name="imageUrl" class="form-control" value="<%= previousFormData.imageUrl %>" placeholder="http://i.imgur.com/k0cyv46.png" onchange="$('#contentContent').find('.image-preview').find('img').attr('src', $(this).val());" />
+      <% } else if ('undefined' !== typeof article) { %>
       <input type="url" data-name="imageUrl" class="form-control" value="<%= article.img %>" placeholder="http://i.imgur.com/k0cyv46.png" onchange="$('#contentContent').find('.image-preview').find('img').attr('src', $(this).val());" />
       <% } else { %>
       <input type="url" data-name="imageUrl" class="form-control" placeholder="http://i.imgur.com/k0cyv46.png" onchange="$('#contentContent').find('.image-preview').find('img').attr('src', $(this).val());" />
@@ -19,7 +25,9 @@
     </div>
   </div>
   <h2 contenteditable="true" data-name="title" onload="var pmp-title = false;" onclick="if (!pmp-title) { $(this).text(''); pmp-title = true; }">
-    <% if ('undefined' !== typeof article) { %><%- article.title %>
+    <% if ('undefined' !== typeof previousFormData &&
+       'undefined' !== typeof previousFormData.title) { %><%- previousFormData.title %>
+    <% } else if ('undefined' !== typeof article) { %><%- article.title %>
     <% } else { %>Title<% } %>
   </h2>
   <h4 style="margin-left:10%;">
@@ -41,20 +49,29 @@
     </small>
   </h4>
   <p><i contenteditable="true" data-name="caption" onload="var pmp-caption = false;" onclick="if (!pmp-caption) { $(this).text(''); pmp-caption = true; }" style="min-height:50px;">
-      <% if ('undefined' !== typeof article) { %><%- article.caption %>
+      <% if ('undefined' !== typeof previousFormData &&
+	 'undefined' !== typeof previousFormData.caption) { %><%- previousFormData.caption %>
+      <% } else if ('undefined' !== typeof article) { %><%- article.caption %>
       <% } else { %>Caption<% } %>
   </i></p>
   <br />
   <br />
   <div contenteditable="true" data-name="content" onload="var pmp-content = false;" onclick="if (!pmp-content) { $(this).text(''); pmp-content = true; }" style="min-height:110px;">
-    <% if ('undefined' !== typeof article) { %><%- article.content %>
+    <% if ('undefined' !== typeof previousFormData &&
+       'undefined' !== typeof previousFormData.caption) { %><%- previousFormData.content %>
+    <% } else if ('undefined' !== typeof article) { %><%- article.content %>
     <% } else { %>Content<% } %>
   </div>
   <br />
   <div>
     <% var tagsText = '' %>
-    <% if ('undefined' !== typeof article) {
-       for (var i = 0 ; article.tags.length > i ; ++i) {
+    <% if ('undefined' !== typeof previousFormData &&
+       'undefined' !== typeof previousFormData.tags) {
+       for (var i = 0 ; previousFormData.tags.length > i ; ++i) {
+    tagsText += previousFormData.tags[i] + ' ';
+    }
+    } else if ('undefined' !== typeof article) {
+    for (var i = 0 ; article.tags.length > i ; ++i) {
     tagsText += article.tags[i] + ' ';
     }
     tagsText = tagsText.trim();

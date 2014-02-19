@@ -174,7 +174,7 @@
           <p>Does being <%= /[aeiou]/.test('' + rights[0]) ? 'an' : 'a' %> <b><%= rights %></b> feel good? I sure envy you. 'cause <i>I'm just a website</i>, y'know.</p>
 	  <% } else { %>
 	  <form method="POST" action="/login">
-	    <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." />
+	    <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." <% if ('undefined' !== typeof previousFormData) { if ('undefined' !== typeof previousFormData.login) { %>value="<%= previousFormData.login %>"<% } } %> />
 	    <div class="input-group">
 	      <input type="password" name="password" class="form-control" placeholder="Password..." style="border-top-left-radius:0;" />
 	      <span class="input-group-btn">

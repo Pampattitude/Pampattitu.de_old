@@ -30,7 +30,7 @@ var init_ = function (serverApp) {
     serverApp.get('/article/edit/:technicalName?', function(req, res) { return pagesEngine.render({content: articleController.renderEdit}, req, res); });
     serverApp.get('/article/:technicalName', function(req, res) { return pagesEngine.render({content: articleController.render}, req, res); });
     serverApp.post('/article/edit', function(req, res) { return pagesEngine.post({content: articleController.edit}, req, res); });
-    serverApp.get('/magic-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
+    serverApp.get('/random-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
     serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
