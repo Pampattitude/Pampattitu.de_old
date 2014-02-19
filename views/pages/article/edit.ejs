@@ -63,6 +63,44 @@
   </div>
   <br />
 
-  <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Save</button>
+  <% if ('undefined' !== typeof article) { %>
+  <input type="hidden" data-name="id" value="<%= article._id %>" />
+  <% } %>
+  <% if ('undefined' !== typeof article) { %>
+  <a href="/article/<%= article.technicalName %>" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Go back</a>
+  <% } else { %>
+  <a href="/articles" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Go back to article list</a>
+  <% } %>
+  <button class="btn btn-primary" onclick="saveArticle();"><span class="glyphicon glyphicon-save"></span> Save</button>
+  <form id="editArticleForm" method="POST" action="/article/edit">
+  </form>
+  <script type="application/javascript">
+    var saveArticle = null;
+
+    $(document).ready(function() {
+        saveArticle = function() {
+            var $form = $('#editArticleForm');
+
+            $form.empty();
+            $('#contentContent [data-name]').each(function() {
+                if ('INPUT' == $(this).prop('tagName')) {
+                    var elem = $(this).clone();
+                    $(elem).attr('type', 'hidden');
+                    $(elem).attr('name', $(this).attr('data-name'));
+                    $form.append($(elem));
+                }
+                else {
+                    $('<input />', {
+                        type: 'hidden',
+                        name: $(this).attr('data-name'),
+                        value: $(this).html(),
+                    }).appendTo($form);
+                }
+            });
+
+            $form.submit();
+        };
+    });
+  </script>
   <% } %>
 </div>

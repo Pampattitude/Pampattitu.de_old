@@ -88,6 +88,44 @@ var controller_ = function() {
             return renderCallback();
 	});
     };
+
+    this.edit = function(req, res, editCallback) {
+        if (!req.session.rights)
+            return editCallback(new Error('Not enough priviledges'));
+
+	var Article = mongooseLib.model('Article');
+	var articlesModel = require('../models/articles.js');
+
+        if (!req.body.title ||
+            !req.session.login ||
+            !req.body.imageUrl ||
+            !req.body.tags ||
+            !req.body.caption ||
+            !req.body.content)
+            return editCallback(new Error('Bad form'));
+
+        var data = {
+            title: req.body.title.trim(),
+            author: req.session.login,
+            img: req.body.imageUrl,
+            tags: req.body.tags.trim().split(' '),
+            caption: req.body.caption.trim(),
+            content: req.body.content.trim(),
+        };
+        var dbCallback = function(err, hasData) {
+            if (!hasData)
+                consoleLib.warn('No data has been modified');
+
+            return editCallback(err);
+        };
+
+        if (req.body.id)
+            return Article.update({_id: req.body.id}, {$set: data}, dbCallback);
+        else {
+            data.technicalName = (req.body.title.toLowerCase().trim() + '_' + new Date().getFullYear() + '_' + (new Date().getMonth() + 1) + '_' + new Date().getDate()).trim().replace(/\s/, '_');
+            return Article.create(data, dbCallback);
+        }
+    };
 };
 
 exports.Controller = controller_;
