@@ -2,6 +2,7 @@ var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
 var consoleLib = require(__dirname + '/../lib/console');
+var sessionLib = require(__dirname + '/../lib/session');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
@@ -101,8 +102,10 @@ var controller_ = function() {
             !req.body.imageUrl ||
             !req.body.tags ||
             !req.body.caption ||
-            !req.body.content)
+            !req.body.content) {
+	    sessionLib.pushMessage(req, 'danger', 'Invalid form.');
             return editCallback(new Error('Bad form'));
+	}
 
         var data = {
             title: req.body.title.trim(),
@@ -113,10 +116,18 @@ var controller_ = function() {
             content: req.body.content.trim(),
         };
         var dbCallback = function(err, hasData) {
-            if (!hasData)
+	    if (err) {
+		sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
+		return editCallback(err);
+	    }
+            if (!hasData) {
                 consoleLib.warn('No data has been modified');
+		sessionLib.pushMessage(req, 'warning', 'No data has been modified.');
+		return editCallback();
+	    }
 
-            return editCallback(err);
+	    sessionLib.pushMessage(req, 'success', 'Article edited!');
+	    return editCallback();
         };
 
         if (req.body.id)

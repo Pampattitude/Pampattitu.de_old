@@ -2,6 +2,7 @@ var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
 var consoleLib = require(__dirname + '/../lib/console');
+var sessionLib = require(__dirname + '/../lib/session');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
@@ -31,10 +32,14 @@ var controller_ = function() {
         req.body.password = req.body.password || '';
 
 	return mongooseLib.model('User').findOne({login: req.body.login}, function(err, user) {
-	    if (err)
+	    if (err) {
+		sessionLib.pushMessage(req, 'danger', 'An unknown error has occured, please contact an administrator.');
 		return loginCallback(err);
-	    else if (!user)
+	    }
+	    else if (!user) {
+		sessionLib.pushMessage(req, 'danger', 'Missing username.');
 		return loginCallback(new Error('User ' + req.body.login + ' unknown'));
+	    }
 
             var pass = '';
             if (req.body.password.length) {
@@ -48,8 +53,10 @@ var controller_ = function() {
 	    if (user.password == pass) {
 		req.session.login = req.body.login;
 		req.session.rights = user.rights;
+		sessionLib.pushMessage(req, 'success', 'Successfully logged in!');
 		return loginCallback();
 	    }
+	    sessionLib.pushMessage(req, 'danger', 'Wrong username / password combination.');
 	    return loginCallback(new Error('Password does not match user ' + user.login));
 	});
     };
@@ -57,6 +64,7 @@ var controller_ = function() {
     this.logout = function(req, res, logoutCallback) {
 	delete req.session.login;
 	delete req.session.rights;
+	sessionLib.pushMessage(req, 'success', 'Successfully logged out!');
 	return logoutCallback();
     };
 };

@@ -10,6 +10,10 @@ var render_ = function(modules, req, res) {
     res.locals.previousPage = req.session.previousPage;
     if (req.session.login)
 	res.locals.login = req.session.login;
+    if (req.session.alerts) {
+	res.locals.alerts = req.session.alerts;
+	req.session.alerts = [];
+    }
 
     // Add default site menu data
     if (!modules.siteMenu) {
