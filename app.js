@@ -71,25 +71,3 @@ app.configure(function() {
 });
 
 var server = app.listen(7337);
-
-function cleanUp() {
-    return server.close();
-}
-server.on('close', function() {
-    winstonLib.info('Closing database connection...');
-    mongooseLib.connection.close(function() {
-        winstonLib.info('Database connection closed, exiting...');
-        return process.exit(0);
-    });
-
-    // Handle ungracefull close
-    var maxCloseTime = 5*1000 // 5s;
-    return setTimeout( function() {
-        winstonLib.error('Could not close connections in ' + parseInt(maxCloseTime / 1000) + 's, forcing shut down...');
-        return process.exit(1);
-    }, maxCloseTime);
-});
-
-process.on('SIGINT',  cleanUp)
-process.on('SIGTERM', cleanUp) 
-
