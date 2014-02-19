@@ -1,3 +1,7 @@
+<% if ('undefined' !== typeof rights &&
+   'admin' == rights) { %>
+<a href="/article/edit" class="btn btn-primary"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
+<% } %>
 <div class="row">
   <% if ('undefined' !== typeof featuredArticle) { %>
   <div class="thumbnail col-xs-12">
