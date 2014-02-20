@@ -15,7 +15,7 @@ var controller_ = function() {
                     if (err)
                         return serieCallback(err);
 
-                    res.locals.featuredArticle = featured;
+                    res.locals.featuredArticle = featured || {id: 'dummy'};
                     return serieCallback();
                 })
             },
@@ -37,13 +37,19 @@ var controller_ = function() {
 
 	            res.locals.articleList = articles;
 	            // res.locals.inlineStyles.push('home');
-	            res.locals.contentPath = 'pages/home/content.ejs';
 
                     return serieCallback();
                 });
             },
 	],
         function(err) {
+	    res.locals.contentPath = 'pages/home/content.ejs';
+
+            if (err) {
+                consoleLib.error(err);
+                return renderCallback(err);
+            }
+
             return renderCallback();
         });
     };
