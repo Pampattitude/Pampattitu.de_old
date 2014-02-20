@@ -9,7 +9,7 @@ mongooseLib.connection.on('error', function (err) {
     // Handle error
     consoleLib.error('Could not open DB connection: ' + err);
 
-    mongooseLib.close();
+    mongooseLib.connection.close();
     mongooseLib.connect(databaseUri);
 });
 mongooseLib.connection.once('open', function () {
@@ -45,4 +45,6 @@ mongooseLib.connection.once('open', function () {
 	elem.save();
 	consoleLib.log('Created new tag.');
     }
+
+    return mongooseLib.connection.close();
 });

@@ -9,7 +9,7 @@ mongooseLib.connection.on('error', function (err) {
     // Handle error
     consoleLib.error('Could not open DB connection: ' + err);
 
-    mongooseLib.close();
+    mongooseLib.connection.close();
     mongooseLib.connect(databaseUri);
 });
 mongooseLib.connection.once('open', function () {
@@ -91,5 +91,8 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
 
 	elem.save();
 	consoleLib.log('Created new article.');
+
     }
+
+    return mongooseLib.connection.close();
 });
