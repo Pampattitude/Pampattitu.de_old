@@ -37,8 +37,9 @@ mongooseLib.connection.once('open', function () {
 });
 
 var app = expressLib();
-
 app.configure(function() {
+    app.disable('x-powered-by');
+
     app.use(expressLib.errorHandler({ dumpExceptions: true, showStack: true }));
     app.use(expressLib.logger('dev'));
 
