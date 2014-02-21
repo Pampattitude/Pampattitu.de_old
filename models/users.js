@@ -5,7 +5,7 @@ var schemaOptions = {
 };
 
 var schema = new mongooseLib.Schema({
-    login: {type: String, required: true, index: true, unique: true},
+    login: {type: String, required: true, unique: true},
     password: {type: String, default: ''}, // Commentors do not have to be registered
     pictureUrl: {type: String},
     description: {type: String},

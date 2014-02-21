@@ -19,7 +19,7 @@ var schema = new mongooseLib.Schema({
     history: {
 	type: [Date], default: [new Date()]
     },
-    featured: {type: Boolean, default: false, index: true}
+    featured: {type: Boolean, default: false, sparse: true}
 }, schemaOptions);
 
 var getById = function (id, callback) {
