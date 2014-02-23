@@ -27,13 +27,16 @@ var controller_ = function() {
 	    return renderCallback();
 	});
 */
-	var pointsForTitle =   8;
+	var pointsForTitle =   15;
 	var pointsForCaption = 3;
 	var pointsForContent = 1;
-	var pointsForTag =     5;
+	var pointsForTag =     10;
+	var pointsForView =    0.05;
 
 	var data = (req.params.data ? req.params.data.split(' ') : []);
 	var page = req.params.page;
+
+	var finalArticleList = [];
 	return mongooseLib.model('Article').find({}).exec(function(err, articleList) {
 	    if (err)
 		return renderCallback(err);
@@ -67,18 +70,24 @@ var controller_ = function() {
 		article.points += (captionMatch ? captionMatch.length - 1 : 0) * pointsForCaption;
 		article.points += (contentMatch ? contentMatch.length - 1 : 0) * pointsForContent;
 
+		if (article.points)
+		    article.points += article.views * pointsForView;
+
+		article.points = parseInt(article.points);
 		consoleLib.debug('Article "' + article.title + '" has ' + article.points + ' points for search "' + req.params.data + '"');
 
+		if (article.points)
+		    finalArticleList.push(article);
 		return articleCallback();
 	    },
 	    function(err) {
 		if (err)
 		    return renderCallback(err);
 
-		articleList.sort(function(a, b) { return b.points - a.points; });
+		finalArticleList.sort(function(a, b) { return b.points - a.points; });
 
-		res.locals.articleList = articleList.slice(offset, offset + articlesPerPage);
-		res.locals.pageCount = articleList.length / articlesPerPage;
+		res.locals.articleList = finalArticleList.slice(offset, offset + articlesPerPage);
+		res.locals.pageCount = finalArticleList.length / articlesPerPage;
 		res.locals.actualPage = pageNumber;
 		res.locals.searchString = req.params.data;
 		// res.locals.inlineStyles.push('search');
