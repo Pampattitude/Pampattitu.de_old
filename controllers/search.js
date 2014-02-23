@@ -40,17 +40,19 @@ var controller_ = function() {
 
 	    return asyncLib.eachSeries(articleList, function(article, articleCallback) {
 		article.points = 0;
+		var dataCopy = data.slice(0);
 
 		var tagGroupRegex = '(';
 
-		for (var j = 0 ; data.length > j ; ++j) {
-		    data[j] = data[j].trim();
-		    tagGroupRegex += data[j]
-		    if (data.length > j + 1)
+		for (var j = 0 ; dataCopy.length > j ; ++j) {
+		    dataCopy[j] = utilsLib.escapeRegExp(dataCopy[j].trim());
+
+		    tagGroupRegex += dataCopy[j];
+		    if (dataCopy.length > j + 1)
 			tagGroupRegex += '|';
 
 		    for (var i = 0 ; article.tags.length > i ; ++i) {
-			if (data[j].match(new RegExp('(' + article.tags[i] + ')', 'gi'))) {
+			if (article.tags[i].match(new RegExp('(' + dataCopy[j] + ')', 'gi'))) {
 			    article.points += pointsForTag;
 			}
 		    }
