@@ -27,7 +27,7 @@
   <% if ('undefined' !== typeof mostUsedTagList) {
      for (var i = 0 ; mostUsedTagList.length > i ; ++i) {
   var tag = mostUsedTagList[i]; %>
-  <a href="#"><span class="label label-primary"><%= tag.name %></span></a>
+  <a href="/search/<%= tag.name %>"><span class="label label-primary"><%= tag.name %></span></a>
   <% } %>
   <% } %>
 </div>
