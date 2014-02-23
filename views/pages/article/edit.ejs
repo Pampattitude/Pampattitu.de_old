@@ -24,12 +24,17 @@
       <% } %>
     </div>
   </div>
-  <h2 contenteditable="true" data-name="title" onload="var pmp-title = false;" onclick="if (!pmp-title) { $(this).text(''); pmp-title = true; }">
-    <% if ('undefined' !== typeof previousFormData &&
-       'undefined' !== typeof previousFormData.title) { %><%- previousFormData.title %>
-    <% } else if ('undefined' !== typeof article) { %><%- article.title %>
-    <% } else { %>Title<% } %>
-  </h2>
+
+  <% var titleValue = '';
+     if ('undefined' !== typeof previousFormData &&
+     'undefined' !== typeof previousFormData.title) {
+     titleValue = previousFormData.title;
+     }
+     else if ('undefined' !== typeof article) {
+     titleValue = article.title;
+     } %>
+  <input type="text" data-name="title" class="form-control input-lg" value="<%= titleValue %>" placeholder="Title" />
+
   <h4 style="margin-left:10%;">
     by you, <b><%= login %></b>,<br/>
     <small>
