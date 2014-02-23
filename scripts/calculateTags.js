@@ -32,7 +32,7 @@ var execute = function(scriptCallback) {
 		    var tagName = article.tags[i];
 
 		    if (!tags[tagName])
-			tags[tagName] = { viewCount: 0, featuredCount: 0, commentCount: 0 };
+			tags[tagName] = { articleCount: 0, viewCount: 0, featuredCount: 0, commentCount: 0 };
 
 		    tags[tagName].articleCount +=  1;
 		    tags[tagName].viewCount +=     viewCount;
@@ -71,6 +71,7 @@ var execute = function(scriptCallback) {
 			    tag.viewCount * 1 +
 			    tag.featuredCount * 250 +
 			    tag.commentCount * 25;
+			tag.updated = new Date();
 
 			return tag.save(function(err) {
 			    if (err)
@@ -84,7 +85,7 @@ var execute = function(scriptCallback) {
 		});
 	    },
 	    function(err) {
-		return scriptCallback();
+		return scriptCallback(err);
 	    });
 	});
     });
