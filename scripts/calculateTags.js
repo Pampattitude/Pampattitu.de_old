@@ -3,6 +3,8 @@ var mongooseLib = require('mongoose');
 var consoleLib = require(__dirname + '/../lib/console');
 
 var execute = function(scriptCallback) {
+    consoleLib.info('Calculating tags');
+
     return mongooseLib.model('Article').find().limit(1000).exec(function(err, articles) {
 	if (err)
 	    return scriptCallback(err);
