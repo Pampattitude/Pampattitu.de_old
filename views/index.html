@@ -201,14 +201,14 @@
 	<button class="btn btn-default" style="width:100%;" onclick="$(this).next().toggle();"><h4><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Search</span></h4></button>
 	<div style="position:relative;display:none;z-index:10;">
 	  <div id="searchModal" class="alert alert-info" style="position:absolute;top:0;">
-	    <div class="input-group">
-	      <form method="POST" action="/search">
+	    <form method="POST" action="/search">
+	      <div class="input-group">
 		<input type="text" name="data" class="form-control" placeholder="Search..." />
 		<span class="input-group-btn">
 		  <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 		</span>
-	      </form>
-	    </div>
+	      </div>
+	    </form>
 	  </div>
 	</div>
       </div>

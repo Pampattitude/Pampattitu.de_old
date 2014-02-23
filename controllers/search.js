@@ -57,21 +57,15 @@ var controller_ = function() {
 		}
 		tagGroupRegex += ')';
 
-		console.log(tagGroupRegex);
-
-		console.log('points before ' + article.points);
 		var tagSearch = new RegExp(tagGroupRegex, 'gi');
 		var titleMatch = article.title.match(tagSearch);
 		var captionMatch = article.caption.match(tagSearch);
 		var contentMatch = article.content.match(tagSearch);
 		article.points += (titleMatch ? titleMatch.length - 1 : 0) * pointsForTitle;
-		console.log('points after title ' + article.points);
 		article.points += (captionMatch ? captionMatch.length - 1 : 0) * pointsForCaption;
-		console.log('points after caption ' + article.points);
 		article.points += (contentMatch ? contentMatch.length - 1 : 0) * pointsForContent;
-		console.log('points after content ' + article.points);
 
-		consoleLib.debug('Article "' + article.title + '" has ' + article.points + ' points');
+		consoleLib.debug('Article "' + article.title + '" has ' + article.points + ' points for search "' + req.params.data + '"');
 
 		return articleCallback();
 	    },
