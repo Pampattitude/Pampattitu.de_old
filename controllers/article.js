@@ -121,11 +121,11 @@ var controller_ = function() {
 	}
 
         var data = {
-            title: req.body.title.trim(),
+            title: req.body.title.toString().trim(),
             author: req.session.login,
             img: req.body.imageUrl,
-            caption: req.body.caption.trim(),
-            content: req.body.content.trim(),
+            caption: req.body.caption.toString().trim(),
+            content: req.body.content.toString().trim(),
         };
 	if (req.body.tags && req.body.tags.length)
             data.tags = req.body.tags.trim().split(' ');
