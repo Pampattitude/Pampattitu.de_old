@@ -179,9 +179,6 @@ var controller_ = function() {
 	}
 	var author = req.session.login;
 	var authorAlias = req.body.authorAlias;
-	var tags = req.body.tags;
-	if (tags && tags.length)
-	    tags = tags.trim().split(' ');
 
 	var commentDoc = {
 	    articleId: articleId,
@@ -191,8 +188,6 @@ var controller_ = function() {
 	    commentDoc.author = author;
 	if (authorAlias)
 	    commentDoc.authorAlias = authorAlias;
-	if (tags && tags.length)
-	    commentDoc.tags = tags;
 
 	return mongooseLib.model('Comment').create(commentDoc, function(err) {
 	    if (err) {
