@@ -33,6 +33,28 @@ if (clusterLib.isMaster) {
     for (var i = 0 ; i < clusterCount ; ++i) {
         clusterLib.fork();
     }
+
+    mongooseLib.connect(databaseUri);
+    mongooseLib.connection.on('error', function (err) {
+	// Handle error
+	consoleLib.error('Could not open DB connection: ' + err);
+
+	mongooseLib.connection.close();
+	mongooseLib.connect(databaseUri);
+    });
+    mongooseLib.connection.once('open', function () {
+	// Handle open;
+	consoleLib.log('DB connection open');
+
+	require('./models/articles.js').model;
+	require('./models/comments.js').model;
+	require('./models/tags.js').model;
+	require('./models/users.js').model;
+
+	consoleLib.log('Collections sync\'ed');
+
+	require(__dirname + '/daemons').execute();
+    });
 }
 else {
     mongooseLib.connect(databaseUri);
@@ -91,6 +113,4 @@ else {
     });
 
     var server = app.listen(7337);
-
-    require(__dirname + '/daemons').execute();
 }
