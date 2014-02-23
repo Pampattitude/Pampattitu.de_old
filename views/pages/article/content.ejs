@@ -42,7 +42,9 @@
     <span class="label label-primary"><%= article.tags[i] %></span>
     <% } %>
   </div>
-  <br /><br />
+  <br />
+
+  <h3>Comments</h3>
 
   <div class="alert alert-info">
     <form method="POST" action="/article/addComment">
@@ -79,8 +81,16 @@
   <% if ('undefined' !== typeof comments) { %>
   <% for (var i = 0 ; comments.length > i ; ++i) {
   var comment = comments[i]; %>
-  <div class="well">
-    <h4><%= comment.author || 'Anonymous' %><%= comment.authorAlias ? ' as ' + comment.authorAlias : '' %></h4>
+  <div class="well" style="margin:0 0 4px 0;padding:1%;">
+    <h4 style="margin:0;"><%- (comment.author ? '<a href="/user/' + comment.author + '">' + comment.author + '</a>' : 'Anonymous') %><%- comment.authorAlias ? ' as <span class="text text-success">' + comment.authorAlias + '</span>' : '' %></h4>
+    <h5 style="margin:0;padding:0 10%;">
+      <small>
+	<%= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][comment.created.getDay()] %>,
+	<%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][comment.created.getMonth()] %>
+	<%= comment.created.getDate() %><sup><%= ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][comment.created.getDate() - 1] %></sup>
+	<%= comment.created.getFullYear() %>
+      </small>
+    </h5>
     <p>
       <%- comment.content %>
     </p>
