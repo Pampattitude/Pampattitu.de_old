@@ -5,8 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "JSON": "~1.0.0",
-    "connect-mongo": "~0.4.0",
     "async": "~0.2.10",
+    "cluster": "~0.7.7",
+    "connect-mongo": "~0.4.0",
     "dot": "~1.0.2",
     "express": "~3.4.8",
     "express-debug": "~1.0.3",
@@ -25,9 +26,7 @@
     "url": "https://Pampattitude@github.com/Pampattitude/Qamqattitu.be.git"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Pampattitude/Qamqattitu.be/issues"
-  },
-  "homepage": "https://github.com/Pampattitude/Qamqattitu.be"
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "0baf4ba09ce6b4b1d6f0d400067d4ede6a5d744c"
 }
