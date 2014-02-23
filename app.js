@@ -30,6 +30,7 @@ mongooseLib.connection.once('open', function () {
     consoleLib.log('DB connection open');
 
     require('./models/articles.js').model;
+    require('./models/comments.js').model;
     require('./models/tags.js').model;
     require('./models/users.js').model;
 
