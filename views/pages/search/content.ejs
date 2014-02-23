@@ -1,3 +1,12 @@
+<div class="row">
+  <% if ('undefined' !== typeof rights &&
+     'admin' == rights) { %>
+  <a href="/article/edit" class="btn btn-primary col-xs-12" style="display:block;"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
+  <br />
+  <br />
+  <% } %>
+</div>
+
 <% if ('undefined' !== typeof articleList) { %>
 <% for (var i = 0 ; articleList.length > i ; ++i) {
 var article = articleList[i]; %>
