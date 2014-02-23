@@ -1,9 +1,9 @@
 Qamqattitu.be
 =============
 
-  * Comments
-  * Flash news
+  * Comments ✓
   * Search
   * Back-office
   * User register
   * User edition
+  * Flash news
