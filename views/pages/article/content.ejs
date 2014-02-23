@@ -66,12 +66,6 @@
       </div>
       <br />
       <textarea name="commentText" class="form-control" placeholder="Great article!"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.commentText) { %><%- previousFormData.commentText %><% } %></textarea>
-	<% if ('undefined' !== typeof previousFormData &&
-	   'undefined' !== typeof previousFormData.tags) { %>
-	<input type="text" name="tags" class="form-control" value="<%= previousFormData.tags %>" placeholder="Optionally, tags..." />
-	<% } else { %>
-	<input type="text" name="tags" class="form-control" placeholder="Optionally, tags..." />
-	<% } %>
       <br />
       <input type="hidden" name="articleId" value="<%= article._id %>" />
       <button type="submit" class="btn btn-success pull-right">Submit <span class="glyphicon glyphicon-ok"></span></button>
@@ -95,11 +89,6 @@
     <p>
       <%- comment.content %>
     </p>
-    <div>
-      <% for (var j = 0 ; comment.tags.length > j ; ++j) { %>
-      <span class="label label-primary"><%= comment.tags[j] %></span>
-      <% } %>
-    </div>
   </div>
   <% } %>
   <% } %>

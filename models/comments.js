@@ -9,7 +9,6 @@ var schema = new mongooseLib.Schema({
     author: {type: String, index: true},
     authorAlias: {type: String},
     content: {type: String, required: true},
-    tags: {type: [String], default: []},
 
     created: {type: Date, default: new Date()},
 });
