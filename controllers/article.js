@@ -19,18 +19,24 @@ var controller_ = function() {
 	    else if (!article)
 		return renderCallback('Could not find article ' + technicalName);
 
-	    return Comment.find({articleId: article._id}, function(err, comments) {
+	    ++article.views;
+	    return article.save(function(err) {
 		if (err)
 		    return renderCallback(err);
-		else if (!comments)
-		    return renderCallback('Could not find comments for article ' + technicalName);
 
-		res.locals.article = article;
-		res.locals.comments = comments;
-		// res.locals.inlineStyles.push('article');
-		res.locals.contentPath = 'pages/article/content.ejs';
+		return Comment.find({articleId: article._id}, function(err, comments) {
+		    if (err)
+			return renderCallback(err);
+		    else if (!comments)
+			return renderCallback('Could not find comments for article ' + technicalName);
 
-		return renderCallback();
+		    res.locals.article = article;
+		    res.locals.comments = comments;
+		    // res.locals.inlineStyles.push('article');
+		    res.locals.contentPath = 'pages/article/content.ejs';
+
+		    return renderCallback();
+		});
 	    });
 	});
     };
