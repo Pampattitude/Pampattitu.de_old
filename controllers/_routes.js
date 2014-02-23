@@ -20,6 +20,7 @@ var init_ = function (serverApp) {
 
     var homeController = new (require('./home.js').Controller)();
     var articleController = new (require('./article.js').Controller)();
+    var searchController = new (require('./search.js').Controller)();
     var userController = new (require('./user.js').Controller)();
     var errorController = new (require('./error.js').Controller)();
 
@@ -33,6 +34,7 @@ var init_ = function (serverApp) {
     serverApp.post('/article/addComment', function(req, res) { return pagesEngine.post({content: articleController.addComment}, req, res); });
     serverApp.get('/random-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
     serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
+    serverApp.get('/search/:data?/:page?', function(req, res) { return pagesEngine.render({content: searchController.render}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });

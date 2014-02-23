@@ -1,0 +1,80 @@
+<% if ('undefined' !== typeof articleList) { %>
+<% for (var i = 0 ; articleList.length > i ; ++i) {
+var article = articleList[i]; %>
+<div class="thumbnail">
+  <div class="row">
+    <div class="col-xs-2">
+      <a href="/article/<%= article.technicalName %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
+    </div>
+    <div class="col-xs-10">
+      <a href="/article/<%= article.technicalName %>">
+	<h2>
+	  <% if (article.featured) { %><span class="glyphicon glyphicon-star" style="color:#ED0;text-shadow:0 1px 2px #000;"></span><% } %>
+	  <%- article.title %>
+	</h2>
+      </a>
+      <p>
+	  <%- article.caption %>
+      </p>
+      <div style="float:left;">
+        by <a href="/user/<%= article.author %>"><%= article.author %></a>,
+        <h4 style="display:inline;"><small>
+          <%= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][article.lastUpdated.getDay()] %>,
+          <%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][article.lastUpdated.getMonth()] %>
+          <%= article.lastUpdated.getDate() %><sup><%= ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][article.lastUpdated.getDate() - 1] %></sup>
+          <%= article.lastUpdated.getFullYear() %>
+        </small></h4>
+      </div>
+      <div style="float:right;">
+	<a href="/article/<%= article.technicalName %>">Continue reading...</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+<% } %>
+
+<% if ('undefined' !== typeof pageCount) { %>
+<center class="row">
+  <div class="col-xs-2">
+    <% if ('undefined' !== typeof actualPage && 0 < actualPage) { %>
+    <a href="/search/<%= searchString %>/1"><button class="btn btn-default">
+	<span class="glyphicon glyphicon-fast-backward"></span>
+    </button></a>
+
+    <a href="/search/<%= searchString %>/<%= actualPage %>"><button class="btn btn-default">
+	<span class="glyphicon glyphicon-backward"></span>
+    </button></a>
+    <% } %>
+  </div>
+
+  <div class="col-xs-8">
+    <% for (var i = 0 ; pageCount > i ; ++i) { %>
+    <% if ('undefined' !== typeof actualPage && i == actualPage) { %>
+    <button class="btn btn-primary">
+      <%= i+1 %>
+    </button>
+    <% } else { %>
+    <a href="/search/<%= searchString %>/<%= i+1 %>"><button class="btn btn-default">
+	<%= i+1 %>
+    </button></a>
+    <% } %>
+    <% } %>
+  </div>
+
+  <div class="col-xs-2">
+    <% if ('undefined' !== typeof actualPage && i-1 > actualPage) { %>
+    <a href="/search/<%= searchString %>/<%= actualPage+2 %>"><button class="btn btn-default">
+	<span class="glyphicon glyphicon-forward"></span>
+    </button></a>
+
+    <a href="/search/<%= searchString %>/<%= i %>"><button class="btn btn-default">
+	<span class="glyphicon glyphicon-fast-forward"></span>
+    </button></a>
+    <% } %>
+  </div>
+</center>
+<% } %>
+
+<br />
+
