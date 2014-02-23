@@ -19,21 +19,21 @@ var databaseUri = 'mongodb://localhost/bmb-home';
 
 mongooseLib.connect(databaseUri);
 mongooseLib.connection.on('error', function (err) {
-	// Handle error
-	consoleLib.error('Could not open DB connection: ' + err);
+    // Handle error
+    consoleLib.error('Could not open DB connection: ' + err);
 
-	mongooseLib.connection.close();
-	mongooseLib.connect(databaseUri);
+    mongooseLib.connection.close();
+    mongooseLib.connect(databaseUri);
 });
 mongooseLib.connection.once('open', function () {
-	// Handle open;
-	consoleLib.log('DB connection open');
+    // Handle open;
+    consoleLib.log('DB connection open');
 
-	require('./models/articles.js').model;
-	require('./models/tags.js').model;
-	require('./models/users.js').model;
+    require('./models/articles.js').model;
+    require('./models/tags.js').model;
+    require('./models/users.js').model;
 
-	consoleLib.log('Collections sync\'ed');
+    consoleLib.log('Collections sync\'ed');
 });
 
 var app = expressLib();
@@ -52,9 +52,9 @@ app.configure(function() {
         store: new mongoStore ({
             url: databaseUri + '/sessions'
         },
-        function() {
-            consoleLib.info("MongoStore connected!");
-        }),
+	function() {
+	    consoleLib.info("MongoStore connected!");
+	}),
         secret: '7iGofFxdVeCafeq35BDrOdoV',
     }));
 
