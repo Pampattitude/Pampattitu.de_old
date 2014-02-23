@@ -47,7 +47,8 @@
   <h3>Comments</h3>
 
   <div class="alert alert-info">
-    <form method="POST" action="/article/addComment">
+    <h4 style="cursor:pointer;margin-bottom:0;" onclick="$(this).siblings('form').slideToggle();">Add a comment</h4>
+    <form method="POST" action="/article/addComment" style="display:none;">
       <div>
 	<label for="commentAuthorAlias">
 	  <% if ('undefined' !== typeof login) { %>
