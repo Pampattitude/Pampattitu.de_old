@@ -6,8 +6,12 @@ var schemaOptions = {
 
 var schema = new mongooseLib.Schema({
     name: {type: String, required: true, index: true, unique: true},
-    count: {type: Number, default: 0, index: true},
-    hype: {type: Number, default: 0, index: true},
+    viewCount: {type: Number, default: 0},
+    featuredCount: {type: Number, default: 0},
+    commentCount: {type: Number, default: 0},
+    manualCount: {type: Number, default: 0},
+
+    points: {type: Number, default: 0},
 
     created: {type: Date, default: new Date()}
 }, schemaOptions);

@@ -9,12 +9,12 @@ var jsonLib = require('JSON');
 
 var clusterLib = require('cluster');
 
+var mongooseLib = require('mongoose');
+var databaseUri = 'mongodb://localhost/bmb-home';
+
 var winstonLib = require('winston');
 winstonLib.remove(winstonLib.transports.Console);
 winstonLib.add(winstonLib.transports.Console, {level: 'silly', prettyPrint: true, colorize: true, timestamp: true});
-
-var mongooseLib = require('mongoose');
-var databaseUri = 'mongodb://localhost/bmb-home';
 
 var consoleLib = require('./lib/console');
 
@@ -91,4 +91,6 @@ else {
     });
 
     var server = app.listen(7337);
+
+    require(__dirname + '/daemons').execute();
 }
