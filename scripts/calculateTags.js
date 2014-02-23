@@ -34,6 +34,7 @@ var execute = function(scriptCallback) {
 		    if (!tags[tagName])
 			tags[tagName] = { viewCount: 0, featuredCount: 0, commentCount: 0 };
 
+		    tags[tagName].articleCount +=  1;
 		    tags[tagName].viewCount +=     viewCount;
 		    tags[tagName].featuredCount += featuredCount;
 		    tags[tagName].commentCount +=  commentCount;
@@ -51,6 +52,7 @@ var execute = function(scriptCallback) {
 	    return asyncLib.eachSeries(Object.keys(tags), function(tag, tagCallback) {
 		var tagData = {
 		    $set: {
+			articleCount: tags[tag].articleCount,
 			viewCount: tags[tag].viewCount,
 			featuredCount: tags[tag].featuredCount,
 			commentCount: tags[tag].commentCount,
@@ -65,9 +67,10 @@ var execute = function(scriptCallback) {
 			if (err)
 			    return tagCallback(err);
 
-			tag.points = tag.viewCount * 1 +
-			    tag.featuredCount * 100 +
-			    tag.commentCount * 5;
+			tag.points = tag.articleCount * 10 +
+			    tag.viewCount * 1 +
+			    tag.featuredCount * 250 +
+			    tag.commentCount * 25;
 
 			return tag.save(function(err) {
 			    if (err)

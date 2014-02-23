@@ -6,6 +6,7 @@ var schemaOptions = {
 
 var schema = new mongooseLib.Schema({
     name: {type: String, required: true, index: true, unique: true},
+    articleCount: {type: Number, default: 0},
     viewCount: {type: Number, default: 0},
     featuredCount: {type: Number, default: 0},
     commentCount: {type: Number, default: 0},
