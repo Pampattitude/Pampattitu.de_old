@@ -35,6 +35,7 @@ var init_ = function (serverApp) {
     serverApp.get('/random-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
     serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
     serverApp.get('/search/:data?/:page?', function(req, res) { return pagesEngine.render({content: searchController.render}, req, res); });
+    serverApp.post('/search', function(req, res) { return pagesEngine.post({content: searchController.post}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });
