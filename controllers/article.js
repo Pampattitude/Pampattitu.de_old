@@ -8,6 +8,7 @@ var utilsLib = require(__dirname + '/../lib/utils');
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
+	var Comment = mongooseLib.model('Comment');
 	var articlesModel = require('../models/articles.js');
 
 	var technicalName = req.params.technicalName;
@@ -18,11 +19,19 @@ var controller_ = function() {
 	    else if (!article)
 		return renderCallback('Could not find article ' + technicalName);
 
-	    res.locals.article = article;
-	    // res.locals.inlineStyles.push('article');
-	    res.locals.contentPath = 'pages/article/content.ejs';
+	    return Comment.find({articleId: article._id}, function(err, comments) {
+		if (err)
+		    return renderCallback(err);
+		else if (!comments)
+		    return renderCallback('Could not find comments for article ' + technicalName);
 
-            return renderCallback();
+		res.locals.article = article;
+		res.locals.comments = comments;
+		// res.locals.inlineStyles.push('article');
+		res.locals.contentPath = 'pages/article/content.ejs';
+
+		return renderCallback();
+	    });
 	});
     };
 
@@ -109,11 +118,11 @@ var controller_ = function() {
             title: req.body.title.trim(),
             author: req.session.login,
             img: req.body.imageUrl,
-            tags: req.body.tags.trim().split(' '),
             caption: req.body.caption.trim(),
             content: req.body.content.trim(),
         };
-        ;
+	if (req.body.tags && req.body.tags.length)
+            data.tags = req.body.tags.trim().split(' ');
 
         if (req.body.id) {
             return Article.update({_id: req.body.id}, {$set: data}, function(err, hasData) {
@@ -158,6 +167,42 @@ var controller_ = function() {
 		return editCallback();
             });
         }
+    };
+
+    this.addComment = function(req, res, addCallback) {
+	var articleId = req.body.articleId;
+	var commentText = req.body.commentText;
+
+	if (!articleId || !commentText) {
+	    sessionLib.pushMessage(req, 'danger', 'Missing data in form.');
+	    return addCallback(new Error('Wrong comment form'));
+	}
+	var author = req.session.login;
+	var authorAlias = req.body.authorAlias;
+	var tags = req.body.tags;
+	if (tags && tags.length)
+	    tags = tags.trim().split(' ');
+
+	var commentDoc = {
+	    articleId: articleId,
+	    content: commentText,
+	};
+	if (author)
+	    commentDoc.author = author;
+	if (authorAlias)
+	    commentDoc.authorAlias = authorAlias;
+	if (tags && tags.length)
+	    commentDoc.tags = tags;
+
+	return mongooseLib.model('Comment').create(commentDoc, function(err) {
+	    if (err) {
+		sessionLib.pushMessage(req, 'danger', 'An unknown error occured, please contact an administrator.');
+		return addCallback(err);
+	    }
+
+	    sessionLib.pushMessage(req, 'success', 'Comment added!');
+	    return addCallback();
+	});
     };
 };
 

@@ -44,5 +44,54 @@
   </div>
   <br /><br />
 
+  <div class="alert alert-info">
+    <form method="POST" action="/article/addComment">
+      <div>
+	<label for="commentAuthorAlias">
+	  <% if ('undefined' !== typeof login) { %>
+	  <%= login %>
+	  <% } else { %>
+	  Anonymous
+	  <% } %>
+	</label> as&nbsp;
+	<% if ('undefined' !== typeof previousFormData &&
+	   'undefined' !== typeof previousFormData.authorAlias) { %>
+	<input type="text" name="authorAlias" id="commentAuthorAlias" class="form-control" value="<%= previousFormData.authorAlias %>" placeholder="Display name..." style="display:inline-block;min-width:40px;width:auto;" />
+	<% } else { %>	
+	<input type="text" name="authorAlias" id="commentAuthorAlias" class="form-control" placeholder="Display name..." style="display:inline-block;min-width:40px;width:auto;" />
+	<% } %>
+      </div>
+      <br />
+      <textarea name="commentText" class="form-control" placeholder="Great article!"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.commentText) { %><%- previousFormData.commentText %><% } %></textarea>
+	<% if ('undefined' !== typeof previousFormData &&
+	   'undefined' !== typeof previousFormData.tags) { %>
+	<input type="text" name="tags" class="form-control" value="<%= previousFormData.tags %>" placeholder="Optionally, tags..." />
+	<% } else { %>
+	<input type="text" name="tags" class="form-control" placeholder="Optionally, tags..." />
+	<% } %>
+      <br />
+      <input type="hidden" name="articleId" value="<%= article._id %>" />
+      <button type="submit" class="btn btn-success pull-right">Submit <span class="glyphicon glyphicon-ok"></span></button>
+      <div style="clear:both;"></div>
+    </form>
+  </div>
+
+  <% if ('undefined' !== typeof comments) { %>
+  <% for (var i = 0 ; comments.length > i ; ++i) {
+  var comment = comments[i]; %>
+  <div class="well">
+    <h4><%= comment.author || 'Anonymous' %><%= comment.authorAlias ? ' as ' + comment.authorAlias : '' %></h4>
+    <p>
+      <%- comment.content %>
+    </p>
+    <div>
+      <% for (var i = 0 ; comment.tags.length > i ; ++i) { %>
+      <span class="label label-primary"><%= comment.tags[i] %></span>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+  <% } %>
+
   <% } %>
 </div>
