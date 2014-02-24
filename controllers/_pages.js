@@ -22,17 +22,17 @@ var render_ = function(modules, req, res) {
 
     // Add default site menu data
     if (!modules.siteMenu) {
-        var siteMenuController = new (require('./site-menu.js').Controller)();
+        var siteMenuController = new (require(__dirname + '/site-menu').Controller)();
         modules.siteMenu = siteMenuController.render;
     }
     // Add default site menu data
     if (!modules.pageMenu) {
-        var pageMenuController = new (require('./page-menu.js').Controller)();
+        var pageMenuController = new (require(__dirname + '/page-menu').Controller)();
         modules.pageMenu = pageMenuController.render;
     }
     // Add default site menu data
     if (!modules.buttonMenu) {
-        var buttonMenuController = new (require('./button-menu.js').Controller)();
+        var buttonMenuController = new (require(__dirname + '/button-menu').Controller)();
         modules.buttonMenu = buttonMenuController.render;
     }
 

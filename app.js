@@ -16,7 +16,7 @@ var winstonLib = require('winston');
 winstonLib.remove(winstonLib.transports.Console);
 winstonLib.add(winstonLib.transports.Console, {level: 'silly', prettyPrint: true, colorize: true, timestamp: true});
 
-var consoleLib = require('./lib/console');
+var consoleLib = require(__dirname + '/lib/console');
 
 if (clusterLib.isMaster) {
     var cluserPerCpu = 1;
@@ -46,10 +46,10 @@ if (clusterLib.isMaster) {
 	// Handle open;
 	consoleLib.log('DB connection open');
 
-	require('./models/articles.js').model;
-	require('./models/comments.js').model;
-	require('./models/tags.js').model;
-	require('./models/users.js').model;
+	require(__dirname + '/models/articles').model;
+	require(__dirname + '/models/comments').model;
+	require(__dirname + '/models/tags').model;
+	require(__dirname + '/models/users').model;
 
 	consoleLib.log('Collections sync\'ed');
 
@@ -69,10 +69,10 @@ else {
 	// Handle open;
 	consoleLib.log('DB connection open');
 
-	require('./models/articles.js').model;
-	require('./models/comments.js').model;
-	require('./models/tags.js').model;
-	require('./models/users.js').model;
+	require(__dirname + '/models/articles').model;
+	require(__dirname + '/models/comments').model;
+	require(__dirname + '/models/tags').model;
+	require(__dirname + '/models/users').model;
 
 	consoleLib.log('Collections sync\'ed');
     });
@@ -107,7 +107,7 @@ else {
 	    return next();
 	});
 
-	require('./controllers/_routes.js').init(app);
+	require(__dirname + '/controllers/_routes.js').init(app);
 	app.use(app.router);
 	app.enable('jsonp callback');
     });

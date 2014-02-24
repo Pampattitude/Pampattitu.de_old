@@ -9,7 +9,7 @@ var controller_ = function() {
     this.render = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
 	var Comment = mongooseLib.model('Comment');
-	var articlesModel = require('../models/articles.js');
+	var articlesModel = require(__dirname + '/../models/articles');
 
 	var technicalName = req.params.technicalName;
 
@@ -43,7 +43,7 @@ var controller_ = function() {
 
     this.renderList = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
-	var articlesModel = require('../models/articles.js');
+	var articlesModel = require(__dirname + '/../models/articles');
 
 	var articlesPerPage = 3;
 
@@ -66,7 +66,7 @@ var controller_ = function() {
 
     this.renderMagic = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
-	var articlesModel = require('../models/articles.js');
+	var articlesModel = require(__dirname + '/../models/articles');
 
 	return Article.find({}, function(err, articles) {
 	    if (err)
@@ -80,7 +80,7 @@ var controller_ = function() {
 
     this.renderEdit = function(req, res, renderCallback) {
 	var Article = mongooseLib.model('Article');
-	var articlesModel = require('../models/articles.js');
+	var articlesModel = require(__dirname + '/../models/articles');
 
 	var technicalName = req.params.technicalName;
 
@@ -110,7 +110,7 @@ var controller_ = function() {
             return editCallback(new Error('Not enough priviledges'));
 
 	var Article = mongooseLib.model('Article');
-	var articlesModel = require('../models/articles.js');
+	var articlesModel = require(__dirname + '/../models/articles');
 
         if (!req.body.title ||
             !req.session.login ||

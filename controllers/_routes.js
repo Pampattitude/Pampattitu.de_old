@@ -1,8 +1,8 @@
 var pathLib = require('path');
 
-var consoleLib = require('../lib/console');
-var constantsLib = require('../lib/constants');
-var utilsLib = require('../lib/utils');
+var consoleLib = require(__dirname + '/../lib/console');
+var constantsLib = require(__dirname + '/../lib/constants');
+var utilsLib = require(__dirname + '/../lib/utils');
 
 var init_ = function (serverApp) {
     serverApp.set('views', constantsLib.viewPath);
@@ -16,13 +16,13 @@ var init_ = function (serverApp) {
 	return res.sendfile(constantsLib.viewPath + '/' + file);
     };
 
-    var pagesEngine = require('./_pages.js');
+    var pagesEngine = require(__dirname + '/_pages');
 
-    var homeController = new (require('./home.js').Controller)();
-    var articleController = new (require('./article.js').Controller)();
-    var searchController = new (require('./search.js').Controller)();
-    var userController = new (require('./user.js').Controller)();
-    var errorController = new (require('./error.js').Controller)();
+    var homeController = new (require(__dirname + '/home').Controller)();
+    var articleController = new (require(__dirname + '/article').Controller)();
+    var searchController = new (require(__dirname + '/search').Controller)();
+    var userController = new (require(__dirname + '/user').Controller)();
+    var errorController = new (require(__dirname + '/error').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
     serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
