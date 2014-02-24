@@ -15,12 +15,16 @@ var controller_ = function() {
                     if (err)
                         return serieCallback(err);
 
-                    res.locals.featuredArticle = featured || {id: 'dummy'};
+                    res.locals.featuredArticle = featured;
                     return serieCallback();
                 })
             },
             function(serieCallback) {
-	        return Article.find({_id: {$ne: res.locals.featuredArticle.id}}).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
+                var findOpts = {};
+                if (res.locals.featuredArticle)
+                    findOpts._id = {$ne: res.locals.featuredArticle.id};
+
+	        return Article.find(findOpts).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
 	            if (err)
                         return serieCallback(err);
 
