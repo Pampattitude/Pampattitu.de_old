@@ -2,7 +2,7 @@ Qamqattitu.be
 =============
 
   * Comments ✓
-  * Search
+  * Search ✓
   * Back-office
   * User register
   * User edition
