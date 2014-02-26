@@ -10,28 +10,15 @@ var controller_ = function() {
 	var articlesPerPage = 3;
 	var pageNumber = ((req.params.page - 1) >= 0) ? (req.params.page - 1) : 0;
 	var offset = (pageNumber || 0) * articlesPerPage;
-/*
-	var data = (req.params.data ? req.params.data.split(' ') : []);
-	var page = req.params.page;
-	return mongooseLib.model('Article').find({tags: {$in: data}}).sort({views: -1}).exec(function(err, articleList) {
-	    if (err)
-		return renderCallback(err);
 
-	    res.locals.articleList = articleList.slice(offset, offset + articlesPerPage);
-	    res.locals.pageCount = articleList.length / articlesPerPage;
-	    res.locals.actualPage = pageNumber;
-	    res.locals.searchString = req.params.data;
-	    // res.locals.inlineStyles.push('search');
-	    res.locals.contentPath = 'pages/search/content.ejs';
-
-	    return renderCallback();
-	});
-*/
-	var pointsForTitle =   15;
-	var pointsForCaption = 3;
-	var pointsForContent = 1;
-	var pointsForTag =     10;
-	var pointsForView =    0.05;
+	var pointsForTitle =          6;
+	var pointsForPreciseTitle =   pointsForTitle * 5;
+	var pointsForCaption =        2;
+	var pointsForPreciseCaption = pointsForCaption * 5;
+	var pointsForContent =        1;
+	var pointsForPreciseContent = pointsForContent * 5;
+	var pointsForTag =            15;
+	var pointsForView =           0.05;
 
 	var data = (req.params.data ? req.params.data.split(' ') : []);
 	var page = req.params.page;
@@ -60,9 +47,9 @@ var controller_ = function() {
 			}
 		    }
 		}
-		tagGroupRegex += ')';
+		tagGroupRegex += ')+?';
 
-		var tagSearch = new RegExp(tagGroupRegex, 'gi');
+		var tagSearch = new RegExp(tagGroupRegex, 'i');
 		var titleMatch = article.title.match(tagSearch);
 		var captionMatch = article.caption.match(tagSearch);
 		var contentMatch = article.content.match(tagSearch);
@@ -70,14 +57,23 @@ var controller_ = function() {
 		article.points += (captionMatch ? captionMatch.length - 1 : 0) * pointsForCaption;
 		article.points += (contentMatch ? contentMatch.length - 1 : 0) * pointsForContent;
 
+		var tagPreciseSearch = new RegExp('\\b' + tagGroupRegex + '\\b', 'i');
+		var titlePreciseMatch = article.title.match(tagPreciseSearch);
+		var captionPreciseMatch = article.caption.match(tagPreciseSearch);
+		var contentPreciseMatch = article.content.match(tagPreciseSearch);
+		article.points += (titlePreciseMatch ? titlePreciseMatch.length - 1 : 0) * pointsForPreciseTitle;
+		article.points += (captionPreciseMatch ? captionPreciseMatch.length - 1 : 0) * pointsForPreciseCaption;
+		article.points += (contentPreciseMatch ? contentPreciseMatch.length - 1 : 0) * pointsForPreciseContent;
+
 		if (article.points)
 		    article.points += article.views * pointsForView;
 
 		article.points = parseInt(article.points);
-		consoleLib.debug('Article "' + article.title + '" has ' + article.points + ' points for search "' + req.params.data + '"');
 
-		if (article.points)
+		if (article.points) {
+		    consoleLib.debug('Article "' + article.title + '" has ' + article.points + ' points for search ' + (req.params.data ? '"' + req.params.data + '"' : '_empty_'));
 		    finalArticleList.push(article);
+                }
 		return articleCallback();
 	    },
 	    function(err) {
