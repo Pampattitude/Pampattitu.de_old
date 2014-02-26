@@ -12,10 +12,6 @@ var clusterLib = require('cluster');
 var mongooseLib = require('mongoose');
 var databaseUri = 'mongodb://localhost/bmb-home';
 
-var winstonLib = require('winston');
-winstonLib.remove(winstonLib.transports.Console);
-winstonLib.add(winstonLib.transports.Console, {level: 'silly', prettyPrint: true, colorize: true, timestamp: true});
-
 var consoleLib = require(__dirname + '/lib/console');
 
 if (clusterLib.isMaster) {
