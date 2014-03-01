@@ -93,6 +93,4 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
 	consoleLib.log('Created new article.');
 
     }
-
-    return mongooseLib.connection.close();
 });

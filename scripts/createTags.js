@@ -1,6 +1,6 @@
 var mongooseLib = require('mongoose');
 
-var consoleLib = require('../lib/console');
+var consoleLib = require(__dirname + '/../lib/console');
 
 var databaseUri = 'mongodb://localhost/bmb-home';
 
@@ -16,13 +16,13 @@ mongooseLib.connection.once('open', function () {
     // Handle open;
     consoleLib.log('DB connection open');
 
-    require('./models/articles.js').model;
-    require('./models/tags.js').model;
-    require('./models/users.js').model;
+    require(__dirname + '/../models/articles.js').model;
+    require(__dirname + '/../models/tags.js').model;
+    require(__dirname + '/../models/users.js').model;
 
     consoleLib.log('Collections sync\'ed');
 
-    var Tag = require('../models/tags.js').model;
+    var Tag = require(__dirname + '/../models/tags.js').model;
     mongooseLib.connection.collections['tags'].drop();
     consoleLib.log('Emptied tags collection.');
 
@@ -45,6 +45,4 @@ mongooseLib.connection.once('open', function () {
 	elem.save();
 	consoleLib.log('Created new tag.');
     }
-
-    return mongooseLib.connection.close();
 });
