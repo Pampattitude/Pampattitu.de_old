@@ -121,11 +121,11 @@ var controller_ = function() {
 	}
 
         var data = {
-            title: req.body.title.toString().trim(),
+            title: utilsLib.cleanHtmlInput(req.body.title.toString().trim()),
             author: req.session.login,
             img: req.body.imageUrl,
-            caption: req.body.caption.toString().trim(),
-            content: req.body.content.toString().trim(),
+            caption: utilsLib.cleanHtmlInput(req.body.caption.toString().trim()),
+            content: utilsLib.cleanHtmlInput(req.body.content.toString().trim()),
         };
 	if (req.body.tags && req.body.tags.length)
             data.tags = req.body.tags.trim().split(' ');
@@ -188,7 +188,7 @@ var controller_ = function() {
 
 	var commentDoc = {
 	    articleId: articleId,
-	    content: commentText,
+	    content: utilsLib.cleanHtmlInput(commentText.trim()),
 	};
 	if (author)
 	    commentDoc.author = author;
