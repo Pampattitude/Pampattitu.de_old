@@ -15,9 +15,9 @@ var schema = new mongooseLib.Schema({
 
     views: {type: Number, default: 0, index: true},
 
-    lastUpdated: {type: Date, default: new Date(), index: true},
+    lastUpdated: {type: Date, default: Date.now, index: true},
     history: {
-	type: [Date], default: [new Date()]
+	type: [Date], default: [Date.now]
     },
     featured: {type: Boolean, default: false, sparse: true}
 }, schemaOptions);

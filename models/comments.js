@@ -10,7 +10,7 @@ var schema = new mongooseLib.Schema({
     authorAlias: {type: String},
     content: {type: String, required: true},
 
-    created: {type: Date, default: new Date()},
+    created: {type: Date, default: Date.now},
 });
 
 exports.model = mongooseLib.model('Comment', schema);

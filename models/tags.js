@@ -14,8 +14,8 @@ var schema = new mongooseLib.Schema({
 
     points: {type: Number, default: 0},
 
-    created: {type: Date, default: new Date()},
-    updated: {type: Date, default: new Date()},
+    created: {type: Date, default: Date.now},
+    updated: {type: Date, default: Date.now},
 }, schemaOptions);
 
 exports.model = mongooseLib.model('Tag', schema);
