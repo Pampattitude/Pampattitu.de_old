@@ -30,6 +30,8 @@ if (clusterLib.isMaster) {
         clusterLib.fork();
     }
 
+    global.processId = 'Master';
+
     mongooseLib.connect(databaseUri);
     mongooseLib.connection.on('error', function (err) {
 	// Handle error
@@ -53,6 +55,8 @@ if (clusterLib.isMaster) {
     });
 }
 else {
+    global.processId = 'Worker ' + clusterLib.worker.id;
+
     mongooseLib.connect(databaseUri);
     mongooseLib.connection.on('error', function (err) {
 	// Handle error
