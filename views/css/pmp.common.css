@@ -1,0 +1,313 @@
+@font-face {
+  font-family: 'TikalSans';
+  src: url('fonts/TikalSans-Medium-webfont.eot');
+  src: url('fonts/TikalSans-Medium-webfont.eot') format('embedded-opentype'), url('fonts/TikalSans-Medium-webfont.woff') format('woff'), url('fonts/TikalSans-Medium-webfont.ttf') format('truetype'), url('fonts/TikalSans-Medium-webfont.svg') format('svg');
+}
+@font-face {
+  font-family: 'MyriadPro';
+  src: url('fonts/MYRIADPRO-REGULAR.OTF');
+}
+
+
+html {
+  font-family: 'Lato', 'TikalSans';
+  font-size: 17px;
+}
+@media only screen and (max-width: 767px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+*::selection {
+  color: rgb(240, 240, 240);
+  background: rgb(80, 152, 80);
+}
+
+
+body {
+  position: relative;
+  /*overflow-x: hidden;*/
+
+  margin: 0;
+
+  color: rgb(240, 240, 240);
+
+  background-color: rgb(32, 32, 32);
+}
+
+
+@media only screen and (min-width: 768px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .hidden-phone {
+    display: none !important;
+  }
+
+  .fixed-bottom-phone {
+    width: 100%;
+    position: fixed !important;
+    bottom: 0;
+    z-index: 25;
+  }
+}
+
+
+a {
+  color: rgb(80, 152, 80);
+  text-decoration: none;
+  
+  transition: color 200ms;
+}
+a:hover {
+  color: rgb(112, 182, 112);
+}
+
+q {
+    font-style: italic;
+}
+
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+
+  padding: .2em .4em;
+
+  color: rgb(40, 40, 40);
+  font-size: 1em;
+
+  background-color: rgb(240, 240, 240);
+  border: none;
+  border-bottom: 3px solid rgb(192, 192, 192);
+
+  transition: color 200ms, background-color 200ms, border-color 200ms;
+}
+.btn:hover {
+  background: rgb(255, 255, 255);
+  border-bottom-color: rgb(208, 208, 208);
+}
+a.btn {
+  text-align: center;
+}
+
+
+ul.unstyled {
+  margin: 0 auto 0 auto;
+  padding-left: 0;
+
+  list-style-type: none;
+}
+
+
+ul.flat {
+  display: inline-block;
+}
+ul.flat > li {
+  display: inherit;
+}
+
+
+.text-tiny {
+  font-size: 0.6em;
+}
+.text-small {
+  font-size: 0.8em;
+}
+.text-big {
+  font-size: 1.2em;
+}
+.text-huge {
+  font-size: 1.4em;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+.text-bolder {
+  font-weight: bolder;
+}
+
+.text-green {
+  color: rgb(40, 104, 40);
+}
+.inset .text-green {
+  color: rgb(64, 168, 64);
+}
+.text-comment {
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+code {
+    display: block;
+    overflow-x: auto;
+
+    padding: 0.2em 0.5em;
+
+    color: rgb(240, 240, 240);
+    font-size: 0.8em;
+    line-height: 1.2em;
+
+    background-color: rgb(40, 20, 40);
+    box-sizing: border-box;
+}
+@media only screen and (min-width: 768px) {
+  code {
+    white-space: nowrap;
+  }
+}
+code.inline {
+    display: inline-block;
+    vertical-align: middle;
+    
+    padding: 0.1em 0.3em;
+}
+
+code .comment {
+    opacity: 0.6;
+}
+
+code.html .tagname {
+    color: rgb(80, 80, 200);
+}
+code.html .attr {
+    color: rgb(200, 200, 80);
+}
+code.html .string {
+    color: rgb(200, 80, 200);
+}
+
+code.js .keyword {
+    color: rgb(200, 200, 80);
+}
+code.js .almost-keyword {
+    color: rgb(80, 200, 200);
+}
+code.js .variable {
+    color: rgb(80, 200, 80);
+}
+code.js .string {
+    color: rgb(200, 80, 200);
+}
+
+
+
+.tag {
+  display: inline-block;
+  cursor: default;
+  
+  padding: 0.4em 0.6em;
+  
+  color: rgb(240, 240, 240);
+  font-size: 0.9em;
+    
+  background-color: rgb(40, 104, 40);
+
+  transition: background-color 200ms;
+}
+.tag:hover {
+  background-color: rgb(80, 152, 80);
+}
+
+.label {
+  display: inline-block;
+  
+  padding: 0 0.3em;
+  
+  color: rgb(240, 240, 240);
+  font-size: 0.9em;
+    
+  background-color: rgb(120, 120, 120);
+}
+.label.label-red {
+  background-color: rgb(192, 84, 84);
+}
+.label.label-redder {
+  background-color: rgb(208, 96, 96);
+}
+.label.label-blue {
+  background-color: rgb(64, 104, 152);
+}
+.label.label-green {
+  background-color: rgb(84, 172, 84);
+}
+.label.label-greener {
+  background-color: rgb(96, 184, 96);
+}
+
+
+.thumbnail {
+  position: relative;
+  
+  padding: 0.4em;
+  
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0 0 4px rgb(0, 0, 0);
+}
+
+
+.relative {
+  position: relative;
+}
+
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.clear {
+  clear: both;
+}
+
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.align-justify {
+    text-align: justify;
+}
+
+
+/* Website specific */
+.inset {
+  color: rgb(240, 240, 240);
+
+  background-color: transparent;
+}
+
+.outset {
+  padding: 1.4em;
+
+  color: rgb(40, 40, 40);
+  
+  background-color: rgb(232, 232, 232);
+  box-shadow: 0px 0px 4px 1px black;
+}
+.outset .outset-box {
+  padding: 0.2em 1em;
+  
+  color: rgb(40, 40, 40);
+  
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}

@@ -44,6 +44,9 @@ var init_ = function (serverApp) {
 
     serverApp.get('/css/bootstrap', function (req, res) { return simpleGet(req, res, 'css/bootstrap.min.css'); });
     serverApp.get('/css/icomoon', function (req, res) { return simpleGet(req, res, 'css/icomoon.css'); });
+    serverApp.get('/css/pmp', function (req, res) { return simpleGet(req, res, 'css/pmp.css'); });
+    serverApp.get('/css/pmp.common', function (req, res) { return simpleGet(req, res, 'css/pmp.common.css'); });
+    serverApp.get('/css/pmp.grid', function (req, res) { return simpleGet(req, res, 'css/pmp.grid.css'); });
 
     serverApp.get('/js/jquery', function (req, res) { return simpleGet(req, res, 'js/jquery.js'); });
     serverApp.get('/js/bootstrap', function (req, res) { return simpleGet(req, res, 'js/bootstrap.min.js'); });
