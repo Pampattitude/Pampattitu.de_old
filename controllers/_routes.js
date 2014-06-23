@@ -42,7 +42,6 @@ var init_ = function (serverApp) {
 
     serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
 
-    serverApp.get('/css/bootstrap', function (req, res) { return simpleGet(req, res, 'css/bootstrap.min.css'); });
     serverApp.get('/css/icomoon', function (req, res) { return simpleGet(req, res, 'css/icomoon.css'); });
     serverApp.get('/css/pmp', function (req, res) { return simpleGet(req, res, 'css/pmp.css'); });
     serverApp.get('/css/pmp.common', function (req, res) { return simpleGet(req, res, 'css/pmp.common.css'); });

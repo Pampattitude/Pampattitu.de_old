@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pampattitu.de<% if ('undefined' !== typeof title) { %> - <%= title %><% } %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta charset="utf-8" />
+
+    <script type="application/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="application/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/icomoon" />
+
+    <link rel="icon" type="image/png" href="/favicon" />
+
+    <% if ('undefined' !== typeof inlineStyles) {
+    for (var i = 0 ; inlineStyles.length > i ; ++i) {
+    var inlineStyle = inlineStyles[i]; %>
+    <link rel="stylesheet" href="/css/inline/<%= inlineStyle %>" />
+    <% } %>
+    <% } %>
+
+    <style>
+      body {
+      background-color: #1d4d7e;
+      background-image: url('/img/background');
+      }
+
+      [contenteditable="true"] {
+      display: block;
+      padding:4px 6px;
+      background-color: #FCFCFC;
+      border: 1px solid #CCC;
+      border-radius: 4px;
+      transition: border 200ms linear, box-shadow 200ms linear;
+      }
+      [contenteditable="true"]:focus {
+      border: 1px solid rgba(0, 64, 255, .8);
+      box-shadow: 0 0 1px rgba(128, 128, 128, .5);
+      transition: border 200ms linear, box-shadow 200ms linear;
+      }
+
+      .content img {
+      max-width: 100%;
+      }
+
+      .btn.btn-facebook,
+      .btn.btn-facebook:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #284486;
+      }
+
+      .btn.btn-facebook:active,
+      .btn.btn-facebook:focus {
+      background-color: #0A2668;
+      }
+
+      .btn.btn-twitter,
+      .btn.btn-twitter:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #00ACED;
+      }
+
+      .btn.btn-twitter:active,
+      .btn.btn-twitter:focus {
+      background-color: #008ECF;
+      }
+
+      .btn.btn-rss,
+      .btn.btn-rss:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #FF9900;
+      }
+
+      .btn.btn-rss:active,
+      .btn.btn-rss:focus {
+      background-color: #E17B00;
+      }
+
+      .btn.btn-soundcloud,
+      .btn.btn-soundcloud:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #FE4600;
+      }
+
+      .btn.btn-soundcloud:active,
+      .btn.btn-soundcloud:focus {
+      background-color: #E02800;
+      }
+
+      .btn.btn-linkedin,
+      .btn.btn-linkedin:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #0075BA;
+      }
+
+      .btn.btn-linkedin:active,
+      .btn.btn-linkedin:focus {
+      background-color: #005282;
+      }
+
+      .btn.btn-reddit,
+      .btn.btn-reddit:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #6BC1FF;
+      }
+
+      .btn.btn-reddit:active,
+      .btn.btn-reddit:focus {
+      background-color: #5BA4D8;
+      }
+
+      .btn.btn-mail,
+      .btn.btn-mail:visited {
+      display: inline-block;
+      margin: 2px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: #D90708;
+      }
+
+      .btn.btn-mail:active,
+      .btn.btn-mail:focus {
+      background-color: #BC0000;
+      }
+
+      .btn.btn-inline,
+      .btn.btn-inline:visited {
+      display: inline-block;
+      margin: 2px;
+      padding: 2px 4px 2px 4px;
+
+      font-size: 14px;
+      }
+</style>
+  </head>
+  <body class="container">
+    <div id="pmp-head" class="row">
+      <div class="hidden-xs col-sm-8">
+        <div class="thumbnail" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;">
+	  <center>
+	    <a href="/"><img src="http://i.imgur.com/k0cyv46.png" alt="Pampa" style="max-width:100%;" /></a>
+	  </center>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+	<div class="well" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;">
+	  <% if ('undefined' !== typeof login) { %>
+	  <form method="POST" action="/logout" style="float:right;margin-left:8px;margin-bottom:8px;">
+	    <small><button type="submit" class="btn btn-primary">Logout</button></small>
+	  </form>
+	  <p>Hello, <span class="label label-success"><%= login %></span>!</p>
+          <p>Does being <%= /[aeiou]/.test('' + rights[0]) ? 'an' : 'a' %> <b><%= rights %></b> feel good? I sure envy you. 'cause <i>I'm just a website</i>, y'know.</p>
+	  <% } else { %>
+	  <form method="POST" action="/login">
+	    <input type="text" name="login" class="form-control" style="border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;" placeholder="Login..." <% if ('undefined' !== typeof previousFormData) { if ('undefined' !== typeof previousFormData.login) { %>value="<%= previousFormData.login %>"<% } } %> />
+	    <div class="input-group">
+	      <input type="password" name="password" class="form-control" placeholder="Password..." style="border-top-left-radius:0;" />
+	      <span class="input-group-btn">
+		<button type="submit" name="loginButton" class="btn btn-success" style="border-top-right-radius:0;"><span class="glyphicon glyphicon-ok"></span></button>
+	      </span>
+	    </div>
+	  </form>
+	  <% } %>
+	</div>
+      </div>
+    </div>
+
+    <div id="pmp-main-menu" class="row">
+      <div class="col-xs-3">
+	<a href="/home" class="btn btn-default" style="display:block;"><h4><span class="glyphicon glyphicon-home"></span><span class="hidden-xs"> Home</span></h4></a>
+      </div>
+      <div class="col-xs-3">
+	<a href="/articles" class="btn btn-default" style="display:block;"><h4><span class="glyphicon glyphicon-list"></span><span class="hidden-xs"> Articles</span></h4></a>
+      </div>
+      <div class="col-xs-3">
+	<a href="/user/Pampa" class="btn btn-default" style="display:block;"><h4><span class="glyphicon glyphicon-user"></span><span class="hidden-xs"> About</span></h4></a>
+      </div>
+      <div class="col-xs-3">
+	<button class="btn btn-default" style="width:100%;" onclick="$(this).next().toggle();"><h4><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Search</span></h4></button>
+	<div style="position:relative;display:none;z-index:10;">
+	  <div id="searchModal" class="alert alert-info" style="position:absolute;top:0;right:0;min-width:200px;">
+	    <form method="POST" action="/search">
+	      <div class="input-group">
+		<input type="text" name="data" class="form-control" placeholder="Search..." />
+		<span class="input-group-btn">
+		  <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+		</span>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div id="pmp-content">
+      <div class="well">
+	<div class="row">
+	  <div class="col-xs-12 col-sm-8 content">
+	    <div id="pmp-alerts">
+	      <% if ('undefined' !== typeof alerts) {
+		 for (var i = 0 ; alerts.length > i ; ++i) {
+	      var alert = alerts[i]; %>
+	      <p class="alert alert-<%= alert.type %>" onload="$(this).alert();">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<%= alert.content %>
+	      </p>
+	      <% }
+		 } %>
+	    </div>
+
+	    <% if ('undefined' !== typeof contentPath) { %>
+	    <% include contentPath %>
+	    <% } %>
+	    <br />
+	    <div>
+	      <% include pages/button-menu %>
+	    </div>
+	  </div>
+	  <div class="col-xs-12 col-sm-4 menu">
+	    <div class="page-menu">
+	      <% include pages/page-menu %>
+	    </div>
+	    <div class="site-menu">
+	      <% include pages/site-menu %>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div id="pmp-foot">
+      <div class="well" style="margin-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;">
+	<center>
+	  Made by&nbsp;&nbsp;<a href="http://pampattitu.de/"><span class="glyphicon glyphicon-star-empty"></span>Pampattitude</a>.
+	</center>
+      </div>
+    </div>
+  </body>
+</html>
