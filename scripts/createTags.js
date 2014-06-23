@@ -1,3 +1,4 @@
+var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
 var consoleLib = require(__dirname + '/../lib/console');
@@ -35,14 +36,27 @@ mongooseLib.connection.once('open', function () {
 	'article', 'pmp', 'pampa', 'pampattitude',
     ];
 
-    for (var i = 0 ; tagList.length > i ; ++i) {
+    return asyncLib.each(tagList, function(tag, tagCallback) {
 	var elem = new Tag({});
 
-	elem.name = tagList[i];
+	elem.name = tag;
 	elem.count = parseInt(Math.random() * 10);
 	elem.hype = parseInt(Math.random() * 6000);
 
-	elem.save();
-	consoleLib.log('Created new tag.');
-    }
+	elem.save(function(err) {
+            if (err)
+                return tagCallback(err);
+
+	    consoleLib.log('Created new tag.');
+            return tagCallback();
+        });
+    },
+    function(err) {
+        if (err) {
+            consoleLib.error(err);
+            return process.exit(1);
+        }
+
+        return process.exit(0);
+    });
 });
