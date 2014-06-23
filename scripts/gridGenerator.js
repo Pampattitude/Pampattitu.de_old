@@ -1,4 +1,4 @@
-var gridSizes = [12, 10, 8, 6, 5, 4, 3, 2];
+var gridSizes = [24, 12, 10, 8, 6, 5, 4, 3, 2];
 var minified = false;
 var useHack = true;
 
@@ -45,7 +45,14 @@ for (var modeIdx = 0 ; modes.length > modeIdx ; ++modeIdx) {
     console.log('        width: 100%;');
     console.log('    }');
     console.log();
+    console.log('    [class*="grid-"] + * {');
+    console.log('        clear: both;');
+    console.log('    }');
 
+>     [class*="grid-"] > [class*="cell-"] ~ :not([class*="cell-"]):not([class*="padd-"]),
+>     [class*="grid-"] > [class*="padd-"] ~ :not([class*="cell-"]):not([class*="padd-"]) {
+>     clear: both;
+>   }
     console.log('    [class*="grid-"] > [class*="cell' + mode.classAppend + '"],')
     console.log('    [class*="grid-"] > [class*="padd' + mode.classAppend + '"] {');
     console.log('        width: 0%; /* Hide unsupported cell sizes (for better debugging) */');
