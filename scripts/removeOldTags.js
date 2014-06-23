@@ -12,6 +12,7 @@ var execute = function(scriptCallback) {
 	    return scriptCallback(err);
 
 	consoleLib.info('Removed ' + count + ' old tags');
+        return scriptCallback();
     });
 };
 
