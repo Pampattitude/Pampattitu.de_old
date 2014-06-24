@@ -53,11 +53,11 @@ body {
   }
 }
 @media only screen and (max-width: 767px) {
-  .hidden-phone {
+  .hidden-mobile {
     display: none !important;
   }
 
-  .fixed-bottom-phone {
+  .fixed-bottom-mobile {
     width: 100%;
     position: fixed !important;
     bottom: 0;
