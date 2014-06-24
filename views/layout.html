@@ -42,13 +42,22 @@
         </div>
       </div>
 
-      <!-- Page contents -->
       <div id="pmp-content" class="page-content">
-	<% if ('undefined' !== typeof contentPath) { %>
-	<% include contentPath %>
-	<% } %>
-      </div>
+        <div class="grid-12">
+          <!-- Content -->
+          <div class="cell-8 cell-mobile-12">
+	    <% if ('undefined' !== typeof contentPath) { %>
+	    <% include contentPath %>
+	    <% } %>
+          </div>
+          <div class="cell-4 hidden-mobile">
+            <div class="outset"></div>
+          </div>
 
+          <div class="clear"></div>
+        </div>
+      </div>
+      
       <!-- Page footer -->
       <div id="pmp-footer" class="footer">
         <p>
