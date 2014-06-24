@@ -1,32 +1,38 @@
-<div class="row">
-  <% if ('undefined' !== typeof user) { %>
-  <% if ('undefined' !== typeof user.pictureUrl) { %>
-  <div style="float:left;padding:8px;padding-right:20px;">
-    <img src="<%= user.pictureUrl %>" alt="user picture" style="max-width:100%;float:left;padding-right:24px;" />
-  </div>
-  <% } %>
-  <div>
-    <% if ('guest' === user.rights) { %>
-    <h2><small>Let's call him </small> <%= user.login %></h2>
-    <% } else { %>
-    <h2><%= user.login %></h2>
-    <% } %>
+<div class="inset">
+  <h2 class="inset content-title">
+    <span class="icon-user"></span>&nbsp;&nbsp;
     <% if ('admin' === user.rights) { %>
-    <h4><span style="color:#d9534f;margin-left:10%;">Administrator</span></h4>
+    Administrator
     <% } else if ('priviledged' === user.rights) { %>
-    <h4><span style="color:#5cb85c;margin-left:10%;">Priviledged user</span></h4>
+    Priviledged user
     <% } else if ('registered' === user.rights) { %>
-    <h4><span style="color:#428bca;margin-left:10%;">Registered user</span></h4>
+    Registered user
     <% } else if ('guest' === user.rights) { %>
-    <h4><span style="margin-left:15%;">Guest</span></h4>
+    Guest
     <% } else { %>
-    <h4><span style="margin-left:10%;"><%= user.rights %></span></h4>
+    <%= user.rights %>
     <% } %>
-    <% if ('undefined' !== typeof user.description) { %>
+</div>
+<div class="outset">
+  <div class="outset-box">
+    <% if ('undefined' !== typeof user) { %>
+    <% if ('undefined' !== typeof user.pictureUrl) { %>
+    <div style="float:left;padding:8px;padding-right:20px;">
+      <img src="<%= user.pictureUrl %>" alt="user picture" style="max-width:100%;float:left;margin-right:16px;" />
+    </div>
+    <% } %>
     <div>
-      <%- user.description %>
+      <% if ('guest' === user.rights) { %>
+      <h2><small>Let's call him </small> <%= user.login %></h2>
+      <% } else { %>
+      <h2><%= user.login %></h2>
+      <% } %>
+      <% if ('undefined' !== typeof user.description) { %>
+      <div>
+        <%- user.description %>
+      </div>
+      <% } %>
     </div>
     <% } %>
   </div>
-  <% } %>
 </div>
