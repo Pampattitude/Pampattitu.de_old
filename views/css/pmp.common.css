@@ -311,3 +311,8 @@ code.js .string {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
 }
+
+.page-section-padding {
+    display: block;
+    height: 2em;
+}
