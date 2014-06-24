@@ -8,10 +8,10 @@ var execute = function(scriptCallback) {
     minDate.setHours(minDate.getHours() - 1);
 
     return mongooseLib.model('Tag').remove({updated: {$lte: minDate}}).exec(function(err, count) {
-	if (err)
-	    return scriptCallback(err);
+        if (err)
+            return scriptCallback(err);
 
-	consoleLib.info('Removed ' + count + ' old tags');
+        consoleLib.info('Removed ' + count + ' old tags');
         return scriptCallback();
     });
 };

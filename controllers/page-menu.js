@@ -5,7 +5,7 @@ var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
-	return renderCallback();
+        return renderCallback();
     };
 };
 

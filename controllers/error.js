@@ -8,14 +8,14 @@ var controller_ = function() {
     var self = this;
 
     this.render_ = function(req, res, errorCode, renderCallback) {
-	// res.locals.inlineStyles.push('error');
-	res.locals.contentPath = 'pages/error/' + errorCode + '.ejs';
+        // res.locals.inlineStyles.push('error');
+        res.locals.contentPath = 'pages/error/' + errorCode + '.ejs';
 
         return renderCallback();
     };
 
     this.render404 = function(req, res, renderCallback) {
-	return self.render_(req, res, '404', renderCallback);
+        return self.render_(req, res, '404', renderCallback);
     };
 };
 

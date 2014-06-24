@@ -9,11 +9,11 @@ var init_ = function (serverApp) {
     serverApp.engine('html', require('ejs').renderFile);
 
     var simpleGet = function (req, res, file) {
-	if (!res.locals)
-	    res.locals = {};
-	res.locals.inlineStyles = [];
+        if (!res.locals)
+            res.locals = {};
+        res.locals.inlineStyles = [];
 
-	return res.sendfile(constantsLib.viewPath + '/' + file);
+        return res.sendfile(constantsLib.viewPath + '/' + file);
     };
 
     var pagesEngine = require(__dirname + '/_pages');

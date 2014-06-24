@@ -28,26 +28,26 @@ mongooseLib.connection.once('open', function () {
     consoleLib.log('Emptied tags collection.');
 
     var tagList = [
-	'this', 'is', 'a', 'test',
-	'c++', 'cpp', 'boost', 'sfml', 'qt',
-	'javascript', 'node.js', 'nodejs', 'node', 'js',
-	'html', 'css',
-	'python',
-	'article', 'pmp', 'pampa', 'pampattitude',
+        'this', 'is', 'a', 'test',
+        'c++', 'cpp', 'boost', 'sfml', 'qt',
+        'javascript', 'node.js', 'nodejs', 'node', 'js',
+        'html', 'css',
+        'python',
+        'article', 'pmp', 'pampa', 'pampattitude',
     ];
 
     return asyncLib.each(tagList, function(tag, tagCallback) {
-	var elem = new Tag({});
+        var elem = new Tag({});
 
-	elem.name = tag;
-	elem.count = parseInt(Math.random() * 10);
-	elem.hype = parseInt(Math.random() * 6000);
+        elem.name = tag;
+        elem.count = parseInt(Math.random() * 10);
+        elem.hype = parseInt(Math.random() * 6000);
 
-	elem.save(function(err) {
+        elem.save(function(err) {
             if (err)
                 return tagCallback(err);
 
-	    consoleLib.log('Created new tag.');
+            consoleLib.log('Created new tag.');
             return tagCallback();
         });
     },

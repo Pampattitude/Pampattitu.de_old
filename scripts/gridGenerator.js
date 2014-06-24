@@ -66,23 +66,23 @@ for (var modeIdx = 0 ; modes.length > modeIdx ; ++modeIdx) {
     console.log('    }');
 
     for (var key in results) {
-	console.log();
+        console.log();
 
-	// Hack, removes unfitting values from the results
-	// if (useHack && 1 == results[key].length)
-	//     continue ;
+        // Hack, removes unfitting values from the results
+        // if (useHack && 1 == results[key].length)
+        //     continue ;
 
-	for (var i = 0 ; results[key].length > i ; i++) {
+        for (var i = 0 ; results[key].length > i ; i++) {
             console.log('    .grid-' + results[key][i].on + ' > .cell' + mode.classAppend + '-' + results[key][i].nb + ',');
             if (results[key].length == i + 1) {
-		console.log('    .grid-' + results[key][i].on + ' > .padd' + mode.classAppend + '-' + results[key][i].nb + ' {');
+                console.log('    .grid-' + results[key][i].on + ' > .padd' + mode.classAppend + '-' + results[key][i].nb + ' {');
             }
             else
-		console.log('    .grid-' + results[key][i].on + ' > .padd' + mode.classAppend + '-' + results[key][i].nb + ',');
-	}
+                console.log('    .grid-' + results[key][i].on + ' > .padd' + mode.classAppend + '-' + results[key][i].nb + ',');
+        }
 
-	console.log('        width: ' + key + '%;');
-	console.log('    }');
+        console.log('        width: ' + key + '%;');
+        console.log('    }');
     }
     console.log('}');
 }

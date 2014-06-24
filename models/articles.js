@@ -17,7 +17,7 @@ var schema = new mongooseLib.Schema({
 
     lastUpdated: {type: Date, default: Date.now, index: true},
     history: {
-	type: [Date], default: [Date.now]
+        type: [Date], default: [Date.now]
     },
     featured: {type: Boolean, default: false, sparse: true}
 }, schemaOptions);

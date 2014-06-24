@@ -6,7 +6,7 @@ var utilsLib = require(__dirname + '/../lib/utils');
 
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
-	var Article = mongooseLib.model('Article');
+        var Article = mongooseLib.model('Article');
         var articlesModel = require('../models/articles.js');
 
         return asyncLib.series([
@@ -24,8 +24,8 @@ var controller_ = function() {
                 if (res.locals.featuredArticle)
                     findOpts._id = {$ne: res.locals.featuredArticle.id};
 
-	        return Article.find(findOpts).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
-	            if (err)
+                return Article.find(findOpts).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
+                    if (err)
                         return serieCallback(err);
 
                     var featuredCount = 0;
@@ -39,15 +39,15 @@ var controller_ = function() {
                         articles.pop();
                     }
 
-	            res.locals.articleList = articles;
-	            // res.locals.inlineStyles.push('home');
+                    res.locals.articleList = articles;
+                    // res.locals.inlineStyles.push('home');
 
                     return serieCallback();
                 });
             },
-	],
+        ],
         function(err) {
-	    res.locals.contentPath = 'pages/home/content.ejs';
+            res.locals.contentPath = 'pages/home/content.ejs';
 
             if (err) {
                 consoleLib.error(err);
