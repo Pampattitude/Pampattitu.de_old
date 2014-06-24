@@ -1,46 +1,54 @@
-<div class="row">
-  <% if ('undefined' !== typeof rights &&
-     'admin' == rights) { %>
-  <a href="/article/edit" class="btn btn-primary col-xs-12" style="display:block;"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
-  <% } %>
-</div>
+<%
+   var formatDate = function(date) {
+   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-<div class="row">
-  <% if ('undefined' !== typeof featuredArticle) { %>
-  <div class="thumbnail col-xs-12">
-    <img src="<%= featuredArticle.img %>" alt="<%= featuredArticle.img %>" />
-    <a href="/article/<%= featuredArticle.technicalName %>">
-      <h2><%= featuredArticle.title %></h2>
-    </a>
-    <p>
-      <%- featuredArticle.caption %>
-    </p>
-    <div style="float:right;">
-      <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
+   var dateSuffix = 'th';
+   if (1 == date.getDate() || 21 == date.getDate())
+   dateSuffix = 'st';
+   if (2 == date.getDate() || 22 == date.getDate())
+   dateSuffix = 'nd';
+   if (3 == date.getDate() || 23 == date.getDate())
+   dateSuffix = 'rd';
+
+   return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + '<sup>' + dateSuffix + '</sup>, ' + date.getFullYear();
+   };
+%>
+
+<!-- Top padding from menu -->
+<div class="page-section-padding"></div>
+
+<!-- Articles -->
+<div class="featured">
+  <!-- Section data -->
+  <div class="outset">
+    <div class="outset-box">
+      <!-- Featured article -->
+      <% if ('undefined' !== typeof featuredArticle) { %>
+      <div class="article featured">
+        <div class="top-data">
+          <div class="article-thumbnail">
+            <!-- Article image -->
+            <a href="<%= featuredArticle.img %>" target="_blank">
+              <h5><small><%= featuredArticle.img %></small></h5>
+              <img src="<%= featuredArticle.img %>" alt="" />
+            </a>
+            
+            <!-- Article title -->
+            <h3><%= featuredArticle.title %></h3>
+            <h4>by <a href="/user/Pampa"><%= featuredArticle.author %></a>, <%- formatDate(featuredArticle.lastUpdated) %></h4>
+          </div>
+        </div>
+
+        <div class="float-right">
+          <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <% } %>
     </div>
   </div>
-  <% } %>
 </div>
 
-<div class="row">
-  <% if ('undefined' !== typeof articleList) {
-     for (var i = 0 ; articleList.length > i ; ++i) {
-  var article = articleList[i]; %>
-  <% if (true === article.featured) { %>
-  <div class="thumbnail col-xs-12">
-  <% } else { %>
-  <div class="thumbnail col-xs-6">
-  <% } %>
-    <a href="/article/<%= article.technicalName %>">
-      <h2><%= article.title %></h2>
-    </a>
-    <p>
-      <%- article.caption %>
-    </p>
-    <div style="float:right;">
-      <a href="/article/<%= article.technicalName %>">Continue reading...</a>
-    </div>
-  </div>
-  <% } %>
-  <% } %>
-</div>
+<!-- Top padding from menu -->
+<div class="page-section-padding"></div>
