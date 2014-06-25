@@ -1,33 +1,44 @@
-<div class="thumbnail">
-  <h3>Latest articles</h3>
-  <% if ('undefined' !== typeof latestArticleList) {
-     for (var i = 0 ; latestArticleList.length > i ; ++i) {
-  var article = latestArticleList[i]; %>
-  <div>
-    <a href="/article/<%= article.technicalName %>"><%= article.title %></a>
+<div class="cell-4 hidden-mobile">
+  <a class="banner hidden-mobile" href="/">
+    <img src="http://i.imgur.com/Atsf9xx.png" alt="banner">
+  </a>
+  
+  <div class="site-menu">
+    <h2 class="first"><a href="/search/latest">Latest articles</a></h2>
+    <ul class="unstyled">
+      <% if ('undefined' !== typeof latestArticleList) {
+         for (var i = 0 ; latestArticleList.length > i ; ++i) {
+      var article = latestArticleList[i]; %>
+      <li><a href="/article/<%= article.technicalName %>"><span class="icon-newspaper"></span>&nbsp;&nbsp;<%- article.title %></a></li>
+      <% } %>
+      <% } %>
+    </ul>
   </div>
-  <% } %>
-  <% } %>
-</div>
 
-<div class="thumbnail">
-  <h3>Hypestest articles</h3>
-  <% if ('undefined' !== typeof hypestArticleList) {
-     for (var i = 0 ; hypestArticleList.length > i ; ++i) {
-  var article = hypestArticleList[i]; %>
-  <div>
-    <a href="/article/<%= article.technicalName %>"><%= article.title %></a>
+  <div class="site-menu">
+    <h2><a href="/search/hypest">Hyp<span style="font-size:0.9em">e<span style="font-size:0.9em">s<span style="font-size:0.9em">t<span style="font-size:0.9em">e<span style="font-size:0.9em">s<span style="font-size:0.9em">t</span></span></span></span></span></span></a></h2>
+    <ul class="unstyled">
+      <% if ('undefined' !== typeof hypestArticleList) {
+         for (var i = 0 ; hypestArticleList.length > i ; ++i) {
+      var article = hypestArticleList[i]; %>
+      <li><a href="/article/<%= article.technicalName %>"><span class="icon-newspaper"></span>&nbsp;&nbsp;<%- article.title %></a></li>
+      <% } %>
+      <% } %>
+    </ul>
   </div>
-  <% } %>
-  <% } %>
-</div>
 
-<div class="thumbnail">
-  <h3>Most used tags</h3>
-  <% if ('undefined' !== typeof mostUsedTagList) {
-     for (var i = 0 ; mostUsedTagList.length > i ; ++i) {
-  var tag = mostUsedTagList[i]; %>
-  <a href="/search/<%= tag.name %>"><span class="label label-primary"><%= tag.name %></span></a>
-  <% } %>
-  <% } %>
+  <div class="site-menu">
+    <h2><a href="/search/tags">Most popular tags</a></h2>
+    <ul class="unstyled flat">
+      <% if ('undefined' !== typeof mostUsedTagList) {
+         for (var i = 0 ; mostUsedTagList.length > i ; ++i) {
+      var tag = mostUsedTagList[i]; %>
+      <li><span class="tag"><a href="/search/<%= tag.name %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= tag.name %></a></span></li>
+      <% if (mostUsedTagList != i + 1) { %>
+      <li></li>
+      <% } %>
+      <% } %>
+      <% } %>
+    </ul>
+  </div>
 </div>
