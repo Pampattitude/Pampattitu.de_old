@@ -1,10 +1,10 @@
 Qamqattitu.be
 =============
 
-  * Comments ✓
-  * Search ✓
+  * Comments (testing required for new CSS style)
+  * Search
   * HTML edition
   * Back-office
-  * User register ?
+  * User register?
   * User edition
   * Flash news
