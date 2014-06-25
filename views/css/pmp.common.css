@@ -266,6 +266,12 @@ input {
 .text-redder {
   color: rgb(208, 96, 96);
 }
+.text-orange {
+  color: rgb(216, 128, 64);
+}
+.text-oranger {
+  color: rgb(224, 156, 104);
+}
 .text-blue {
   color: rgb(64, 104, 152);
 }
@@ -274,6 +280,12 @@ input {
 }
 .text-greener {
   color: rgb(96, 184, 96);
+}
+.text-grey {
+  color: rgb(96, 96, 96);
+}
+.text-greyer {
+  color: rgb(128, 128, 128);
 }
 
 
@@ -368,6 +380,12 @@ code.js .string {
 }
 .label.label-redder {
   background-color: rgb(208, 96, 96);
+}
+.label.label-orange {
+  background-color: rgb(216, 128, 64);
+}
+.label.label-oranger {
+  background-color: rgb(224, 156, 104);
 }
 .label.label-blue {
   background-color: rgb(64, 104, 152);
