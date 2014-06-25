@@ -377,7 +377,6 @@
     position: relative;
     z-index: 15;
     
-    margin-bottom: 2em;
     padding: 1em 0;
     
     text-align: center;
@@ -396,7 +395,7 @@
     position: relative;
     z-index: 14;
 
-    margin: 0 0 2em 0;
+    margin: 0 0 0 0;
     padding: 0 0 0.6em 0;
 
     font-size: 0.9em;
