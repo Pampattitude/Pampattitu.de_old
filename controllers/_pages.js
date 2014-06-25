@@ -8,6 +8,7 @@ var utilsLib = require(__dirname + '/../lib/utils');
 var render_ = function(modules, req, res, next) {
     res.locals.rights = req.session.rights;
     res.locals.inlineStyles = [];
+    res.locals.inlineScripts = [];
     res.locals.previousPage = req.session.previousPage;
     if (req.session.login)
         res.locals.login = req.session.login;

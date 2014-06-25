@@ -22,7 +22,7 @@
     <% if ('undefined' !== typeof inlineStyles) {
     for (var i = 0 ; inlineStyles.length > i ; ++i) {
     var inlineStyle = inlineStyles[i]; %>
-    <link rel="stylesheet" href="/css/inline/<%= inlineStyle %>" />
+    <link rel="stylesheet" href="<%= inlineStyle %>" />
     <% } %>
     <% } %>
   </head>
@@ -56,5 +56,12 @@
 
     <!-- JS scripts -->
     <script type="application/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <!-- Inline scripts, for pages with specific scripts -->
+    <% if ('undefined' !== typeof inlineScripts) {
+    for (var i = 0 ; inlineScripts.length > i ; ++i) {
+    var inlineScript = inlineScripts[i]; %>
+    <script type="application/javascript" src="<%= inlineScript %>"></script>
+    <% } %>
+    <% } %>
   </body>
 </html>
