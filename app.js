@@ -81,7 +81,8 @@ else {
     app.configure(function() {
         app.disable('x-powered-by');
 
-        app.use(expressLib.errorHandler({ dumpExceptions: true, showStack: true }));
+        if ('debug' == process.env.NODE_ENV)
+            app.use(expressLib.errorHandler({ dumpExceptions: true, showStack: true }));
         app.use(expressLib.logger('dev'));
 
         app.use(expressLib.bodyParser());
