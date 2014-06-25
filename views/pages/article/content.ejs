@@ -41,7 +41,7 @@
       <li class="tag-group"><a href="/search/article%20c%2B%2B%20nodejs%20node%20javascript"><span class="icon-tags hidden-hover"></span></a></li>
       <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
       <li class="tag"><a href="/search/<%= article.tags[i] %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= article.tags[i] %></a></li>
-      <% if (article.tags.length == i + 1) { %>
+      <% if (article.tags.length != i + 1) { %>
       <li></li>
       <% } %>
       <% } %>
