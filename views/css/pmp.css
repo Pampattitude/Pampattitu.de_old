@@ -258,14 +258,15 @@
 }
 .article .article-content .caption {
   padding: 0;
+  padding-top: 1em;
 
   font-style: italic;
   line-height: 1.5em;
 }
-.article .article-content .caption .first-letter {
+.article .article-content .caption:first-letter {
   display: inline-block;
 
-  padding: 0.2em 0.08em;
+  padding: 0.1em 0.08em;
   
   color: rgb(240, 240, 240);
   font-size: 1.8em;
