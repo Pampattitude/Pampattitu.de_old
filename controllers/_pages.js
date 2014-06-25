@@ -26,11 +26,6 @@ var render_ = function(modules, req, res) {
         modules.siteMenu = siteMenuController.render;
     }
     // Add default site menu data
-    if (!modules.pageMenu) {
-        var pageMenuController = new (require(__dirname + '/page-menu').Controller)();
-        modules.pageMenu = pageMenuController.render;
-    }
-    // Add default site menu data
     if (!modules.buttonMenu) {
         var buttonMenuController = new (require(__dirname + '/button-menu').Controller)();
         modules.buttonMenu = buttonMenuController.render;
