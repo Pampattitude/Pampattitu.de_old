@@ -49,6 +49,7 @@ var init_ = function (serverApp) {
 
     serverApp.get('/js/jquery', function (req, res) { return simpleGet(req, res, 'js/jquery.js'); });
     serverApp.get('/js/bootstrap', function (req, res) { return simpleGet(req, res, 'js/bootstrap.min.js'); });
+    serverApp.get('/js/pmp.loginForm', function (req, res) { return simpleGet(req, res, 'js/pmp.loginForm.js'); });
 
     serverApp.get('/img/:file', function (req, res) { return simpleGet(req, res, 'img/' + req.params.file + '.png'); });
 

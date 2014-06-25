@@ -1,7 +1,32 @@
 <div class="cell-4 hidden-mobile">
-  <a class="banner hidden-mobile" href="/">
+  <% if ('undefined' !== typeof login) { %>
+  <div id="login-info">
+    <%= login %>
+    <form method="post" action="/logout">
+      <button type="submit" class="btn">Logout</button>
+    </form>
+  </div>
+  <% } else { %>
+  <!-- Panel to hide login with website logo -->
+  <div id="login-form-panel" class="banner hidden-mobile" href="/">
     <img src="http://i.imgur.com/Atsf9xx.png" alt="banner">
-  </a>
+  </div>
+  <!-- !Panel to hide login with website logo -->
+
+  <!-- Login form -->
+  <div id="login-form" class="hidden">
+    <form method="post" action="/login">
+    <a class="float-right close">
+      <span class="icon-close"></span>
+    </a>
+
+    <span class="icon-user"></span><input type="text" name="login" placeholder="Username..." />
+    <span class="icon-key"></span><input type="password" name="password" placeholder="Password..." />
+    <button type="submit"><span class="icon-checkmark"></span></button>
+    </form>
+  </div>
+  <!-- !Login form -->
+  <% } %>
 
   <!-- Search form -->
   <form method="post" action="/search">

@@ -8,6 +8,8 @@ var controller_ = function() {
         var Article = mongooseLib.model('Article');
         var Tag = mongooseLib.model('Tag');
 
+        res.locals.inlineScripts.push('/js/pmp.loginForm');
+
         return asyncLib.series([
             function(serieCallback) {
                 return Article.find({}).sort({lastUpdated: -1}).limit(3).exec(function(err, articles) {
@@ -40,6 +42,7 @@ var controller_ = function() {
         function(err) {
             if (err)
                 return renderCallback(err);
+
             return renderCallback();
         });
     };
