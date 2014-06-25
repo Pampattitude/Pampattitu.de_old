@@ -336,3 +336,7 @@ code.js .string {
     display: block;
     height: 2em;
 }
+
+.hidden {
+    display: none;
+}
