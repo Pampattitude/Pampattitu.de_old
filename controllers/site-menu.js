@@ -32,7 +32,7 @@ var controller_ = function() {
                 });
             },
             function(serieCallback) {
-                return Tag.find({}).sort({points: -1}).limit(20).exec(function(err, tags) {
+                return Tag.find({}).sort({points: -1}).limit(10).exec(function(err, tags) {
                     if (err)
                         return serieCallback(err);
 
