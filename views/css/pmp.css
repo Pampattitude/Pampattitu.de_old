@@ -1,8 +1,9 @@
 .page {
-    min-width: 360px;
+    min-width: 300px;
     width: 100%;
     max-width: 1002px;
     position: relative;
+    overflow: hidden;
 
     margin: 0 auto;
     padding: 0;
