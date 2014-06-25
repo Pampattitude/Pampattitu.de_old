@@ -5,7 +5,7 @@ var constantsLib = require(__dirname + '/../lib/constants');
 var sessionLib = require(__dirname + '/../lib/session');
 var utilsLib = require(__dirname + '/../lib/utils');
 
-var render_ = function(modules, req, res, next) {
+var render_ = function(modules, req, res) {
     res.locals.rights = req.session.rights;
     res.locals.inlineStyles = [];
     res.locals.inlineScripts = [];
@@ -38,7 +38,7 @@ var render_ = function(modules, req, res, next) {
     function(err) {
         if (err) {
             consoleLib.error(err);
-            return next(err);
+            return res.redirect('/404');
         }
 
         req.session.previousPage = req.path;
