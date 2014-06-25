@@ -482,3 +482,16 @@ code.js .string {
 .hidden {
     display: none;
 }
+
+.stick-bottom {
+    position: fixed;
+    bottom: 0;
+}
+@media only screen and (max-width: 767px) {
+    .stick-bottom-mobile {
+        position: fixed !important;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
