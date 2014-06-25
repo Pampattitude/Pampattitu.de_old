@@ -109,6 +109,98 @@ a.btn {
 }
 
 
+.btn.btn-facebook,
+.btn.btn-facebook:visited {
+    color: #FFF;
+    background-color: #284486;
+    border-color: #0A2668;
+}
+.btn.btn-facebook:active,
+.btn.btn-facebook:hover,
+.btn.btn-facebook:focus {
+    background-color: #0A2668;
+    border-color: #051333;
+}
+
+.btn.btn-twitter,
+.btn.btn-twitter:visited {
+    color: #FFF;
+    background-color: #00ACED;
+    border-color: #008ECF;
+}
+.btn.btn-twitter:active,
+.btn.btn-twitter:hover,
+.btn.btn-twitter:focus {
+    background-color: #008ECF;
+    border-color: #006999;
+}
+
+.btn.btn-rss,
+.btn.btn-rss:visited {
+    color: #FFF;
+    background-color: #FF9900;
+    border-color: #E17B00;
+}
+.btn.btn-rss:active,
+.btn.btn-rss:hover,
+.btn.btn-rss:focus {
+    background-color: #E17B00;
+    border-color: #B36200;
+}
+
+.btn.btn-soundcloud,
+.btn.btn-soundcloud:visited {
+    color: #FFF;
+    background-color: #FE4600;
+    border-color: #E02800;
+}
+.btn.btn-soundcloud:active,
+.btn.btn-soundcloud:hover,
+.btn.btn-soundcloud:focus {
+    background-color: #E02800;
+    border-color: #9E1D00;
+}
+
+.btn.btn-linkedin,
+.btn.btn-linkedin:visited {
+    color: #FFF;
+    background-color: #0075BA;
+    border-color: #005282;
+}
+.btn.btn-linkedin:active,
+.btn.btn-linkedin:hover,
+.btn.btn-linkedin:focus {
+    background-color: #005282;
+    border-color: #003452;
+}
+
+.btn.btn-reddit,
+.btn.btn-reddit:visited {
+    color: #FFF;
+    background-color: #6BC1FF;
+    border-color: #5BA4D8;
+}
+.btn.btn-reddit:active,
+.btn.btn-reddit:hover,
+.btn.btn-reddit:focus {
+    background-color: #5BA4D8;
+    border-color: #2771A5;
+}
+
+.btn.btn-mail,
+.btn.btn-mail:visited {
+    color: #FFF;
+    background-color: #D90708;
+    border-color: #BC0000;
+}
+.btn.btn-mail:active,
+.btn.btn-mail:hover,
+.btn.btn-mail:focus {
+    background-color: #BC0000;
+    border-color: #8A0000;
+}
+
+
 ul.unstyled {
   margin: 0 auto 0 auto;
   padding-left: 0;
