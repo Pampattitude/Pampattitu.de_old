@@ -1,97 +1,106 @@
-<div id="contentContent">
-  <div class="row">
-    <% if ('undefined' !== typeof rights &&
-       'admin' == rights) { %>
-    <div class="col-xs-6">
-      <a href="/article/edit" class="btn btn-primary" style="display:block;"><span class="glyphicon glyphicon-asterisk"></span> Create article</a>
+<%
+   var formatDate = function(date) {
+   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+   var dateSuffix = 'th';
+   if (1 == date.getDate() || 21 == date.getDate())
+   dateSuffix = 'st';
+   if (2 == date.getDate() || 22 == date.getDate())
+   dateSuffix = 'nd';
+   if (3 == date.getDate() || 23 == date.getDate())
+   dateSuffix = 'rd';
+
+   return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + '<sup>' + dateSuffix + '</sup>, ' + date.getFullYear();
+   };
+%>
+
+<h2 class="inset content-title"><span class="icon-newspaper"></span>&nbsp;&nbsp;Article</h2>
+
+<div class="article">
+  <% if ('undefined' !== typeof article) { %>
+  <div class="top-data">
+    <div class="article-thumbnail">
+      <!-- Article image -->
+      <a href="<%= article.img %>" target="_blank">
+        <h5><small><%= article.img %></small></h5>
+        <img src="<%= article.img %>" alt="" />
+      </a>
+      <!-- !Article image -->
+
+      <!-- Article title -->
+      <h3><%= article.title %></h3>
+      <h4>by <a href="/user/Pampa"><%= article.author %></a>, <%- formatDate(article.lastUpdated) %></h4>
+      <!-- !Article title -->
     </div>
-    <% } %>
-    <% if ('undefined' !== typeof article) { %>
-    <% if ('undefined' !== typeof rights &&
-       'admin' == rights) { %>
-    <div class="col-xs-6">
-      <a href="/article/edit/<%= article.technicalName %>" class="btn btn-primary" style="display:block;"><span class="glyphicon glyphicon-pencil"></span> Edit article</a>
-    </div>
-    <br />
-    <br />
-    <% } %>
   </div>
 
-  <a href="<%= article.img %>"><img src="<%= article.img %>" alt="<%= article.img %>" style="max-width:100%;" /></a>
-  <h2>
-    <%= article.title %>
-  </h2>
-  <h4 style="margin-left:10%;">
-    by <a href="/user/<%= article.author %>"><%= article.author %></a>,<br/>
-    <small>
-      <%= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][article.lastUpdated.getDay()] %>,
-      <%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][article.lastUpdated.getMonth()] %>
-      <%= article.lastUpdated.getDate() %><sup><%= ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][article.lastUpdated.getDate() - 1] %></sup>
-      <%= article.lastUpdated.getFullYear() %>
-    </small>
-  </h4>
-  <p><i>
-      <%- article.caption %>
-  </i></p>
-  <br />
-  <div style="overflow:hidden;">
-    <%- article.content %>
+  <!-- Article tags -->
+  <div class="inset tags">
+    <ul class="unstyled flat">
+      <li class="tag-group"><a href="/search/article%20c%2B%2B%20nodejs%20node%20javascript"><span class="icon-tags hidden-hover"></span></a></li>
+      <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
+      <li class="tag"><a href="/search/<%= article.tags[i] %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= article.tags[i] %></a></li>
+      <% if (article.tags.length == i + 1) { %>
+      <li></li>
+      <% } %>
+      <% } %>
+      <li class="tag"><a href="/search/javascript"><span class="icon-tag"></span>&nbsp;&nbsp;javascript</a></li>
+      <li></li>
+      <li class="tag"><a href="/search/sucks"><span class="icon-tag"></span>&nbsp;&nbsp;sucks</a></li>
+      <li></li>
+      <li class="tag"><a href="/search/js"><span class="icon-tag"></span>&nbsp;&nbsp;js</a></li>
+      <li></li>
+      <li class="tag"><a href="/search/js"><span class="icon-tag"></span>&nbsp;&nbsp;oop</a></li>
+    </ul>
   </div>
-  <div>
-    <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
-    <a href="/search/<%= article.tags[i] %>"><span class="label label-primary"><%= article.tags[i] %></span></a>
-    <% } %>
-  </div>
-  <br />
+  <!-- !Article tags -->
 
-  <h3>Comments</h3>
-
-  <div class="alert alert-info">
-    <h4 style="cursor:pointer;margin-bottom:0;" onclick="$(this).siblings('form').slideToggle();">Add a comment</h4>
-    <form method="POST" action="/article/addComment" style="display:none;">
-      <div>
-	<label for="commentAuthorAlias">
-	  <% if ('undefined' !== typeof login) { %>
-	  <%= login %>
-	  <% } else { %>
-	  Anonymous
-	  <% } %>
-	</label> as&nbsp;
-	<% if ('undefined' !== typeof previousFormData &&
-	   'undefined' !== typeof previousFormData.authorAlias) { %>
-	<input type="text" name="authorAlias" id="commentAuthorAlias" class="form-control" value="<%= previousFormData.authorAlias %>" placeholder="Display name..." style="display:inline-block;min-width:40px;width:auto;" />
-	<% } else { %>	
-	<input type="text" name="authorAlias" id="commentAuthorAlias" class="form-control" placeholder="Display name..." style="display:inline-block;min-width:40px;width:auto;" />
-	<% } %>
+  <div class="outset article-content-container">
+    <div class="outset-box article-content">
+      <!-- Article caption -->
+      <div class="caption">
+        <%- article.caption %>
       </div>
-      <br />
-      <textarea name="commentText" class="form-control" placeholder="Great article!"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.commentText) { %><%- previousFormData.commentText %><% } %></textarea>
-      <br />
-      <input type="hidden" name="articleId" value="<%= article._id %>" />
-      <button type="submit" class="btn btn-success pull-right">Submit <span class="glyphicon glyphicon-ok"></span></button>
-      <div style="clear:both;"></div>
-    </form>
-  </div>
+      <!-- !Article caption -->
 
-  <% if ('undefined' !== typeof comments) { %>
-  <% for (var i = 0 ; comments.length > i ; ++i) {
-  var comment = comments[i]; %>
-  <div class="well" style="margin:0 0 4px 0;padding:1%;">
-    <h4 style="margin:0;"><%- (comment.author ? '<a href="/user/' + comment.author + '">' + comment.author + '</a>' : 'Anonymous') %><%- comment.authorAlias ? ' as <span class="text text-success">' + comment.authorAlias + '</span>' : '' %></h4>
-    <h5 style="margin:0;padding:0 10%;">
-      <small>
-	<%= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][comment.created.getDay()] %>,
-	<%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][comment.created.getMonth()] %>
-	<%= comment.created.getDate() %><sup><%= ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'][comment.created.getDate() - 1] %></sup>
-	<%= comment.created.getFullYear() %>
-      </small>
-    </h5>
-    <p>
-      <%- comment.content %>
-    </p>
+      <!-- Article content -->
+      <div class="content">
+        <%- article.content %>
+      </div>
+      <!-- !Article content -->
+    </div>
   </div>
-  <% } %>
-  <% } %>
-
   <% } %>
 </div>
+
+<!-- Article comments -->
+<div id="pmp-comments" class="inset">
+  <h2 class="article-comments-title">
+    <span class="icon-quotes-left"></span>&nbsp;&nbsp;<span class="text-big text-green"><%= comments.length %></span>&nbsp;&nbsp;comments
+  </h2>
+</div>
+
+<div class="outset article-comments">
+  <% for (var i = 0 ; comments.length > i ; ++i) {
+  var comment = comments[i]; %>
+  <div class="outset-box comment">
+    <div class="user">
+      <span>
+        <a href="/user/<%= comment.author %>" class="text-huge"><b><%= comment.author %></b></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="date"><= comment.created.getHours() %>:<%= comment.created.getMinutes() %><% 12 > comment.created.getHours() ? 'am' : 'pm' %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= formatDate(comment.created) %></span>
+      </span>
+    </div>
+    <div class="content">
+      <p>
+        Great article! I love the connection between the "Lorem" and the "ipsum"!<br /><br />
+        What do you want to do with it? Only testing and writing articles about it or maybe, I don't know, build a project around it?
+      </p>
+    </div>
+  </div>
+  <% } %>
+</div>
+<!-- !Article comments -->
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
