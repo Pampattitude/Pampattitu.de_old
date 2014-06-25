@@ -160,13 +160,31 @@ input {
 .text-bolder {
   font-weight: bolder;
 }
-
+/*
 .text-green {
   color: rgb(40, 104, 40);
 }
 .inset .text-green {
   color: rgb(64, 168, 64);
 }
+*/
+.text-red {
+  color: rgb(192, 84, 84);
+}
+.text-redder {
+  color: rgb(208, 96, 96);
+}
+.text-blue {
+  color: rgb(64, 104, 152);
+}
+.text-green {
+  color: rgb(84, 172, 84);
+}
+.text-greener {
+  color: rgb(96, 184, 96);
+}
+
+
 .text-comment {
     opacity: 0.7;
     font-size: 0.9em;
@@ -268,6 +286,14 @@ code.js .string {
 .label.label-greener {
   background-color: rgb(96, 184, 96);
 }
+.label.label-round {
+    border-radius: 0.2em;
+}
+.label.label-boxxy {
+    padding: 0.2em;
+
+    font-size: 1.1em;
+}
 
 
 .thumbnail {
@@ -335,6 +361,10 @@ code.js .string {
 .page-section-padding {
     display: block;
     height: 2em;
+}
+
+.giant {
+    font-size: 1.25em;
 }
 
 .hidden {
