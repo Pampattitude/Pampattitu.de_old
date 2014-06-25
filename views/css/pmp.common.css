@@ -125,6 +125,22 @@ ul.flat > li {
 }
 
 
+input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: .2em .4em;
+
+    font-size: 1em;
+}
+.input-group input {
+    margin: 0;
+}
+.input-group button {
+    margin: 0;
+}
+
+
 .text-tiny {
   font-size: 0.6em;
 }
