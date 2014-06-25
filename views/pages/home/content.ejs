@@ -17,10 +17,10 @@
 
 <!-- Top padding from menu -->
 <div class="page-section-padding"></div>
+<!-- !Top padding from menu -->
 
 <!-- Articles -->
 <div class="featured">
-  <!-- Section data -->
   <div class="outset">
     <div class="outset-box">
       <!-- Featured article -->
@@ -33,10 +33,12 @@
               <h5><small><%= featuredArticle.img %></small></h5>
               <img src="<%= featuredArticle.img %>" alt="" />
             </a>
+            <!-- !Article image -->
             
             <!-- Article title -->
             <h3><%= featuredArticle.title %></h3>
             <h4>by <a href="/user/Pampa"><%= featuredArticle.author %></a>, <%- formatDate(featuredArticle.lastUpdated) %></h4>
+            <!-- !Article title -->
           </div>
         </div>
 
@@ -46,9 +48,12 @@
         <div class="clear"></div>
       </div>
       <% } %>
+      <!-- !Featured article -->
     </div>
   </div>
 </div>
+<!-- !Articles -->
 
-<!-- Top padding from menu -->
+<!-- Bottom padding from footer -->
 <div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
