@@ -1,14 +1,26 @@
-<div class="jumbotron">
-<h1><span class="label label-danger">404</span> Not Found</h1>
-<p>
-  It seems that the page you are looking for doesn't exist.
-  <br />
-  <% var prevPageLink = '/home';
-     if ('undefined' !== typeof previousPage) {
-     prevPageLink = previousPage;
-     } %>
-  From this point on, you can either <a href="<%= prevPageLink %>">go back to previous page</a>, <a href="/bug-report/">report the error</a> or make your way through the menus of the website!
-  <br />
-  <small>But, let's face it, I would love some feedback. I need it.</small>
-</p>
+<!-- Top padding from menu -->
+<div class="page-section-padding"></div>
+<!-- !Top padding from menu -->
+
+<div class="outset giant">
+  <div class="outset-box">
+    <h1><span class="label label-round label-boxxy label-red">404</span> <span class="text-red">Not Found</span></h1>
+    <p>
+      It seems that the page or content you are looking for doesn't exist.
+    </p>
+    <p>
+      <% var prevPageLink = '/home';
+         if ('undefined' !== typeof previousPage) {
+         prevPageLink = previousPage;
+         } %>
+      From this point on, you can either <a href="/bug-report/">report the error</a>, <a href="<%= prevPageLink %>">go back to previous page</a> or make your way through the menus to get back to some awesome (and <i>available</i>) content!
+    </p>
+    <p>
+      <small>But, let's face it, I would love some <a href="/bug-report/">feedback</a>. I need it.</small>
+    </p>
+  </div>
 </div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->

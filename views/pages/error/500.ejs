@@ -1,14 +1,26 @@
-<div class="jumbotron">
-<h1><span class="label label-danger">500</span> Internal Server Error</h1>
-<p>
-  Something happened!
-  <br />
-  <% var prevPageLink = '/home';
-     if ('undefined' !== typeof previousPage) {
-     prevPageLink = previousPage;
-     } %>
-  The server failed to give you what you expected and has broken your dreams. You should never have to go through this, so you should either <a href="<%= prevPageLink %>">go back to previous page</a>, <a href="/bug-report/">report the error</a> or make your way through the menus of the website.
-  <br />
-  <small>Please tell me what happened, I don't want you to be mad at me...</small>
-</p>
+<!-- Top padding from menu -->
+<div class="page-section-padding"></div>
+<!-- !Top padding from menu -->
+
+<div class="outset giant">
+  <div class="outset-box">
+    <h1><span class="label label-round label-boxxy label-blue">500</span> <span class="text-blue">Internal Server Error</span></h1>
+    <p>
+      Something happened!
+    </p>
+    <p>
+      <% var prevPageLink = '/home';
+         if ('undefined' !== typeof previousPage) {
+         prevPageLink = previousPage;
+         } %>
+      The server failed to give you what you expected and has broken your dreams. You should never have to go through this, so you should either <a href="/bug-report/">report the error</a>, <a href="<%= prevPageLink %>">go back to previous page</a> or make your way through the menus of the website.
+    </p>
+    <p>
+      <small>Please <a href="/bug-report/">tell me what happened</a>, I don't want you to be mad at me...</small>
+    </p>
+  </div>
 </div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
