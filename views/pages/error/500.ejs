@@ -1,0 +1,14 @@
+<div class="jumbotron">
+<h1><span class="label label-danger">500</span> Internal Server Error</h1>
+<p>
+  Something happened!
+  <br />
+  <% var prevPageLink = '/home';
+     if ('undefined' !== typeof previousPage) {
+     prevPageLink = previousPage;
+     } %>
+  The server failed to give you what you expected and has broken your dreams. You should never have to go through this, so you should either <a href="<%= prevPageLink %>">go back to previous page</a>, <a href="/bug-report/">report the error</a> or make your way through the menus of the website.
+  <br />
+  <small>Please tell me what happened, I don't want you to be mad at me...</small>
+</p>
+</div>

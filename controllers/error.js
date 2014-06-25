@@ -17,6 +17,10 @@ var controller_ = function() {
     this.render404 = function(req, res, renderCallback) {
         return self.render_(req, res, '404', renderCallback);
     };
+
+    this.render500 = function(req, res, renderCallback) {
+        return self.render_(req, res, '500', renderCallback);
+    };
 };
 
 exports.Controller = controller_;

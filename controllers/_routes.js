@@ -66,9 +66,16 @@ var init_ = function (serverApp) {
     serverApp.get('/fonts/*', function (req, res) { res.writeHead(404, {}); return res.end(); });
 
     serverApp.get('/404', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
+    serverApp.get('/500', function (req, res) { return pagesEngine.render({content: errorController.render500}, req, res); });
 
     serverApp.get('*', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
     serverApp.post('*', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
+
+    serverApp.use(function(err, req, res, next) {
+        if (err)
+            return pagesEngine.render({content: errorController.render500}, req, res);
+        return next();
+    });
 };
 
 exports.init = init_;
