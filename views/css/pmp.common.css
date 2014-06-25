@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'TikalSans';
-  src: url('fonts/TikalSans-Medium-webfont.eot');
-  src: url('fonts/TikalSans-Medium-webfont.eot') format('embedded-opentype'), url('fonts/TikalSans-Medium-webfont.woff') format('woff'), url('fonts/TikalSans-Medium-webfont.ttf') format('truetype'), url('fonts/TikalSans-Medium-webfont.svg') format('svg');
+  src: url('/fonts/TikalSans-Medium-webfont.eot');
+  src: url('/fonts/TikalSans-Medium-webfont.eot') format('embedded-opentype'), url('/fonts/TikalSans-Medium-webfont.woff') format('woff'), url('/fonts/TikalSans-Medium-webfont.ttf') format('truetype'), url('/fonts/TikalSans-Medium-webfont.svg') format('svg');
 }
 @font-face {
   font-family: 'MyriadPro';
