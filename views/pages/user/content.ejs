@@ -33,15 +33,15 @@
 
       <small>
       <% if ('admin' === user.rights) { %>
-      <span class="icon-evil"></span>
+      <span class="text-red icon-evil"></span>
       <% } else if ('priviledged' === user.rights) { %>
-      <span class="icon-cool"></span>
+      <span class="text-green icon-cool"></span>
       <% } else if ('registered' === user.rights) { %>
-      <span class="icon-smiley"></span>
+      <span class="text-green icon-smiley"></span>
       <% } else if ('guest' === user.rights) { %>
-      <span class="icon-neutral"></span>
+      <span class="text-grey icon-neutral"></span>
       <% } else { %>
-      <span class="icon-wondering"></span>
+      <span class="text-grey icon-wondering"></span>
       <% } %>
       </small>
       </h2>
