@@ -1,4 +1,6 @@
 (function() {
+    'use strict';
+
     var toggleLoginForm = null;
 
     return $(document).ready(function() {

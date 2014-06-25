@@ -1,3 +1,5 @@
+'use strict';
+
 var gridSizes = [24, 12, 10, 8, 6, 5, 4, 3, 2];
 var minified = false;
 var useHack = true;

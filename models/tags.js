@@ -1,3 +1,5 @@
+'use strict';
+
 var mongooseLib = require('mongoose');
 
 var schemaOptions = {

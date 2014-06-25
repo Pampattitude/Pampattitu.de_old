@@ -1,3 +1,5 @@
+'use strict';
+
 var httpLib = require('http');
 var expressLib = require('express');
 var urlLib = require('url');

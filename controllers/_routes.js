@@ -1,3 +1,5 @@
+'use strict';
+
 var pathLib = require('path');
 
 var consoleLib = require(__dirname + '/../lib/console');

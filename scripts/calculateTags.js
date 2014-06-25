@@ -1,3 +1,5 @@
+'use strict';
+
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 var consoleLib = require(__dirname + '/../lib/console');
