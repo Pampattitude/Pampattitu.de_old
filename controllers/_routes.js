@@ -72,8 +72,11 @@ var init_ = function (serverApp) {
     serverApp.post('*', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
 
     serverApp.use(function(err, req, res, next) {
-        if (err)
+        if (err) {
+            consoleLib.error(err);
             return pagesEngine.render({content: errorController.render500}, req, res);
+        }
+
         return next();
     });
 };
