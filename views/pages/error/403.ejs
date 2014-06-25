@@ -1,0 +1,26 @@
+<!-- Top padding from menu -->
+<div class="page-section-padding"></div>
+<!-- !Top padding from menu -->
+
+<div class="outset giant">
+  <div class="outset-box">
+    <h1><span class="label label-boxxy label-round label-orange">403</span> <span class="text-orange">Forbidden</span></h1>
+    <p>
+      Are you trying to access something you shouldn't, you sneaky snake?
+    </p>
+    <p>
+      <% var prevPageLink = '/home';
+         if ('undefined' !== typeof previousPage) {
+         prevPageLink = previousPage;
+         } %>
+      I should just kick you back to the <a href="<%= prevPageLink %>">previous page</a>, but I'll give you a chance. If you think a bug send you here, please <a href="/bug-report/">report it to me</a>. Else... that's not of your damn business!
+    </p>
+    <p>
+      <small>Hmm, maybe <span class="giant">YOU</span>'re the bug. Should I report you?...</small>
+    </p>
+  </div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->

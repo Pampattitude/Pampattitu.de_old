@@ -68,6 +68,7 @@ var init_ = function (serverApp) {
     serverApp.get('/img/*', function (req, res) { res.writeHead(404, {}); return res.end(); });
     serverApp.get('/fonts/*', function (req, res) { res.writeHead(404, {}); return res.end(); });
 
+    serverApp.get('/403', function (req, res) { return pagesEngine.render({content: errorController.render403}, req, res); });
     serverApp.get('/404', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
     serverApp.get('/500', function (req, res) { return pagesEngine.render({content: errorController.render500}, req, res); });
 
