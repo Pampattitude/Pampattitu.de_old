@@ -1,17 +1,16 @@
 <!-- User type (content title) -->
 <div class="inset">
   <h2 class="inset content-title">
-    <span class="icon-user"></span>&nbsp;&nbsp;
     <% if ('admin' === user.rights) { %>
-    Administrator
+    <span class="icon-evil2"></span>&nbsp;&nbsp;Administrator
     <% } else if ('priviledged' === user.rights) { %>
-    Priviledged user
+    <span class="icon-cool2"></span>&nbsp;&nbsp;Priviledged user
     <% } else if ('registered' === user.rights) { %>
-    Registered user
+    <span class="icon-smiley2"></span>&nbsp;&nbsp;User
     <% } else if ('guest' === user.rights) { %>
-    Guest
+    <span class="icon-neutral2"></span>&nbsp;&nbsp;Guest
     <% } else { %>
-    <%= user.rights %>
+    <span class="icon-wondering2"></span><%= user.rights %>
     <% } %>
 </div>
 
@@ -25,11 +24,28 @@
     </div>
     <% } %>
     <div>
+      <h2>
       <% if ('guest' === user.rights) { %>
-      <h2><small>Let's call him </small> <%= user.login %></h2>
+      <small>Let's call him </small> <%= user.login %>
       <% } else { %>
-      <h2><%= user.login %></h2>
+      <%= user.login %>
       <% } %>
+
+      <small>
+      <% if ('admin' === user.rights) { %>
+      <span class="icon-evil"></span>
+      <% } else if ('priviledged' === user.rights) { %>
+      <span class="icon-cool"></span>
+      <% } else if ('registered' === user.rights) { %>
+      <span class="icon-smiley"></span>
+      <% } else if ('guest' === user.rights) { %>
+      <span class="icon-neutral"></span>
+      <% } else { %>
+      <span class="icon-wondering"></span>
+      <% } %>
+      </small>
+      </h2>
+
       <% if ('undefined' !== typeof user.description) { %>
       <div>
         <%- user.description %>
