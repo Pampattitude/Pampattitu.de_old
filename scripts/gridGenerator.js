@@ -12,7 +12,7 @@ for (var cnt = 0 ; gridSizes.length > cnt ; cnt++) {
     var fractionsSize = gridSize;
 
     for (var i = 1 ; fractionsSize >= i ; i++) {
-        fractions.push({nb: i, on: fractionsSize})
+        fractions.push({nb: i, on: fractionsSize});
     }
 
     var finalFractions = [];
@@ -23,7 +23,7 @@ for (var cnt = 0 ; gridSizes.length > cnt ; cnt++) {
     }
 
     for (var i = 0 ; finalFractions.length > i ; i++) {
-        var fixedRes = (Math.floor(finalFractions[i].res * 100) / 100).toFixed(2)
+        var fixedRes = (Math.floor(finalFractions[i].res * 100) / 100).toFixed(2);
 
         if (!results[fixedRes])
             results[fixedRes] = [];
@@ -51,11 +51,7 @@ for (var modeIdx = 0 ; modes.length > modeIdx ; ++modeIdx) {
     console.log('        clear: both;');
     console.log('    }');
 
->     [class*="grid-"] > [class*="cell-"] ~ :not([class*="cell-"]):not([class*="padd-"]),
->     [class*="grid-"] > [class*="padd-"] ~ :not([class*="cell-"]):not([class*="padd-"]) {
->     clear: both;
->   }
-    console.log('    [class*="grid-"] > [class*="cell' + mode.classAppend + '"],')
+    console.log('    [class*="grid-"] > [class*="cell' + mode.classAppend + '"],');
     console.log('    [class*="grid-"] > [class*="padd' + mode.classAppend + '"] {');
     console.log('        width: 0%; /* Hide unsupported cell sizes (for better debugging) */');
     console.log('        display: inline-block;');

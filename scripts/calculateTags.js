@@ -30,8 +30,6 @@ var execute = function(scriptCallback) {
 
                 consoleLib.info(commentCount + ' comments found for article "' + article.title + '"');
 
-                var commentCount = commentCount;
-
                 for (var i = 0 ; article.tags.length > i ; ++i) {
                     var tagName = article.tags[i];
 

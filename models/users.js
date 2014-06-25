@@ -18,7 +18,7 @@ var schema = new mongooseLib.Schema({
 }, schemaOptions);
 
 var getAdminList = function(callback) {
-    return db.model('User').find({rights: 'admin'}, callback);
+    return mongooseLib.model('User').find({rights: 'admin'}, callback);
 };
 
 exports.model = mongooseLib.model('User', schema);

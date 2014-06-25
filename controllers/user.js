@@ -49,7 +49,7 @@ var controller_ = function() {
                 var shasum = crypto.createHash('sha1');
 
                 shasum.update(req.body.password);
-                var pass = shasum.digest('hex');
+                pass = shasum.digest('hex');
             }
 
             if (user.password == pass) {
