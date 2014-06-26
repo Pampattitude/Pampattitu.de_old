@@ -97,14 +97,14 @@ mongooseLib.connection.once('open', function () {
 
             consoleLib.log('Registered user "' + user.login + '"');
             return userCallback();
-        },
-        function(err) {
-            if (err) {
-                consoleLib.error(err);
-                return process.exit(1);
-            }
-
-            return process.exit(0);
         });
+    },
+    function(err) {
+        if (err) {
+            consoleLib.error(err);
+            return process.exit(1);
+        }
+
+        return process.exit(0);
     });
 });

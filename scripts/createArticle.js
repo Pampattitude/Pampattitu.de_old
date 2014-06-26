@@ -1,5 +1,6 @@
 'use strict';
 
+var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
 var consoleLib = require('../lib/console');
@@ -58,19 +59,25 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
     elem.lastUpdated = new Date().toISOString();
     elem.views = 1631;
 
-    elem.save();
-    consoleLib.log('Created new article.');
+    elem.save(function(err) {
+        if (err) {
+            consoleLib.error(err);
+            return process.exit(1);
+        }
 
-    for (var i = 0 ; 10 > i ; i++) {
-        elem = new Article({});
+        consoleLib.log('Created new article.');
 
-        elem.technicalName = "test" + i;
-        elem.title = "This is a simple test (#" + i + ') to check things';
-        elem.img = "http://www.blueboat.fr/wp-content/uploads/2012/02/test-referencement-smo.jpg"
-        elem.tags = ['this', 'is', 'a', 'test'];
-        elem.caption = "Pellentesque pretium tortor quis nulla pulvinar, pellentesque lobortis dolor venenatis. Sed consectetur luctus odio, at lobortis neque euismod et. Quisque eu mauris eget velit ultricies consequat.";
-        elem.content =
-            "<p>\
+        var i = 1;
+        return asyncLib.whilst(function() { return 10 > i; }, function(callback) {
+            elem = new Article({});
+
+            elem.technicalName = "test" + i;
+            elem.title = "This is a simple test (#" + i + ') to check things';
+            elem.img = "http://www.blueboat.fr/wp-content/uploads/2012/02/test-referencement-smo.jpg"
+            elem.tags = ['this', 'is', 'a', 'test'];
+            elem.caption = "Pellentesque pretium tortor quis nulla pulvinar, pellentesque lobortis dolor venenatis. Sed consectetur luctus odio, at lobortis neque euismod et. Quisque eu mauris eget velit ultricies consequat.";
+            elem.content =
+                "<p>\
 Pellentesque pretium tortor quis nulla pulvinar, pellentesque lobortis dolor venenatis. Sed consectetur luctus odio, at lobortis neque euismod et. Quisque eu mauris eget velit ultricies consequat. Vestibulum egestas imperdiet vehicula. Quisque turpis mi, consequat non quam sit amet, sagittis molestie lacus. Donec sed interdum lorem. Donec venenatis urna vitae odio tempus consectetur. Maecenas tempor metus id lacus vestibulum, placerat laoreet enim pharetra.\
 </p>\
 <h3>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h3>\
@@ -87,12 +94,26 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
 <p>\
 <a href=\"#\">Sed pellentesque enim nunc</a>, vel pretium neque lacinia a. Nunc id lorem cursus, ornare metus ac, ultricies nisi. Sed tristique lacus et porta scelerisque. Nullam id urna et massa porttitor pretium. Sed ac libero eu leo interdum euismod. Praesent eget velit condimentum, volutpat ligula sit amet, convallis augue. Etiam malesuada tellus enim, id mattis ante sodales sed. Proin aliquam odio facilisis facilisis posuere. Duis vel est sem. Suspendisse et augue a lorem elementum cursus in eget leo. Donec nulla justo, pretium ac lobortis a, mattis ut eros.\
 </p>";
-        elem.author = 'Pampa';
-        elem.lastUpdated = new Date().toISOString();
-        elem.views = Math.random() * 2000;
+            elem.author = 'Pampa';
+            elem.lastUpdated = new Date().toISOString();
+            elem.views = Math.random() * 2000;
 
-        elem.save();
-        consoleLib.log('Created new article.');
+            elem.save(function(err) {
+                if (err)
+                    return callback(err);
 
-    }
+                ++i;
+                consoleLib.log('Created new article.');
+                return callback();
+            });
+        },
+        function(err) {
+            if (err) {
+                consoleLib.error(err);
+                return process.exit(1);
+            }
+
+            return process.exit(0);
+        });
+    });
 });
