@@ -3,8 +3,8 @@
 var consoleLib = require(__dirname + '/lib/console');
 
 var execute = function() {
-    var calculateTagsScript = require(__dirname + '/scripts/calculateTags');
     var calculateTagsDaemon = function() {
+        var calculateTagsScript = require(__dirname + '/scripts/calculateTags');
         var waitTime = 10 * 60 * 1000; // Every 10 minutes
 
         return calculateTagsScript.execute(function(err) {
@@ -17,8 +17,8 @@ var execute = function() {
         });
     };
 
-    var removeOldTagsScript = require(__dirname + '/scripts/removeOldTags');
     var removeOldTagsDaemon = function() {
+        var removeOldTagsScript = require(__dirname + '/scripts/removeOldTags');
         var waitTime = 10 * 60 * 1000; // Every 10 minutes
 
         return removeOldTagsScript.execute(function(err) {
