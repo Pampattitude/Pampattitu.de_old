@@ -16,13 +16,31 @@
   <!-- Login form -->
   <div id="login-form" class="hidden">
     <form method="post" action="/login">
-    <a class="float-right close">
-      <span class="icon-close"></span>
-    </a>
+      <div class="grid-12 input-group">
+        <div class="cell-2">
+          <span class="icon-user plate"></span>
+        </div>
+        <div class="cell-8">
+          <input type="text" name="login" placeholder="Username..." />
+        </div>
+        <div class="cell-2">
+          <button type="button" class="close btn">
+            <span class="icon-close"></span>
+          </button>
+        </div>
+      </div>
 
-    <span class="icon-user"></span><input type="text" name="login" placeholder="Username..." />
-    <span class="icon-key"></span><input type="password" name="password" placeholder="Password..." />
-    <button type="submit"><span class="icon-checkmark"></span></button>
+      <div class="grid-12 input-group">
+        <div class="cell-2">
+          <span class="icon-key plate"></span>
+        </div>
+        <div class="cell-8">
+          <input type="password" name="password" placeholder="Password..." />
+        </div>
+        <div class="cell-2">
+          <button type="submit" class="btn btn-green"><span class="icon-checkmark"></span></button>
+        </div>
+      </div>
     </form>
   </div>
   <!-- !Login form -->
@@ -32,10 +50,10 @@
   <form method="post" action="/search">
     <div class="grid-12 input-group">
       <div class="cell-10">
-        <input type="text" name="data" placeholder="Search..." />
+        <input type="text" name="data" class="big" placeholder="Search..." />
       </div>
       <div class="cell-2">
-        <button type="submit" class="btn btn-success"><span class="icon-search"></span></button>
+        <button type="submit" class="btn btn-success big"><span class="icon-search"></span></button>
       </div>
 
       <div class="clear"></div>

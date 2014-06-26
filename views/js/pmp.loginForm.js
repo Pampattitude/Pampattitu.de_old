@@ -10,7 +10,7 @@
             });
         });
 
-        $('#login-form a.close').click(function() {
+        $('#login-form button.close').click(function() {
             return $('#login-form').slideToggle(200, function() {
                 return $('#login-form-panel').slideToggle(200);
             });

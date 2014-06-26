@@ -110,6 +110,11 @@ a.btn {
   text-align: center;
 }
 
+.btn.big {
+    padding: .4em .5em;
+    font-size: 1.1em;
+}
+
 
 .btn.btn-facebook,
 .btn.btn-facebook:visited {
@@ -203,6 +208,30 @@ a.btn {
 }
 
 
+.plate {
+  display: inline-block;
+  cursor: pointer;
+  height: 1.7em;
+  box-sizing: border-box;
+
+  padding: .3em .4em;
+
+  color: rgb(40, 40, 40);
+  font-size: 1em;
+
+  background-color: rgb(240, 240, 240);
+  border: none;
+  border-bottom: 3px solid rgb(192, 192, 192);
+
+  transition: color 200ms, background-color 200ms, border-color 200ms;
+}
+
+.plate.big {
+    padding: .4em .5em;
+    font-size: 1.1em;
+}
+
+
 ul.unstyled {
   margin: 0 auto 0 auto;
   padding-left: 0;
@@ -226,6 +255,13 @@ input {
     padding: .2em .4em;
 
     font-size: 1em;
+
+    border: none;
+    border-bottom: 3px solid rgb(192, 192, 192);
+}
+input.big {
+    padding: .4em .5em;
+    font-size: 1.1em;
 }
 .input-group input {
     margin: 0;
@@ -233,6 +269,13 @@ input {
 .input-group button {
     margin: 0;
 }
+
+.input-group[class*="grid-"] input,
+.input-group[class*="grid-"] .plate,
+.input-group[class*="grid-"] .btn {
+    width: 100%;
+}
+
 
 
 .text-tiny {
