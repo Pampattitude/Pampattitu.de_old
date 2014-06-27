@@ -11,6 +11,8 @@ var schema = new mongooseLib.Schema({
     type: {type: String, index: true},
     content: {type: String, required: true},
 
+    state: {type: String, default: 'open', enum: ['open', 'inProgress', 'closed']},
+
     created: {type: Date, default: Date.now},
 });
 
