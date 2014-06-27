@@ -513,6 +513,11 @@ code.js .string {
   background-color: rgb(232, 232, 232);
   box-shadow: 0px 0px 4px 1px black;
 }
+@media only screen and (max-width: 767px) {
+    .outset {
+        padding: 1em;
+    }
+}
 .outset .outset-box {
   padding: 0.2em 1em;
   
