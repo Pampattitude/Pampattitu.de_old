@@ -1,0 +1,37 @@
+<h2 class="inset content-title"><span class="icon-bug"></span>&nbsp;&nbsp;Bug report</h2>
+
+<div class="outset">
+  <h3>Your opinion is (or, better, <i>can be</i> if you're not trolling) valuable. And I need it!</h3>
+
+  <div class="outset-box no-padding">
+    <form id="report-form" method="post" action="/report/submit">
+      <div id="report-type" class="grid-4 input-group">
+        <div class="cell-1">
+          <button type="button" class="btn" data-value="bug"><span class="icon-bug"></span>&nbsp;<br class="hidden-desktop" />Bug</button>
+        </div>
+        <div class="cell-1">
+          <button type="button" class="btn" data-value="feature"><span class="icon-brightness-medium"></span>&nbsp;<br class="hidden-desktop" />Feature</button>
+        </div>
+        <div class="cell-1">
+          <button type="button" class="btn" data-value="comment"><span class="icon-heart"></span>&nbsp;<br class="hidden-desktop" />Comment</button>
+        </div>
+        <div class="cell-1">
+          <button type="button" class="btn" data-value="other"><span class="icon-question"></span>&nbsp;<br class="hidden-desktop" />Other</button>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+      <textarea name="content" placeholder="Tell me what happened!"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.content) { %><%= previousFormData.content %><% } %></textarea>
+
+      <div class="grid-12 input-group">
+        <div class="cell-10">
+          <input type="text" name="author" <% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.author) { %>value="<%= previousFormData.author %>"<% } else { %>value="Anonymous"<% } %> placeholder="Name..." />
+        </div>
+        <div class="cell-2">
+          <button class="btn submit-button">Send!</button>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </form>
+  </div>
+</div>

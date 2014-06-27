@@ -25,7 +25,7 @@ var init_ = function (serverApp) {
     var searchController = new (require(__dirname + '/search').Controller)();
     var userController = new (require(__dirname + '/user').Controller)();
     var errorController = new (require(__dirname + '/error').Controller)();
-    var bugReportController = new (require(__dirname + '/bug-report').Controller)();
+    var reportController = new (require(__dirname + '/report').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
     serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
@@ -40,7 +40,8 @@ var init_ = function (serverApp) {
     serverApp.get('/search/:data?/:page?', function(req, res) { return pagesEngine.render({content: searchController.render}, req, res); });
     serverApp.post('/search', function(req, res) { return pagesEngine.post({content: searchController.post}, req, res); });
 
-    serverApp.get('/bug-report', function(req, res) { return pagesEngine.render({content: bugReportController.render}, req, res); });
+    serverApp.get('/report', function(req, res) { return pagesEngine.render({content: reportController.render}, req, res); });
+    serverApp.post('/report/submit', function(req, res) { return pagesEngine.post({post: reportController.submit}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });
@@ -55,6 +56,7 @@ var init_ = function (serverApp) {
     serverApp.get('/js/jquery', function (req, res) { return simpleGet(req, res, 'js/jquery.js'); });
     serverApp.get('/js/bootstrap', function (req, res) { return simpleGet(req, res, 'js/bootstrap.min.js'); });
     serverApp.get('/js/pmp.loginForm', function (req, res) { return simpleGet(req, res, 'js/pmp.loginForm.js'); });
+    serverApp.get('/js/pmp.reportForm', function (req, res) { return simpleGet(req, res, 'js/pmp.reportForm.js'); });
 
     serverApp.get('/img/:file', function (req, res) { return simpleGet(req, res, 'img/' + req.params.file + '.png'); });
 
