@@ -515,7 +515,7 @@ code.js .string {
 }
 @media only screen and (max-width: 767px) {
     .outset {
-        padding: 1em;
+        padding: 0.8em;
     }
 }
 .outset .outset-box {
