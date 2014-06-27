@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var toggleLoginForm = null;
-
     return $(document).ready(function() {
         $('#login-form-panel').click(function() {
             return $('#login-form-panel').slideToggle(200, function() {
