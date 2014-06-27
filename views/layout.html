@@ -35,6 +35,20 @@
         <div class="grid-12">
           <!-- Content -->
           <div class="cell-8 cell-mobile-12">
+            <!-- Alerts -->
+            <div class="alert-menu">
+              <% if ('undefined' !== typeof alerts) {
+	         for (var i = 0 ; alerts.length > i ; ++i) {
+              var alert = alerts[i]; %>
+              <div class="alert alert-<%= alert.type %>">
+	        <button type="button" class="btn btn-red" onclick="$(this).parent('div.alert').remove();">&times;</button>
+	        <%= alert.content %>
+              </div>
+              <% }
+	         } %>
+            </div>
+            <!-- !Alerts -->
+
 	    <% if ('undefined' !== typeof contentPath) { %>
 	    <% include contentPath %>
 	    <% } %>
