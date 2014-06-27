@@ -248,6 +248,21 @@ ul.flat > li {
 }
 
 
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover
+{
+    outline: 0px !important;
+    -webkit-appearance: none;
+}
+
+
 input {
     width: 100%;
     box-sizing: border-box;
@@ -282,7 +297,13 @@ textarea {
     box-sizing: border-box;
     resize: vertical;
 
+    margin: 0 auto;
+    padding: 0.4em 0;
+
+    font-family: 'Lato', 'TikalSans';
     font-size: 0.8em;
+
+    border: 0;
 }
 
 
