@@ -1,9 +1,11 @@
 <h2 class="inset content-title"><span class="icon-bug"></span>&nbsp;&nbsp;Bug report</h2>
 
 <div class="outset">
-  <h3>Your opinion is (or, better, <i>can be</i> if you're not trolling) valuable. And I need it!</h3>
+  <div class="outset-box">
+    <p>
+      Your opinion is (or, better, <i>can be</i> if you're not trolling) valuable. Thanks for taking some time to fill this report!
+    </p>
 
-  <div class="outset-box no-padding">
     <form id="report-form" method="post" action="/report/submit">
       <div id="report-type" class="grid-4 input-group">
         <div class="cell-1">
@@ -21,7 +23,7 @@
       </div>
       <div class="clear"></div>
 
-      <textarea name="content" placeholder="Tell me what happened!"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.content) { %><%= previousFormData.content %><% } %></textarea>
+      <textarea name="content" placeholder="Tell me what happened!" rows="8"><% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.content) { %><%= previousFormData.content %><% } %></textarea>
 
       <div class="grid-12 input-group">
         <div class="cell-10">
