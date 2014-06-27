@@ -50,6 +50,7 @@ if (clusterLib.isMaster) {
         require(__dirname + '/models/comments').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
+        require(__dirname + '/models/reports').model;
 
         consoleLib.log('Collections sync\'ed');
 
@@ -75,6 +76,7 @@ else {
         require(__dirname + '/models/comments').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
+        require(__dirname + '/models/reports').model;
 
         consoleLib.log('Collections sync\'ed');
     });
