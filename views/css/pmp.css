@@ -40,6 +40,29 @@
     border-bottom-color: rgb(40, 104, 40);
 }
 
+.alert-menu {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+.alert-menu .alert {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.2em;
+}
+.alert-menu .alert.alert-danger {
+    background-color: rgb(192, 84, 84);
+}
+.alert-menu .alert.alert-warning {
+    background-color: rgb(216, 128, 64);
+}
+.alert-menu .alert.alert-success {
+    background-color: rgb(84, 172, 84);
+}
+
 
 .page-content {
     position: relative;

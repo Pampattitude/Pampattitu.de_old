@@ -276,6 +276,15 @@ input.big {
     width: 100%;
 }
 
+textarea {
+    width: 100%;
+    min-height: 6em;
+    box-sizing: border-box;
+    resize: vertical;
+
+    font-size: 0.8em;
+}
+
 
 
 .text-tiny {
@@ -436,7 +445,7 @@ code.js .string {
   background-color: rgb(64, 104, 152);
 }
 .label.label-green {
-  background-color: rgb(84, 172, 84);
+   background-color: rgb(84, 172, 84);
 }
 .label.label-greener {
   background-color: rgb(96, 184, 96);
@@ -511,6 +520,9 @@ code.js .string {
   
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.outset .outset-box.no-padding {
+    padding: 0;
 }
 
 .page-section-padding {
