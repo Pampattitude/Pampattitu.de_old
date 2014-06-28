@@ -29,15 +29,21 @@
     padding: 0.8em 1em;
     
     font-size: 1.2em;
-  font-weight: bold;
+    font-weight: bold;
 
     border-bottom-width: 5px;
+    border-bottom-color: rgb(192, 192, 192);
 }
 .button-menu .btn.menu-btn:hover {
     color: rgb(255, 255, 255);
 
     background-color: rgb(80, 152, 80);
-    border-color: rgb(40, 104, 40);
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(40, 104, 40);
+
+    box-shadow: inset -1px 0 0 rgb(40, 104, 40),
+    inset 1px 0 0 rgb(40, 104, 40),
+    inset 0 1px 0 rgb(40, 104, 40);
 }
 
 .alert-menu {

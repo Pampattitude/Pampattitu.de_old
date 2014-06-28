@@ -98,14 +98,17 @@ q {
   font-size: 1em;
 
   background-color: rgb(240, 240, 240);
-  border: 1px solid rgb(192, 192, 192);
+  border: 0;
   border-bottom: 3px solid rgb(192, 192, 192);
 
-  transition: color 200ms, background-color 200ms, border-color 200ms;
+  transition: color 200ms, background-color 200ms, border-color 200ms, box-shadow 200ms;
 }
 .btn:hover {
   background: rgb(255, 255, 255);
-  border-bottom-color: rgb(208, 208, 208);
+
+  box-shadow: inset -1px 0 0 rgb(208, 208, 208),
+  inset 1px 0 0 rgb(208, 208, 208),
+  inset 0 1px 0 rgb(208, 208, 208);
 }
 a.btn {
   text-align: center;
@@ -128,6 +131,10 @@ a.btn {
 .btn.btn-facebook:focus {
     background-color: #0A2668;
     border-color: #051333;
+
+    box-shadow: inset -1px 0 0 #051333,
+    inset 1px 0 0 #051333,
+    inset 0 1px 0 #051333;
 }
 
 .btn.btn-twitter,
@@ -141,6 +148,10 @@ a.btn {
 .btn.btn-twitter:focus {
     background-color: #008ECF;
     border-color: #006999;
+
+    box-shadow: inset -1px 0 0 #006999,
+    inset 1px 0 0 #006999,
+    inset 0 1px 0 #006999;
 }
 
 .btn.btn-rss,
@@ -154,6 +165,10 @@ a.btn {
 .btn.btn-rss:focus {
     background-color: #E17B00;
     border-color: #B36200;
+
+    box-shadow: inset -1px 0 0 #B36200,
+    inset 1px 0 0 #B36200,
+    inset 0 1px 0 #B36200;
 }
 
 .btn.btn-soundcloud,
@@ -167,6 +182,10 @@ a.btn {
 .btn.btn-soundcloud:focus {
     background-color: #E02800;
     border-color: #9E1D00;
+
+    box-shadow: inset -1px 0 0 #9E1D00,
+    inset 1px 0 0 #9E1D00,
+    inset 0 1px 0 #9E1D00;
 }
 
 .btn.btn-linkedin,
@@ -180,6 +199,10 @@ a.btn {
 .btn.btn-linkedin:focus {
     background-color: #005282;
     border-color: #003452;
+
+    box-shadow: inset -1px 0 0 #003452,
+    inset 1px 0 0 #003452,
+    inset 0 1px 0 #003452;
 }
 
 .btn.btn-reddit,
@@ -193,6 +216,10 @@ a.btn {
 .btn.btn-reddit:focus {
     background-color: #5BA4D8;
     border-color: #2771A5;
+
+    box-shadow: inset -1px 0 0 #2771A5,
+    inset 1px 0 0 #2771A5,
+    inset 0 1px 0 #2771A5;
 }
 
 .btn.btn-mail,
@@ -206,6 +233,10 @@ a.btn {
 .btn.btn-mail:focus {
     background-color: #BC0000;
     border-color: #8A0000;
+
+    box-shadow: inset -1px 0 0 #8A0000,
+    inset 1px 0 0 #8A0000,
+    inset 0 1px 0 #8A0000;
 }
 
 
