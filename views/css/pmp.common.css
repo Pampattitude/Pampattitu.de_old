@@ -89,6 +89,7 @@ q {
 
 .btn {
   display: inline-block;
+  box-sizing: border-box;
   cursor: pointer;
 
   padding: .2em .4em;
@@ -97,7 +98,7 @@ q {
   font-size: 1em;
 
   background-color: rgb(240, 240, 240);
-  border: none;
+  border: 1px solid rgb(192, 192, 192);
   border-bottom: 3px solid rgb(192, 192, 192);
 
   transition: color 200ms, background-color 200ms, border-color 200ms;
@@ -271,8 +272,8 @@ input {
 
     font-size: 1em;
 
-    border: none;
-    border-bottom: 3px solid rgb(192, 192, 192);
+    border: 1px solid rgb(192, 192, 192);
+    border-top: 3px solid rgb(192, 192, 192);
 }
 input.big {
     padding: .4em .5em;
@@ -298,12 +299,13 @@ textarea {
     resize: vertical;
 
     margin: 0 auto;
-    padding: 0.4em 0;
+    padding: 0.4em 0.6em;
 
     font-family: 'Lato', 'TikalSans';
     font-size: 0.8em;
 
-    border: 0;
+    border: 1px solid rgb(220, 220, 220);
+    border-top: 3px solid rgb(220, 220, 220);
 }
 
 
