@@ -1,10 +1,18 @@
 /* TEAM */
-    Leader: Guillaume "Pampa" Delahodde
-    From:Paris, Ile-de-France, France
+   Leader: Guillaume "Pampa" Delahodde
+   From:Paris, Ile-de-France, France
+   Site: http://pampattitu.de
+   Twitter: @Pampattitude
 
 /* THANKS */
+   Design: 9eme Art
+   Site: http://www.9emeart.fr/
+   Twitter: @9emeArt
+
+   Graphics & Support: Eve Charmant
+   Twitter: @eve2046
 
 /* SITE */
-    Language: English
-    Doctype: HTML5
-    IDE: emacs
+   Language: English
+   Doctype: HTML5
+   IDE: emacs, Notepad++
