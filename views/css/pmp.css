@@ -102,7 +102,7 @@
 }
 .article-list-small .article {
     margin-bottom: 1em;
-    padding: 0.8em 1em;
+    padding: 0.8em 1em 0.2em 1em;
 
     box-shadow: 0 4px 2px -1px rgba(0, 0, 0, 0.2);
 }
@@ -449,6 +449,11 @@
     font-size: 0.9em;
     
     border-left: 4px solid rgb(220, 220, 220);
+}
+
+.article .continue {
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
 }
 
 

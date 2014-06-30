@@ -47,7 +47,7 @@
         </div>
         <br />
 
-        <div class="float-right">
+        <div class="float-right continue">
           <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
         </div>
         <div class="clear"></div>
@@ -80,16 +80,17 @@
           <div class="cell-2">
             <!-- Article title -->
             <h3 class="title"><%= article.title %></h3>
-            <h4 class="author">by <a href="/user/Pampa"><%= article.author %></a>, <%- formatDate(article.lastUpdated) %></h4>
+            <h4 class="author"><% if (!/pampa/i.test(article.author)) { %>by <a href="/user/<%= article.author %>"><%= article.author %></a>, <% } %><%- formatDate(article.lastUpdated) %></h4>
             <!-- !Article title -->
 
             <div class="caption">
-              <i><%= article.caption %></i>
+              <i><%= article.caption.substring(0, 192) %><% if (192 <= article.caption.length) { %><a href="/article/<%= article.technicalName %>">...</a><% } %></i>
             </div>
 
-            <div class="float-right">
+            <div class="float-right continue">
               <a href="/article/<%= article.technicalName %>">Continue reading...</a>
             </div>
+            <div class="clear"></div>
           </div>
 
           <div class="clear"></div>
