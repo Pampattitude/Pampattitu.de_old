@@ -122,6 +122,10 @@
     margin-left: 0.8em;
 }
 
+.article-list-small .article .title {
+    margin-top: 0;
+}
+
 .article-list-small .article .top-data .article-thumbnail img {
     max-width: 8em;
 }
