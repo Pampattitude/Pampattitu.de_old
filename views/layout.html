@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,900" type="text/css" />
 
     <!-- CSS stylesheets -->
+    <style>
+      .preload * {
+          -webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;transition: none !important;
+      }
+    </style>
+
     <link rel="stylesheet" href="/css/icomoon" />
     <link rel="stylesheet" href="/css/pmp.common" />
     <link rel="stylesheet" href="/css/pmp.grid" />
@@ -26,7 +32,7 @@
     <% } %>
     <% } %>
   </head>
-  <body>
+  <body class="preload">
     <!-- Main page tag -->
     <div id="pmp-page" class="page">
       <% include pages/button-menu %>
@@ -79,5 +85,12 @@
     <script type="application/javascript" src="<%= inlineScript %>"></script>
     <% } %>
     <% } %>
+    <script type="application/javascript">
+      (function() {
+          $(document).ready(function() {
+              $('body.preload').removeClass('preload');
+          });
+      })();
+    </script>
   </body>
 </html>
