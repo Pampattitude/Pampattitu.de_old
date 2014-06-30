@@ -42,7 +42,9 @@
         </div>
 
         <br />
-        <%= featuredArticle.caption %>
+        <div class="caption">
+          <i><%= featuredArticle.caption %></i>
+        </div>
         <br />
 
         <div class="float-right">
@@ -57,42 +59,45 @@
     <br />
 
     <!-- Other articles -->
-    <div class="outset-box">
-      <h2>Newest articles</h2>
-      <% for (var i = 0 ; articleList.length > i ; ++i) {
-      var article = articleList[i]; %>
-      <div class="article">
-        <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
-          <div class="top-data">
-            <div class="article-thumbnail">
-              <!-- Article image -->
-              <a href="/article/<%= article.technicalName %>">
-                <img src="<%= article.img %>" alt="" style="max-width: 6em;" />
-              </a>
-              <!-- !Article image -->
+    <div class="outset-box no-padding">
+      <h2 class="article-list-small-title">Newest articles</h2>
+      <div class="article-list-small">
+        <% for (var i = 0 ; articleList.length > i ; ++i) {
+        var article = articleList[i]; %>
+        <div class="article">
+          <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
+            <div class="top-data <%= (0 == i % 2 ? 'left' : 'right') %>">
+              <div class="article-thumbnail">
+                <!-- Article image -->
+                <a href="/article/<%= article.technicalName %>">
+                  <img src="<%= article.img %>" alt="" />
+                </a>
+                <!-- !Article image -->
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="cell-2">
-          <!-- Article title -->
-          <h3><%= article.title %></h3>
-          <h4>by <a href="/user/Pampa"><%= article.author %></a>, <%- formatDate(article.lastUpdated) %></h4>
-          <!-- !Article title -->
+          <div class="cell-2">
+            <!-- Article title -->
+            <h3 class="title"><%= article.title %></h3>
+            <h4 class="author">by <a href="/user/Pampa"><%= article.author %></a>, <%- formatDate(article.lastUpdated) %></h4>
+            <!-- !Article title -->
 
-          <%= article.caption %>
+            <div class="caption">
+              <i><%= article.caption %></i>
+            </div>
 
-          <div class="float-right">
-            <a href="/article/<%= article.technicalName %>">Continue reading...</a>
+            <div class="float-right">
+              <a href="/article/<%= article.technicalName %>">Continue reading...</a>
+            </div>
           </div>
-        </div>
 
-        <div class="clear"></div>
+          <div class="clear"></div>
+        </div>
+        <% if (articleList.length != i + 1) { %>
+        <% } %>
+        <% } %>
       </div>
-      <% if (articleList.length != i + 1) { %>
-      <br />
-      <% } %>
-      <% } %>
     </div>
     <!-- !Other articles -->
   </div>
