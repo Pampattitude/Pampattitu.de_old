@@ -295,7 +295,7 @@ button:active,
 button:hover
 {
     outline: 0px !important;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
 }
 
 
