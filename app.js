@@ -12,7 +12,7 @@ var jsonLib = require('JSON');
 var clusterLib = require('cluster');
 
 var mongooseLib = require('mongoose');
-var databaseUri = 'mongodb://localhost/bmb-home';
+var databaseUri = 'mongodb://localhost/pmp-home';
 
 var consoleLib = require(__dirname + '/lib/console');
 
