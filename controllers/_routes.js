@@ -53,10 +53,7 @@ var init_ = function (serverApp) {
     serverApp.get('/css/pmp.common', function (req, res) { return simpleGet(req, res, 'css/pmp.common.css'); });
     serverApp.get('/css/pmp.grid', function (req, res) { return simpleGet(req, res, 'css/pmp.grid.css'); });
 
-    serverApp.get('/js/jquery', function (req, res) { return simpleGet(req, res, 'js/jquery.js'); });
-    serverApp.get('/js/bootstrap', function (req, res) { return simpleGet(req, res, 'js/bootstrap.min.js'); });
-    serverApp.get('/js/pmp.loginForm', function (req, res) { return simpleGet(req, res, 'js/pmp.loginForm.js'); });
-    serverApp.get('/js/pmp.reportForm', function (req, res) { return simpleGet(req, res, 'js/pmp.reportForm.js'); });
+    serverApp.get('/js/:file', function (req, res) { return simpleGet(req, res, 'js/' + req.params.file + '.js'); });
 
     serverApp.get('/img/:file', function (req, res) { return simpleGet(req, res, 'img/' + req.params.file + '.png'); });
 

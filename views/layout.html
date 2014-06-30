@@ -40,7 +40,7 @@
 	         for (var i = 0 ; alerts.length > i ; ++i) {
               var alert = alerts[i]; %>
               <div class="alert alert-<%= alert.type %>">
-	        <button type="button" class="btn btn-red" onclick="$(this).parent('div.alert').remove();">&times;</button>
+	        <button type="button" class="btn btn-red close">&times;</button>
 	        <%= alert.content %>
               </div>
               <% }
