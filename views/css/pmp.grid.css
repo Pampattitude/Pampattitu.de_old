@@ -3,8 +3,8 @@
         width: 100%;
     }
     [class*="grid-"] + * {
-    clear: both;
-  }
+        clear: both;
+    }
 
     [class*="grid-"] > [class*="cell-"],
     [class*="grid-"] > [class*="padd-"] {
@@ -19,8 +19,8 @@
     }
     [class*="grid-"] > [class*="cell-"] ~ :not([class*="cell-"]):not([class*="padd-"]),
     [class*="grid-"] > [class*="padd-"] ~ :not([class*="cell-"]):not([class*="padd-"]) {
-    clear: both;
-  }
+        clear: both;
+    }
 
     .grid-12 > .cell-1,
     .grid-12 > .padd-1 {
