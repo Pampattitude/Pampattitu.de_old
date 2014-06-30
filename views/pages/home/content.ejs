@@ -20,15 +20,16 @@
 <!-- Articles -->
 <div class="featured">
   <div class="outset">
+    <!-- Featured article -->
+    <% if ('undefined' !== typeof featuredArticle) { %>
     <div class="outset-box">
-      <!-- Featured article -->
-      <% if ('undefined' !== typeof featuredArticle) { %>
+      <h2><span class="icon-star3"></span>&nbsp;&nbsp;Under the spotlight</h2>
       <div class="article featured">
         <div class="top-data">
           <div class="article-thumbnail">
             <!-- Article image -->
-            <a href="<%= featuredArticle.img %>" target="_blank">
-              <h5><small><%= featuredArticle.img %></small></h5>
+            <a href="/article/<%= featuredArticle.technicalName %>">
+              <h5 class="hidden-mobile"><small><%= featuredArticle.img %></small></h5>
               <img src="<%= featuredArticle.img %>" alt="" />
             </a>
             <!-- !Article image -->
@@ -40,14 +41,60 @@
           </div>
         </div>
 
+        <br />
+        <%= featuredArticle.caption %>
+        <br />
+
         <div class="float-right">
           <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
         </div>
         <div class="clear"></div>
       </div>
-      <% } %>
-      <!-- !Featured article -->
     </div>
+    <% } %>
+    <!-- !Featured article -->
+
+    <br />
+
+    <!-- Other articles -->
+    <div class="outset-box">
+      <h2>Newest articles</h2>
+      <% for (var i = 0 ; articleList.length > i ; ++i) {
+      var article = articleList[i]; %>
+      <div class="article">
+        <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
+          <div class="top-data">
+            <div class="article-thumbnail">
+              <!-- Article image -->
+              <a href="/article/<%= article.technicalName %>">
+                <img src="<%= article.img %>" alt="" style="max-width: 6em;" />
+              </a>
+              <!-- !Article image -->
+            </div>
+          </div>
+        </div>
+
+        <div class="cell-2">
+          <!-- Article title -->
+          <h3><%= article.title %></h3>
+          <h4>by <a href="/user/Pampa"><%= article.author %></a>, <%- formatDate(article.lastUpdated) %></h4>
+          <!-- !Article title -->
+
+          <%= article.caption %>
+
+          <div class="float-right">
+            <a href="/article/<%= article.technicalName %>">Continue reading...</a>
+          </div>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+      <% if (articleList.length != i + 1) { %>
+      <br />
+      <% } %>
+      <% } %>
+    </div>
+    <!-- !Other articles -->
   </div>
 </div>
 <!-- !Articles -->
