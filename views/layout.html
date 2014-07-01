@@ -37,6 +37,7 @@
     <!-- Main page tag -->
     <div id="pmp-page" class="page">
       <% include pages/button-menu %>
+
       <div id="pmp-content" class="page-content">
         <!-- Content -->
         <!-- Alerts -->
@@ -50,14 +51,16 @@
           </div>
           <% }
 	     } %>
-          <!-- !Alerts -->
-
-	  <% if ('undefined' !== typeof contentPath) { %>
-	  <% include contentPath %>
-	  <% } %>
         </div>
+        <!-- !Alerts -->
+
+	<% if ('undefined' !== typeof contentPath) { %>
+	<% include contentPath %>
+	<% } %>
       </div>
-      
+
+      <div class="clear"></div>
+
       <!-- Page footer -->
       <div id="pmp-footer" class="footer">
         <p>
