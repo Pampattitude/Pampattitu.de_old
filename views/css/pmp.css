@@ -25,9 +25,10 @@
 }
 .button-menu .btn.menu-btn {
     display: block;
+    box-sizing: border-box;
 
     padding: 0.8em 1em;
-    
+
     font-size: 1.2em;
     font-weight: bold;
 
@@ -45,6 +46,52 @@
     inset 1px 0 0 rgb(40, 104, 40),
     inset 0 1px 0 rgb(40, 104, 40);
 }
+
+.button-menu .search {
+    font-size: 1rem;
+}
+.button-menu .search input {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0.8em 1em;
+
+    font-size: 1.2em;
+
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(192, 192, 192);
+
+    box-shadow: inset -1px 0 0 transparent,
+    inset 1px 0 0 transparent,
+    inset 0 1px 0 transparent;
+
+    transition: box-shadow 200ms;
+}
+.button-menu .search input:hover {
+    box-shadow: inset -1px 0 0 rgb(192, 192, 192),
+    inset 1px 0 0 rgb(192, 192, 192),
+    inset 0 1px 0 rgb(192, 192, 192);
+}
+
+.button-menu .search-button,
+.button-menu .search-button:visited {
+    display: block;
+    box-sizing: border-box;
+
+    padding: 0.8em 1em;
+
+    font-size: 1.2em;
+    font-weight: bold;
+
+    color: #FFF;
+
+    border-width: 5px;
+}
+
 
 .alert-menu {
     width: 100%;
@@ -95,13 +142,8 @@
 
 
 /* Home */
-.home-article-list {
-}
-
 .home-article-list .featured {
     position: relative;
-
-    padding: 0.4em;
 
     color: rgb(32, 32, 32);
 }
@@ -130,8 +172,8 @@
 }
 @media only screen and (min-width: 768px) {
     .home-article-list .featured .title-author {
-        width: 110%;
-        margin-left: -10%;
+        width: 150%;
+        margin-left: -50%;
     }
 }
 
@@ -155,13 +197,31 @@
 }
 
 .home-article-list .featured .caption {
-    padding: 1em;
-
     background-color: rgb(240, 240, 240);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 }
-.home-article-list .featured .caption .continue {
-    padding-top: 1.5em;
+
+.home-article-list .featured .caption .caption-text {
+    padding: 0.8em 0.8em 0.6em 0.8em;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-article-list .featured .caption .continue {
+        width: 100%;
+    }
+}
+
+.home-article-list .featured .caption .continue a {
+    font-size: 1.1em;
+
+    padding: 0.4em 0.8em;
+}
+@media only screen and (max-width: 767px) {
+    .home-article-list .featured .caption .continue a {
+        width: 100%;
+
+        padding: 0.6em 0.8em;
+    }
 }
 /* !Home */
 

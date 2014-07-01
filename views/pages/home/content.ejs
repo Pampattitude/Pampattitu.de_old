@@ -57,11 +57,14 @@
 
         <!-- Article caption -->
         <div class="caption">
-          <i><%= featuredArticle.caption %></i>
+          <div class="caption-text">
+            <i><%= featuredArticle.caption %></i>
+          </div>
 
           <div class="float-right continue">
-            <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
+            <a href="/article/<%= featuredArticle.technicalName %>" class="btn btn-blue">Continue reading...</a>
           </div>
+
           <div class="clear"></div>
         </div>
         <!-- !Article caption -->
