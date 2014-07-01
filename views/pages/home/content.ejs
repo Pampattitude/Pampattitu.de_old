@@ -18,95 +18,59 @@
 <h2 class="inset content-title"><span class="icon-home"></span>&nbsp;&nbsp;Home</h2>
 
 <!-- Articles -->
-<div class="featured">
-  <div class="outset">
-    <!-- Featured article -->
-    <% if ('undefined' !== typeof featuredArticle) { %>
-    <div class="outset-box">
-      <h2><span class="icon-star3"></span>&nbsp;&nbsp;Under the spotlight</h2>
-      <div class="article featured">
-        <div class="top-data">
-          <div class="article-thumbnail">
+<div class="home-article-list">
+  <!-- Featured article -->
+  <% if ('undefined' !== typeof featuredArticle) { %>
+  <div class="featured">
+    <div class="grid-12">
+      <div class="cell-7 cell-mobile-12">
+        <a href="/article/<%= featuredArticle.technicalName %>">
+          <div class="thumbnail">
             <!-- Article image -->
-            <a href="/article/<%= featuredArticle.technicalName %>">
-              <h5 class="hidden-mobile"><small><%= featuredArticle.img %></small></h5>
-              <img src="<%= featuredArticle.img %>" alt="" />
-            </a>
+            <img src="<%= featuredArticle.img %>" alt="" />
             <!-- !Article image -->
-            
-            <!-- Article title -->
-            <h3><%= featuredArticle.title %></h3>
-            <h4>by <a href="/user/Pampa"><%= featuredArticle.author %></a>, <%- formatDate(featuredArticle.lastUpdated) %></h4>
-            <!-- !Article title -->
           </div>
+        </a>
+      </div>
+      
+      <div class="cell-5 cell-mobile-12">
+        <!-- Article title -->
+        <div class="title-author">
+          <h3 class="title"><a href="/article/<%= featuredArticle.technicalName %>"><%= featuredArticle.title %></a></h3>
+          <h4 class="author">by <a href="/user/<%= featuredArticle.author %>"><%= featuredArticle.author %></a>, <%- formatDate(featuredArticle.lastUpdated) %></h4>
         </div>
+        <!-- !Article title -->
 
-        <br />
+        <!-- Article tags -->
+        <div class="inset tags">
+          <ul class="unstyled flat">
+            <li class="tag-group"><a href="/search/<%= featuredArticle.tags.join('&nbsp;') %>"><span class="icon-tags hidden-hover"></span></a></li>
+            <% for (var i = 0 ; featuredArticle.tags.length > i ; ++i) { %>
+            <li class="tag"><a href="/search/<%= featuredArticle.tags[i] %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= featuredArticle.tags[i] %></a></li>
+            <% if (featuredArticle.tags.length != i + 1) { %>
+            <li></li>
+            <% } %>
+            <% } %>
+          </ul>
+        </div>
+        <!-- !Article tags -->
+
+        <!-- Article caption -->
         <div class="caption">
           <i><%= featuredArticle.caption %></i>
-        </div>
-        <br />
 
-        <div class="float-right continue">
-          <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <% } %>
-    <!-- !Featured article -->
-
-    <br />
-
-    <!-- Other articles -->
-    <div class="outset-box no-padding">
-      <h2 class="article-list-small-title">Newest articles</h2>
-      <div class="article-list-small">
-        <div class="grid-12">
-          <% for (var i = 0 ; articleList.length > i ; ++i) {
-          var article = articleList[i]; %>
-          <div class="cell-6 cell-mobile-12">
-            <div class="article">
-              <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
-                <div class="top-data <%= (0 == i % 2 ? 'left' : 'right') %>">
-                  <div class="article-thumbnail">
-                    <!-- Article image -->
-                    <a href="/article/<%= article.technicalName %>">
-                      <img src="<%= article.img %>" alt="" />
-                    </a>
-                    <!-- !Article image -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="cell-2">
-                <!-- Article title -->
-                <h3 class="title"><%= article.title %></h3>
-                <h4 class="author"><% if (!/pampa/i.test(article.author)) { %>by <a href="/user/<%= article.author %>"><%= article.author %></a>, <% } %><%- formatDate(article.lastUpdated) %></h4>
-                <!-- !Article title -->
-
-                <div class="caption">
-                  <i><%= article.caption.substring(0, 192) %><% if (192 <= article.caption.length) { %><a href="/article/<%= article.technicalName %>">...</a><% } %></i>
-                                                                </div>
-
-                <div class="float-right continue">
-                  <a href="/article/<%= article.technicalName %>">Continue reading...</a>
-                </div>
-                <div class="clear"></div>
-              </div>
-
-              <div class="clear"></div>
-            </div>
+          <div class="float-right continue">
+            <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
           </div>
-          <% if (articleList.length != i + 1) { %>
-          <% } %>
-          <% } %>
         </div>
-        <div class="clear"></div>
+        <!-- !Article caption -->
       </div>
+
+      <div class="clear"></div>
     </div>
-    <!-- !Other articles -->
   </div>
+  <% } %>
+  <!-- !Featured article -->
 </div>
 <!-- !Articles -->
 

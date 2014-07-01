@@ -93,59 +93,75 @@
 }
 
 
-.article-list-small-title {
+
+/* Home */
+.home-article-list {
+}
+
+.home-article-list .featured {
+    padding: 0.4em;
+
+    color: rgb(32, 32, 32);
+}
+
+.home-article-list .featured .thumbnail {
+    box-sizing: border-box;
+
+    padding: 0.4em;
+
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+
+    z-index: -8;
+}
+
+.home-article-list .featured .title-author {
+    box-sizing: border-box;
+
     margin: 0;
-    padding: 1em 0.6em 0.5em 0.6em;
-}
-.article-list-small {
-    margin: 0;
-}
-.article-list-small .article {
-    margin-bottom: 1em;
-    padding: 0.8em 1em 0.2em 1em;
+    padding: 0.6em 1em;
 
-    box-shadow: 0 4px 2px -1px rgba(0, 0, 0, 0.2);
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 }
-.article-list-small .article:last-child {
-    margin-bottom: 0;
-
-    box-shadow: none;
-}
-
-.article-list-small .article .top-data {
-    margin-bottom: 0.8em;
-}
-.article-list-small .article .top-data.left {
-    margin-right: 0.8em;
-}
-.article-list-small .article .top-data.right {
-    margin-left: 0.8em;
-}
-
-.article-list-small .article .title {
-    margin-top: 0;
-}
-
-.article-list-small .article .top-data .article-thumbnail img {
-    max-width: 8em;
-}
-@media only screen and (max-width: 767px) {
-    .article-list-small .article .top-data .article-thumbnail img {
-        max-width: 5em;
+@media only screen and (min-width: 768px) {
+    .home-article-list .featured .title-author {
+        width: 110%;
+        margin-left: -10%;
     }
 }
 
-.article-list-small .article .title {
-    margin-bottom: 0;
-    padding: 0;
+.home-article-list .featured .title-author .title,
+.home-article-list .featured .title-author .author {
+    margin: 0;
 }
-.article-list-small .article .author {
-    margin-top: 0;
-    padding: 0;
 
-    color: rgba(32, 32, 32, 0.6);
+.home-article-list .featured .title-author .title a {
+    font-size: 120%;
+}
+
+.home-article-list .featured .title-author .author {
+    color: rgb(168, 168, 168);
+    font-size: 95%;
     text-align: right;
 }
+
+.home-article-list .featured .tags {
+    margin: 0.1em auto 0.1em 0.5em;
+}
+
+.home-article-list .featured .caption {
+    padding: 1em;
+    padding-bottom: 2em;
+
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+}
+.home-article-list .featured .caption .continue {
+    padding-top: 1.5em;
+}
+/* !Home */
+
 
 
 .article {
@@ -280,7 +296,7 @@
 }
 
 
-.article .tags {
+.tags {
     cursor: default;
 
     margin: 0.5em;
@@ -288,7 +304,7 @@
     font-size: 0.9em;
 }
 
-.article .tags .tag-group {
+.tags .tag-group {
     margin: 0.2em 0;
     margin-right: 1em;
 
@@ -301,23 +317,23 @@
 
     transition: color 200ms, background-color 200ms;
 }
-.article .tags .tag-group:hover {
+.tags .tag-group:hover {
     color: rgb(240, 240, 240);
     
     background-color: rgb(20, 50, 92);
 }
-.article .tags .tag-group a {
+.tags .tag-group a {
     display: inline-block;
 
     color: rgb(40, 40, 40);
 
     padding: 0.6em;
 }
-.article .tags .tag-group a:hover {
+.tags .tag-group a:hover {
     color: rgb(240, 240, 240);
 }
 
-.article .tags .tag {
+.tags .tag {
     margin: 0.2em 0;
     padding: 0;
     
@@ -326,7 +342,7 @@
 
     box-shadow: 0 0 4px rgb(0, 0, 0);
 }
-.article .tags .tag a {
+.tags .tag a {
     display: inline-block;
     
     color: rgb(240, 240, 240);
