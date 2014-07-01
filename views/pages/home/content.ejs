@@ -44,7 +44,7 @@
         <!-- Article tags -->
         <div class="inset tags">
           <ul class="unstyled flat">
-            <li class="tag-group"><a href="/search/<%= featuredArticle.tags.join('&nbsp;') %>"><span class="icon-tags hidden-hover"></span></a></li>
+            <li class="tag-group"><a href="/search/<%= featuredArticle.tags.join('%20') %>"><span class="icon-tags hidden-hover"></span></a></li>
             <% for (var i = 0 ; featuredArticle.tags.length > i ; ++i) { %>
             <li class="tag"><a href="/search/<%= featuredArticle.tags[i] %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= featuredArticle.tags[i] %></a></li>
             <% if (featuredArticle.tags.length != i + 1) { %>
