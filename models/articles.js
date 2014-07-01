@@ -43,12 +43,20 @@ var getFeatured = function (callback) {
     return exports.model.find({featured: true}).sort({lastUpdated: -1}).limit(1).exec(function(err, res) {
         if (err)
             return callback(err);
+
+        if (!res.length) // If there is no featured, we get the latest article
+            return getLatest(1, callback);
         return callback(err, res[0]);
     });
 };
 
 var getLatest = function (limit, callback) {
-    return exports.model.find({}).sort({lastUpdated: -1}).limit(limit).exec(callback);
+    return exports.model.find({}).sort({lastUpdated: -1}).limit(limit).exec(function(err, res) {
+        if (err)
+            return callback(err);
+
+        return callback(err, res[0]);
+    });
 };
 
 exports.getById = getById;
