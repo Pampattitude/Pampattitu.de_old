@@ -99,6 +99,8 @@
 }
 
 .home-article-list .featured {
+    position: relative;
+
     padding: 0.4em;
 
     color: rgb(32, 32, 32);
@@ -112,7 +114,7 @@
     background-color: rgb(240, 240, 240);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 
-    z-index: -8;
+    z-index: 1;
 }
 
 .home-article-list .featured .title-author {
@@ -123,6 +125,8 @@
 
     background-color: rgb(240, 240, 240);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+
+    z-index: 2;
 }
 @media only screen and (min-width: 768px) {
     .home-article-list .featured .title-author {
@@ -152,7 +156,6 @@
 
 .home-article-list .featured .caption {
     padding: 1em;
-    padding-bottom: 2em;
 
     background-color: rgb(240, 240, 240);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
@@ -248,10 +251,17 @@
     
     transition: padding 200ms, color 200ms, background-color 200ms;
 }
-.article .top-data:hover .article-thumbnail h3 {
-    padding-bottom: 1.2em;
+@media only screen and (min-width: 768px) {
+    .article .top-data:hover .article-thumbnail h3 {
+        padding-bottom: 1.2em;
 
-    background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+@media only screen and (max-width: 767px) {
+    .article .top-data .article-thumbnail h3 {
+        padding-bottom: 1.2em;
+    }
 }
 
 .article .top-data .article-thumbnail h4 {
@@ -275,8 +285,15 @@
     
     transition: padding 200ms, color 200ms, opacity 200ms;
 }
-.article .top-data:hover .article-thumbnail h4 {
-    opacity: 1;
+@media only screen and (min-width: 768px) {
+    .article .top-data:hover .article-thumbnail h4 {
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .article .top-data .article-thumbnail h4 {
+        opacity: 1;
+    }
 }
 .article .top-data .article-thumbnail h4 a {
     font-size: 1.1em;

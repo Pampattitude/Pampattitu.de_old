@@ -24,13 +24,13 @@
   <div class="featured">
     <div class="grid-12">
       <div class="cell-7 cell-mobile-12">
-        <a href="/article/<%= featuredArticle.technicalName %>">
-          <div class="thumbnail">
+        <div class="thumbnail">
+          <a href="/article/<%= featuredArticle.technicalName %>">
             <!-- Article image -->
             <img src="<%= featuredArticle.img %>" alt="" />
             <!-- !Article image -->
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
       
       <div class="cell-5 cell-mobile-12">
@@ -62,6 +62,7 @@
           <div class="float-right continue">
             <a href="/article/<%= featuredArticle.technicalName %>">Continue reading...</a>
           </div>
+          <div class="clear"></div>
         </div>
         <!-- !Article caption -->
       </div>
