@@ -42,7 +42,7 @@ var render_ = function(modules, req, res) {
     function(err) {
         if (err) {
             consoleLib.error(err);
-            return res.redirect('/404');
+            return res.redirect('/500');
         }
 
         req.session.previousPage = req.path;
