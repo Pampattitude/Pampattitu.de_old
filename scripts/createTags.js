@@ -5,7 +5,7 @@ var mongooseLib = require('mongoose');
 
 var consoleLib = require(__dirname + '/../lib/console');
 
-var databaseUri = 'mongodb://localhost/bmb-home';
+var databaseUri = 'mongodb://localhost/pmp-home';
 
 mongooseLib.connect(databaseUri);
 mongooseLib.connection.on('error', function (err) {
