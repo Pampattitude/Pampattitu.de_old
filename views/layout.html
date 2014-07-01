@@ -38,29 +38,23 @@
     <div id="pmp-page" class="page">
       <% include pages/button-menu %>
       <div id="pmp-content" class="page-content">
-        <div class="grid-12">
-          <!-- Content -->
-          <div class="cell-8 cell-mobile-12">
-            <!-- Alerts -->
-            <div class="alert-menu">
-              <% if ('undefined' !== typeof alerts) {
-	         for (var i = 0 ; alerts.length > i ; ++i) {
-              var alert = alerts[i]; %>
-              <div class="alert alert-<%= alert.type %>">
-	        <button type="button" class="btn btn-red close">&times;</button>
-	        <%= alert.content %>
-              </div>
-              <% }
-	         } %>
-            </div>
-            <!-- !Alerts -->
-
-	    <% if ('undefined' !== typeof contentPath) { %>
-	    <% include contentPath %>
-	    <% } %>
+        <!-- Content -->
+        <!-- Alerts -->
+        <div class="alert-menu">
+          <% if ('undefined' !== typeof alerts) {
+	     for (var i = 0 ; alerts.length > i ; ++i) {
+          var alert = alerts[i]; %>
+          <div class="alert alert-<%= alert.type %>">
+	    <button type="button" class="btn btn-red close">&times;</button>
+	    <%= alert.content %>
           </div>
+          <% }
+	     } %>
+          <!-- !Alerts -->
 
-          <div class="clear"></div>
+	  <% if ('undefined' !== typeof contentPath) { %>
+	  <% include contentPath %>
+	  <% } %>
         </div>
       </div>
       
