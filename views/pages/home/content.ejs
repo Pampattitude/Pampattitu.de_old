@@ -62,42 +62,47 @@
     <div class="outset-box no-padding">
       <h2 class="article-list-small-title">Newest articles</h2>
       <div class="article-list-small">
-        <% for (var i = 0 ; articleList.length > i ; ++i) {
-        var article = articleList[i]; %>
-        <div class="article">
-          <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
-            <div class="top-data <%= (0 == i % 2 ? 'left' : 'right') %>">
-              <div class="article-thumbnail">
-                <!-- Article image -->
-                <a href="/article/<%= article.technicalName %>">
-                  <img src="<%= article.img %>" alt="" />
-                </a>
-                <!-- !Article image -->
+        <div class="grid-12">
+          <% for (var i = 0 ; articleList.length > i ; ++i) {
+          var article = articleList[i]; %>
+          <div class="cell-6 cell-mobile-12">
+            <div class="article">
+              <div class="float-<%= (0 == i % 2 ? 'left' : 'right') %>">
+                <div class="top-data <%= (0 == i % 2 ? 'left' : 'right') %>">
+                  <div class="article-thumbnail">
+                    <!-- Article image -->
+                    <a href="/article/<%= article.technicalName %>">
+                      <img src="<%= article.img %>" alt="" />
+                    </a>
+                    <!-- !Article image -->
+                  </div>
+                </div>
               </div>
+
+              <div class="cell-2">
+                <!-- Article title -->
+                <h3 class="title"><%= article.title %></h3>
+                <h4 class="author"><% if (!/pampa/i.test(article.author)) { %>by <a href="/user/<%= article.author %>"><%= article.author %></a>, <% } %><%- formatDate(article.lastUpdated) %></h4>
+                <!-- !Article title -->
+
+                <div class="caption">
+                  <i><%= article.caption.substring(0, 192) %><% if (192 <= article.caption.length) { %><a href="/article/<%= article.technicalName %>">...</a><% } %></i>
+                                                                </div>
+
+                <div class="float-right continue">
+                  <a href="/article/<%= article.technicalName %>">Continue reading...</a>
+                </div>
+                <div class="clear"></div>
+              </div>
+
+              <div class="clear"></div>
             </div>
           </div>
-
-          <div class="cell-2">
-            <!-- Article title -->
-            <h3 class="title"><%= article.title %></h3>
-            <h4 class="author"><% if (!/pampa/i.test(article.author)) { %>by <a href="/user/<%= article.author %>"><%= article.author %></a>, <% } %><%- formatDate(article.lastUpdated) %></h4>
-            <!-- !Article title -->
-
-            <div class="caption">
-              <i><%= article.caption.substring(0, 192) %><% if (192 <= article.caption.length) { %><a href="/article/<%= article.technicalName %>">...</a><% } %></i>
-            </div>
-
-            <div class="float-right continue">
-              <a href="/article/<%= article.technicalName %>">Continue reading...</a>
-            </div>
-            <div class="clear"></div>
-          </div>
-
-          <div class="clear"></div>
+          <% if (articleList.length != i + 1) { %>
+          <% } %>
+          <% } %>
         </div>
-        <% if (articleList.length != i + 1) { %>
-        <% } %>
-        <% } %>
+        <div class="clear"></div>
       </div>
     </div>
     <!-- !Other articles -->
