@@ -1,9 +1,10 @@
 {
-  "name": "Qamqattitu.be",
+  "name": "beta",
   "version": "0.0.0",
-  "description": "Qamqattitu.be =============",
+  "description": "Pampattitu.de =============",
   "main": "app.js",
   "dependencies": {
+    "JSON": "~1.0.0",
     "async": "~0.2.10",
     "cheerio": "~0.13.1",
     "cluster": "~0.7.7",
@@ -13,9 +14,9 @@
     "express": "~3.4.8",
     "express-debug": "~1.0.3",
     "express-dot": "~0.1.0",
-    "JSON": "~1.0.0",
     "memory-cache": "~0.0.5",
     "mongoose": "~3.8.12",
+    "node-sass": "~0.9.3",
     "npm": "~1.3.26",
     "winston": "~0.7.3"
   },
@@ -25,13 +26,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://Pampattitude@github.com/Pampattitude/Qamqattitu.be.git"
+    "url": "https://Pampattitude@github.com/Pampattitude/Pampattitu.de.git"
   },
   "author": "",
-  "license": "BSD",
-  "readmeFilename": "README.md",
-  "gitHead": "dffd1c2c44dd958e2ef8e866fe2bf667c14b6810",
+  "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/Pampattitude/Qamqattitu.be/issues"
+    "url": "https://github.com/Pampattitude/Pampattitu.de/issues"
   }
 }

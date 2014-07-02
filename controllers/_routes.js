@@ -1,6 +1,7 @@
 'use strict';
 
 var pathLib = require('path');
+var sassLib = require('node-sass');
 
 var consoleLib = require(__dirname + '/../lib/console');
 var constantsLib = require(__dirname + '/../lib/constants');
@@ -10,12 +11,30 @@ var init_ = function (serverApp) {
     serverApp.set('views', constantsLib.viewPath);
     serverApp.engine('html', require('ejs').renderFile);
 
-    var simpleGet = function (req, res, file) {
+    var simpleGet = function(req, res, file) {
         if (!res.locals)
             res.locals = {};
         res.locals.inlineStyles = [];
 
         return res.sendfile(constantsLib.viewPath + '/' + file);
+    };
+    var scssGet = function(req, res, file) {
+        if (!res.locals)
+            res.locals = {};
+        res.locals.inlineStyles = [];
+
+        return sassLib.render({
+            file: constantsLib.viewPath + '/' + file,
+            outputStyle: 'nested',
+            success: function(css) {
+                res.set('Content-Type', 'text/css');
+                res.send(css);
+            },
+            error: function(err) {
+                consoleLib.error(err);
+                res.writeHead(404, {});
+            },
+        });
     };
 
     var pagesEngine = require(__dirname + '/_pages');
@@ -48,10 +67,7 @@ var init_ = function (serverApp) {
 
     serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
 
-    serverApp.get('/css/icomoon', function (req, res) { return simpleGet(req, res, 'css/icomoon.css'); });
-    serverApp.get('/css/pmp', function (req, res) { return simpleGet(req, res, 'css/pmp.css'); });
-    serverApp.get('/css/pmp.common', function (req, res) { return simpleGet(req, res, 'css/pmp.common.css'); });
-    serverApp.get('/css/pmp.grid', function (req, res) { return simpleGet(req, res, 'css/pmp.grid.css'); });
+    serverApp.get('/css/:file', function (req, res) { return scssGet(req, res, 'css/' + req.params.file + '.scss'); });
 
     serverApp.get('/js/:file', function (req, res) { return simpleGet(req, res, 'js/' + req.params.file + '.js'); });
 
@@ -63,7 +79,6 @@ var init_ = function (serverApp) {
     serverApp.get('/humans.txt', function (req, res) { return simpleGet(req, res, 'humans.txt'); });
     serverApp.get('/robots', function (req, res) { return res.redirect('/robots.txt'); });
     serverApp.get('/robots.txt', function (req, res) { return simpleGet(req, res, 'robots.txt'); });
-
 
     serverApp.get('/js/*', function (req, res) { res.writeHead(404, {}); return res.end(); });
     serverApp.get('/css/*', function (req, res) { res.writeHead(404, {}); return res.end(); });
