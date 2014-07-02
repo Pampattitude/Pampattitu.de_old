@@ -28,3 +28,7 @@ Back-office
     * edition
   * Database management
   * Statistics
+
+Security
+--------
+  * Security headers
