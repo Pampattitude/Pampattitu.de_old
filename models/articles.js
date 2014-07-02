@@ -17,11 +17,13 @@ var schema = new mongooseLib.Schema({
 
     views: {type: Number, default: 0, index: true},
 
-    lastUpdated: {type: Date, default: Date.now, index: true},
     history: {
         type: [Date],
     },
-    featured: {type: Boolean, default: false, sparse: true}
+    featured: {type: Boolean, default: false, sparse: true},
+
+    created: {type: Date, default: Date.now, index: true},
+    lastUpdated: {type: Date, default: Date.now, index: true},
 }, schemaOptions);
 
 var getById = function (id, callback) {
