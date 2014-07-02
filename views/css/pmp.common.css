@@ -75,6 +75,9 @@ body {
 
 
 a {
+    display: inline-block;
+    box-sizing: border-box;
+
     color: rgb(80, 152, 80);
     text-decoration: none;
     
@@ -98,11 +101,21 @@ q {
 }
 
 
+.no-width {
+    width: 0% !important;
+    display: none;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
 .btn {
     display: inline-block;
     box-sizing: border-box;
     cursor: pointer;
 
+    margin: 0;
     padding: .2em .4em;
 
     color: rgb(40, 40, 40);
@@ -138,14 +151,14 @@ a.btn {
 .btn.btn-blue,
 .btn.btn-blue:visited {
     color: #FFF;
-    background-color: rgb(64, 104, 152);
-    border-color: rgb(40, 64, 112);
+    background-color: rgb(64, 104, 152) !important;
+    border-color: rgb(40, 64, 112) !important;
 }
 .btn.btn-blue:active,
 .btn.btn-blue:hover,
 .btn.btn-blue:focus {
-    background-color: rgb(40, 64, 112);
-    border-color: rgb(24, 40, 96);
+    background-color: rgb(40, 64, 112) !important;
+    border-color: rgb(24, 40, 96) !important;
 
     box-shadow: inset -1px 0 0 rgb(24, 40, 96),
     inset 1px 0 0 rgb(24, 40, 96),
