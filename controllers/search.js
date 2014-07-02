@@ -22,7 +22,7 @@ var controller_ = function() {
         var pointsForTag =            15;
         var pointsForView =           0.05;
 
-        var data = (req.params.data ? req.params.data.split(' ') : []);
+        var data = (req.params.data ? utilsLib.trim(req.params.data).split(' ') : []);
         var page = req.params.page;
 
         var finalArticleList = [];
@@ -97,7 +97,7 @@ var controller_ = function() {
     };
 
     this.post = function(req, res, postCallback) {
-        sessionLib.setRedirection(req, '/search/' + (req.body.data || ''));
+        sessionLib.setRedirection(req, '/search/' + (utilsLib.trim(req.body.data.join(' ')) || ''));
         return postCallback();
     };
 };
