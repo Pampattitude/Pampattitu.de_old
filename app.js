@@ -117,5 +117,9 @@ else {
         app.enable('jsonp callback');
     });
 
-    var server = app.listen(7337);
+    var server = null;
+    if ('debug' == process.env.NODE_ENV)
+        server = app.listen(8337);
+    else
+        server = app.listen(7337);
 }
