@@ -96,7 +96,7 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
 </p>";
             elem.author = 'Pampa';
             elem.lastUpdated = new Date().toISOString();
-            elem.views = Math.random() * 2000;
+            elem.views = Math.floor(Math.random() * 2000);
 
             elem.save(function(err) {
                 if (err)
