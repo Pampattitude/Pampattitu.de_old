@@ -27,7 +27,6 @@ var init_ = function (serverApp) {
             file: constantsLib.viewPath + '/' + file,
             outputStyle: 'compressed',
             success: function(css) {
-                hasFinished = true;
                 res.set('Content-Type', 'text/css');
                 return res.send(css);
             },
