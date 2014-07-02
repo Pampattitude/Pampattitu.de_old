@@ -23,9 +23,7 @@ var init_ = function (serverApp) {
             res.locals = {};
         res.locals.inlineStyles = [];
 
-        var maxTime = 2500; // ms
-        var hasFinished = false;
-        sassLib.render({
+        return sassLib.render({
             file: constantsLib.viewPath + '/' + file,
             outputStyle: 'compressed',
             success: function(css) {
@@ -35,17 +33,9 @@ var init_ = function (serverApp) {
             },
             error: function(err) {
                 consoleLib.error(err);
-                return res.writeHead(500, {});
+                return res.send(500, {});
             },
         });
-
-        return setTimeout(function() {
-            console.log('a');
-            if (hasFinished)
-                return ;
-
-            return res.send(500);
-        }, maxTime);
     };
 
     var pagesEngine = require(__dirname + '/_pages');
