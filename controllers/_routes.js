@@ -23,18 +23,29 @@ var init_ = function (serverApp) {
             res.locals = {};
         res.locals.inlineStyles = [];
 
-        return sassLib.render({
+        var maxTime = 2500; // ms
+        var hasFinished = false;
+        sassLib.render({
             file: constantsLib.viewPath + '/' + file,
-            outputStyle: 'nested',
+            outputStyle: 'compressed',
             success: function(css) {
+                hasFinished = true;
                 res.set('Content-Type', 'text/css');
-                res.send(css);
+                return res.send(css);
             },
             error: function(err) {
                 consoleLib.error(err);
-                res.writeHead(404, {});
+                return res.writeHead(500, {});
             },
         });
+
+        return setTimeout(function() {
+            console.log('a');
+            if (hasFinished)
+                return ;
+
+            return res.send(500);
+        }, maxTime);
     };
 
     var pagesEngine = require(__dirname + '/_pages');
