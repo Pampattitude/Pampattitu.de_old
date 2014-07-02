@@ -8,7 +8,7 @@ Config
 
 Web
 ---
-  * Use SCSS
+  * Use SCSS *DONE*
   * Search form in button menu
     * desktop
     * mobile
