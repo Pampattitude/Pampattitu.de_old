@@ -23,9 +23,15 @@ var init_ = function (serverApp) {
             res.locals = {};
         res.locals.inlineStyles = [];
 
+        var paths = {
+            file:       constantsLib.viewPath + '/' + file,
+            includes:   [pathLib.resolve(__dirname + '/../views/css/')],
+        };
+
         return sassLib.render({
-            file: constantsLib.viewPath + '/' + file,
+            file: paths.file,
             outputStyle: 'compressed',
+            includePaths: paths.includes,
             success: function(css) {
                 res.set('Content-Type', 'text/css');
                 return res.send(css);
