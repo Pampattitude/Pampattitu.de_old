@@ -94,6 +94,7 @@ var init_ = function (serverApp) {
     serverApp.get('/403', function (req, res) { return pagesEngine.render({content: errorController.render403}, req, res); });
     serverApp.get('/404', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
     serverApp.get('/500', function (req, res) { return pagesEngine.render({content: errorController.render500}, req, res); });
+    serverApp.get('/501', function (req, res) { return pagesEngine.render({content: errorController.render501}, req, res); });
 
     serverApp.get('*', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });
     serverApp.post('*', function (req, res) { return pagesEngine.render({content: errorController.render404}, req, res); });

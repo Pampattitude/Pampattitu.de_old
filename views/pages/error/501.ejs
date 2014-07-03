@@ -1,0 +1,27 @@
+<h2 class="inset content-title"><span class="icon-spam"></span>&nbsp;&nbsp;Error</h2>
+
+<div class="outset giant">
+  <div class="outset-box">
+    <h1><span class="label label-boxxy label-round label-greyer">501</span> <span class="text-greyer">Not Implemented</span></h1>
+    <p>
+      This page is not yet available!
+    </p>
+    <p>
+      The workflow on this website is pretty simple: every time I work on a new feature, the <a href="http://beta.pampattitu.de">beta stream</a> is updated regularly. When the feature is fully implemented, the <a href="http://pampattitu.de">main stream</a> is updated and you get to use it!
+    </p>
+    <p>
+      <% var prevPageLink = '/home';
+         if ('undefined' !== typeof previousPage) {
+         prevPageLink = previousPage;
+         } %>
+      Since you got to this page, you probably tried to use a feature or access a web page that has not yet been finished. Until it is, you can go back to the <a href="<%= prevPageLink %>">previous page</a> and try out the rest of the website, or send a <a href="/report/">report</a> to ensure I am aware of it and make it be developed faster!
+    </p>
+    <p>
+      <small>In any case, please <a href="/report/">report it</a> so I can add it to my schedule!</small>
+    </p>
+  </div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
