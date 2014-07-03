@@ -1,3 +1,5 @@
+@import 'pmp.define';
+
 @font-face {
     font-family: 'TikalSans';
     src: url('/fonts/TikalSans-Medium-webfont.eot');
@@ -33,20 +35,19 @@ html {
     position: relative;
 }
 *::selection {
-    color: rgb(240, 240, 240);
-    background: rgb(80, 152, 80);
+    color: $white;
+    background: $green;
 }
 
 
 body {
     position: relative;
-    /*overflow-x: hidden;*/
 
     margin: 0;
 
-    color: rgb(240, 240, 240);
+    color: $white;
 
-    background-color: rgb(32, 32, 32);
+    background-color: $black;
 }
 
 
@@ -78,13 +79,13 @@ a {
     display: inline-block;
     box-sizing: border-box;
 
-    color: rgb(80, 152, 80);
+    color: $green;
     text-decoration: none;
     
     transition: color 200ms;
 }
 a:hover {
-    color: rgb(112, 182, 112);
+    color: $green-hover;
 }
 
 input,
@@ -118,12 +119,12 @@ q {
     margin: 0;
     padding: .2em .4em;
 
-    color: rgb(40, 40, 40);
+    color: $black;
     font-size: 1em;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     border: 0;
-    border-bottom: 3px solid rgb(192, 192, 192);
+    border-bottom: 3px solid $white-border;
 
     box-shadow: inset -1px 0 0 transparent,
     inset 1px 0 0 transparent,
@@ -132,7 +133,7 @@ q {
     transition: color 200ms, background-color 200ms, border-color 200ms, box-shadow 200ms;
 }
 .btn:hover {
-    background: rgb(255, 255, 255);
+    background: $white;
 
     box-shadow: inset -1px 0 0 rgb(208, 208, 208),
     inset 1px 0 0 rgb(208, 208, 208),
@@ -150,139 +151,139 @@ a.btn {
 
 .btn.btn-blue,
 .btn.btn-blue:visited {
-    color: #FFF;
-    background-color: rgb(64, 104, 152) !important;
-    border-color: rgb(40, 64, 112) !important;
+    color: $white;
+    background-color: $blue !important;
+    border-color: $blue-border !important;
 }
 .btn.btn-blue:active,
 .btn.btn-blue:hover,
 .btn.btn-blue:focus {
-    background-color: rgb(40, 64, 112) !important;
-    border-color: rgb(24, 40, 96) !important;
+    background-color: $blue-focus !important;
+    border-color: $blue-focus-border !important;
 
-    box-shadow: inset -1px 0 0 rgb(24, 40, 96),
-    inset 1px 0 0 rgb(24, 40, 96),
-    inset 0 1px 0 rgb(24, 40, 96);
+    box-shadow: inset -1px 0 0 $blue-focus-border,
+    inset 1px 0 0 $blue-focus-border,
+    inset 0 1px 0 $blue-focus-border;
 }
 
 
 .btn.btn-facebook,
 .btn.btn-facebook:visited {
-    color: #FFF;
-    background-color: #284486;
-    border-color: #0A2668;
+    color: $white;
+    background-color: $facebook;
+    border-color: $facebook-border;
 }
 .btn.btn-facebook:active,
 .btn.btn-facebook:hover,
 .btn.btn-facebook:focus {
-    background-color: #0A2668;
-    border-color: #051333;
+    background-color: $facebook-focus;
+    border-color: $facebook-focus-border;
 
-    box-shadow: inset -1px 0 0 #051333,
-    inset 1px 0 0 #051333,
-    inset 0 1px 0 #051333;
+    box-shadow: inset -1px 0 0 $facebook-focus-border,
+    inset 1px 0 0 $facebook-focus-border,
+    inset 0 1px 0 $facebook-focus-border;
 }
 
 .btn.btn-twitter,
 .btn.btn-twitter:visited {
-    color: #FFF;
-    background-color: #00ACED;
-    border-color: #008ECF;
+    color: $white;
+    background-color: $twitter;
+    border-color: $twitter-border;
 }
 .btn.btn-twitter:active,
 .btn.btn-twitter:hover,
 .btn.btn-twitter:focus {
-    background-color: #008ECF;
-    border-color: #006999;
+    background-color: $twitter-focus;
+    border-color: $twitter-focus-border;
 
-    box-shadow: inset -1px 0 0 #006999,
-    inset 1px 0 0 #006999,
-    inset 0 1px 0 #006999;
+    box-shadow: inset -1px 0 0 $twitter-focus-border,
+    inset 1px 0 0 $twitter-focus-border,
+    inset 0 1px 0 $twitter-focus-border;
 }
 
 .btn.btn-rss,
 .btn.btn-rss:visited {
-    color: #FFF;
-    background-color: #FF9900;
-    border-color: #E17B00;
+    color: $white;
+    background-color: $rss;
+    border-color: $rss-border;
 }
 .btn.btn-rss:active,
 .btn.btn-rss:hover,
 .btn.btn-rss:focus {
-    background-color: #E17B00;
-    border-color: #B36200;
+    background-color: $rss-focus;
+    border-color: $rss-focus-border;
 
-    box-shadow: inset -1px 0 0 #B36200,
-    inset 1px 0 0 #B36200,
-    inset 0 1px 0 #B36200;
+    box-shadow: inset -1px 0 0 $rss-focus-border,
+    inset 1px 0 0 $rss-focus-border,
+    inset 0 1px 0 $rss-focus-border;
 }
 
 .btn.btn-soundcloud,
 .btn.btn-soundcloud:visited {
-    color: #FFF;
-    background-color: #FE4600;
-    border-color: #E02800;
+    color: $white;
+    background-color: $soundcloud;
+    border-color: $soundcloud-border;
 }
 .btn.btn-soundcloud:active,
 .btn.btn-soundcloud:hover,
 .btn.btn-soundcloud:focus {
-    background-color: #E02800;
-    border-color: #9E1D00;
+    background-color: $soundcloud-focus;
+    border-color: $soundcloud-focus-border;
 
-    box-shadow: inset -1px 0 0 #9E1D00,
-    inset 1px 0 0 #9E1D00,
-    inset 0 1px 0 #9E1D00;
+    box-shadow: inset -1px 0 0 $soundcloud-focus-border,
+    inset 1px 0 0 $soundcloud-focus-border,
+    inset 0 1px 0 $soundcloud-focus-border;
 }
 
 .btn.btn-linkedin,
 .btn.btn-linkedin:visited {
-    color: #FFF;
-    background-color: #0075BA;
-    border-color: #005282;
+    color: $white;
+    background-color: $linkedin;
+    border-color: $linkedin-border;
 }
 .btn.btn-linkedin:active,
 .btn.btn-linkedin:hover,
 .btn.btn-linkedin:focus {
-    background-color: #005282;
-    border-color: #003452;
+    background-color: $linkedin-focus;
+    border-color: $linkedin-focus-border;
 
-    box-shadow: inset -1px 0 0 #003452,
-    inset 1px 0 0 #003452,
-    inset 0 1px 0 #003452;
+    box-shadow: inset -1px 0 0 $linkedin-focus-border,
+    inset 1px 0 0 $linkedin-focus-border,
+    inset 0 1px 0 $linkedin-focus-border;
 }
 
 .btn.btn-reddit,
 .btn.btn-reddit:visited {
-    color: #FFF;
-    background-color: #6BC1FF;
-    border-color: #5BA4D8;
+    color: $white;
+    background-color: $reddit;
+    border-color: $reddit-border;
 }
 .btn.btn-reddit:active,
 .btn.btn-reddit:hover,
 .btn.btn-reddit:focus {
-    background-color: #5BA4D8;
-    border-color: #2771A5;
+    background-color: $reddit-focus;
+    border-color: $reddit-focus-border;
 
-    box-shadow: inset -1px 0 0 #2771A5,
-    inset 1px 0 0 #2771A5,
-    inset 0 1px 0 #2771A5;
+    box-shadow: inset -1px 0 0 $reddit-focus-border,
+    inset 1px 0 0 $reddit-focus-border,
+    inset 0 1px 0 $reddit-focus-border;
 }
 
 .btn.btn-mail,
 .btn.btn-mail:visited {
-    color: #FFF;
-    background-color: #D90708;
-    border-color: #BC0000;
+    color: $white;
+    background-color: $mail;
+    border-color: $mail-border;
 }
 .btn.btn-mail:active,
 .btn.btn-mail:hover,
 .btn.btn-mail:focus {
-    background-color: #BC0000;
-    border-color: #8A0000;
+    background-color: $mail-focus;
+    border-color: $mail-focus-border;
 
-    box-shadow: inset -1px 0 0 #8A0000,
-    inset 1px 0 0 #8A0000,
-    inset 0 1px 0 #8A0000;
+    box-shadow: inset -1px 0 0 $mail-focus-border,
+    inset 1px 0 0 $mail-focus-border,
+    inset 0 1px 0 $mail-focus-border;
 }
 
 
@@ -297,7 +298,7 @@ a.btn {
     color: rgb(40, 40, 40);
     font-size: 1em;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     border: none;
     border-bottom: 3px solid rgb(192, 192, 192);
 
@@ -454,7 +455,7 @@ code {
 
     padding: 0.2em 0.5em;
 
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 0.8em;
     line-height: 1.2em;
 
@@ -508,7 +509,7 @@ code.js .string {
     
     padding: 0.4em 0.6em;
     
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 0.9em;
     
     background-color: rgb(40, 104, 40);
@@ -524,7 +525,7 @@ code.js .string {
     
     padding: 0 0.3em;
     
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 0.9em;
     
     background-color: rgb(120, 120, 120);
@@ -565,7 +566,7 @@ code.js .string {
     
     padding: 0.4em;
     
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 4px rgb(0, 0, 0);
 }
 
@@ -600,7 +601,7 @@ code.js .string {
 
 /* Website specific */
 .inset {
-    color: rgb(240, 240, 240);
+    color: $white;
 
     background-color: transparent;
 }
@@ -610,7 +611,7 @@ code.js .string {
 
     color: rgb(40, 40, 40);
     
-    background-color: rgb(232, 232, 232);
+    background-color: $light-light-grey;
     box-shadow: 0px 0px 4px 1px black;
 }
 @media only screen and (max-width: 767px) {
@@ -623,7 +624,7 @@ code.js .string {
     
     color: rgb(40, 40, 40);
     
-    background-color: rgb(255, 255, 255);
+    background-color: $whiter;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
 }
 .outset .outset-box.no-padding {

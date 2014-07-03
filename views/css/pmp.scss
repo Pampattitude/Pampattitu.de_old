@@ -1,3 +1,5 @@
+@import 'pmp.define';
+
 .page {
     min-width: 300px;
     width: 100%;
@@ -36,15 +38,15 @@
     border-bottom-color: rgb(192, 192, 192);
 }
 .button-menu .btn.menu-btn:hover {
-    color: rgb(255, 255, 255);
+    color: $white;
 
-    background-color: rgb(80, 152, 80);
+    background-color: $green;
     border-bottom-width: 5px;
-    border-bottom-color: rgb(40, 104, 40);
+    border-bottom-color: $green-border;
 
-    box-shadow: inset -1px 0 0 rgb(40, 104, 40),
-    inset 1px 0 0 rgb(40, 104, 40),
-    inset 0 1px 0 rgb(40, 104, 40);
+    box-shadow: inset -1px 0 0 $green-border,
+    inset 1px 0 0 $green-border,
+    inset 0 1px 0 $green-border;
 }
 
 .button-menu .search {
@@ -87,7 +89,7 @@
     font-size: 1.2em;
     font-weight: bold;
 
-    color: #FFF;
+    color: $white;
 
     border-width: 5px;
 }
@@ -107,13 +109,13 @@
     padding: 0.2em;
 }
 .alert-menu .alert.alert-danger {
-    background-color: rgb(192, 84, 84);
+    background-color: $alert-danger;
 }
 .alert-menu .alert.alert-warning {
-    background-color: rgb(216, 128, 64);
+    background-color: $alert-warning;
 }
 .alert-menu .alert.alert-success {
-    background-color: rgb(84, 172, 84);
+    background-color: $alert-success;
 }
 
 
@@ -126,17 +128,17 @@
     margin: 0;
     padding: 0.5em 0.8em;
 
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 1.8em;
-    text-shadow: 0 0 6px rgb(0, 0, 0);
+    text-shadow: 0 0 6px $blacker;
 }
 
 .page-content .content-data {
     padding: 1.5em;
 
-    color: rgb(40, 40, 40);
+    color: $black;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
 }
 
 
@@ -145,7 +147,7 @@
 .home-article-list .featured {
     position: relative;
 
-    color: rgb(32, 32, 32);
+    color: $black;
 }
 
 .home-article-list .featured .thumbnail {
@@ -153,7 +155,7 @@
 
     padding: 0.4em;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 
     z-index: 1;
@@ -165,7 +167,7 @@
     margin: 0;
     padding: 0.6em 1em;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 
     z-index: 2;
@@ -197,7 +199,7 @@
 }
 
 .home-article-list .featured .caption {
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -240,9 +242,9 @@
     
     padding: 0.4em;
 
-    background-color: rgb(255, 255, 255);
+    background-color: $whiter;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 4px 1px black;
+    box-shadow: 0px 0px 4px 1px $black;
     /* -moz-box-sizing: border-box; */
     box-sizing: border-box;
 }
@@ -301,9 +303,9 @@
     margin: 0;
     padding: 0.5em;
     
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 1.6em;
-    text-shadow: 0 0 4px rgb(0, 0, 0);
+    text-shadow: 0 0 4px $blacker;
     
     background-color: rgba(0, 0, 0, 0.8);
     /* -moz-box-sizing: border-box; */
@@ -395,19 +397,19 @@
     transition: color 200ms, background-color 200ms;
 }
 .tags .tag-group:hover {
-    color: rgb(240, 240, 240);
+    color: $white;
     
     background-color: rgb(20, 50, 92);
 }
 .tags .tag-group a {
     display: inline-block;
 
-    color: rgb(40, 40, 40);
+    color: $black;
 
     padding: 0.6em;
 }
 .tags .tag-group a:hover {
-    color: rgb(240, 240, 240);
+    color: $white;
 }
 
 .tags .tag {
@@ -422,7 +424,7 @@
 .tags .tag a {
     display: inline-block;
     
-    color: rgb(240, 240, 240);
+    color: $white;
 
     padding: 0.4em;
 }
@@ -446,7 +448,7 @@
 
     padding: 0.1em 0.08em;
     
-    color: rgb(240, 240, 240);
+    color: $white;
     font-size: 1.8em;
     font-weight: bold;
     font-style: normal;
@@ -564,13 +566,13 @@
     
     text-align: center;
     
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 4px rgb(0, 0, 0);
     
     transition: background-color 200ms;
 }
 .banner:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: $whiter;
 }
 
 
@@ -583,7 +585,7 @@
 
     font-size: 0.9em;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 4px rgb(0, 0, 0);
     box-sizing: border-box;
     
@@ -616,10 +618,10 @@
 
     padding: 0.4em 0.6em 0.4em 0.6em;
 
-    color: rgb(240, 240, 240);
+    color: $white;
 }
 .site-menu h2 a:hover {
-    color: rgb(255, 255, 255);
+    color: $whiter;
 }
 
 .site-menu ul {
@@ -659,7 +661,7 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    background-color: rgb(32, 32, 32);
+    background-color: $black;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.8);
 
     /* -webkit-transition: -webkit-transform 200ms ease-in-out; */ /* Changed here */ 
@@ -699,14 +701,14 @@
 
     padding: 0.3em 0.5em;
 
-    color: rgb(240, 240, 240);
+    color: $white;
     text-shadow: 0 0 4px rgb(0, 0, 0);
     
     transition: text-shadow 200ms;
 }
 .left-menu .user-box h3 a:hover,
 .left-menu .user-box h3 a:active {
-    color: rgb(255, 255, 255);
+    color: $whiter;
     text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .left-menu .content a.btn {
@@ -772,11 +774,11 @@
     margin: 0 auto;
     padding: 0.8em 1.5em;
 
-    color: rgb(40, 40, 40);
+    color: $black;
     font-size: 1em;
     text-align: center;
 
-    background-color: rgb(240, 240, 240);
+    background-color: $white;
     box-shadow: 0 0 12px -2px rgba(0, 0, 0, 0.8);
 }
 .footer p {
