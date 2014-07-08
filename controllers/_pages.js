@@ -23,6 +23,10 @@ var render_ = function(modules, req, res) {
         req.session.previousFormData = [];
     }
 
+    // Add default site menu data
+    if (!modules.buttonMenu)
+        res.locals.buttonMenu = 'pages/button-menu';
+
     res.locals.inlineScripts.push('/js/pmp.common.alert');
 
     return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
