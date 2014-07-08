@@ -17,8 +17,7 @@ var databaseUri = 'mongodb://localhost/pmp-home';
 var consoleLib = require(__dirname + '/lib/console');
 
 if (clusterLib.isMaster) {
-    var cluserPerCpu = 1;
-    var clusterCount = parseInt(require('os').cpus().length * cluserPerCpu) || 1;
+    var clusterCount = 1; // Single cluster count
 
     clusterLib.on('fork', function(worker) {
         consoleLib.info('Worker ' + worker.id + ' created');
