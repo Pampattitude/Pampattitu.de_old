@@ -10,14 +10,16 @@ Web
 ---
   * Use SCSS *DONE*
   * Search form in button menu
-    * desktop
-    * mobile
+    * desktop *DONE*
+    * mobile *IN BETA, sucks*
+  * Other articles in home page *IN BETA, still sucks*
   * Article list
   * Search page
   * Flash news
   * Comments
   * Search (add error recognition algorithm)
   * Statistics
+  * RSS feed
 
 Back-office
 -----------
