@@ -26,7 +26,7 @@ var controller_ = function() {
                 if (res.locals.featuredArticle)
                     findOpts._id = {$ne: res.locals.featuredArticle.id};
 
-                return Article.find(findOpts).sort({lastUpdated: -1}).limit(5).exec(function(err, articles) {
+                return Article.find(findOpts).sort({lastUpdated: -1}).limit(4).exec(function(err, articles) {
                     if (err)
                         return serieCallback(err);
 
@@ -35,10 +35,6 @@ var controller_ = function() {
                         var article = articles[i];
                         if (true === article.featured)
                             ++featuredCount;
-                    }
-
-                    if (1 === (articles.length - featuredCount) % 2) {
-                        articles.pop();
                     }
 
                     res.locals.articleList = articles;
