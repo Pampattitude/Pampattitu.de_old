@@ -6,11 +6,14 @@ var mongooseLib = require('mongoose');
 var consoleLib = require(__dirname + '/../../lib/console');
 var utilsLib = require(__dirname + '/../../lib/utils');
 
+var commonFront = require(__dirname + '/common');
+
 var controller_ = function() {
     var self = this;
 
     this.render_ = function(req, res, errorCode, renderCallback) {
-        // res.locals.inlineStyles.push('error');
+        commonFront.setCommonFields(res);
+
         res.locals.contentPath = 'pages/error/' + errorCode;
 
         return renderCallback();

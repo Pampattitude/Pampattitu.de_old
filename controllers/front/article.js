@@ -7,8 +7,12 @@ var consoleLib = require(__dirname + '/../../lib/console');
 var sessionLib = require(__dirname + '/../../lib/session');
 var utilsLib = require(__dirname + '/../../lib/utils');
 
+var commonFront = require(__dirname + '/common');
+
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
+        commonFront.setCommonFields(res);
+
         var Article = mongooseLib.model('Article');
         var Comment = mongooseLib.model('Comment');
         var articlesModel = require(__dirname + '/../../models/articles');
@@ -44,6 +48,8 @@ var controller_ = function() {
     };
 
     this.renderList = function(req, res, renderCallback) {
+        commonFront.setCommonFields(res);
+
         var Article = mongooseLib.model('Article');
         var articlesModel = require(__dirname + '/../../models/articles');
 
@@ -67,6 +73,8 @@ var controller_ = function() {
     };
 
     this.renderMagic = function(req, res, renderCallback) {
+        commonFront.setCommonFields(res);
+
         var Article = mongooseLib.model('Article');
         var articlesModel = require(__dirname + '/../../models/articles');
 
@@ -81,6 +89,8 @@ var controller_ = function() {
     };
 
     this.renderEdit = function(req, res, renderCallback) {
+        commonFront.setCommonFields(res);
+
         var Article = mongooseLib.model('Article');
         var articlesModel = require(__dirname + '/../../models/articles');
 

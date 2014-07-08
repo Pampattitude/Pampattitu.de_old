@@ -7,8 +7,12 @@ var consoleLib = require(__dirname + '/../../lib/console');
 var sessionLib = require(__dirname + '/../../lib/session');
 var utilsLib = require(__dirname + '/../../lib/utils');
 
+var commonFront = require(__dirname + '/common');
+
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
+        commonFront.setCommonFields(res);
+
         var User = mongooseLib.model('User');
 
         var login = req.params.login;
