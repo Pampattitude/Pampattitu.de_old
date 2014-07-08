@@ -3,9 +3,9 @@
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
-var consoleLib = require(__dirname + '/../lib/console');
-var sessionLib = require(__dirname + '/../lib/session');
-var utilsLib = require(__dirname + '/../lib/utils');
+var consoleLib = require(__dirname + '/../../lib/console');
+var sessionLib = require(__dirname + '/../../lib/session');
+var utilsLib = require(__dirname + '/../../lib/utils');
 
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {

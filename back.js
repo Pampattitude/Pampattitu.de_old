@@ -55,7 +55,7 @@ if (clusterLib.isMaster) {
 
         consoleLib.log('Collections sync\'ed');
 
-        require(__dirname + '/daemons').execute();
+        require(__dirname + '/scripts/back/daemons').execute();
     });
 }
 else {
@@ -114,14 +114,10 @@ else {
             return next();
         });
 
-        require(__dirname + '/controllers/_routes.js').init(app);
+        require(__dirname + '/controllers/back/_routes').init(app);
         app.use(app.router);
         app.enable('jsonp callback');
     });
 
-    var server = null;
-    if ('debug' == process.env.NODE_ENV)
-        server = app.listen(8337);
-    else
-        server = app.listen(7337);
+    var server = app.listen(7338);
 }

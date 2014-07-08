@@ -3,13 +3,13 @@
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
-var consoleLib = require(__dirname + '/../lib/console');
-var utilsLib = require(__dirname + '/../lib/utils');
+var consoleLib = require(__dirname + '/../../lib/console');
+var utilsLib = require(__dirname + '/../../lib/utils');
 
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         var Article = mongooseLib.model('Article');
-        var articlesModel = require('../models/articles.js');
+        var articlesModel = require(__dirname + '/../../models/articles.js');
 
         return asyncLib.series([
             function(serieCallback) {

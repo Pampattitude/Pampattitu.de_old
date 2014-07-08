@@ -23,17 +23,6 @@ var render_ = function(modules, req, res) {
         req.session.previousFormData = [];
     }
 
-    // Add default site menu data
-    if (!modules.siteMenu) {
-        var siteMenuController = new (require(__dirname + '/site-menu').Controller)();
-        modules.siteMenu = siteMenuController.render;
-    }
-    // Add default site menu data
-    if (!modules.buttonMenu) {
-        var buttonMenuController = new (require(__dirname + '/button-menu').Controller)();
-        modules.buttonMenu = buttonMenuController.render;
-    }
-
     res.locals.inlineScripts.push('/js/pmp.common.alert');
 
     return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
@@ -46,7 +35,7 @@ var render_ = function(modules, req, res) {
         }
 
         req.session.previousPage = req.path;
-        return res.render(constantsLib.viewTemplateFull);
+        return res.render(constantsLib.frontViewTemplateFull);
     });
 };
 

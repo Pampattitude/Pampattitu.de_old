@@ -3,12 +3,12 @@
 var pathLib = require('path');
 var sassLib = require('node-sass');
 
-var consoleLib = require(__dirname + '/../lib/console');
-var constantsLib = require(__dirname + '/../lib/constants');
-var utilsLib = require(__dirname + '/../lib/utils');
+var consoleLib = require(__dirname + '/../../lib/console');
+var constantsLib = require(__dirname + '/../../lib/constants');
+var utilsLib = require(__dirname + '/../../lib/utils');
 
 var init_ = function (serverApp) {
-    serverApp.set('views', constantsLib.viewPath);
+    serverApp.set('views', constantsLib.backViewPath);
     serverApp.engine('html', require('ejs').renderFile);
 
     var simpleGet = function(req, res, file) {
@@ -16,7 +16,7 @@ var init_ = function (serverApp) {
             res.locals = {};
         res.locals.inlineStyles = [];
 
-        return res.sendfile(constantsLib.viewPath + '/' + file);
+        return res.sendfile(constantsLib.backViewPath + '/' + file);
     };
     var scssGet = function(req, res, file) {
         if (!res.locals)
@@ -24,7 +24,7 @@ var init_ = function (serverApp) {
         res.locals.inlineStyles = [];
 
         var paths = {
-            file:       constantsLib.viewPath + '/' + file,
+            file:       constantsLib.backViewPath + '/' + file,
             includes:   [pathLib.resolve(__dirname + '/../views/css/')],
         };
 
@@ -43,30 +43,12 @@ var init_ = function (serverApp) {
         });
     };
 
-    var pagesEngine = require(__dirname + '/_pages');
+    var pagesEngine = require(__dirname + '/../_pages');
 
-    var homeController = new (require(__dirname + '/home').Controller)();
-    var articleController = new (require(__dirname + '/article').Controller)();
-    var searchController = new (require(__dirname + '/search').Controller)();
-    var userController = new (require(__dirname + '/user').Controller)();
-    var errorController = new (require(__dirname + '/error').Controller)();
-    var reportController = new (require(__dirname + '/report').Controller)();
+    var errorController = new (require(__dirname + '/../error').Controller)();
 
-    serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
-    serverApp.get('/home', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });
-
-    serverApp.get('/articles/:page?', function(req, res) { return pagesEngine.render({content: articleController.renderList}, req, res); });
-    serverApp.get('/article/edit/:technicalName?', function(req, res) { return pagesEngine.render({content: articleController.renderEdit}, req, res); });
-    serverApp.get('/article/:technicalName', function(req, res) { return pagesEngine.render({content: articleController.render}, req, res); });
-    serverApp.post('/article/edit', function(req, res) { return pagesEngine.post({content: articleController.edit}, req, res); });
-    serverApp.post('/article/addComment', function(req, res) { return pagesEngine.post({content: articleController.addComment}, req, res); });
-    serverApp.get('/random-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
-    serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
-    serverApp.get('/search/:data?/:page?', function(req, res) { return pagesEngine.render({content: searchController.render}, req, res); });
-    serverApp.post('/search', function(req, res) { return pagesEngine.post({content: searchController.post}, req, res); });
-
-    serverApp.get('/report', function(req, res) { return pagesEngine.render({content: reportController.render}, req, res); });
-    serverApp.post('/report/submit', function(req, res) { return pagesEngine.post({post: reportController.submit}, req, res); });
+    serverApp.get('/', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
+    serverApp.get('/statistics', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });

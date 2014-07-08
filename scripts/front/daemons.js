@@ -1,10 +1,10 @@
 'use strict';
 
-var consoleLib = require(__dirname + '/lib/console');
+var consoleLib = require(__dirname + '/../../lib/console');
 
 var execute = function() {
     var calculateTagsDaemon = function() {
-        var calculateTagsScript = require(__dirname + '/scripts/calculateTags');
+        var calculateTagsScript = require(__dirname + '/calculateTags');
         var waitTime = 10 * 60 * 1000; // Every 10 minutes
 
         return calculateTagsScript.execute(function(err) {
@@ -18,7 +18,7 @@ var execute = function() {
     };
 
     var removeOldTagsDaemon = function() {
-        var removeOldTagsScript = require(__dirname + '/scripts/removeOldTags');
+        var removeOldTagsScript = require(__dirname + '/removeOldTags');
         var waitTime = 10 * 60 * 1000; // Every 10 minutes
 
         return removeOldTagsScript.execute(function(err) {

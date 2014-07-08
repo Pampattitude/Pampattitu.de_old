@@ -1,7 +1,7 @@
 'use strict';
 
 var mongooseLib = require('mongoose');
-var consoleLib = require(__dirname + '/../lib/console');
+var consoleLib = require(__dirname + '/../../lib/console');
 
 var execute = function(scriptCallback) {
     consoleLib.info('Old tags deletion started');

@@ -2,7 +2,7 @@
 
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
-var consoleLib = require(__dirname + '/../lib/console');
+var consoleLib = require(__dirname + '/../../lib/console');
 
 var execute = function(scriptCallback) {
     consoleLib.info('Calculating tags');
