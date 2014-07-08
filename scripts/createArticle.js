@@ -32,8 +32,8 @@ mongooseLib.connection.once('open', function () {
     var elem = new Article({});
 
     elem.technicalName = "test";
-    elem.title = "Test";
-    elem.img = "http://upload.wikimedia.org/wikipedia/commons/b/b5/Valle_Hermoso_Pampa_de_Olaen.jpg";
+    elem.title = "JavaScript sucks... but not for the reasons you might think";
+    elem.img = "http://wallpaperscraft.com/image/2228/1280x720.jpg?orig=1";
     elem.tags = ['this', 'is', 'a', 'test'];
     elem.caption = "Pellentesque pretium tortor quis nulla pulvinar, pellentesque lobortis dolor venenatis. Sed consectetur luctus odio, at lobortis neque euismod et. Quisque eu mauris eget velit ultricies consequat. Vestibulum egestas imperdiet vehicula. Quisque turpis mi, consequat non quam sit amet, sagittis molestie lacus. Donec sed interdum lorem. Donec venenatis urna vitae odio tempus consectetur. Maecenas tempor metus id lacus vestibulum, placerat laoreet enim pharetra.";
     elem.content =
@@ -73,7 +73,13 @@ Fusce consequat libero neque, sed viverra justo vestibulum sit amet. Ut nisl ant
 
             elem.technicalName = "test" + i;
             elem.title = "This is a simple test (#" + i + ') to check things';
-            elem.img = "http://www.blueboat.fr/wp-content/uploads/2012/02/test-referencement-smo.jpg"
+            elem.img = [
+                'http://img.wallpaperstock.net:81/mountains-path-wallpapers_28309_1280x720.jpg',
+                'http://img.wallpaperstock.net:81/miniature-new-york-city-wallpapers_25829_1280x720.jpg',
+                'http://imgs.mi9.com/uploads/holiday/4752/free-haunted-forest-wallpaper_1280x720_86544.jpg',
+                'http://wfiles.brothersoft.com/c/cat-photograph_195928-1280x720.jpg',
+                'http://img.wallpaperstock.net:81/eclipse-wallpapers_26124_1280x720.jpg',
+            ][Math.floor(Math.random() * 5)];
             elem.tags = ['this', 'is', 'a', 'test'];
             elem.caption = "Pellentesque pretium tortor quis nulla pulvinar, pellentesque lobortis dolor venenatis. Sed consectetur luctus odio, at lobortis neque euismod et. Quisque eu mauris eget velit ultricies consequat.";
             elem.content =
