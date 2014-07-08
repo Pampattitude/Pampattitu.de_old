@@ -1,0 +1,63 @@
+// Generic colors
+$whiter:                rgb(0, 0, 0);
+$white:                 rgb(32, 32, 32);
+$white-border:          rgb(0, 0, 0);
+
+$light-light-grey:      rgb(48, 48, 48);
+
+$red:                   rgb(192, 84, 84);
+
+$green:                 rgb(40, 164, 204);
+$green-hover:           rgb(80, 192, 228);
+$green-border:          rgb(20, 128, 184);
+
+$blue:                  rgb(64, 104, 152);
+$blue-focus:            rgb(40, 64, 112);
+$blue-border:           $blue-focus;
+$blue-focus-border:     rgb(24, 40, 96);
+
+$black:                 rgb(240, 240, 240);
+$blacker:               rgb(255, 255, 255);
+
+
+// Specific to social networks
+$facebook:              rgb(40, 68, 134);
+$facebook-focus:        rgb(10, 38, 104);
+$facebook-border:       $facebook-focus;
+$facebook-focus-border: rgb(5, 19, 51);
+
+$twitter:               rgb(0, 172, 237);
+$twitter-focus:         rgb(0, 142, 207);
+$twitter-border:        $twitter-focus;
+$twitter-focus-border:  rgb(0, 105, 153);
+
+$rss:                   rgb(255, 153, 0);
+$rss-focus:             rgb(225, 123, 0);
+$rss-border:            $rss-focus;
+$rss-focus-border:      rgb(179, 98, 0);
+
+$soundcloud:            rgb(254, 70, 0);
+$soundcloud-focus:      rgb(224, 40, 0);
+$soundcloud-border:     $soundcloud-focus;
+$soundcloud-focus-border: rgb(158, 29, 0);
+
+$linkedin:              rgb(0, 117, 186);
+$linkedin-focus:        rgb(0, 82, 130);
+$linkedin-border:       $linkedin-focus;
+$linkedin-focus-border: rgb(0, 52, 82);
+
+$reddit:                rgb(107, 193, 255);
+$reddit-focus:          rgb(91, 164, 216);
+$reddit-border:         $reddit-focus;
+$reddit-focus-border:   rgb(39, 113, 165);
+
+$mail:                  rgb(217, 7, 8);
+$mail-focus:            rgb(188, 0, 0);
+$mail-border:           $mail-focus;
+$mail-focus-border:     rgb(138, 0, 0);
+
+
+// Specific (misc)
+$alert-danger:          rgb(192, 84, 84);
+$alert-warning:         rgb(216, 128, 64);
+$alert-success:         rgb(84, 172, 84);
