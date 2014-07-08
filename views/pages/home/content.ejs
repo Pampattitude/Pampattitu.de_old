@@ -23,9 +23,20 @@
   <% if ('undefined' !== typeof featuredArticle) { %>
   <div class="featured">
     <div class="grid-12">
-      <div class="cell-7 cell-mobile-12">
+      <div class="cell-5 cell-mobile-12">
         <div class="thumbnail">
           <a href="/article/<%= featuredArticle.technicalName %>">
+            <div class="date">
+              <div class="day">
+                <%= featuredArticle.lastUpdated.getDate() %>
+              </div>
+
+              <div class="month-year">
+                <%= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][featuredArticle.lastUpdated.getMonth()] %>
+                <%= featuredArticle.lastUpdated.getFullYear() %>
+              </div>
+            </div>
+
             <!-- Article image -->
             <img src="<%= featuredArticle.img %>" alt="" />
             <!-- !Article image -->
@@ -33,12 +44,14 @@
         </div>
       </div>
       
-      <div class="cell-5 cell-mobile-12">
-        <!-- Article title -->
-        <div class="title-author">
-          <h3 class="title"><a href="/article/<%= featuredArticle.technicalName %>"><%= featuredArticle.title %></a></h3>
-          <h4 class="author">by <a href="/user/<%= featuredArticle.author %>"><%= featuredArticle.author %></a>, <%- formatDate(featuredArticle.lastUpdated) %></h4>
-        </div>
+      <div class="cell-7 cell-mobile-12">
+        <a href="/article/<%= featuredArticle.technicalName %>" class="title-link">
+          <!-- Article title -->
+          <div class="title-author">
+            <h3 class="title"><%= featuredArticle.title %></h3>
+            <!-- <h4 class="author">by <a href="/user/<%= featuredArticle.author %>"><%= featuredArticle.author %></a></h4> -->
+          </div>
+        </a>
         <!-- !Article title -->
 
         <!-- Article tags -->
@@ -56,16 +69,18 @@
         <!-- !Article tags -->
 
         <!-- Article caption -->
-        <div class="caption">
-          <div class="caption-text">
-            <i><%= featuredArticle.caption %></i>
-          </div>
+        <div class="caption-box">
+          <div class="caption">
+            <div class="caption-text">
+              <i><%= featuredArticle.caption %></i>
+            </div>
 
-          <div class="float-right continue">
-            <a href="/article/<%= featuredArticle.technicalName %>" class="btn btn-blue">Continue reading...</a>
-          </div>
+            <div class="continue">
+              <a href="/article/<%= featuredArticle.technicalName %>" class="btn btn-blue">Continue reading...</a>
+            </div>
 
-          <div class="clear"></div>
+            <div class="clear"></div>
+          </div>
         </div>
         <!-- !Article caption -->
       </div>
@@ -75,6 +90,76 @@
   </div>
   <% } %>
   <!-- !Featured article -->
+
+  <!-- Padding -->
+  <div class="page-section-padding"></div>
+  <!-- !Padding -->
+
+  <!-- Other articles -->
+  <div class="grid-12 other-articles">
+    <% for (var i = 0 ; articleList.length > i + 1 ; ++i) {
+    var article = articleList[i]; %>
+    <div class="cell-4 cell-mobile-12 article">
+      <!-- Article title -->
+      <a href="/article/<%= article.technicalName %>" class="title-link">
+        <div class="title-author">
+          <h3 class="title"><%= article.title %></h3>
+          <h4 class="author"><%- formatDate(article.lastUpdated) %></h4>
+        </div>
+      </a>
+      <!-- !Article title -->
+
+      <!-- Article caption -->
+      <div class="caption-box">
+        <div class="caption">
+          <div class="caption-text">
+            <i><%= article.caption %></i>
+          </div>
+
+          <div class="float-right continue">
+            <a href="/article/<%= article.technicalName %>" class="btn btn-blue">Continue reading...</a>
+          </div>
+
+          <div class="clear"></div>
+        </div>
+      </div>
+      <!-- !Article caption -->
+    </div>
+    <% } %>
+
+    <% if (articleList.length > i) {
+    var article = articleList[i]; %>
+    <!-- Last article -->
+    <div class="cell-mobile-12 hidden-desktop article">
+      <!-- Article title -->
+      <a href="/article/<%= article.technicalName %>" class="title-link">
+        <div class="title-author">
+          <h3 class="title"><%= article.title %></h3>
+          <h4 class="author"><%- formatDate(article.lastUpdated) %></h4>
+        </div>
+      </a>
+      <!-- !Article title -->
+
+      <!-- Article caption -->
+      <div class="caption-box">
+        <div class="caption">
+          <div class="caption-text">
+            <i><%= article.caption %></i>
+          </div>
+
+          <div class="float-right continue">
+            <a href="/article/<%= article.technicalName %>" class="btn btn-blue">Continue reading...</a>
+          </div>
+
+          <div class="clear"></div>
+        </div>
+      </div>
+      <!-- !Article caption -->
+    </div>
+    <!-- !Last article -->
+    <% } %>
+  </div>
+  <!-- !Other articles -->
 </div>
 <!-- !Articles -->
 

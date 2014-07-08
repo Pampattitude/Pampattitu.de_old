@@ -33,6 +33,11 @@ html {
 
 * {
     position: relative;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 *::selection {
     color: $white;
