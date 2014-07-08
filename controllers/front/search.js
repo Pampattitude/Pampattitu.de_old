@@ -89,7 +89,7 @@ var controller_ = function() {
                 res.locals.actualPage = pageNumber;
                 res.locals.searchString = req.params.data;
                 // res.locals.inlineStyles.push('search');
-                res.locals.contentPath = 'pages/search/content.ejs';
+                res.locals.contentPath = 'pages/search/content';
 
                 return renderCallback();
             });

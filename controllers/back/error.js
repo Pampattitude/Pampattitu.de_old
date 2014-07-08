@@ -3,15 +3,16 @@
 var asyncLib = require('async');
 var mongooseLib = require('mongoose');
 
-var consoleLib = require(__dirname + '/../lib/console');
-var utilsLib = require(__dirname + '/../lib/utils');
+var consoleLib = require(__dirname + '/../../lib/console');
+var utilsLib = require(__dirname + '/../../lib/utils');
 
 var controller_ = function() {
     var self = this;
 
     this.render_ = function(req, res, errorCode, renderCallback) {
         // res.locals.inlineStyles.push('error');
-        res.locals.contentPath = 'pages/error/' + errorCode + '.ejs';
+        res.locals.buttonMenu = 'pages/back/button-menu';
+        res.locals.contentPath = 'pages/error/' + errorCode;
 
         return renderCallback();
     };

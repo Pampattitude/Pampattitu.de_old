@@ -45,7 +45,8 @@ var init_ = function (serverApp) {
 
     var pagesEngine = require(__dirname + '/../_pages');
 
-    var errorController = new (require(__dirname + '/../error').Controller)();
+    var statisticsController = new (require(__dirname + '/statistics').Controller)();
+    var errorController = new (require(__dirname + '/error').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
     serverApp.get('/statistics', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });

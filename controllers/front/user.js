@@ -21,7 +21,7 @@ var controller_ = function() {
 
             res.locals.user = user;
             // res.locals.inlineStyles.push('user');
-            res.locals.contentPath = 'pages/user/content.ejs';
+            res.locals.contentPath = 'pages/user/content';
 
             return renderCallback();
         });

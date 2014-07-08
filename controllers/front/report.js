@@ -10,7 +10,7 @@ var utilsLib = require(__dirname + '/../../lib/utils');
 var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         res.locals.inlineScripts.push('/js/pmp.reportForm');
-        res.locals.contentPath = 'pages/report/content.ejs';
+        res.locals.contentPath = 'pages/report/content';
 
         return renderCallback();
     };

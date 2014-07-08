@@ -35,7 +35,7 @@ var controller_ = function() {
                     res.locals.article = article;
                     res.locals.comments = comments;
                     // res.locals.inlineStyles.push('article');
-                    res.locals.contentPath = 'pages/article/content.ejs';
+                    res.locals.contentPath = 'pages/article/content';
 
                     return renderCallback();
                 });
@@ -60,7 +60,7 @@ var controller_ = function() {
             res.locals.pageCount = articleList.length / articlesPerPage;
             res.locals.actualPage = pageNumber;
             // res.locals.inlineStyles.push('articles');
-            res.locals.contentPath = 'pages/articles/content.ejs';
+            res.locals.contentPath = 'pages/articles/content';
 
             return renderCallback();
         });
@@ -88,7 +88,7 @@ var controller_ = function() {
 
         if (!technicalName) {
             // res.locals.inlineStyles.push('article');
-            res.locals.contentPath = 'pages/article/edit.ejs';
+            res.locals.contentPath = 'pages/article/edit';
 
             return renderCallback();
         }

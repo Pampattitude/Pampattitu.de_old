@@ -49,7 +49,7 @@ var init_ = function (serverApp) {
     var articleController = new (require(__dirname + '/article').Controller)();
     var searchController = new (require(__dirname + '/search').Controller)();
     var userController = new (require(__dirname + '/user').Controller)();
-    var errorController = new (require(__dirname + '/../error').Controller)();
+    var errorController = new (require(__dirname + '/error').Controller)();
     var reportController = new (require(__dirname + '/report').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: homeController.render}, req, res); });

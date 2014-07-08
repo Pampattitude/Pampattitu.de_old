@@ -45,7 +45,7 @@ var controller_ = function() {
             },
         ],
         function(err) {
-            res.locals.contentPath = 'pages/home/content.ejs';
+            res.locals.contentPath = 'pages/home/content';
 
             if (err) {
                 consoleLib.error(err);
