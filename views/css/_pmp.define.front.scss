@@ -2,6 +2,7 @@
 $whiter:                rgb(255, 255, 255);
 $white:                 rgb(240, 240, 240);
 $white-border:          rgb(192, 192, 192);
+$white-border-hover:    rgb(208, 208, 208);
 
 $light-light-grey:      rgb(232, 232, 232);
 
@@ -58,6 +59,21 @@ $mail-focus-border:     rgb(138, 0, 0);
 
 
 // Specific (misc)
+$body-text-color:               $white;
+$body-background-color:         $black;
+
+$selection-text-color:          $whiter;
+$selection-background-color:    $green;
+
+$link-color:                    $green;
+$link-hover-color:              $green-hover;
+
+$button-text-color:             $black;
+$button-background-color:       $white;
+$button-border-color:           $white-border;
+$button-hover-background-color: $white;
+$button-hover-border-color:     $white-border;
+
 $alert-danger:          rgb(192, 84, 84);
 $alert-warning:         rgb(216, 128, 64);
 $alert-success:         rgb(84, 172, 84);

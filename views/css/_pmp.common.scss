@@ -38,8 +38,8 @@ html {
     font-smoothing: antialiased;
 }
 *::selection {
-    color: $white;
-    background: $green;
+    color: $selection-text-color;
+    background: $selection-background-color;
 }
 
 
@@ -48,9 +48,9 @@ body {
 
     margin: 0;
 
-    color: $white;
+    color: $body-text-color;
 
-    background-color: $black;
+    background-color: $body-background-color;
 }
 
 
@@ -82,13 +82,13 @@ a {
     display: inline-block;
     box-sizing: border-box;
 
-    color: $green;
+    color: $link-color;
     text-decoration: none;
     
     transition: color 200ms;
 }
 a:hover {
-    color: $green-hover;
+    color: $link-hover-color;
 }
 
 input,
@@ -122,12 +122,12 @@ q {
     margin: 0;
     padding: .2em .4em;
 
-    color: $black;
+    color: $button-text-color;
     font-size: 1em;
 
-    background-color: $white;
+    background-color: $button-background-color;
     border: 0;
-    border-bottom: 3px solid $white-border;
+    border-bottom: 3px solid $button-border-color;
 
     box-shadow: inset -1px 0 0 transparent,
     inset 1px 0 0 transparent,
@@ -136,11 +136,11 @@ q {
     transition: color 200ms, background-color 200ms, border-color 200ms, box-shadow 200ms;
 }
 .btn:hover {
-    background: $white;
+    background: $button-hover-background-color;
 
-    box-shadow: inset -1px 0 0 rgb(208, 208, 208),
-    inset 1px 0 0 rgb(208, 208, 208),
-    inset 0 1px 0 rgb(208, 208, 208);
+    box-shadow: inset -1px 0 0 $button-hover-border-color,
+    inset 1px 0 0 $button-hover-border-color,
+    inset 0 1px 0 $button-hover-border-color;
 }
 a.btn {
     text-align: center;

@@ -1,23 +1,24 @@
 // Generic colors
-$whiter:                rgb(0, 0, 0);
-$white:                 rgb(32, 32, 32);
-$white-border:          rgb(0, 0, 0);
+$whiter:                rgb(255, 255, 255);
+$white:                 rgb(240, 240, 240);
+$white-border:          rgb(192, 192, 192);
+$white-border-hover:    rgb(208, 208, 208);
 
-$light-light-grey:      rgb(48, 48, 48);
+$light-light-grey:      rgb(232, 232, 232);
 
 $red:                   rgb(192, 84, 84);
 
-$green:                 rgb(40, 164, 204);
-$green-hover:           rgb(80, 192, 228);
-$green-border:          rgb(20, 128, 184);
+$green:                 rgb(80, 152, 80);
+$green-hover:           rgb(112, 182, 112);
+$green-border:          rgb(40, 104, 40);
 
 $blue:                  rgb(64, 104, 152);
 $blue-focus:            rgb(40, 64, 112);
 $blue-border:           $blue-focus;
 $blue-focus-border:     rgb(24, 40, 96);
 
-$black:                 rgb(240, 240, 240);
-$blacker:               rgb(255, 255, 255);
+$black:                 rgb(32, 32, 32);
+$blacker:               rgb(0, 0, 0);
 
 
 // Specific to social networks
@@ -58,6 +59,21 @@ $mail-focus-border:     rgb(138, 0, 0);
 
 
 // Specific (misc)
+$body-text-color:               $white;
+$body-background-color:         $black;
+
+$selection-text-color:          $whiter;
+$selection-background-color:    $green;
+
+$link-color:                    $green;
+$link-hover-color:              $green-hover;
+
+$button-text-color:             $black;
+$button-background-color:       $white;
+$button-border-color:           $white-border;
+$button-hover-background-color: $white;
+$button-hover-border-color:     $white-border;
+
 $alert-danger:          rgb(192, 84, 84);
 $alert-warning:         rgb(216, 128, 64);
 $alert-success:         rgb(84, 172, 84);
