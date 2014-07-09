@@ -45,11 +45,14 @@ var init_ = function (serverApp) {
 
     var pagesEngine = require(__dirname + '/../_pages');
 
+    var reportsController = new (require(__dirname + '/reports').Controller)();
     var statisticsController = new (require(__dirname + '/statistics').Controller)();
     var errorController = new (require(__dirname + '/error').Controller)();
 
     serverApp.get('/', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
     serverApp.get('/statistics', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
+
+    serverApp.get('/reports', function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
 
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });

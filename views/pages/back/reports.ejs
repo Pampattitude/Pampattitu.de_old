@@ -1,0 +1,108 @@
+<%
+   var padNumber = function(number, length) {
+     var str = '' + number;
+     while (str.length < length) {
+       str = '0' + str;
+     }
+     return str;
+   };
+
+   var formatDate = function(date) {
+   return date.getFullYear() + '-' + padNumber(date.getMonth(), 2) + '-' + padNumber(date.getDate(), 2);
+   };
+%>
+
+<h2 class="inset content-title"><span class="icon-stats"></span>&nbsp;&nbsp;Reports</h2>
+
+<div class="outset">
+  <table class="report-table hidden-mobile">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>State</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for (var i = 0 ; reportList.length > i ; ++i) {
+      var report = reportList[i]; %>
+      <tr>
+        <td class="author"><%= report.author %></td>
+        <td class="type">
+          <% if ('bug' == report.type) { %>
+          <span class="icon-bug"></span>
+          <% } else if ('feature' == report.type) { %>
+          <span class="icon-brightness-medium"></span>
+          <% } else if ('comment' == report.type) { %>
+          <span class="icon-heart"></span>
+          <% } else { %>
+          <span class="icon-question"></span>
+          <% } %>
+        </td>
+        <td class="content"><%= report.content %></td>
+        <td class="date"><nobr><%- formatDate(report.created) %></nobr></td>
+        <td class="state">
+          <% if ('open' == report.state) { %> <!-- Needs attention -->
+          <span class="label label-red label-boxxy label-round">Open</span>
+          <% } else if ('inProgress' == report.state) { %> <!-- In progress -->
+          <span class="label label-orange label-boxxy label-round">In progress</span>
+          <% } else { %> <!-- Treated -->
+          <span class="label label-green label-boxxy label-round">Done</span>
+          <% } %>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <div class="report-table hidden-desktop">
+    <div class="grid-12">
+      <% for (var i = 0 ; reportList.length > i ; ++i) {
+      var report = reportList[i]; %>
+      <div class="head author cell-4"><span class="icon-user"></span></div>
+      <div class="body author cell-8">
+        <% if ('bug' == report.type) { %>
+        <span class="icon-bug"></span>
+        <% } else if ('feature' == report.type) { %>
+        <span class="icon-brightness-medium"></span>
+        <% } else if ('comment' == report.type) { %>
+        <span class="icon-heart"></span>
+        <% } else { %>
+        <span class="icon-question"></span>
+        <% } %>
+
+        &nbsp;from <%= report.author %>
+      </div>
+
+      <div class="head content cell-4"><span class="icon-bubble"></span></div>
+      <div class="body content cell-8"><%= report.content %></div>
+
+      <div class="head date cell-4"><span class="icon-calendar2"></span></div>
+      <div class="body date cell-8"><%- formatDate(report.created) %></div>
+
+      <div class="head state cell-4"><span class="icon-ticket"></span></div>
+      <div class="body state cell-8">
+        <% if ('open' == report.state) { %> <!-- Needs attention -->
+        <span class="label label-red label-boxxy label-round">Open</span>
+        <% } else if ('inProgress' == report.state) { %> <!-- In progress -->
+        <span class="label label-orange label-boxxy label-round">In progress</span>
+        <% } else { %> <!-- Treated -->
+        <span class="label label-green label-boxxy label-round">Done</span>
+        <% } %>
+      </div>
+      <% if (reportList.length > i + 1) { %>
+      <br /><br />
+      <% } %>
+      <% } %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
