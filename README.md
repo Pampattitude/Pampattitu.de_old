@@ -23,11 +23,15 @@ Web
 
 Back-office
 -----------
-  * Layout and main structure
+  * Layout and main structure *DONE*
+  * Login page and login check for back-office
+  * Reports *IN BETA*
   * Article
     * creation
     * deletion
     * edition
+    * memo & memo linking
+  * Log viewer
   * Database management
   * Statistics
 
