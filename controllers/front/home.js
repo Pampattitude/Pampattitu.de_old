@@ -49,7 +49,7 @@ var controller_ = function() {
             },
         ],
         function(err) {
-            res.locals.contentPath = 'pages/home/content';
+            res.locals.contentPath = 'pages/front/home';
 
             if (err) {
                 consoleLib.error(err);

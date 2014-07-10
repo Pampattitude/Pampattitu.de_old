@@ -14,7 +14,7 @@ var controller_ = function() {
         commonFront.setCommonFields(res);
 
         res.locals.inlineScripts.push('/js/pmp.reportForm');
-        res.locals.contentPath = 'pages/report/content';
+        res.locals.contentPath = 'pages/front/report';
 
         return renderCallback();
     };

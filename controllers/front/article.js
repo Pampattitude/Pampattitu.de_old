@@ -39,7 +39,7 @@ var controller_ = function() {
                     res.locals.article = article;
                     res.locals.comments = comments;
                     // res.locals.inlineStyles.push('article');
-                    res.locals.contentPath = 'pages/article/content';
+                    res.locals.contentPath = 'pages/front/article';
 
                     return renderCallback();
                 });
@@ -66,7 +66,7 @@ var controller_ = function() {
             res.locals.pageCount = articleList.length / articlesPerPage;
             res.locals.actualPage = pageNumber;
             // res.locals.inlineStyles.push('articles');
-            res.locals.contentPath = 'pages/articles/content';
+            res.locals.contentPath = 'pages/front/articleList';
 
             return renderCallback();
         });
@@ -98,7 +98,7 @@ var controller_ = function() {
 
         if (!technicalName) {
             // res.locals.inlineStyles.push('article');
-            res.locals.contentPath = 'pages/article/edit';
+            res.locals.contentPath = 'pages/front/articleEdit';
 
             return renderCallback();
         }
@@ -111,7 +111,7 @@ var controller_ = function() {
 
             res.locals.article = article;
             // res.locals.inlineStyles.push('article');
-            res.locals.contentPath = 'pages/article/edit.ejs';
+            res.locals.contentPath = 'pages/front/articleEdit';
 
             return renderCallback();
         });

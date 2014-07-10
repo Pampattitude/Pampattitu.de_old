@@ -1,0 +1,37 @@
+<!-- Main menu -->
+<nav class="button-menu stick-bottom-mobile">
+  <div class="container">
+    <form class="search" method="POST" action="/search">
+      <!-- Desktop version -->
+      <div class="grid-10 hidden-mobile">
+        <div class="cell-2"><a href="/" class="btn menu-btn"><span class="icon-home"></span><span class="hidden-mobile">&nbsp;&nbsp;Home</span></a></div>
+        <div class="cell-2"><a href="/articles" class="btn menu-btn"><span class="icon-list"></span><span class="hidden-mobile">&nbsp;&nbsp;Articles</span></a></div>
+        <div class="cell-2"><a href="/user/Pampa" class="btn menu-btn"><span class="icon-user"></span><span class="hidden-mobile">&nbsp;&nbsp;About</span></a></div>
+        <div class="cell-3 search">
+          <input class="input" type="text" name="data" placeholder="Search..." />
+        </div>
+        <div class="cell-1">
+          <a class="btn search-button btn-blue" onclick="$(this).parents('form').submit();"><span class="icon-search"></span></a>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+      <!-- !Desktop version -->
+
+      <!-- Mobile version -->
+      <div class="grid-12 hidden-desktop">
+        <div class="cell-3"><a href="/" class="btn menu-btn"><span class="icon-home"></span><span class="hidden-mobile">&nbsp;&nbsp;Home</span></a></div>
+        <div class="cell-3"><a href="/articles" class="btn menu-btn"><span class="icon-list"></span><span class="hidden-mobile">&nbsp;&nbsp;Articles</span></a></div>
+        <div class="cell-3"><a href="/user/Pampa" class="btn menu-btn"><span class="icon-user"></span><span class="hidden-mobile">&nbsp;&nbsp;About</span></a></div>
+        <div class="cell-3 search"><a href="javascript:void(0);" class="btn menu-btn btn-blue" onclick="$(this).parents('.grid-12').find('div[class*=&quot;cell-&quot;]').toggleClass('no-width');"><span class="icon-search"></span></a></div>
+
+        <div class="cell-3 no-width"><a href="javascript:void(0)" class="btn menu-btn" onclick="$(this).parents('.grid-12').find('div[class*=&quot;cell-&quot;]').toggleClass('no-width');"><span class="icon-undo2"></span></a></div>
+        <div class="cell-6 no-width"><input type="text" name="data" placeholder="Search..." /></div>
+        <div class="cell-3 no-width search"><a href="javascript:void(0);" class="btn menu-btn btn-blue" onclick="$(this).parents('form').submit();"><span class="icon-search"></span></a></div>
+
+        <div class="clear"></div>
+      </div>
+      <!-- !Mobile version -->
+    </form>
+  </div>
+</nav>
