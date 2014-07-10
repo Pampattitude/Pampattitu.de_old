@@ -1,3 +1,5 @@
+'use strict';
+
 var setCommonFields = function(res) {
     res.locals.app = 'front';
 
