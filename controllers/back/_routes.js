@@ -11,6 +11,19 @@ var init_ = function (serverApp) {
     serverApp.set('views', constantsLib.backViewPath);
     serverApp.engine('html', require('ejs').renderFile);
 
+    var checkLoggedIn = function(req, res, next) {
+        if (req.session && req.session.login)
+            return next();
+
+        if (!req.session) req.session = {};
+        if (!req.session.redirectFrom) {
+            if (!/\/login/.test(req.originalUrl))
+                req.session.redirectFrom = req.originalUrl;
+        }
+
+        return res.redirect('/login');
+    };
+
     var simpleGet = function(req, res, file) {
         if (!res.locals)
             res.locals = {};
@@ -45,17 +58,20 @@ var init_ = function (serverApp) {
 
     var pagesEngine = require(__dirname + '/../_pages');
 
+    var loginController = new (require(__dirname + '/login').Controller)();
+
     var reportsController = new (require(__dirname + '/reports').Controller)();
     var statisticsController = new (require(__dirname + '/statistics').Controller)();
     var errorController = new (require(__dirname + '/error').Controller)();
 
-    serverApp.get('/', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
-    serverApp.get('/statistics', function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
+    serverApp.get('/', checkLoggedIn, function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
+    serverApp.get('/statistics', checkLoggedIn, function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
 
-    serverApp.get('/reports', function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
+    serverApp.get('/reports', checkLoggedIn, function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
 
-    serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
-    serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });
+    serverApp.get('/login', function(req, res) { return pagesEngine.render({content: loginController.render}, req, res); });
+    serverApp.post('/login', function(req, res) { return pagesEngine.post({post: loginController.login}, req, res); });
+    serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: loginController.logout}, req, res); });
 
     serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
 
