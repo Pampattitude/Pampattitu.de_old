@@ -75,6 +75,8 @@
 
     <!-- JS scripts -->
     <script type="application/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="application/javascript" src="/js/konami"></script>
+
     <!-- Inline scripts, for pages with specific scripts -->
     <% if ('undefined' !== typeof inlineScripts) {
     for (var i = 0 ; inlineScripts.length > i ; ++i) {
@@ -82,10 +84,14 @@
     <script type="application/javascript" src="<%= inlineScript %>"></script>
     <% } %>
     <% } %>
+
     <script type="application/javascript">
       (function() {
           $(document).ready(function() {
               $('body.preload').removeClass('preload');
+              <% if ('front' == app) { %>new Konami('http://back.pampattitu.de/');
+              <% } else { %>new Konami('http://beta.pampattitu.de/');
+              <% } %>
           });
       })();
     </script>
