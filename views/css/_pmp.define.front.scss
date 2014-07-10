@@ -5,9 +5,17 @@ $white-border:          rgb(192, 192, 192);
 $white-border-hover:    rgb(208, 208, 208);
 
 $light-light-grey:      rgb(232, 232, 232);
+$light-grey:            rgb(192, 192, 192);
+$grey:                  rgb(120, 120, 120);
 
+$redder:                rgb(208, 96, 96);
 $red:                   rgb(192, 84, 84);
 
+$oranger:               rgb(224, 156, 104);
+$orange:                rgb(216, 128, 64);
+
+$light-greener:         rgb(96, 184, 96);
+$light-green:           rgb(84, 172, 84);
 $green:                 rgb(80, 152, 80);
 $green-hover:           rgb(112, 182, 112);
 $green-border:          rgb(40, 104, 40);
@@ -16,6 +24,8 @@ $blue:                  rgb(64, 104, 152);
 $blue-focus:            rgb(40, 64, 112);
 $blue-border:           $blue-focus;
 $blue-focus-border:     rgb(24, 40, 96);
+
+$dark-purple:           rgb(40, 20, 40);
 
 $black:                 rgb(32, 32, 32);
 $blacker:               rgb(0, 0, 0);
@@ -73,6 +83,41 @@ $button-background-color:       $white;
 $button-border-color:           $white-border;
 $button-hover-background-color: $white;
 $button-hover-border-color:     $white-border;
+
+$plate-text-color:              $black;
+$plate-background-color:        $white;
+$plate-border-color:            $light-grey;
+
+$code-text-color:               $white;
+$code-background-color:         $dark-purple;
+
+$tag-text-color:                $white;
+$tag-background-color:          $green-border;
+$tag-hover-background-color:    $green;
+
+$label-text-color:              $white;
+$label-background-color:        $grey;
+
+$thumbnail-text-color:          $black;
+$thumbnail-background-color:    $white;
+$thumbnail-shadow-color:        $blacker;
+
+$inset-text-color:              $white;
+$inset-background-color:        transparent;
+
+$outset-text-color:             $black;
+$outset-background-color:       $light-light-grey;
+$outset-shadow-color:           $blacker;
+
+$outset-box-text-color:         $black;
+$outset-box-background-color:   $whiter;
+$outset-box-shadow-color:       rgba(0, 0, 0, 0.2);
+
+$footer-text-color:             $black;
+$footer-background-color:       $white;
+$footer-shadow-color:           rgba(0, 0, 0, 0.8);
+
+$content-title-shadow-color:    $blacker;
 
 $alert-danger:          rgb(192, 84, 84);
 $alert-warning:         rgb(216, 128, 64);

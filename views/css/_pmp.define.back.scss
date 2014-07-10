@@ -1,66 +1,8 @@
-// Generic colors
-$whiter:                rgb(255, 255, 255);
-$white:                 rgb(240, 240, 240);
-$white-border:          rgb(192, 192, 192);
-$white-border-hover:    rgb(208, 208, 208);
-
-$light-light-grey:      rgb(232, 232, 232);
-
-$red:                   rgb(192, 84, 84);
-
-$green:                 rgb(80, 152, 80);
-$green-hover:           rgb(112, 182, 112);
-$green-border:          rgb(40, 104, 40);
-
-$blue:                  rgb(64, 104, 152);
-$blue-focus:            rgb(40, 64, 112);
-$blue-border:           $blue-focus;
-$blue-focus-border:     rgb(24, 40, 96);
-
-$black:                 rgb(32, 32, 32);
-$blacker:               rgb(0, 0, 0);
-
-
-// Specific to social networks
-$facebook:              rgb(40, 68, 134);
-$facebook-focus:        rgb(10, 38, 104);
-$facebook-border:       $facebook-focus;
-$facebook-focus-border: rgb(5, 19, 51);
-
-$twitter:               rgb(0, 172, 237);
-$twitter-focus:         rgb(0, 142, 207);
-$twitter-border:        $twitter-focus;
-$twitter-focus-border:  rgb(0, 105, 153);
-
-$rss:                   rgb(255, 153, 0);
-$rss-focus:             rgb(225, 123, 0);
-$rss-border:            $rss-focus;
-$rss-focus-border:      rgb(179, 98, 0);
-
-$soundcloud:            rgb(254, 70, 0);
-$soundcloud-focus:      rgb(224, 40, 0);
-$soundcloud-border:     $soundcloud-focus;
-$soundcloud-focus-border: rgb(158, 29, 0);
-
-$linkedin:              rgb(0, 117, 186);
-$linkedin-focus:        rgb(0, 82, 130);
-$linkedin-border:       $linkedin-focus;
-$linkedin-focus-border: rgb(0, 52, 82);
-
-$reddit:                rgb(107, 193, 255);
-$reddit-focus:          rgb(91, 164, 216);
-$reddit-border:         $reddit-focus;
-$reddit-focus-border:   rgb(39, 113, 165);
-
-$mail:                  rgb(217, 7, 8);
-$mail-focus:            rgb(188, 0, 0);
-$mail-border:           $mail-focus;
-$mail-focus-border:     rgb(138, 0, 0);
-
+@import 'pmp.define.front';
 
 // Specific (misc)
-$body-text-color:               $white;
-$body-background-color:         $black;
+$body-text-color:               $black;
+$body-background-color:         $white;
 
 $selection-text-color:          $whiter;
 $selection-background-color:    $green;
@@ -68,11 +10,46 @@ $selection-background-color:    $green;
 $link-color:                    $green;
 $link-hover-color:              $green-hover;
 
-$button-text-color:             $black;
-$button-background-color:       $white;
-$button-border-color:           $white-border;
-$button-hover-background-color: $white;
-$button-hover-border-color:     $white-border;
+$button-text-color:             $white;
+$button-background-color:       $black;
+$button-border-color:           $blacker;
+$button-hover-background-color: $black;
+$button-hover-border-color:     $blacker;
+
+$plate-text-color:              $black;
+$plate-background-color:        $white;
+$plate-border-color:            $light-grey;
+
+$code-text-color:               $white;
+$code-background-color:         $dark-purple;
+
+$tag-text-color:                $white;
+$tag-background-color:          $green-border;
+$tag-hover-background-color:    $green;
+
+$label-text-color:              $white;
+$label-background-color:        $grey;
+
+$thumbnail-text-color:          $black;
+$thumbnail-background-color:    $white;
+$thumbnail-shadow-color:        $blacker;
+
+$inset-text-color:              $black;
+$inset-background-color:        transparent;
+
+$outset-text-color:             $black;
+$outset-background-color:       $light-grey;
+$outset-shadow-color:           $blacker;
+
+$outset-box-text-color:         $black;
+$outset-box-background-color:   $light-light-grey;
+$outset-box-shadow-color:       rgba(0, 0, 0, 0.2);
+
+$footer-text-color:             $white;
+$footer-background-color:       $black;
+$footer-shadow-color:           rgba(0, 0, 0, 0.8);
+
+$content-title-shadow-color:    rgba(0, 0, 0, 0.2);
 
 $alert-danger:          rgb(192, 84, 84);
 $alert-warning:         rgb(216, 128, 64);

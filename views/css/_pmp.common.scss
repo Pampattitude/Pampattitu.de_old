@@ -298,12 +298,12 @@ a.btn {
 
     padding: .3em .4em;
 
-    color: rgb(40, 40, 40);
+    color: $plate-text-color;
     font-size: 1em;
 
-    background-color: $white;
+    background-color: $plate-background-color;
     border: none;
-    border-bottom: 3px solid rgb(192, 192, 192);
+    border-bottom: 3px solid $plate-border-color;
 
     transition: color 200ms, background-color 200ms, border-color 200ms;
 }
@@ -458,11 +458,11 @@ code {
 
     padding: 0.2em 0.5em;
 
-    color: $white;
+    color: $code-text-color;
     font-size: 0.8em;
     line-height: 1.2em;
 
-    background-color: rgb(40, 20, 40);
+    background-color: $code-background-color;
     box-sizing: border-box;
 }
 @media only screen and (min-width: 768px) {
@@ -512,15 +512,15 @@ code.js .string {
     
     padding: 0.4em 0.6em;
     
-    color: $white;
+    color: $tag-text-color;
     font-size: 0.9em;
     
-    background-color: rgb(40, 104, 40);
+    background-color: $tag-background-color;
 
     transition: background-color 200ms;
 }
 .tag:hover {
-    background-color: rgb(80, 152, 80);
+    background-color: $tag-hover-background-color;
 }
 
 .label {
@@ -528,34 +528,34 @@ code.js .string {
     
     padding: 0 0.3em;
     
-    color: $white;
+    color: $label-text-color;
     font-size: 0.9em;
     
-    background-color: rgb(120, 120, 120);
+    background-color: $label-background-color;
 }
 .label.label-red {
-    background-color: rgb(192, 84, 84);
+    background-color: $red;
 }
 .label.label-redder {
-    background-color: rgb(208, 96, 96);
+    background-color: $redder;
 }
 .label.label-orange {
-    background-color: rgb(216, 128, 64);
+    background-color: $orange;
 }
 .label.label-oranger {
-    background-color: rgb(224, 156, 104);
+    background-color: $oranger;
 }
 .label.label-blue {
-    background-color: rgb(64, 104, 152);
+    background-color: $blue;
 }
 .label.label-green {
-    background-color: rgb(84, 172, 84);
+    background-color: $light-green;
 }
 .label.label-greener {
-    background-color: rgb(96, 184, 96);
+    background-color: $light-greener;
 }
 .label.label-greyer {
-    background-color: rgb(128, 128, 128);
+    background-color: $grey;
 }
 .label.label-round {
     border-radius: 0.2em;
@@ -572,8 +572,10 @@ code.js .string {
     
     padding: 0.4em;
     
-    background-color: $white;
-    box-shadow: 0 0 4px rgb(0, 0, 0);
+    color: $thumbnail-text-color;
+
+    background-color: $thumbnail-background-color;
+    box-shadow: 0 0 4px $thumbnail-shadow-color;
 }
 
 
@@ -607,18 +609,18 @@ code.js .string {
 
 /* Website specific */
 .inset {
-    color: $white;
+    color: $inset-text-color;
 
-    background-color: transparent;
+    background-color: $inset-background-color;
 }
 
 .outset {
     padding: 1.4em;
 
-    color: rgb(40, 40, 40);
+    color: $outset-text-color;
     
-    background-color: $light-light-grey;
-    box-shadow: 0px 0px 4px 1px black;
+    background-color: $outset-background-color;
+    box-shadow: 0px 0px 4px 1px $outset-shadow-color;
 }
 @media only screen and (max-width: 767px) {
     .outset {
@@ -628,10 +630,10 @@ code.js .string {
 .outset .outset-box {
     padding: 0.2em 1em;
     
-    color: rgb(40, 40, 40);
+    color: $outset-box-text-color;
     
-    background-color: $whiter;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+    background-color: $outset-box-background-color;
+    box-shadow: 0px 0px 4px 1px $outset-box-shadow-color;
 }
 .outset .outset-box.no-padding {
     padding: 0;
