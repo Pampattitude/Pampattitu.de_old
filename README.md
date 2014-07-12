@@ -12,7 +12,7 @@ Web
   * Search form in button menu
     * desktop *DONE*
     * mobile *IN BETA, sucks*
-  * Other articles in home page *IN BETA, still sucks*
+  * Other articles in home page *IN BETA, sucks too*
   * Article list
   * Search page
   * Flash news
@@ -24,7 +24,7 @@ Web
 Back-office
 -----------
   * Layout and main structure *DONE*
-  * Login page and login check for back-office
+  * Login page and login check for back-office *DONE*
   * Reports *IN BETA*
   * Article
     * creation
@@ -37,4 +37,4 @@ Back-office
 
 Security
 --------
-  * Security headers
+  * Security headers *DONE, lacks CSRF*
