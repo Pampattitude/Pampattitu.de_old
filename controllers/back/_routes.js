@@ -60,12 +60,22 @@ var init_ = function (serverApp) {
 
     var loginController = new (require(__dirname + '/login').Controller)();
 
+    var articlesController = new (require(__dirname + '/articles').Controller)();
+    var databaseController = new (require(__dirname + '/database').Controller)();
     var reportsController = new (require(__dirname + '/reports').Controller)();
     var statisticsController = new (require(__dirname + '/statistics').Controller)();
+    var usersController = new (require(__dirname + '/users').Controller)();
+
     var errorController = new (require(__dirname + '/error').Controller)();
 
     serverApp.get('/', checkLoggedIn, function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
     serverApp.get('/statistics', checkLoggedIn, function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
+
+    serverApp.get('/articles', checkLoggedIn, function(req, res) { return pagesEngine.render({content: articlesController.render}, req, res); });
+
+    serverApp.get('/database', checkLoggedIn, function(req, res) { return pagesEngine.render({content: databaseController.render}, req, res); });
+
+    serverApp.get('/users', checkLoggedIn, function(req, res) { return pagesEngine.render({content: usersController.render}, req, res); });
 
     serverApp.get('/reports', checkLoggedIn, function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
 
