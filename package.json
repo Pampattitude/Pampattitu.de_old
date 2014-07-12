@@ -1,8 +1,8 @@
 {
-  "name": "beta",
+  "name": "Pampattitu.de",
   "version": "0.0.0",
-  "description": "Pampattitu.de =============",
-  "main": "app.js",
+  "description": "Pampattitu.de website",
+  "main": "front.js",
   "dependencies": {
     "JSON": "~1.0.0",
     "async": "~0.2.10",
@@ -14,6 +14,7 @@
     "express": "~3.4.8",
     "express-debug": "~1.0.3",
     "express-dot": "~0.1.0",
+    "helmet": "~0.3.2",
     "memory-cache": "~0.0.5",
     "mongoose": "~3.8.12",
     "node-sass": "~0.9.3",
@@ -26,9 +27,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://Pampattitude@github.com/Pampattitude/Pampattitu.de.git"
+    "url": "https://github.com/Pampattitude/Pampattitu.de.git"
   },
-  "author": "",
+  "author": "Guillaume \"Pampa\" Delahodde",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/Pampattitude/Pampattitu.de/issues"

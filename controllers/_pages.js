@@ -8,6 +8,11 @@ var sessionLib = require(__dirname + '/../lib/session');
 var utilsLib = require(__dirname + '/../lib/utils');
 
 var render_ = function(modules, req, res) {
+    if (!req.session)
+        req.session = {};
+    if (!res.locals)
+        res.locals = {};
+
     res.locals.rights = req.session.rights;
     res.locals.inlineStyles = [];
     res.locals.inlineScripts = [];

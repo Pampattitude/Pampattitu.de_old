@@ -1,7 +1,8 @@
 'use strict';
 
-var httpLib = require('http');
 var expressLib = require('express');
+var helmetLib = require('helmet');
+var httpLib = require('http');
 var urlLib = require('url');
 
 var fsLib = require('fs');
@@ -89,6 +90,12 @@ else {
         if ('debug' == process.env.NODE_ENV)
             app.use(expressLib.errorHandler({ dumpExceptions: true, showStack: true }));
         app.use(expressLib.logger('dev'));
+
+        // Security headers
+        app.use(helmetLib.xframe());
+        app.use(helmetLib.xssFilter());
+        app.use(helmetLib.nosniff());
+        app.use(helmetLib.nocache());
 
         app.use(expressLib.bodyParser());
         app.use(expressLib.methodOverride());
