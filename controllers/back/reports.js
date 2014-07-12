@@ -20,7 +20,6 @@ var controller_ = function() {
 
             res.locals.reportList = reports;
 
-            res.locals.buttonMenu = 'pages/back/button-menu';
             res.locals.contentPath = 'pages/back/reports';
 
             return renderCallback();

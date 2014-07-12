@@ -14,7 +14,6 @@ var controller_ = function() {
     this.render_ = function(req, res, errorCode, renderCallback) {
         commonBack.setCommonFields(res);
 
-        res.locals.buttonMenu = 'pages/back/button-menu';
         res.locals.contentPath = 'pages/error/' + errorCode;
 
         return renderCallback();
