@@ -38,3 +38,10 @@ Back-office
 Security
 --------
   * Security headers *DONE, lacks CSRF*
+
+
+Special Thanks
+--------------
+9eme Art (@ (9emeart.fr)[http://www.9emeart.fr]) for page style
+Icomoon (@ [icomoon.io](http://icomoon.io)) for icons
+Waseem Dahman (@ [Transparent Textures](http://www.transparenttextures.com)) for background image

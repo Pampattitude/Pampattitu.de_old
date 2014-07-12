@@ -9,6 +9,13 @@
    Site: http://www.9emeart.fr/
    Twitter: @9emeArt
 
+   Icons: Icomoon
+   Site: http://icomoon.io/
+   Twitter: @Keyamoon
+
+   Background image: Waseem Dahman
+   Site: http://www.transparenttextures.com/
+
    Graphics & Support: Eve Charmant
    Twitter: @eve2046
 
