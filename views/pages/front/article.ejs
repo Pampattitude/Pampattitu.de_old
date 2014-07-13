@@ -70,7 +70,11 @@
 <!-- Article comments -->
 <div id="pmp-comments" class="inset">
   <h2 class="article-comments-title">
+    <% if (0 == comments.length) { %>
+    <span class="icon-quotes-left"></span>&nbsp;&nbsp;No comments <i>yet</i>
+    <% } else { %>
     <span class="icon-quotes-left"></span>&nbsp;&nbsp;<span class="text-big text-green"><%= comments.length %></span>&nbsp;&nbsp;comments
+    <% } %>
   </h2>
 </div>
 
