@@ -12,9 +12,21 @@ var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         commonBack.setCommonFields(res);
 
-        res.locals.contentPath = 'pages/back/users';
+/*        var pageNumber = req.params.page || 0;
+        var usersPerPage = 20;*/
 
-        return renderCallback();
+        return mongooseLib.model('User').find({}).sort({login: 1})/*.skip(usersPerPage * pageNumber).limit(usersPerPage)*/.exec(function(err, users) {
+            if (err) {
+                consoleLib.error(err);
+                return renderCallback(err);
+            }
+
+            res.locals.userList = users;
+
+            res.locals.contentPath = 'pages/back/users';
+
+            return renderCallback();
+        });
     };
 };
 
