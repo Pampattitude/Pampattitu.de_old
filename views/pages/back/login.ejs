@@ -3,7 +3,7 @@
 <div class="outset">
   <div class="outset-box">
     <form method="POST" action="/login">
-      <input type="text" name="username" placeholder="Username..." />
+      <input type="text" name="username" <% if ('undefined' !== typeof previousFormData && 'undefined' !== typeof previousFormData.username) { %>value="<%= previousFormData.username %>"<% } %> placeholder="Username..." />
       <input type="password" name="password" placeholder="Password..." />
       <button type="submit" class="btn">Login</button>
     </form>
