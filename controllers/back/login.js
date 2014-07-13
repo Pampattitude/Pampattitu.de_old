@@ -27,13 +27,13 @@ var controller_ = function() {
         // Password is not mandatory
         req.body.password = req.body.password || '';
 
-        return mongooseLib.model('User').findOne({login: req.body.username}, function(err, user) {
+        return mongooseLib.model('User').findOne({login: req.body.username, rights: {$in: ['priviledged', 'admin']}}, function(err, user) {
             if (err) {
                 sessionLib.pushMessage(req, 'danger', 'An unknown error has occured, please contact an administrator.');
                 return loginCallback(err);
             }
             else if (!user) {
-                sessionLib.pushMessage(req, 'danger', 'Missing username.');
+                sessionLib.pushMessage(req, 'danger', 'Unknown user or not enough priviledges.');
                 return loginCallback(new Error('User ' + req.body.username + ' unknown'));
             }
 
