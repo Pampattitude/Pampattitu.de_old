@@ -68,9 +68,6 @@ var init_ = function (serverApp) {
     serverApp.get('/report', function(req, res) { return pagesEngine.render({content: reportController.render}, req, res); });
     serverApp.post('/report/submit', function(req, res) { return pagesEngine.post({post: reportController.submit}, req, res); });
 
-    serverApp.post('/login', function(req, res) { return pagesEngine.post({post: userController.login}, req, res); });
-    serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: userController.logout}, req, res); });
-
     serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
 
     serverApp.get('/css/:file', function (req, res) { return scssGet(req, res, 'css/' + req.params.file + '.scss'); });
