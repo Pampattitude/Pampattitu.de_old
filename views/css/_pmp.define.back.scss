@@ -18,6 +18,20 @@ $button-border-color:           $blacker;
 $button-hover-background-color: $black;
 $button-hover-border-color:     $blacker;
 
+$menu-button-text-color:        $button-text-color;
+$menu-button-background-color:  $button-background-color;
+$menu-button-border-color:      $button-border-color;
+$menu-button-hover-text-color:  $white;
+$menu-button-hover-background-color: $blue;
+$menu-button-hover-border-color: $blue-border;
+
+$menu-button-special-text-color: $white;
+$menu-button-special-background-color: $red;
+$menu-button-special-border-color: $red-border;
+$menu-button-special-hover-text-color: $white;
+$menu-button-special-hover-background-color: $red-focus;
+$menu-button-special-hover-border-color: $red-focus-border;
+
 $plate-text-color:              $black;
 $plate-background-color:        $white;
 $plate-border-color:            $light-grey;

@@ -31,22 +31,41 @@
 
     padding: 0.8em 1em;
 
+    color: $menu-button-text-color;
     font-size: 1.2em;
     font-weight: bold;
 
+    background-color: $menu-button-background-color;
     border-bottom-width: 5px;
-    border-bottom-color: $button-border-color;
+    border-bottom-color: $menu-button-border-color;
 }
 .button-menu .btn.menu-btn:hover {
-    color: $white;
+    color: $menu-button-hover-text-color;
 
-    background-color: $green;
+    background-color: $menu-button-hover-background-color;
     border-bottom-width: 5px;
-    border-bottom-color: $green-border;
+    border-bottom-color: $menu-button-hover-border-color;
 
-    box-shadow: inset -1px 0 0 $green-border,
-    inset 1px 0 0 $green-border,
-    inset 0 1px 0 $green-border;
+    box-shadow: inset -1px 0 0 $menu-button-hover-border-color,
+    inset 1px 0 0 $menu-button-hover-border-color,
+    inset 0 1px 0 $menu-button-hover-border-color;
+}
+
+.button-menu .btn.menu-btn.special {
+    color: $menu-button-special-text-color;
+
+    background-color: $menu-button-special-background-color;
+    border-bottom-color: $menu-button-special-border-color;
+}
+.button-menu .btn.menu-btn.special:hover {
+    color: $menu-button-special-hover-text-color;
+
+    background-color: $menu-button-special-hover-background-color;
+    border-bottom-color: $menu-button-special-hover-border-color;
+
+    box-shadow: inset -1px 0 0 $menu-button-special-hover-border-color,
+    inset 1px 0 0 $menu-button-special-hover-border-color,
+    inset 0 1px 0 $menu-button-special-hover-border-color;
 }
 
 .button-menu .plate {
@@ -260,7 +279,7 @@
 }
 
 .home-article-list .featured .tags {
-    margin: 0.1em auto 0.1em 0.5em;
+    margin: 0.1em 0.5em;
 }
 
 .home-article-list .featured .caption-box,

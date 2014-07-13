@@ -12,6 +12,9 @@ $grey:                  rgb(120, 120, 120);
 
 $redder:                rgb(208, 96, 96);
 $red:                   rgb(192, 84, 84);
+$red-border:            rgb(168, 64, 64);
+$red-focus:             rgb(168, 64, 64);
+$red-focus-border:      rgb(128, 48, 48);
 
 $oranger:               rgb(224, 156, 104);
 $orange:                rgb(216, 128, 64);
@@ -85,6 +88,20 @@ $button-background-color:       $white;
 $button-border-color:           $white-border;
 $button-hover-background-color: $white;
 $button-hover-border-color:     $white-border;
+
+$menu-button-text-color:        $button-text-color;
+$menu-button-background-color:  $button-background-color;
+$menu-button-border-color:      $button-border-color;
+$menu-button-hover-text-color:  $white;
+$menu-button-hover-background-color: $green;
+$menu-button-hover-border-color: $green-border;
+
+$menu-button-special-text-color: $white;
+$menu-button-special-background-color: $blue;
+$menu-button-special-border-color: $blue-border;
+$menu-button-special-hover-text-color: $white;
+$menu-button-special-hover-background-color: $green;
+$menu-button-special-hover-border-color: $green-border;
 
 $search-button-text-color:      $white;
 $search-button-background-color: $blue;
