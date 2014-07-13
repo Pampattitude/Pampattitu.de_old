@@ -1,1 +1,40 @@
 <h2 class="inset content-title"><span class="icon-user"></span>&nbsp;&nbsp;Users</h2>
+
+<div class="user-list">
+  <% for (var i = 0 ; userList.length > i ; ++i) {
+  var user = userList[i]; %>
+  <div class="user">
+    <div class="user-head">
+      <img src="<%= user.pictureUrl %>" alt="<%= user.login %>" class="user-image" />
+      <h3 class="login">
+        <a href="mailto:<%= user.emailAddress %>" class="mail">@</a><%= user.login %>
+
+        <span class="rights">
+          <% if ('admin' == user.rights) { %>
+          (<span class="text-red">admin</span>)
+          <% } else if ('priviledged' == user.rights) { %>
+          (<span class="text-orange">priviledged</span>)
+          <% } else if ('registered' == user.rights) { %>
+          (<span class="text-green">registered</span>)
+          <% } else if ('guest' == user.rights) { %>
+          (<span class="text-grey">guest</span>)
+          <% } else { %>
+          (<span class="text-grey">unknown</span>)
+          <% } %>
+        </span>
+      </h3>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="description">
+      <%= (user.description ? (512 < user.description.length ? user.description.substring(0, 512) + '[...]' : user.description) : '[No description]') %>
+    </div>
+
+  </div>
+  <% } %>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
