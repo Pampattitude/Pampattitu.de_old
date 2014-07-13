@@ -11,7 +11,7 @@
     <% if ('undefined' !== typeof user) { %>
     <% if ('undefined' !== typeof user.pictureUrl) { %>
     <div style="float:left;padding:8px;padding-right:20px;">
-      <img src="<%= user.pictureUrl %>" alt="user picture" style="max-width:100%;float:left;margin-right:16px;" />
+      <img src="<%= user.pictureUrl %>" alt="user picture" style="max-width:6em;float:left;margin-right:0.4em;margin-bottom:0.4em;" />
     </div>
     <% } %>
     <div>
@@ -24,11 +24,11 @@
 
       <small>
       <% if ('admin' === user.rights) { %>
-      (<span class="text-red">administrator</span>)
+      (<span class="text-red">admin</span>)
       <% } else if ('priviledged' === user.rights) { %>
-      (<span class="text-orange">priviledged</span>)
+      (<span class="text-orange">mod</span>)
       <% } else if ('registered' === user.rights) { %>
-      (<span class="text-green">registered</span>)
+      (<span class="text-green">user</span>)
       <% } else if ('guest' === user.rights) { %>
       (<span class="text-grey">guest</span>)
       <% } else { %>
