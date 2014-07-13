@@ -5,6 +5,7 @@ var sassLib = require('node-sass');
 
 var consoleLib = require(__dirname + '/../../lib/console');
 var constantsLib = require(__dirname + '/../../lib/constants');
+var sessionLib = require(__dirname + '/../../lib/session');
 var utilsLib = require(__dirname + '/../../lib/utils');
 
 var init_ = function (serverApp) {
@@ -22,6 +23,14 @@ var init_ = function (serverApp) {
         }
 
         return res.redirect('/login');
+    };
+    var checkIsAdmin = function(req, res, next) {
+        if (!req.session || 'admin' != req.session.rights) {
+            sessionLib.pushMessage(res, 'danger', 'Not enough privileges to perform this action.');
+            return res.redirect('/403');
+        }
+
+        return next();
     };
 
     var simpleGet = function(req, res, file) {
@@ -75,9 +84,10 @@ var init_ = function (serverApp) {
 
     serverApp.get('/database', checkLoggedIn, function(req, res) { return pagesEngine.render({content: databaseController.render}, req, res); });
 
-    serverApp.get('/users', checkLoggedIn, function(req, res) { return pagesEngine.render({content: usersController.render}, req, res); });
+    serverApp.get('/users/:page?', checkLoggedIn, function(req, res) { return pagesEngine.render({content: usersController.render}, req, res); });
 
     serverApp.get('/reports', checkLoggedIn, function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
+    serverApp.post('/reports/change-state', checkLoggedIn, checkIsAdmin, function(req, res) { return pagesEngine.post({content: reportsController.changeState}, req, res); });
 
     serverApp.get('/login', function(req, res) { return pagesEngine.render({content: loginController.render}, req, res); });
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: loginController.login}, req, res); });
