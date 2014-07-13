@@ -14,6 +14,13 @@ var schema = new mongooseLib.Schema({
     state: {type: String, default: 'open', enum: ['open', 'inProgress', 'closed']},
 
     created: {type: Date, default: Date.now},
+    updated: {type: Date},
+});
+
+schema.pre('save', function(next) {
+    this.updated = new Date();
+
+    return next();
 });
 
 exports.model = mongooseLib.model('Report', schema);

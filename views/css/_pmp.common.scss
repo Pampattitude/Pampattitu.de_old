@@ -94,6 +94,7 @@ a:hover {
 
 input,
 textarea {
+    color: $black;
     font-family: 'Inconsolata', monospace;
 }
 
@@ -112,6 +113,14 @@ q {
 
     margin: 0 !important;
     padding: 0 !important;
+}
+
+
+.cursor-normal {
+    cursor: default;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
 
 
@@ -290,7 +299,7 @@ a.btn {
     inset 0 1px 0 $mail-focus-border;
 }
 
-
+/*
 .plate {
     display: inline-block;
     cursor: pointer;
@@ -313,7 +322,7 @@ a.btn {
     padding: .4em .5em;
     font-size: 1.1em;
 }
-
+*/
 
 ul.unstyled {
     margin: 0 auto 0 auto;
@@ -327,7 +336,7 @@ ul.flat {
     display: inline-block;
 }
 ul.flat > li {
-    display: inherit;
+    display: inline-block;
 }
 
 
@@ -527,12 +536,13 @@ code.js .string {
 .label {
     display: inline-block;
     
-    padding: 0 0.3em;
+    padding: 0.08em 0.3em 0.18em 0.3em;
     
     color: $label-text-color;
     font-size: 0.9em;
     
     background-color: $label-background-color;
+    border: 0;
 }
 .label.label-red {
     background-color: $red;

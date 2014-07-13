@@ -25,6 +25,7 @@
 }
 .button-menu .btn.menu-btn {
     width: 100%;
+    height: 2.9em;
     display: block;
     box-sizing: border-box;
 
@@ -48,49 +49,63 @@
     inset 0 1px 0 $green-border;
 }
 
-.button-menu .search {
-    font-size: 1rem;
-}
-.button-menu .search input {
+.button-menu .plate {
     width: 100%;
-    box-sizing: border-box;
-
-    margin: 0;
-    padding: 0.8em 1em;
-
-    font-size: 1.2em;
-
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom-width: 5px;
-    border-bottom-color: rgb(192, 192, 192);
-
-    box-shadow: inset -1px 0 0 transparent,
-    inset 1px 0 0 transparent,
-    inset 0 1px 0 transparent;
-
-    transition: box-shadow 200ms;
-}
-.button-menu .search input:hover {
-    box-shadow: inset -1px 0 0 rgb(192, 192, 192),
-    inset 1px 0 0 rgb(192, 192, 192),
-    inset 0 1px 0 rgb(192, 192, 192);
-}
-
-.button-menu .search-button,
-.button-menu .search-button:visited {
+    height: 2.9em;
     display: block;
     box-sizing: border-box;
 
-    padding: 0.8em 1em;
+    padding: 0.4em 1em;
 
+    color: $plate-text-color;
     font-size: 1.2em;
-    font-weight: bold;
 
-    color: $white;
+    background-color: $plate-background-color;
+    border-bottom: 5px solid $plate-border-color;
+}
 
-    border-width: 5px;
+.button-menu .plate.search input {
+    height: 2.2rem;
+    box-sizing: border-box;
+
+    padding: 0.5em 1em;
+
+    font-size: 0.8em;
+
+    border-right: 0;
+
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.button-menu .plate.search button.btn {
+    width: 100%;
+    height: 2.2rem;
+    box-sizing: border-box;
+
+    padding: 0.3em 0;
+
+    color: $search-button-text-color;
+
+    background-color: $search-button-background-color;
+    border-color: $search-button-border-color;
+
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+    box-shadow: inset -1px 0 0 $search-button-border-color,
+    inset 1px 0 0 $search-button-border-color,
+    inset 0 1px 0 $search-button-border-color;
+}
+.button-menu .plate.search button.btn:not([disabled]):hover {
+    color: $search-button-hover-text-color;
+
+    background-color: $search-button-hover-background-color;
+    border-color: $search-button-hover-border-color;
+
+    box-shadow: inset -1px 0 0 $search-button-hover-border-color,
+    inset 1px 0 0 $search-button-hover-border-color,
+    inset 0 1px 0 $search-button-hover-border-color;
 }
 
 
@@ -115,6 +130,19 @@
 }
 .alert-menu .alert.alert-success {
     background-color: $alert-success;
+}
+
+.alert-menu .alert .text {
+    display: inline-block;
+
+    padding: 0.2em;
+}
+
+.alert-menu .alert .close {
+    float: right;
+    display: inline-block;
+
+    padding: 0.2em 0.6em;
 }
 
 
@@ -916,6 +944,156 @@
     height: 12em;
 }
 
+
+/* Back-office: user list */
+.user-list .user {
+    margin: 0.8em 0;
+
+    font-size: 1.2em;
+
+    background-color: $whiter;
+    box-shadow: 0 0 8px -1px $black;
+}
+.user-list .user:first-child {
+    margin-top: 0;
+}
+.user-list .user:last-child {
+    margin-bottom: 0;
+}
+
+.user-list .user .user-head {
+    min-height: 2.8em;
+
+    box-shadow: 0 4px 6px -3px $black;
+}
+
+.user-list .user .user-image {
+    height: 2em;
+    float: left;
+
+    margin: 0.4em;
+}
+
+.user-list .user .login {
+    display: inline-block;
+
+    margin: 0.6em 0;
+}
+
+.user-list .user .login .mail {
+    font-size: 0.8em;
+}
+
+.user-list .user .login .rights {
+    font-size: 0.85em;
+    font-weight: normal;
+}
+.user-list .user .login .rights [class*=icon] {
+    font-size: 0.9em;
+}
+
+.user-list .user .description {
+    padding: 0.4em 0.8em;
+
+    font-size: 0.75em;
+}
+.user-list .user .description:before {
+    font-size: 1.4em;
+    content: '“';
+}
+.user-list .user .description:after {
+    font-size: 1.4em;
+    content: '„';
+}
+/* !Back-office: user list */
+
+/* Back-office: report list */
+.report-list .report {
+    margin: 0.8em 0;
+
+    font-size: 1.2em;
+
+    background-color: $whiter;
+    box-shadow: 0 0 8px -1px $black;
+}
+.report-list .report:first-child {
+    margin-top: 0;
+}
+.report-list .report:last-child {
+    margin-bottom: 0;
+}
+
+.report-list .report.inactive {
+    opacity: 0.5;
+}
+
+.report-list .report .report-head {
+    padding: 0.3em 0.6em;
+
+    box-shadow: 0 4px 6px -3px $black;
+}
+
+.report-list .report .report-head .type {
+    text-transform: capitalize;
+}
+.report-list .report .report-head .type [class*=icon] {
+    font-size: 0.9em;
+}
+
+.report-list .report .report-head .author {
+    opacity: 0.75;
+
+    font-size: 0.8em;
+}
+
+.report-list .report .report-head .state {
+    float: right;
+}
+
+.report-list .report .report-head .state .new-state-list {
+    min-width: 12em;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 9;
+
+    text-align: center;
+
+    box-shadow: 0 2px 4px black;
+}
+.report-list .report .report-head .state .new-state-list > div {
+    background-color: $whiter;
+    z-index: 10;
+
+    padding: 0.2em;
+}
+
+.report-list .report .report-description {
+    padding: 0.4em 0.8em;
+
+    font-size: 0.75em;
+}
+.report-list .report .report-description:before {
+    font-size: 1.4em;
+    content: '“';
+}
+.report-list .report .report-description:after {
+    font-size: 1.4em;
+    content: '„';
+}
+
+.page-movement {
+    margin: auto;
+}
+
+.page-movement [class*=cell-] .btn {
+    width: 100%;
+
+    padding: 0.2em;
+
+    font-size: 1.5em;
+}
+/* !Back-office: report list */
 
 .footer {
     margin: 0 auto;

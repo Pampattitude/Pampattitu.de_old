@@ -12,98 +12,114 @@
    };
 %>
 
+<% if ('undefined' !== typeof rights && 'admin' == rights) { %>
+<script type="application/javascript">
+  (function() {
+    $(document).ready(function() {
+      var reportStateList = $('.report-list .report .state button');
+      $('body').click(function(event) {
+  console.log(event.target);
+        var found = false;
+        for (var i = 0 ; reportStateList.length > i ; ++i) {
+          if (reportStateList[i] == event.target)
+            found = true;
+        }
+        console.log(found);
+        if (!found)
+          $('.report-list .report .new-state-list').slideUp();
+      });
+    });
+  })();
+</script>
+<% } %>
+
 <h2 class="inset content-title"><span class="icon-stats"></span>&nbsp;&nbsp;Reports</h2>
 
-<div class="outset">
-  <div class="outset-box">
-    <table class="report-table hidden-mobile">
-      <thead>
-        <tr>
-          <th>Author</th>
-          <th>Type</th>
-          <th>Content</th>
-          <th>Date</th>
-          <th>State</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% for (var i = 0 ; reportList.length > i ; ++i) {
-        var report = reportList[i]; %>
-        <tr>
-          <td class="author"><%= report.author %></td>
-          <td class="type">
-            <% if ('bug' == report.type) { %>
-            <span class="icon-bug"></span>
-            <% } else if ('feature' == report.type) { %>
-            <span class="icon-brightness-medium"></span>
-            <% } else if ('comment' == report.type) { %>
-            <span class="icon-heart"></span>
-            <% } else { %>
-            <span class="icon-question"></span>
-            <% } %>
-          </td>
-          <td class="content"><%= report.content %></td>
-          <td class="date"><nobr><%- formatDate(report.created) %></nobr></td>
-          <td class="state">
-            <% if ('open' == report.state) { %> <!-- Needs attention -->
-            <span class="label label-red label-boxxy label-round">Open</span>
-            <% } else if ('inProgress' == report.state) { %> <!-- In progress -->
-            <span class="label label-orange label-boxxy label-round">In progress</span>
-            <% } else { %> <!-- Treated -->
-            <span class="label label-green label-boxxy label-round">Done</span>
-            <% } %>
-          </td>
-        </tr>
+<div class="report-list">
+  <% for (var i = 0 ; reportList.length > i ; ++i) {
+  var report = reportList[i]; %>
+  <div class="report<% if ('closed' == report.state) { %> inactive<% } %>">
+    <div class="report-head">
+      <span class="type">
+        <% if ('bug' == report.type) { %>
+        <span class="icon-bug"></span> Bug
+        <% } else if ('feature' == report.type) { %>
+        <span class="icon-brightness-medium"></span> Feature
+        <% } else if ('comment' == report.type) { %>
+        <span class="icon-heart"></span> Comment
+        <% } else if ('other' == report.type) { %>
+        <span class="icon-question"></span> Other
+        <% } else { %>
+        <span style="text-transform:capitalize;"><%= report.type %></span>
         <% } %>
-      </tbody>
-    </table>
+      </span>
+      <span class="author">by <%= report.author %></span>
 
-    <div class="report-table hidden-desktop">
-      <div class="grid-12">
-        <% for (var i = 0 ; reportList.length > i ; ++i) {
-        var report = reportList[i]; %>
-        <div class="head author cell-4"><span class="icon-user"></span></div>
-        <div class="body author cell-8">
-          <% if ('bug' == report.type) { %>
-          <span class="icon-bug"></span>
-          <% } else if ('feature' == report.type) { %>
-          <span class="icon-brightness-medium"></span>
-          <% } else if ('comment' == report.type) { %>
-          <span class="icon-heart"></span>
-          <% } else { %>
-          <span class="icon-question"></span>
+      <div class="state hidden-mobile">
+        <form method="POST" action="/reports/change-state">
+          <% if ('open' == report.state) { %>
+          <button type="button" class="label label-red label-round cursor-normal<% if ('undefined' !== typeof rights && 'admin' == rights) { %>cursor-pointer;" onclick="$(this).siblings('.new-state-list').slideToggle(200);<% } %>">Open</button>
+          <% } else if ('inProgress' == report.state) { %>
+          <button type="button" class="label label-orange label-round cursor-normal<% if ('undefined' !== typeof rights && 'admin' == rights) { %>cursor-pointer;" onclick="$(this).siblings('.new-state-list').slideToggle(200);<% } %>">In progress</button>
+          <% } else if ('closed' == report.state) { %>
+          <button type="button" class="label label-green label-round cursor-normal<% if ('undefined' !== typeof rights && 'admin' == rights) { %>cursor-pointer;" onclick="$(this).siblings('.new-state-list').slideToggle(200);<% } %>">Closed</button>
           <% } %>
 
-          &nbsp;from <%= report.author %>
-        </div>
+          <div class="clear"></div>
 
-        <div class="head content cell-4"><span class="icon-bubble"></span></div>
-        <div class="body content cell-8"><%= report.content %></div>
-
-        <div class="head date cell-4"><span class="icon-calendar2"></span></div>
-        <div class="body date cell-8"><%- formatDate(report.created) %></div>
-
-        <div class="head state cell-4"><span class="icon-ticket"></span></div>
-        <div class="body state cell-8">
-          <% if ('open' == report.state) { %> <!-- Needs attention -->
-          <span class="label label-red label-boxxy label-round">Open</span>
-          <% } else if ('inProgress' == report.state) { %> <!-- In progress -->
-          <span class="label label-orange label-boxxy label-round">In progress</span>
-          <% } else { %> <!-- Treated -->
-          <span class="label label-green label-boxxy label-round">Done</span>
+          <% if ('undefined' !== typeof rights && 'admin' == rights) { %>
+          <div class="new-state-list">
+            <div>
+              <button class="label label-red" type="submit" name="stateOpen">Open</button>
+              <button class="label label-orange" type="submit" name="stateInProgress">In progress</button>
+              <button class="label label-green" type="submit" name="stateClosed">Closed</button>
+            </div>
+          </div>
           <% } %>
-        </div>
-        <% if (reportList.length > i + 1) { %>
-        <br /><br />
-        <% } %>
+
+          <input type="hidden" name="id" value="<%= report._id %>" />
+        </form>
+      </div>
+      <div class="state hidden-desktop">
+        <% if ('open' == report.state) { %>
+        <span class="label label-red label-round">Open</span>
+        <% } else if ('inProgress' == report.state) { %>
+        <span class="label label-orange label-round">In progress</span>
+        <% } else if ('closed' == report.state) { %>
+        <span class="label label-green label-round">Closed</span>
         <% } %>
       </div>
 
       <div class="clear"></div>
     </div>
+
+    <div class="report-description">
+      <%= report.content %>
+    </div>
   </div>
+  <% } %>
 </div>
+
+<!-- Section padding -->
+<!--
+<div class="page-section-padding"></div>
+-->
+<!-- !Section padding -->
+
+<!-- Page movement -->
+<!--
+<div class="page-movement">
+  <div class="grid-4">
+    <div class="cell-1"><a href="/reports" class="btn"><span class="icon-first"></a></div>
+    <div class="cell-1"><a href="/reports" class="btn"><span class="icon-backward2"></a></div>
+    <div class="cell-1"><a href="/reports" class="btn"><span class="icon-forward3"></a></div>
+    <div class="cell-1"><a href="/reports" class="btn"><span class="icon-last"></a></div>
+  </div>
+
+  <div class="clear"></div>
+</div>
+-->
+<!-- !Page movement -->
 
 <!-- Bottom padding from footer -->
 <div class="page-section-padding"></div>
