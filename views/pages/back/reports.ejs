@@ -18,15 +18,14 @@
     $(document).ready(function() {
       var reportStateList = $('.report-list .report .state button');
       $('body').click(function(event) {
-  console.log(event.target);
         var found = false;
         for (var i = 0 ; reportStateList.length > i ; ++i) {
           if (reportStateList[i] == event.target)
             found = true;
         }
-        console.log(found);
+
         if (!found)
-          $('.report-list .report .new-state-list').slideUp();
+          $('.report-list .report .new-state-list').slideUp(200);
       });
     });
   })();
