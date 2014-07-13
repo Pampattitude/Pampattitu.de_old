@@ -10,9 +10,9 @@ Web
 ---
   * Use SCSS *DONE*
   * Search form in button menu
-    * desktop *DONE*
-    * mobile *IN BETA, sucks*
-  * Other articles in home page *IN BETA, sucks too*
+    * desktop *REMOVED for now*
+    * mobile *REMOVED for now*
+  * Other articles in home page *BETA*
   * Article list
   * Search page
   * Flash news
@@ -31,6 +31,7 @@ Back-office
     * deletion
     * edition
     * memo & memo linking
+  * Users *IN BETA*
   * Log viewer
   * Database management
   * Statistics
