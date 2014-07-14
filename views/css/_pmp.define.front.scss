@@ -30,6 +30,11 @@ $blue-focus:            rgb(40, 64, 112);
 $blue-border:           $blue-focus;
 $blue-focus-border:     rgb(24, 40, 96);
 
+$dark-blue:             rgb(32, 56, 96);
+$dark-blue-focus:       rgb(20, 40, 72);
+$dark-blue-border:      $dark-blue-focus;
+$dark-blue-focus-border: rgb(12, 32, 56);
+
 $dark-purple:           rgb(40, 20, 40);
 
 $black:                 rgb(32, 32, 32);
@@ -100,8 +105,8 @@ $menu-button-special-text-color: $white;
 $menu-button-special-background-color: $blue;
 $menu-button-special-border-color: $blue-border;
 $menu-button-special-hover-text-color: $white;
-$menu-button-special-hover-background-color: $green;
-$menu-button-special-hover-border-color: $green-border;
+$menu-button-special-hover-background-color: $dark-blue;
+$menu-button-special-hover-border-color: $dark-blue-border;
 
 $search-button-text-color:      $white;
 $search-button-background-color: $blue;

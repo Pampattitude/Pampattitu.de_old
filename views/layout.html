@@ -58,6 +58,17 @@
         </div>
         <!-- !Alerts -->
 
+        <% if ('front' == app) { %>
+        <!-- Twitter -->
+        <div class="latest-tweet">
+          <a href="http://twitter.com/Pampattitude" target="_blank">
+            <span class="icon-twitter"></span>
+            <span class="text"></span>
+          </a>
+        </div>
+        <!-- !Twitter -->
+        <% } %>
+
 	<% if ('undefined' !== typeof contentPath) { %>
 	<% include contentPath %>
 	<% } %>

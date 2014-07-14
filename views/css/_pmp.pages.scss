@@ -10,7 +10,7 @@
 }
 @media only screen and (max-width: 767px) {
     .page {
-        margin: 0 auto 4em auto;
+        margin: 0 auto 3.5em auto;
     }
 }
 
@@ -187,6 +187,52 @@
 }
 
 
+/* Latest tweet */
+.latest-tweet {
+/*    height: 1.8em;
+    overflow: hidden;*/
+
+    color: $whiter;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+
+    background-color: $twitter;
+    box-shadow: 0 0 8px $twitter;
+}
+
+.latest-tweet > a {
+    display: block;
+
+    padding: 0.5em 0.8em;
+
+    color: $whiter;
+    font-size: 0.9em;
+
+    transition: background-color 200ms;
+}
+@media only screen and (max-width: 767px) {
+    .latest-tweet > a {
+        font-size: 0.8em;
+    }
+}
+.latest-tweet > a:hover {
+    background-color: $twitter-focus;
+}
+
+.latest-tweet [class*=icon-] {
+    margin-right: 0.5em;
+}
+
+.latest-tweet .text {
+    display: inline;
+}
+
+.latest-tweet .text u {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* !Latest tweet */
+
 
 /* Home */
 .home-article-list .featured {
@@ -343,7 +389,7 @@
 }
 
 .home-article-list .other-articles .article {
-    margin-bottom: 1em;
+    margin-bottom: 0;
 }
 .home-article-list .other-articles .article:last-child {
     margin-bottom: 0;
@@ -360,6 +406,13 @@
 
     z-index: 1;
 }
+
+.home-article-list .other-articles .img {
+    padding: 0.2em;
+
+    background-color: $whiter;
+}
+
 .home-article-list .other-articles .thumbnail a {
     max-height: 10em;
     overflow: hidden;
@@ -418,6 +471,15 @@
 
     max-height: 7em;
     overflow: hidden;
+}
+
+.home-article-list .article-separator {
+    margin: 0.4em;
+
+    text-align: center;
+
+    color: $white;
+    font-size: 1.5em;
 }
 /* !Home */
 
@@ -1117,6 +1179,28 @@
     font-size: 1.5em;
 }
 /* !Back-office: report list */
+
+/* Back-office: log list */
+.log-box {
+    margin: 0;
+    padding: 0;
+
+    color: $whiter;
+    font-size: 0.9em;
+    font-family: 'Inconsolata', monospace;
+
+    background-color: $blacker;
+}
+
+.log-box .log-list {
+    padding: 0.6em;
+}
+
+.log-box .log-list p.line {
+    margin: 0;
+    padding: 0.2em;
+}
+/* !Back-office: log list */
 
 .footer {
     margin: 0 auto;
