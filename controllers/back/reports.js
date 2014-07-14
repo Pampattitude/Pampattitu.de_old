@@ -41,8 +41,6 @@ var controller_ = function() {
             return postCallback(new Error('Missing report ID from form'));
         }
 
-        console.log(req.body);
-
         var newState = null;
         if ('undefined' !== typeof req.body.stateOpen) newState = 'open';
         if ('undefined' !== typeof req.body.stateInProgress) newState = 'inProgress';
