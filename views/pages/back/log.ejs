@@ -1,0 +1,73 @@
+<h2 class="inset content-title"><span class="icon-indent-increase"></span>&nbsp;&nbsp;Logs</h2>
+
+<div class="log-box">
+  <div class="log-list">
+    <%= lines %>
+  </div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
+
+<script type="application/javascript">
+  var updateLogList = function() {};
+
+  $(document).ready(function() {
+    var maxLineNumber = 200;
+
+    updateLogList = function(elem) {
+      var txt = $(elem).html();
+
+      txt = txt
+        .replace(/\[32m/g, '<span class="text-green">')
+        .replace(/\[90m/g, '<span class="text-grey">')
+        .replace(/\[39m/g, '</span>')
+        .replace(/\[0m/g, '</span>')
+        .split('\n');
+
+      var newTxt = '';
+      for (var i = 0 ; txt.length > i ; ++i) {
+        if (txt[i].length)
+            newTxt += '<p class="line">' + txt[i] + '</p>';
+      }
+
+      $(elem).html(newTxt);
+        var newHtml = '';
+        var i = $('p.line', elem).length;
+      $('p.line', elem).each(function() {
+          --i;
+          if (maxLineNumber <= i)
+              return ;
+          if (!$(this).html().length)
+              return ;
+          newHtml += '<p class="line">' + $(this).html() + '</p>';
+      });
+
+        $(elem).html(newHtml);
+    };
+
+    var getNewLog = function(lineNumber) {
+      $.ajax('/log/update/' + lineNumber)
+        .done(function(res) {
+          if (!res.lines.length)
+            return setTimeout(function() {
+              return getNewLog(res.lineNumber);
+            }, 1000);
+
+          $('.log-list').html($('.log-list').html() + res.lines);
+          updateLogList($('.log-list'));
+
+          return setTimeout(function() {
+            return getNewLog(res.lineNumber);
+          }, 1000);
+        }
+      );
+    };
+
+    updateLogList($('.log-list'));
+    setTimeout(function() {
+      return getNewLog(<%= lineNumber %>);
+    }, 1000);
+  });
+</script>

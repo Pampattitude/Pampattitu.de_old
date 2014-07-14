@@ -71,6 +71,7 @@ var init_ = function (serverApp) {
 
     var articlesController = new (require(__dirname + '/articles').Controller)();
     var databaseController = new (require(__dirname + '/database').Controller)();
+    var logController = new (require(__dirname + '/log').Controller)();
     var reportsController = new (require(__dirname + '/reports').Controller)();
     var statisticsController = new (require(__dirname + '/statistics').Controller)();
     var usersController = new (require(__dirname + '/users').Controller)();
@@ -82,12 +83,15 @@ var init_ = function (serverApp) {
 
     serverApp.get('/articles', checkLoggedIn, function(req, res) { return pagesEngine.render({content: articlesController.render}, req, res); });
 
-    serverApp.get('/database', checkLoggedIn, function(req, res) { return pagesEngine.render({content: databaseController.render}, req, res); });
-
     serverApp.get('/users/:page?', checkLoggedIn, function(req, res) { return pagesEngine.render({content: usersController.render}, req, res); });
 
     serverApp.get('/reports', checkLoggedIn, function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
     serverApp.post('/reports/change-state', checkLoggedIn, checkIsAdmin, function(req, res) { return pagesEngine.post({content: reportsController.changeState}, req, res); });
+
+    serverApp.get('/database', checkLoggedIn, function(req, res) { return pagesEngine.render({content: databaseController.render}, req, res); });
+
+    serverApp.get('/log', checkLoggedIn, function(req, res) { return pagesEngine.render({content: logController.render}, req, res); });
+    serverApp.get('/log/update/:lineNumber', checkLoggedIn, function(req, res) { return pagesEngine.ajax({content: logController.ajax}, req, res); });
 
     serverApp.get('/login', function(req, res) { return pagesEngine.render({content: loginController.render}, req, res); });
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: loginController.login}, req, res); });
