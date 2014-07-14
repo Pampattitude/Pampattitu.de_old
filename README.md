@@ -15,7 +15,7 @@ Web
   * Other articles in home page *BETA*
   * Article list
   * Search page
-  * Flash news
+  * Twitter news *DONE*
   * Comments
   * Search (add error recognition algorithm)
   * Statistics
@@ -32,7 +32,7 @@ Back-office
     * edition
     * memo & memo linking
   * Users *IN BETA*
-  * Log viewer
+  * Log viewer *DONE*
   * Database management
   * Statistics
 
