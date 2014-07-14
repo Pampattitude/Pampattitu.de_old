@@ -23,7 +23,7 @@ $(document).ready(function() {
                 data.latestTweetLink = 'http://twitter.com/Pampattitude';
             if (!data.latestTweet) {
                 $('a', twDiv).attr('href', data.latestTweetLink);
-                $('span.text', twDiv).writeText('Could not get latest tweet <span class="icon-wondering"></span>');
+                $('span.text', twDiv).writeText('Could not get latest tweet...');
                 return ;
             }
 
