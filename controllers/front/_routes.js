@@ -68,6 +68,10 @@ var init_ = function (serverApp) {
     serverApp.get('/report', function(req, res) { return pagesEngine.render({content: reportController.render}, req, res); });
     serverApp.post('/report/submit', function(req, res) { return pagesEngine.post({post: reportController.submit}, req, res); });
 
+    var twitterController = new (require(__dirname + '/twitter').Controller)();
+
+    serverApp.get('/getLatestTweet', function(req, res) { return pagesEngine.ajax({content: twitterController.getLatestTweet}, req, res); });
+
     serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
 
     serverApp.get('/css/:file', function (req, res) { return scssGet(req, res, 'css/' + req.params.file + '.scss'); });
