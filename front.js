@@ -48,7 +48,6 @@ if (clusterLib.isMaster) {
         consoleLib.log('DB connection open');
 
         require(__dirname + '/models/articles').model;
-        require(__dirname + '/models/bulletins').model;
         require(__dirname + '/models/comments').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
@@ -75,7 +74,6 @@ else {
         consoleLib.log('DB connection open');
 
         require(__dirname + '/models/articles').model;
-        require(__dirname + '/models/bulletins').model;
         require(__dirname + '/models/comments').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
