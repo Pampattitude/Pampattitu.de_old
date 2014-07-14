@@ -30,7 +30,7 @@ var controller_ = function() {
                 if (res.locals.featuredArticle)
                     findOpts._id = {$ne: res.locals.featuredArticle.id};
 
-                return Article.find(findOpts).sort({lastUpdated: -1}).limit(4).exec(function(err, articles) {
+                return Article.find(findOpts).sort({lastUpdated: -1}).limit(3).exec(function(err, articles) {
                     if (err)
                         return serieCallback(err);
 

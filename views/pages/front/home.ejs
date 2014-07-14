@@ -25,7 +25,7 @@
     <div class="grid-12">
       <div class="cell-5 cell-mobile-12">
         <div class="thumbnail">
-          <a href="/article/<%= featuredArticle.technicalName %>">
+          <a class="block" href="/article/<%= featuredArticle.technicalName %>">
             <div class="date">
               <div class="day">
                 <%= featuredArticle.lastUpdated.getDate() %>
@@ -93,17 +93,30 @@
 
   <!-- Padding -->
   <div class="page-section-padding"></div>
+  <div class="hidden-desktop">
+    <div class="page-section-padding"></div>
+  </div>
   <!-- !Padding -->
-
-  <div class="cell-mobile-12 hidden-desktop" style="text-align:center;color:#FFF;">&#9679;<br /><br /></div>
 
   <!-- Other articles -->
   <div class="grid-12 other-articles">
-    <% for (var i = 0 ; articleList.length > i + 1 ; ++i) {
+    <% for (var i = 0 ; articleList.length > i ; ++i) {
     var article = articleList[i]; %>
+    <% if (0 != i) { %>
+    <!-- Article separator -->
+    <div class="cell-mobile-12 hidden-desktop">
+      <div class="article-separator">&#9679;</div>
+    </div>
+    <!-- !Article separator -->
+    <% } %>
+
     <div class="cell-4 cell-mobile-12 article">
       <!-- Article title -->
       <a href="/article/<%= article.technicalName %>" class="title-link">
+        <div class="img">
+          <img src="<%= article.img %>" />
+        </div>
+
         <div class="title-author">
           <h3 class="title"><%= article.title %></h3>
           <h4 class="author"><%- formatDate(article.lastUpdated) %></h4>
@@ -114,7 +127,7 @@
       <!-- Article caption -->
       <div class="caption-box">
         <div class="caption">
-          <div class="caption-text">
+          <div class="caption-text hidden-mobile">
             <i><%= article.caption %></i>
           </div>
 
@@ -127,40 +140,6 @@
       </div>
       <!-- !Article caption -->
     </div>
-
-    <div class="cell-mobile-12 hidden-desktop" style="text-align:center;color:#FFF;">&#9679;<br /><br /></div>
-    <% } %>
-
-    <% if (articleList.length > i) {
-    var article = articleList[i]; %>
-    <!-- Last article -->
-    <div class="cell-mobile-12 hidden-desktop article">
-      <!-- Article title -->
-      <a href="/article/<%= article.technicalName %>" class="title-link">
-        <div class="title-author">
-          <h3 class="title"><%= article.title %></h3>
-          <h4 class="author"><%- formatDate(article.lastUpdated) %></h4>
-        </div>
-      </a>
-      <!-- !Article title -->
-
-      <!-- Article caption -->
-      <div class="caption-box">
-        <div class="caption">
-          <div class="caption-text">
-            <i><%= article.caption %></i>
-          </div>
-
-          <div class="float-right continue">
-            <a href="/article/<%= article.technicalName %>" class="btn btn-blue">Continue reading...</a>
-          </div>
-
-          <div class="clear"></div>
-        </div>
-      </div>
-      <!-- !Article caption -->
-    </div>
-    <!-- !Last article -->
     <% } %>
   </div>
 
