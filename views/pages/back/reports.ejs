@@ -52,7 +52,7 @@
         <span style="text-transform:capitalize;"><%= report.type %></span>
         <% } %>
       </span>
-      <span class="author">by <%= report.author %></span>
+      <span class="author">by <%= report.author %>, <small><%= formatDate(report.created) %></small></span>
 
       <div class="state hidden-mobile">
         <form method="POST" action="/reports/change-state">
