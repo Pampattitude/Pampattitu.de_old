@@ -1,6 +1,6 @@
 /* TEAM */
    Leader: Guillaume "Pampa" Delahodde
-   From:Paris, Ile-de-France, France
+   From: Le Kremlin-Bicêtre, Val-de-Marne, France
    Site: http://pampattitu.de
    Twitter: @Pampattitude
 
