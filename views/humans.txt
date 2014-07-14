@@ -16,8 +16,14 @@
    Background image: Waseem Dahman
    Site: http://www.transparenttextures.com/
 
-   Graphics & Support: Eve Charmant
+   Graphics & human support: Eve Charmant
    Twitter: @eve2046
+
+   Human support: Barbara "db0" Lepage
+   Site: http://db0.fr/
+
+   Human support: Life.
+   Site: http://life.tl/
 
 /* SITE */
    Language: English
