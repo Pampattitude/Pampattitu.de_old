@@ -48,9 +48,11 @@ if (clusterLib.isMaster) {
 
         require(__dirname + '/models/articles').model;
         require(__dirname + '/models/comments').model;
+        require(__dirname + '/models/fetchedLinks').model;
+        require(__dirname + '/models/memos').model;
+        require(__dirname + '/models/reports').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
-        require(__dirname + '/models/reports').model;
 
         consoleLib.log('Collections sync\'ed');
 
@@ -90,9 +92,11 @@ else {
 
         require(__dirname + '/models/articles').model;
         require(__dirname + '/models/comments').model;
+        require(__dirname + '/models/fetchedLinks').model;
+        require(__dirname + '/models/memos').model;
+        require(__dirname + '/models/reports').model;
         require(__dirname + '/models/tags').model;
         require(__dirname + '/models/users').model;
-        require(__dirname + '/models/reports').model;
 
         consoleLib.log('Collections sync\'ed');
     });
