@@ -55,7 +55,22 @@ if (clusterLib.isMaster) {
 
         consoleLib.log('Collections sync\'ed');
 
+        if (mongooseLib.connection.collections['sessions']) {
+            return mongooseLib.connection.collections['sessions'].drop(function(err) {
+                if (err) {
+                    consoleLib.error(err);
+                    return process.exit(1);
+                }
+
+                consoleLib.info('Sessions dropped');
+
+                require(__dirname + '/scripts/front/daemons').execute();
+                return ;
+            });
+        }
+
         require(__dirname + '/scripts/front/daemons').execute();
+        return ;
     });
 }
 else {
