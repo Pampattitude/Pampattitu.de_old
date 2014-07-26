@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pampattitu.de<% if ('undefined' !== typeof title) { %> - <%= title %><% } %></title>
+    <title><% if ('undefined' !== typeof title) { %><%= title %> - <% } %>Pampattitu.de<% if ('back' == app) { %> - Back-office<% } %></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="utf-8" />
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" />
     <link rel="stylesheet" href="/css/icomoon" />
     <link rel="stylesheet" href="/css/pmp.grid" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/hint.css/1.3.2/hint.min.css" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,900" type="text/css" />
@@ -63,7 +64,7 @@
         <div class="latest-tweet">
           <a href="http://twitter.com/Pampattitude" target="_blank">
             <span class="icon-twitter"></span>
-            <span class="text"></span>
+            <span class="text">Refreshing latest tweets from @Pampattitude...</span>
           </a>
         </div>
         <!-- !Twitter -->

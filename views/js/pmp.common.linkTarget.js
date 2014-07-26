@@ -1,0 +1,29 @@
+'use strict';
+
+$(document).ready(function() {
+    var excludeLinks = [
+        'pampattitu.de',
+    ];
+
+    $('a[href^=http]').each(function() {
+        var elem = $(this);
+
+        for (var i = 0 ; excludeLinks.length > i ; ++i) {
+            if (-1 != elem.attr('href').indexOf(excludeLinks[i]))
+                return true;
+        }
+
+        var siteName = elem.attr('href');
+        if (-1 != siteName.indexOf(':'))
+            siteName = siteName.substring(siteName.indexOf(':') + 3, siteName.length);
+        if (-1 != siteName.indexOf('/'))
+            siteName = siteName.substring(0, siteName.indexOf('/'));
+
+        elem.attr('target', '_blank');
+        if (!elem.attr('title') &&
+            !elem.attr('data-hint')) {
+            elem.addClass('hint--top');
+            elem.attr('data-hint', 'Visit "' + siteName + '" in new tab');
+        }
+    });
+});

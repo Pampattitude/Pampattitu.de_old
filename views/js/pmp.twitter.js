@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.fn.writeText = function(content) {
-        var contentArray = content.split(""),
+        var contentArray = content.split(''),
         current = 0,
         elem = this;
         var id = setInterval(function() {
@@ -11,28 +11,58 @@ $(document).ready(function() {
         }, 10);
     };
 
-    $.ajax('/getLatestTweet')
-        .done(function(data) {
-            var twDiv = $('.latest-tweet');
-            if (!twDiv.length)
+    var internalSpinInterval = null;
+
+    var twDiv = $('.latest-tweet');
+    if (!twDiv.length)
+        return ;
+
+    var refreshTweets = function() {
+        if (internalSpinInterval)
+            clearInterval(internalSpinInterval);
+
+        $.ajax('/getLatestTweet')
+            .done(function(data) {
+                var twDiv = $('.latest-tweet');
+                if (!twDiv.length)
+                    return ;
+
+                var $tweetText = $('span.text', twDiv);
+
+                if (!data.latestTweets || !data.latestTweets.length) {
+                    $('a', twDiv).attr('href', 'https//twitter.com/Pampattitude');
+                    $tweetText.writeText('Could not get latest tweet...');
+                    return ;
+                }
+
+                var i = 0;
+                var updateDisplayedTweet = function() {
+                    $('a', twDiv).attr('href', data.latestTweets[i].link);
+
+                    var tweetText = data.latestTweets[i].text.replace(/&amp;/, '&');
+
+                    $tweetText.fadeOut(400, function() {
+                        $tweetText.text('');
+                        $tweetText.fadeIn(0);
+
+                        return setTimeout(function() {
+                            $tweetText.text(tweetText);
+                            ++i;
+
+                            if (data.latestTweets.length <= i)
+                                i = 0;
+                        }, 200 /* after 200 ms */);
+                    });
+                };
+
+                updateDisplayedTweet();
+                internalSpinInterval = setInterval(updateDisplayedTweet, 6 * 1000 /* every 6 seconds */);
                 return ;
+            })
+            .fail(function(err) {
+            });
+    };
 
-            if (!data)
-                data = {};
-            if (!data.latestTweetLink)
-                data.latestTweetLink = 'http://twitter.com/Pampattitude';
-            if (!data.latestTweet) {
-                $('a', twDiv).attr('href', data.latestTweetLink);
-                $('span.text', twDiv).writeText('Could not get latest tweet...');
-                return ;
-            }
-
-            $('a', twDiv).attr('href', data.latestTweetLink);
-
-            data.latestTweet = data.latestTweet.replace(/&amp;/, '&');
-
-            $('span.text', twDiv).writeText(data.latestTweet);
-        })
-        .fail(function(err) {
-        });
+    refreshTweets();
+    setInterval(refreshTweets, 60 * 1000 /* Every minute */);
 });
