@@ -6,10 +6,12 @@ var consoleLib = require(__dirname + '/../../lib/console');
 
 var FetchedLink = require(__dirname + '/../../models/fetchedLinks').model;
 
+var now = new Date();
 var config = {
     subReddits: ['node', 'nodejs', 'opengl', 'gamedev', 'cpp', 'programming', 'mongodb', 'gameassets', 'webspiration', 'webdev', 'opensource'],
     urlsToSkip: ['google', 'youtube', 'reddit', 'dailymotion', 'imgur', 'gfycat'],
 
+    minDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 14), // Two weeks old max
     minScore: 3,
     minUpsPercentage: 60, // %
     allowSelfPost: false,
@@ -17,6 +19,7 @@ var config = {
 
     minTimeForRequest: 2000, // ms, because 30 requests per minute tops
 };
+console.log(config.minDate);
 
 var execute = function(scriptCallback) {
     var postsToKeep = [];
@@ -64,6 +67,8 @@ var execute = function(scriptCallback) {
                         (config.allowBannedPost && post.banned_by)) // If text post or banned post, skip
                         continue ;
                     else if (config.minScore > post.score || config.minUpsPercentage > post.ups * 100 / post.score) // If score too low, skip
+                        continue ;
+                    else if (config.minDate > new Date(post.created_utc * 1000)) // If too old, skip
                         continue ;
 
                     var found = false;
