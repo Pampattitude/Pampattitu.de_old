@@ -49,7 +49,6 @@ var init_ = function (serverApp) {
     var articleController = new (require(__dirname + '/article').Controller)();
     var searchController = new (require(__dirname + '/search').Controller)();
     var userController = new (require(__dirname + '/user').Controller)();
-    var cvController = new (require(__dirname + '/cv').Controller)();
     var errorController = new (require(__dirname + '/error').Controller)();
     var reportController = new (require(__dirname + '/report').Controller)();
 
@@ -63,9 +62,6 @@ var init_ = function (serverApp) {
     serverApp.post('/article/addComment', function(req, res) { return pagesEngine.post({content: articleController.addComment}, req, res); });
     serverApp.get('/random-article', function(req, res) { return pagesEngine.render({content: articleController.renderMagic}, req, res); });
     serverApp.get('/user/:login', function(req, res) { return pagesEngine.render({content: userController.render}, req, res); });
-
-    serverApp.get('/cv', function(req, res) { return pagesEngine.render({content: cvController.render}, req, res); });
-    serverApp.get('/cv/raw', function(req, res) { return pagesEngine.render({content: cvController.renderRaw}, req, res); });
 
     serverApp.get('/search/:data?/:page?', function(req, res) { return pagesEngine.render({content: searchController.render}, req, res); });
     serverApp.post('/search', function(req, res) { return pagesEngine.post({content: searchController.post}, req, res); });
