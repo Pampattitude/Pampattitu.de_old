@@ -4,7 +4,7 @@ Pampattitu.de
 Config
 ------
   * Port management *DONE*
-  * nginx configuration for URLs [pampattitu.de](http://pampattitu.de), [www.pampattitu.de](http://www.pampattitu.de), [beta.pampattitu.de](http://beta.pampattitu.de) & [back.pampattitu.de](http://back.pampattitu.de) *DONE*
+  * nginx configuration for URLs [pampattitu.de](http://pampattitu.de), [www.pampattitu.de](http://www.pampattitu.de) & [back.pampattitu.de](http://back.pampattitu.de) *DONE*
 
 Web
 ---
