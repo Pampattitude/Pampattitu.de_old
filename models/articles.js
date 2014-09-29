@@ -11,7 +11,7 @@ var schema = new mongooseLib.Schema({
     title: {type: String, required: true},
     img: {type: String},
     tags: {type: [String], default: [], index: true},
-    caption: {type: String, required: true},
+    caption: {type: String, required: true, validate: function(val) { return 512 >= val.length; }},
     content: {type: String, required: true},
     author: {type: String, required: true},
 

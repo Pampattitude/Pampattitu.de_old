@@ -13,7 +13,7 @@ var schemaOptions = {
 };
 
 var schema = new mongooseLib.Schema({
-    state: {type: String, required: true, enum: ['new', 'treated']},
+    state: {type: String, required: true, default: 'new', enum: ['new', 'treated', 'obsolete']},
 
     source: {type: String, required: true, enum: ['reddit']},
     subSource: {type: String, required: false},
