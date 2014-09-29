@@ -1,0 +1,51 @@
+<%
+   var padNumber = function(number, length) {
+     var str = '' + number;
+     while (str.length < length) {
+       str = '0' + str;
+     }
+     return str;
+   };
+
+   var formatDate = function(date) {
+   return date.getFullYear() + '-' + padNumber(date.getMonth(), 2) + '-' + padNumber(date.getDate(), 2);
+   };
+%>
+
+<h2 class="inset content-title"><span class="icon-share"></span>&nbsp;&nbsp;Share</h2>
+
+<div class="link-list">
+  <% for (var i = 0 ; linkList.length > i ; ++i) {
+  var link = linkList[i]; %>
+  <div class="link-item">
+    <div class="link-remove">
+      <form method="POST" action="/share/remove">
+        <button type="submit" class="btn btn-red hint--left" data-hint="Remove link"><span class="icon-close"></span></button>
+        <input type="hidden" name="id" value="<%= link._id %>" />
+      </form>
+    </div>
+
+    <h3>
+      <% if ('reddit' == link.source) { %>
+      <a href="http://www.reddit.com"><span class="icon-<%= link.source %>"></span></a>&nbsp;&nbsp;
+      <% } %>
+      <a href="<%= link.url %>" target="_blank"><%= link.text %></a>
+    </h3>
+
+    <h4>
+      <span class="found-date hidden-mobile"><%= formatDate(link.created) + ' ' + padNumber(link.created.getHours(), 2) + ':' + padNumber(link.created.getMinutes(), 2) %></span>
+      <% if ('reddit' == link.source) { %>
+      on <a href="http://www.reddit.com/r/<%= link.subSource %>" target="_blank">/r/<%= link.subSource %></a>,
+      <%= formatDate(link.postDate) %>
+      &nbsp;&nbsp;<a href="http://www.reddit.com/r/<%= link.subSource %>/comments/<%= link.externalId %>" class="hint--left"><span class="icon-link"></span></a>
+      <% } %>
+    </h4>
+
+    <div class="clear"></div>
+  </div>
+  <% } %>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->

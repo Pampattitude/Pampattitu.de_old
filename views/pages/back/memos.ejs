@@ -1,0 +1,99 @@
+<h2 class="inset content-title"><span class="icon-notebook"></span>&nbsp;&nbsp;Memos</h2>
+
+<div class="memo-list">
+  <!-- Memo list -->
+  <% for (var i = 0 ; memoList.length > i ; ++i) {
+  var memo = memoList[i]; %>
+  <div class="memo">
+    <h3>
+      <%= memo.title %>
+
+      <div class="visible-parent-hover hidden-mobile">
+        <form method="POST" action="/memos/remove" class="remove-form">
+          <button type="submit" class="btn btn-red button-remove hint--right" data-hint="Remove item"><span class="icon-remove2"></span></button>
+          <input type="hidden" name="id" value="<%= memo._id %>" />
+        </form>
+
+        <div class="clear"></div>
+      </div>
+    </h3>
+
+    <ul class="unstyled memo-elem-list">
+      <% for (var j = 0 ; memo.content.length > j ; ++j) { %>
+      <li class="memo-elem">
+        <span class="icon">
+          <span class="icon-radio-unchecked"></span>
+        </span>
+        <span class="text">
+          <%= memo.content[j].text %>
+        </span>
+        <div class="visible-parent-hover hidden-mobile">
+          <form method="POST" action="/memos/removeItem">
+            <button type="submit" class="btn btn-red button-remove hint--right" data-hint="Remove item"><span class="icon-close"></span></button>
+            <input type="hidden" name="id" value="<%= memo._id %>" />
+            <input type="hidden" name="itemId" value="<%= memo.content[j]._id %>" />
+          </form>
+
+          <div class="clear"></div>
+        </div>
+      </li>
+      <% } %>
+      <li class="memo-new-elem hidden-mobile">
+        <form method="POST" action="/memos/addItem">
+          <span class="icon">
+            <span class="icon-plus"></span>
+          </span>
+          <input type="text" name="item" placeholder="List item..." />
+          <button type="submit" class="btn">
+            <span class="icon-plus"></span>
+          </button>
+
+          <input type="hidden" name="id" value="<%= memo._id %>" />
+        </form>
+      </li>
+    </ul>
+  </div>
+  <% } %>
+  <!-- !Memo list -->
+
+  <!-- New memo -->
+  <div class="new-memo-block block-group hidden-mobile">
+    <div class="block-content">
+      <form method="POST" action="/memos/new">
+        <div class="grid-12">
+          <div class="cell-10">
+            <input type="text" name="title" value="" placeholder="Title..." />
+          </div>
+          <div class="cell-2">
+            <button type="submit" class="btn">
+              <span class="icon-checkmark"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="clear"></div>
+      </form>
+    </div>
+
+    <div class="block-title">
+      Create new memo
+    </div>
+  </div>
+  <!-- !New memo -->
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
+
+<script type="application/javascript">
+  $(document).ready(function() {
+  $.ajax({url: '/ajaxmemos'})
+  .done(function(data) {
+  console.log(data);
+  })
+  .fail(function(err) {
+  console.log('ERR', err);
+  });
+  });
+</script>

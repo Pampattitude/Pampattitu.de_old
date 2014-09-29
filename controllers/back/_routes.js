@@ -72,6 +72,8 @@ var init_ = function (serverApp) {
     var articlesController = new (require(__dirname + '/articles').Controller)();
     var databaseController = new (require(__dirname + '/database').Controller)();
     var logController = new (require(__dirname + '/log').Controller)();
+    var memosController = new (require(__dirname + '/memos').Controller)();
+    var shareController = new (require(__dirname + '/share').Controller)();
     var reportsController = new (require(__dirname + '/reports').Controller)();
     var statisticsController = new (require(__dirname + '/statistics').Controller)();
     var usersController = new (require(__dirname + '/users').Controller)();
@@ -82,11 +84,21 @@ var init_ = function (serverApp) {
     serverApp.get('/statistics', checkLoggedIn, function(req, res) { return pagesEngine.render({content: statisticsController.render}, req, res); });
 
     serverApp.get('/articles', checkLoggedIn, function(req, res) { return pagesEngine.render({content: articlesController.render}, req, res); });
+    serverApp.get('/article/edit/:technicalName?', checkLoggedIn, function(req, res) { return pagesEngine.render({content: articlesController.renderEdit}, req, res); });
+
+    serverApp.get('/memos', checkLoggedIn, function(req, res) { return pagesEngine.render({content: memosController.render}, req, res); });
+    serverApp.post('/memos/new', checkLoggedIn, function(req, res) { return pagesEngine.post({content: memosController.createNew}, req, res); });
+    serverApp.post('/memos/remove', checkLoggedIn, function(req, res) { return pagesEngine.post({content: memosController.remove}, req, res); });
+    serverApp.post('/memos/addItem', checkLoggedIn, function(req, res) { return pagesEngine.post({content: memosController.addItem}, req, res); });
+    serverApp.post('/memos/removeItem', checkLoggedIn, function(req, res) { return pagesEngine.post({content: memosController.removeItem}, req, res); });
 
     serverApp.get('/users/:page?', checkLoggedIn, function(req, res) { return pagesEngine.render({content: usersController.render}, req, res); });
 
     serverApp.get('/reports', checkLoggedIn, function(req, res) { return pagesEngine.render({content: reportsController.render}, req, res); });
     serverApp.post('/reports/change-state', checkLoggedIn, checkIsAdmin, function(req, res) { return pagesEngine.post({content: reportsController.changeState}, req, res); });
+
+    serverApp.get('/share', checkLoggedIn, function(req, res) { return pagesEngine.render({content: shareController.render}, req, res); });
+    serverApp.post('/share/remove', checkLoggedIn, function(req, res) { return pagesEngine.post({content: shareController.remove}, req, res); });
 
     serverApp.get('/database', checkLoggedIn, function(req, res) { return pagesEngine.render({content: databaseController.render}, req, res); });
 
@@ -97,7 +109,7 @@ var init_ = function (serverApp) {
     serverApp.post('/login', function(req, res) { return pagesEngine.post({post: loginController.login}, req, res); });
     serverApp.post('/logout', function(req, res) { return pagesEngine.post({post: loginController.logout}, req, res); });
 
-    serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp.ico'); });
+    serverApp.get('/favicon', function (req, res) { return simpleGet(req, res, 'img/Pmp-BO.ico'); });
 
     serverApp.get('/css/:file', function (req, res) { return scssGet(req, res, 'css/' + req.params.file + '.scss'); });
 
@@ -127,6 +139,8 @@ var init_ = function (serverApp) {
 
     serverApp.use(function(err, req, res, next) {
         if (err) {
+            consoleLib.error(err.stack);
+            consoleLib.error(err.message);
             consoleLib.error(err);
             return pagesEngine.render({content: errorController.render500}, req, res);
         }
