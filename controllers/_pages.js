@@ -33,6 +33,7 @@ var render_ = function(modules, req, res) {
         res.locals.buttonMenu = 'pages/button-menu';
 
     res.locals.inlineScripts.push('/js/pmp.common.alert');
+    res.locals.inlineScripts.push('/js/pmp.common.linkTarget');
 
     return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
         return fct(req, res, callback);
@@ -49,6 +50,8 @@ var render_ = function(modules, req, res) {
 };
 
 var post_ = function(modules, req, res) {
+    delete req.session.redirectTo;
+
     return asyncLib.each(utilsLib.objectToArray(modules), function(fct, callback) {
         return fct(req, res, callback);
     },
