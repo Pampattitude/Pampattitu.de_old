@@ -1,21 +1,13 @@
 'use strict';
 
+var clusterLib = require('cluster');
 var expressLib = require('express');
 var helmetLib = require('helmet');
-var httpLib = require('http');
-var urlLib = require('url');
-
-var fsLib = require('fs');
-
-var ejsLib = require('ejs');
-var jsonLib = require('JSON');
-
-var clusterLib = require('cluster');
-
 var mongooseLib = require('mongoose');
-var databaseUri = 'mongodb://localhost/pmp-home';
+var requireDirLib = require('require-dir');
 
 var consoleLib = require(__dirname + '/lib/console');
+var constantsLib = require(__dirname + '/lib/constants');
 
 if (clusterLib.isMaster) {
     var cluserPerCpu = 1;
@@ -35,26 +27,18 @@ if (clusterLib.isMaster) {
 
     global.processId = 'Master';
 
-    mongooseLib.connect(databaseUri);
+    mongooseLib.connect(constantsLib.databaseUri);
     mongooseLib.connection.on('error', function (err) {
         // Handle error
         consoleLib.error('Could not open DB connection: ' + err);
 
         mongooseLib.connection.close();
-        mongooseLib.connect(databaseUri);
+        mongooseLib.connect(constantsLib.databaseUri);
     });
     mongooseLib.connection.once('open', function () {
         // Handle open;
         consoleLib.log('DB connection open');
-
-        require(__dirname + '/models/articles').model;
-        require(__dirname + '/models/comments').model;
-        require(__dirname + '/models/fetchedLinks').model;
-        require(__dirname + '/models/memos').model;
-        require(__dirname + '/models/reports').model;
-        require(__dirname + '/models/tags').model;
-        require(__dirname + '/models/users').model;
-
+        requireDirLib(__dirname + '/models/');
         consoleLib.log('Collections sync\'ed');
 
         if (mongooseLib.connection.collections['sessions']) {
@@ -78,26 +62,18 @@ if (clusterLib.isMaster) {
 else {
     global.processId = 'Worker ' + clusterLib.worker.id;
 
-    mongooseLib.connect(databaseUri);
+    mongooseLib.connect(constantsLib.databaseUri);
     mongooseLib.connection.on('error', function (err) {
         // Handle error
         consoleLib.error('Could not open DB connection: ' + err);
 
         mongooseLib.connection.close();
-        mongooseLib.connect(databaseUri);
+        mongooseLib.connect(constantsLib.databaseUri);
     });
     mongooseLib.connection.once('open', function () {
         // Handle open;
         consoleLib.log('DB connection open');
-
-        require(__dirname + '/models/articles').model;
-        require(__dirname + '/models/comments').model;
-        require(__dirname + '/models/fetchedLinks').model;
-        require(__dirname + '/models/memos').model;
-        require(__dirname + '/models/reports').model;
-        require(__dirname + '/models/tags').model;
-        require(__dirname + '/models/users').model;
-
+        requireDirLib(__dirname + '/models/');
         consoleLib.log('Collections sync\'ed');
     });
 
@@ -122,7 +98,7 @@ else {
         app.use(expressLib.cookieParser());
         app.use(expressLib.session({
             store: new mongoStore ({
-                url: databaseUri + '/sessions'
+                url: constantsLib.databaseUri + '/sessions'
             },
             function() {
                 consoleLib.info("MongoStore connected!");
