@@ -10,7 +10,7 @@ var utilsLib = require(__dirname + '/../../lib/utils');
 var commonBack = require(__dirname + '/common');
 
 var controller_ = function() {
-    var maxLineNumber = 30;
+    var maxLineNumber = 256;
     var logPath = '/data/log/beta-website.log';
 
     this.render = function(req, res, renderCallback) {

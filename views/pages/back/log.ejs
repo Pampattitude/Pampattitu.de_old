@@ -14,7 +14,7 @@
   var updateLogList = function() {};
 
   $(document).ready(function() {
-    var maxLineNumber = 30;
+    var maxLineNumber = 256;
 
     updateLogList = function(elem) {
       var txt = $(elem).html();
@@ -28,7 +28,7 @@
 
       var newTxt = '';
       for (var i = 0 ; txt.length > i ; ++i) {
-        if (txt[i].length)
+        if (txt[i].length && !/^[ \t\r\n]*$/g.test(txt[i]))
             newTxt += '<p class="line">' + txt[i] + '</p>';
       }
 
