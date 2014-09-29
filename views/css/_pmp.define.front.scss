@@ -1,3 +1,6 @@
+$body-min-width:                300px;
+$body-width:                    100%;
+$body-max-width:                1002px;
 $body-background-image:         url('http://i.imgur.com/7XmZFgC.png');
 
 // Generic colors
@@ -18,17 +21,28 @@ $red-focus-border:      rgb(128, 48, 48);
 
 $oranger:               rgb(224, 156, 104);
 $orange:                rgb(216, 128, 64);
+$orange-border:         rgb(168, 96, 32);
+$orange-focus:          rgb(184, 112, 48);
+$orange-focus-border:   rgb(144, 84, 24);
 
 $light-greener:         rgb(96, 184, 96);
 $light-green:           rgb(84, 172, 84);
 $green:                 rgb(80, 152, 80);
 $green-hover:           rgb(112, 182, 112);
+$green-focus:           rgb(112, 182, 112);
 $green-border:          rgb(40, 104, 40);
 
+$light-blue:            rgb(128, 184, 224);
+$light-blue-background: rgba(200, 224, 232, 0.1);
 $blue:                  rgb(64, 104, 152);
 $blue-focus:            rgb(40, 64, 112);
 $blue-border:           $blue-focus;
 $blue-focus-border:     rgb(24, 40, 96);
+
+$dark-green:            rgb(40, 76, 40);
+$dark-green-focus:      rgb(56, 91, 56);
+$dark-green-border:     rgb(20, 52, 20);
+$dark-green-focus-border: rgb(56, 91, 56);
 
 $dark-blue:             rgb(32, 56, 96);
 $dark-blue-focus:       rgb(20, 40, 72);
@@ -91,8 +105,15 @@ $link-hover-color:              $green-hover;
 $button-text-color:             $black;
 $button-background-color:       $white;
 $button-border-color:           $white-border;
+$button-hover-text-color:       $blacker;
 $button-hover-background-color: $white;
 $button-hover-border-color:     $white-border;
+
+$button-inverse-text-color:     $white;
+$button-inverse-background-color: $black;
+$button-inverse-border-color:   $blacker;
+$button-inverse-hover-background-color: $black;
+$button-inverse-hover-border-color: $blacker;
 
 $menu-button-text-color:        $button-text-color;
 $menu-button-background-color:  $button-background-color;

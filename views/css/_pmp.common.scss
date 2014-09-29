@@ -52,6 +52,7 @@ body {
 
     background-color: $body-background-color;
     background-image: $body-background-image;
+    background-attachment: fixed;
 }
 
 
@@ -95,7 +96,8 @@ a:hover {
 input,
 textarea {
     color: $black;
-    font-family: 'Inconsolata', monospace;
+
+    font-family: 'Inconsolata', monospace !important;
 }
 
 img {
@@ -114,6 +116,16 @@ q {
 
     margin: 0 !important;
     padding: 0 !important;
+}
+
+
+* > .visible-parent-hover {
+    opacity: 0;
+
+    transition: opacity 200ms;
+}
+*:hover > .visible-parent-hover {
+    opacity: 1;
 }
 
 
@@ -158,6 +170,8 @@ q {
     transition: color 200ms, background-color 200ms, border-color 200ms, box-shadow 200ms;
 }
 .btn:hover {
+    color: $button-hover-text-color;
+
     background: $button-hover-background-color;
 
     box-shadow: inset -1px 0 0 $button-hover-border-color,
@@ -189,6 +203,58 @@ a.btn {
     box-shadow: inset -1px 0 0 $blue-focus-border,
     inset 1px 0 0 $blue-focus-border,
     inset 0 1px 0 $blue-focus-border;
+}
+
+.btn.btn-red,
+.btn.btn-red:visited {
+    color: $white;
+    background-color: $red !important;
+    border-color: $red-border !important;
+}
+.btn.btn-red:active,
+.btn.btn-red:hover,
+.btn.btn-red:focus {
+    background-color: $red-focus !important;
+    border-color: $red-focus-border !important;
+
+    box-shadow: inset -1px 0 0 $red-focus-border,
+    inset 1px 0 0 $red-focus-border,
+    inset 0 1px 0 $red-focus-border;
+}
+
+.btn.btn-orange,
+.btn.btn-orange:visited {
+    color: $white;
+    background-color: $orange !important;
+    border-color: $orange-border !important;
+}
+.btn.btn-orange:active,
+.btn.btn-orange:hover,
+.btn.btn-orange:focus {
+    background-color: $orange-focus !important;
+    border-color: $orange-focus-border !important;
+
+    box-shadow: inset -1px 0 0 $orange-focus-border,
+    inset 1px 0 0 $orange-focus-border,
+    inset 0 1px 0 $orange-focus-border;
+}
+
+
+.btn.btn-inverse,
+.btn.btn-inverse:visited {
+    color: $button-inverse-text-color;
+    background-color: $button-inverse-background-color !important;
+    border-color: $button-inverse-border-color !important;
+}
+.btn.btn-inverse:active,
+.btn.btn-inverse:hover,
+.btn.btn-inverse:focus {
+    background-color: $button-inverse-hover-background-color !important;
+    border-color: $button-inverse-hover-border-color !important;
+
+    box-shadow: inset -1px 0 0 $button-inverse-hover-border-color,
+    inset 1px 0 0 $button-inverse-hover-border-color,
+    inset 0 1px 0 $button-inverse-hover-border-color;
 }
 
 
@@ -375,9 +441,22 @@ input {
 
     font-size: 1em;
 
-    border: 1px solid rgb(220, 220, 220);
-    border-top: 3px solid rgb(220, 220, 220);
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1);
+
+    transition: all 200ms;
 }
+input:hover {
+    background-color: $light-blue-background;
+    border-color: $light-blue;
+}
+input:active,
+input:focus {
+    border-color: $blue;
+
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 input.big {
     padding: .4em .5em;
     font-size: 1.1em;
@@ -407,8 +486,20 @@ textarea {
     font-family: 'Lato', 'TikalSans';
     font-size: 0.8em;
 
-    border: 1px solid rgb(220, 220, 220);
-    border-top: 3px solid rgb(220, 220, 220);
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1);
+
+    transition: all 200ms;
+}
+textarea:hover {
+    background-color: $light-blue-background;
+    border-color: $light-blue;
+}
+textarea:active,
+textarea:focus {
+    border-color: $blue;
+
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -584,7 +675,7 @@ code.js .string {
     border-radius: 0.2em;
 }
 .label.label-boxxy {
-    padding: 0.2em;
+    padding: 0.2em 0.4em 0.25em 0.4em;
 
     font-size: 1.1em;
 }
@@ -686,5 +777,107 @@ code.js .string {
         left: 0;
         right: 0;
         bottom: 0;
+    }
+}
+
+.block-group {
+    color: $black;
+
+    background-color: $white;
+    border: 2px solid $blue;
+}
+.block-group .block-content {
+    padding: 0.4em;
+}
+.block-group .block-title {
+    padding: 0.4em;
+
+    color: $white;
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-weight: bolder;
+
+    background-color: $blue;
+}
+
+
+textarea.grow {
+    min-height: 0;
+}
+
+
+.tooltip-box {
+    display: block;
+    opacity: 1;
+}
+
+.tooltip {
+    opacity: 1;
+    position: absolute;
+
+    padding: 0.3em;
+
+    color: $black;
+    font-size: 0.8rem;
+    text-align: left;
+
+    background-color: $light-light-grey;
+    border-radius: 0.2em;
+    box-shadow: 0 0 4px $blacker;
+
+    transition: opacity 200ms;
+    z-index: 100;
+}
+
+.tooltip.tooltip-visible {
+    opacity: 1;
+}
+.tooltip.tooltip-hidden {
+    opacity: 0;
+}
+
+/* NOT REALLY COMMOn */
+.circle {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+
+    background-color: rgba(32, 32, 32, 0.1);
+    border: 0.12em solid rgba(32, 32, 32, 0.7);
+    border-radius: 1000em;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 -0.5px 0 rgba(255, 255, 255, 0.3);
+
+    transition: background-color 200ms;
+}
+td:hover .circle {
+    background-color: $whiter;
+}
+
+.circle-full {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+
+    background-color: $green;
+    border: 0.12em solid $black;
+    border-radius: 1000em;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.4);
+
+    transition: background-color 200ms;
+}
+td:hover .circle-full {
+    background-color: $green-hover;
+}
+
+@media only screen and (max-width: 767px) {
+    .circle,
+    .circle-full {
+        width: 0.7em;
+        height: 0.7em;
+
+        font-size: 0.9em;
     }
 }

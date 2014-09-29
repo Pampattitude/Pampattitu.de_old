@@ -1,0 +1,323 @@
+<% var isRaw = 'undefined' !== typeof view && 'raw' == view;
+if (isRaw) { %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><% if ('undefined' !== typeof title) { %><%= title %> - <% } %>Pampattitu.de<% if ('back' == app) { %> - Back-office<% } %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+
+    <!-- CSS stylesheets -->
+    <style>
+      .preload * {
+          /*-webkit-transition: none !important; -moz-transition: none !important; -ms-transition: none !important; -o-transition: none !important; */
+          transition: none !important;
+      }
+
+      body {
+      margin: 1.6em !important;
+      background-color: rgb(255, 255, 255) !important;
+      }
+    </style>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="/css/icomoon" />
+    <link rel="stylesheet" href="/css/pmp.grid" />
+    <link rel="stylesheet" href="/css/pmp.front" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/hint.css/1.3.2/hint.min.css" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,900" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" type="text/css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon" />
+
+    <script type="application/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+  </head>
+  <body class="preload">
+<% } else { %>
+<h2 class="inset content-title"><span class="icon-profile"></span>&nbsp;&nbsp;Curriculum Vitae</h2>
+<div class="outset">
+  <div class="outset-box">
+<% } %>
+
+    <!-- CV -->
+    <div class="curriculum-vitae<% if (isRaw) { %> curriculum-vitae-raw<% } %>">
+      <div class="float-right">
+        <div class="picture">
+          <div style="position: absolute; top: 0; right: 0; z-index: 12;">
+            <% if (isRaw) { %>
+            <a href="/cv" class="btn hint--left" data-hint="Back to website version">
+              <span class="icon-undo2"></span>
+            </a>
+            <% } else { %>
+            <a href="/cv/raw" target="_blank" class="btn hint--left" data-hint="Open printable profile in another tab">
+              <span class="icon-print"></span>
+            </a>
+            <% } %>
+
+            <a href="http://www.linkedin.com/pub/guillaume-delahodde/5a/751/44a" target="_blank" class="btn btn-linkedin hint--left" data-hint="LinkedIn profile">
+              <span class="icon-linkedin"></span>
+            </a>
+          </div>
+
+          <img src="https://media.licdn.com/mpr/mpr/wc_200_200/p/6/000/1cb/311/1af2d67.jpg" alt="Personal picture" class="hidden-mobile" />
+        </div>
+      </div>
+
+      <div class="float-left contact">
+        <a href="https://maps.google.fr/maps/place/33+Rue+Danton,+94270+Le+Kremlin-Bic%C3%A8tre/@48.8111162,2.3606994,17z/data=!3m1!4b1!4m2!3m1!1s0x47e6717e7c9b3041:0x82d5fc2ad998ebd5" class="hint--bottom">33, rue Danton
+          <br />
+          94270 Le Kremlin-Bic&ecirc;tre</a>
+        <br />
+        <a href="tel:+33689445237" class="hint--bottom">06 89 44 52 37</a>
+        <br />
+        <a href="mailto:guillaume.delahodde@gmail.com" class="hint--bottom">guillaume.delahodde@gmail.com</a>
+      </div>
+
+      <div class="clear"></div>
+
+      <h2 class="title">Guillaume &laquo;<span class="text-green">Pampa</span>&raquo; Delahodde</h2>
+
+      <h3><span class="icon-trophy"></span>&nbsp;&nbsp;Skill diagram</h3>
+      <img src="/img/CV-skills" alt="" style="width: 75%; margin: auto;" />
+      <!--
+      <table class="skill-table">
+        <tr>
+          <td>C++</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle-full hidden-mobile"></span>
+          </td>
+          <td>HTML5 / CSS3</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span><span class="circle hidden-mobile"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Node.js</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span>
+          </td>
+          <td>JavaScript</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span><span class="circle hidden-mobile"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>MongoDB</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span><span class="circle hidden-mobile"></span>
+          </td>
+          <td>UML</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Git</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle hidden-mobile"></span>
+          </td>
+          <td>SVN</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span><span class="circle hidden-mobile"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Windows</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle"></span><span class="circle hidden-mobile"></span>
+          </td>
+          <td>*nix</td>
+          <td class="vals">
+            <span class="circle-full"></span><span class="circle-full"></span><span class="circle-full"></span><span class="circle-full hidden-mobile"></span><span class="circle hidden-mobile"></span>
+          </td>
+        </tr>
+      </table>
+      -->
+
+      <div class="experiences">
+        <h3><span class="icon-office"></span>&nbsp;&nbsp;Professional experience</h3>
+
+        <div class="experience">
+          <h4>Node.js developer</h4>
+          <h5>at <a href="http://www.ezeeworld.com">Ezeeworld</a>, since December, 2013</h5>
+          <div class="description">
+            <p>
+              Development includes back-end scripting with <b>Node.js</b>, front-end development for internal websites (MVC pattern, Node.js + Express.js + <b>HTML5</b> + EJS + Bootstrap) and JSON-based webservices for external applications.<br />
+              Data storage in <b>MongoDB</b> (via <b>Mongoose</b>).<br />
+              Versioning on <b>Git</b>.
+            </p>
+            <p>
+              Worked on a proxy dispatcher with a proxy scoring system and automated proxy restart (Amazon EC2, Node.js), and on an analytics system with close to real time data aggregation and retrieval (Node.js, MongoDB, module system for custom metrics like Facebook events, app download count or search by region).
+            </p>
+          </div>
+        </div>
+
+        <div class="experience">
+          <h4>Market communication - C++ developer</h4>
+          <h5>at <a href="http://www.mwa-france.com">Mondial Web Agency</a>, from May to November, 2013</h5>
+          <div class="description">
+            <p>
+              Employed at Mondial Web Agency Conseil (consulting firm).<br />
+              <b>C++</b> and <b>Python</b> programmer at BNP Paribas CIB (final client).<br />
+              Includes C++ programming, optimization, multithreading, network communication, etc.<br />
+              About a trading gateway server including pre and post network packets treatment, persistency and connections to multiple markets (trading / clearing).<br />
+              Network protocols include FIX, OUCH or native. Versioning on <b>SVN</b>.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience">
+          <h4>C++ assistant</h4>
+          <h5>at <a href="http://www.epitech.com">Epitech</a>, from May, 2011 to February, 2013</h5>
+          <div class="description">
+            <p>
+              C++ assistant, teaching advanced programming to 2nd and 3rd year students.<br />
+              Permanent assistant in the Koalab (Kind Of Advanced Languages Assistants laboratory), managing language-related research, courses, tutorials and pedagogical / technical content, defenses and system administration.<br />
+              System administration for Git / Mercurial / SVN repository servers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="education">
+        <h3><span class="icon-library">&nbsp;Education</h3>
+
+        <div class="school">
+          <h4>Epitech - European Institute of Technology</h4>
+          <h5>Master Degree, Computer Programming, from 2008 to 2013</h5>
+          <div class="description">
+            Activities and Societies: Merise methodology, UML, C/C++ programming, C#, Python, HTML/CSS/PHP
+          </div>
+        </div>
+      </div>
+
+      <div class="hobbies">
+        <h3><span class="icon-dice">&nbsp;Personal projects</h3>
+
+        <div class="hobby">
+          <h4>Pampattitu.de</h4>
+          <h5>
+            Live beta at&nbsp;<a href="http://beta.pampattitu.de"><img src="http://i.imgur.com/Atsf9xx.png" alt="beta.pampattitu.de" style="width: 1.1em; display: inline-block" /> beta.pampattitu.de</a>,
+            code on&nbsp;&nbsp;<a href="https://github.com/Pampattitude/Pampattitu.de"><span class="icon-github"></span> GitHub</a>
+          </h5>
+          <div class="description">
+            <p>
+              Leader, front-end & back-end developer, system administrator and blogger.
+              A blog about languages and personal projects.
+            </p>
+
+            <p>
+              Back-end in Node.js, front in HTML5 / CSS3 (via SCSS) / Javascript.
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby">
+          <h4>PmpEng: 2D game & multimedia engine</h4>
+          <h5>
+            Code on&nbsp;&nbsp;<a href="https://github.com/Pampattitude/PmpEng"><span class="icon-github"></span> Github</a>
+          </h5>
+          <div class="description">
+            <p>
+              Leader, front-end & back-end developer, system administrator and blogger.
+              A blog about languages and personal projects.
+            </p>
+
+            <p>
+              Back-end in Node.js, front in HTML5 / CSS3 (via SCSS) / Javascript.
+              GitHub: https://github.com/Pampattitude/Pampattitu.de
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby">
+          <h4>Other hobbies</h4>
+          <div class="description">
+            <p>
+              Music creation (link available soon), writing
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact<% if (isRaw) { %> contact-raw<% } %>">
+        <div class="grid-12">
+          <% if (!isRaw) { %>
+          <div class="cell-2">
+            <a href="http://beta.pampattitu.de" target="_blank" class="cv-badge-website hint--bottom" data-hint="Visit &quot;beta.pampattitu.de&quot; in new tab"><span class="icon-earth"></span></a>
+          </div>
+
+          <div class="cell-2">
+            <a href="tel:+33689445237" class="cv-badge-phone hint--bottom"><span class="icon-phone"></span></a>
+          </div>
+          <div class="cell-2">
+            <a href="mailto:guillaume.delahodde@gmail.com" class="cv-badge-mail hint--bottom"><span class="icon-mail2"></span></a>
+          </div>
+
+          <div class="cell-2">
+            <a href="https://github.com/pampattitude" class="cv-badge-github hint--bottom"><span class="icon-github"></span></a>
+          </div>
+          <div class="cell-2">
+            <a href="https://twitter.com/pampattitude" class="cv-badge-twitter hint--bottom"><span class="icon-twitter"></span></a>
+          </div>
+          <div class="cell-2">
+            <a href="https://facebook.com/pampattitude" class="cv-badge-facebook hint--bottom"><span class="icon-facebook"></span></a>
+          </div>
+          <% } else { %>
+          <div class="cell-4">
+            <a href="https://github.com/pampattitude" class="cv-badge-github hint--bottom cv-badge-raw"><span class="icon-github"></span> Pampattitude</a>
+          </div>
+          <div class="cell-4">
+            <a href="https://twitter.com/pampattitude" class="cv-badge-twitter hint--bottom cv-badge-raw"><span class="icon-twitter"></span> @Pampattitude</a>
+          </div>
+          <div class="cell-4">
+            <a href="https://facebook.com/pampattitude" class="cv-badge-facebook hint--bottom cv-badge-raw"><span class="icon-facebook"></span> Guillaume Delahodde</a>
+          </div>
+          <% } %>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+    <!-- !CV -->
+
+<% if (isRaw) { %>
+    <!-- JS scripts -->
+    <script type="application/javascript" src="/js/konami"></script>
+
+    <!-- Inline scripts, for pages with specific scripts -->
+    <% if ('undefined' !== typeof inlineScripts) {
+    for (var i = 0 ; inlineScripts.length > i ; ++i) {
+    var inlineScript = inlineScripts[i]; %>
+    <script type="application/javascript" src="<%= inlineScript %>"></script>
+    <% } %>
+    <% } %>
+
+    <script type="application/javascript">
+      (function() {
+          $(document).ready(function() {
+              $('body.preload').removeClass('preload');
+              <% if ('front' == app) { %>new Konami('http://back.pampattitu.de/');
+              <% } else { %>new Konami('http://beta.pampattitu.de/');
+              <% } %>
+          });
+      })();
+    </script>
+  </body>
+</html>
+<% } else { %>
+  </div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
+<% } %>

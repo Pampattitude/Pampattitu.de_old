@@ -1,5 +1,8 @@
 @import 'pmp.define.front';
 
+$body-min-width:                300px;
+$body-width:                    100%;
+$body-max-width:                100%; // 1002px;
 $body-background-image:         url('http://i.imgur.com/EeRiLZ8.png');
 
 // Specific (misc)
@@ -17,6 +20,12 @@ $button-background-color:       $black;
 $button-border-color:           $blacker;
 $button-hover-background-color: $black;
 $button-hover-border-color:     $blacker;
+
+$button-inverse-text-color:     $black;
+$button-inverse-background-color: $white;
+$button-inverse-border-color:   $light-grey;
+$button-inverse-hover-background-color: $whiter;
+$button-inverse-hover-border-color: $white;
 
 $menu-button-text-color:        $button-text-color;
 $menu-button-background-color:  $button-background-color;

@@ -1,11 +1,11 @@
 .page {
-    min-width: 300px;
-    width: 100%;
-    max-width: 1002px;
+    min-width: $body-min-width;
+    width: $body-width;
+    max-width: $body-max-width;
     position: relative;
     overflow: hidden;
 
-    margin: 0 auto;
+    margin: 3.5em auto 0 auto;
     padding: 0;
 }
 @media only screen and (max-width: 767px) {
@@ -16,13 +16,24 @@
 
 
 .button-menu {
-    position: relative;
+    min-width: $body-min-width;
+    width: $body-width;
+    max-width: $body-max-width;
+    position: fixed;
+    top: 0;
     z-index: 40;
 
     font-size: 1rem;
 
     box-shadow: 0px 0px 4px 1px black;
 }
+@media only screen and (max-width: 767px) {
+    .button-menu {
+        top: auto;
+        bottom: 0;
+    }
+}
+
 .button-menu .btn.menu-btn {
     width: 100%;
     height: 2.9em;
@@ -189,6 +200,8 @@
 
 /* Latest tweet */
 .latest-tweet {
+    overflow: hidden;
+
     color: $whiter;
     font-size: 1em;
     font-family: 'Lato', sans-serif;
@@ -217,11 +230,19 @@
 }
 
 .latest-tweet [class*=icon-] {
-    margin-right: 0.5em;
+    position: absolute;
+    left: 0.8em;
+    top: 0.6em;
 }
 
 .latest-tweet .text {
-    display: inline;
+    display: inline-block;
+
+    margin-left: 1.6em;
+
+    white-space: nowrap;
+
+    transition: width 1000ms;
 }
 
 .latest-tweet .text u {
@@ -1198,6 +1219,611 @@
     padding: 0.2em;
 }
 /* !Back-office: log list */
+
+/* Back-office: article list */
+.article-list .article-marg.cell-1 {
+    width: calc(33.33% - 1em);
+    box-sizing: border-box;
+
+    margin: 0.5em;
+}
+@media only screen and (max-width: 767px) {
+    .article-list .article-marg.cell-1 {
+        width: calc(100% - 1em);
+    }
+}
+
+.article-list .article-marg.cell-3 {
+    width: calc(100% - 1em);
+    box-sizing: border-box;
+
+    margin: 0.5em;
+}
+
+.article-list .article {
+    cursor: default;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 4px $blacker;
+
+    transition: background-color 200ms;
+}
+.article-list .article:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.article-list .article.featured {
+    color: $white;
+
+    background-color: rgba(32, 32, 32, 0.9);
+    /*background-color: rgba(255, 255, 208, 0.9);*/
+}
+.article-list .article.featured:hover {
+    color: $white;
+
+    background-color: rgba(32, 32, 32, 0.8);
+    /*background-color: rgba(255, 255, 208, 0.8);*/
+}
+
+.article-list .article .action-list {
+    z-index: 10;
+    float: right;
+
+    margin: 0 0 0.4em 0.4em;
+
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+.article-list .article .action-list .btn {
+    display: block;
+
+    padding: 0.3em 0.5em;
+
+    font-size: 1.1em;
+}
+.article-list .article .action-list .btn.btn-inverse:hover {
+    color: $blacker;
+}
+
+.article-list .article .article-data {
+    padding: 1em;
+}
+
+.article-list .article .article-data h3 {
+    margin: 0;
+}
+
+.article-list .article .article-data .metadata {
+    float: right;
+}
+
+.article-list .article .article-data .caption {
+    margin: 1.6em 0 0 0;
+    padding: 0;
+
+    font-style: italic;
+}
+
+.article-list .new-article {
+    display: block;
+
+    padding: 0.3em;
+
+    color: $black;
+    text-align: center;
+    font-size: 4em;
+
+    background-color: $light-grey;
+    border-radius: 0.1em;
+
+    transition: color 200ms, background-color 200ms;
+}
+.article-list .new-article:hover {
+    color: $blacker;
+
+    background-color: $grey;
+}
+/* !Back-office: article list */
+
+/* Back-office: article edit */
+.article-edit-box {
+}
+
+.article-edit-box table {
+    width: 100%;
+}
+
+.article-edit-box table tr:first-child td.elem-title {
+    padding-top: 0;
+}
+
+.article-edit-box table td {
+    padding: 0 1em;
+}
+
+.article-edit-box table td.elem-title {
+    padding-top: 0.6em;
+
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.article-edit-box input,
+.article-edit-box textarea {
+    background-color: $white;
+}
+.article-edit-box input:not([disabled]):hover,
+.article-edit-box textarea:not([disabled]):hover {
+}
+.article-edit-box input:not([disabled]):active,
+.article-edit-box textarea0:not([disabled]):focus {
+    background-color: $whiter;
+}
+
+.article-edit-box .save-button,
+.article-edit-box .preview-button {
+    display: block;
+    float: right;
+
+    padding: 0.4em;
+
+    font-size: 1.5em;
+}
+.article-edit-box .save-button:hover,
+.article-edit-box .preview-button:hover {
+    color: $black;
+
+    background-color: $white;
+    border-color: $light-grey;
+
+    box-shadow: inset -1px 0 0 $light-grey,
+    inset 1px 0 0 $light-grey,
+    inset 0 1px 0 $light-grey;
+}
+/* !Back-office: article edit */
+
+/* Back-office: memo list */
+.memo-list {
+}
+
+.memo-list .memo {
+    margin-bottom: 1em;
+    padding-bottom: 0.2em;
+
+    background-color: $whiter;
+    box-shadow: 0 0 5px $blacker;
+}
+.memo-list .memo:last-child {
+    margin-bottom: 0;
+}
+
+.memo-list .memo h3 {
+    margin: 0;
+    margin-bottom: 0.2em;
+    padding: 0.3em 0.5em;
+
+    background-color: $whiter;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+.memo-list .memo h3 .visible-parent-hover {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin: 0;
+    margin-left: 0.4em;
+
+    font-size: 0.6em;
+}
+
+.memo-list .memo .memo-elem {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.memo-list .memo .memo-elem,
+.memo-list .memo .memo-new-elem {
+    padding: 0.1em 0.8em;
+}
+
+.memo-list .memo .memo-new-elem {
+    padding-top: 0.4em;
+}
+
+.memo-list .memo .memo-elem .icon,
+.memo-list .memo .memo-new-elem .icon {
+    display: inline-block;
+    opacity: 0.5;
+
+    padding: 0.5em 0;
+
+    font-size: 0.8em;
+}
+
+.memo-list .memo .memo-elem .text,
+.memo-list .memo .memo-new-elem input {
+    width: auto;
+
+    margin: 0;
+    margin-left: 0.6em;
+}
+
+.memo-list .memo .memo-elem .text {
+    display: inline;
+}
+.memo-list .memo .memo-new-elem input {
+    min-width: 36em;
+    display: inline-block;
+}
+
+.memo-list .memo .memo-elem .visible-parent-hover {
+    display: inline-block;
+
+    margin-left: 0.4em;
+}
+
+.memo-list .memo .remove-form button.button-remove {
+    float: right;
+
+    font-size: 1.8em;
+}
+.memo-list .memo .memo-elem button.button-remove {
+    font-size: 0.6em;
+}
+
+.new-memo-block {
+}
+
+.new-memo-block [class*=grid-] input {
+    padding: 0.4em 0.8em;
+
+    font-size: 1em;
+}
+
+.new-memo-block [class*=grid-] button {
+    width: 100%;
+    display: inline-block;
+
+    font-size: 1em;
+
+    padding: 0.4em;
+}
+/* !Back-office: memo list */
+
+/* Back-office: statistics */
+.statistics .top-ticket {
+    overflow: hidden;
+
+    padding: 0.5em 0.7em;
+
+    box-shadow: inset 0 4px 0 transparent;
+
+    transition: background-color 200ms, box-shadow 100ms;
+}
+.statistics .top-ticket:active,
+.statistics .top-ticket:focus {
+    box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+.statistics .top-ticket.top-ticket-articles {
+    background-color: rgb(80, 40, 80);
+}
+.statistics .top-ticket.top-ticket-articles:hover {
+    background-color: rgb(104, 56, 104);
+}
+.statistics .top-ticket.top-ticket-articles:active,
+.statistics .top-ticket.top-ticket-articles:focus {
+    background-color: rgb(64, 32, 64);
+}
+.statistics .top-ticket.top-ticket-comments {
+    background-color: rgb(216, 128, 64);
+}
+.statistics .top-ticket.top-ticket-comments:hover {
+    background-color: rgb(232, 144, 72);
+}
+.statistics .top-ticket.top-ticket-comments:active,
+.statistics .top-ticket.top-ticket-comments:focus {
+    background-color: rgb(200, 104, 56);
+}
+.statistics .top-ticket.top-ticket-reports {
+    background-color: rgb(192, 84, 84);
+}
+.statistics .top-ticket.top-ticket-reports:hover {
+    background-color: rgb(208, 104, 104);
+}
+.statistics .top-ticket.top-ticket-reports:active,
+.statistics .top-ticket.top-ticket-reports:focus {
+    background-color: rgb(176, 64, 64);
+}
+.statistics .top-ticket.top-ticket-links {
+    background-color: rgb(64, 104, 152);
+}
+.statistics .top-ticket.top-ticket-links:hover {
+    background-color: rgb(72, 120, 168);
+}
+.statistics .top-ticket.top-ticket-links:active,
+.statistics .top-ticket.top-ticket-links:focus {
+    background-color: rgb(56, 88, 136);
+}
+
+.statistics a.ticket-link {
+    display: block;
+
+    color: rgb(240, 240, 240);
+    font-size: 1.3em;
+    text-align: center;
+}
+.statistics a.ticket-link .top-ticket .number {
+    display: inline-block;
+
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.statistics .top-ticket .back-icon {
+    position: absolute;
+    right: -0.15em;
+    bottom: -0.15em;
+
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 3em;
+
+    transform: rotate(-20deg);
+    transition: color 200ms, transform 200ms;
+}
+.statistics .top-ticket:hover .back-icon {
+    color: rgba(255, 255, 255, 0.25);
+
+    transform: rotate(20deg);
+}
+.statistics .top-ticket:active .back-icon,
+.statistics .top-ticket:focus .back-icon {
+    transform: rotate(-60deg);
+}
+
+.statistics .graph-box {
+    box-sizing: border-box;
+
+    margin: 0 0.6em;
+}
+.statistics .graph-box .graph {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: auto;
+    padding: 1.2% 2.4%;
+
+    background-color: $whiter;
+}
+
+.statistics .graph-box .graph h3 {
+    margin: 0.4em;
+    padding-bottom: 0.6em;
+
+    color: $black;
+    font-size: 1em;
+    text-align: center;
+
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+}
+
+.statistics .graph-box .graph > div {
+    height: 14em;
+}
+@media only screen and (max-width: 767px) {
+    .statistics .graph-box .graph > div {
+        height: 16em;
+    }
+}
+/* !Back-office: statistics */
+
+/* Back-office: share */
+.link-list .link-item {
+    width: 100%;
+
+    margin: 0.4em 0;
+
+    background-color: $whiter;
+    box-shadow: 0 0 4px rgb(0, 0, 0);
+}
+.link-list .link-item:first-child {
+    margin-top: 0;
+}
+.link-list .link-item:last-child {
+    margin-bottom: 0;
+}
+
+.link-list .link-item .link-remove {
+    float: right;
+
+    z-index: 20;
+}
+
+.link-list .link-item h3 {
+    margin: 0;
+    padding: 0.2em 0.4em;
+
+    background-color: $whiter;
+    box-shadow: 0 0 4px rgb(0, 0, 0);
+}
+.link-list .link-item h3 a {
+    display: inline;
+}
+
+.link-list .link-item h4 {
+    margin: 0;
+    padding: 0.2em 0.4em;
+
+    text-align: right;
+}
+
+.link-list .link-item h4 .found-date {
+    display: inline-block;
+    float: left;
+
+    margin-top: 0.1em;
+    margin-right: 0.3em;
+
+    color: rgba(32, 32, 32, 0.3);
+    font-size: 0.8em;
+}
+/* !Back-office: share */
+
+/* CV */
+.curriculum-vitae {
+    max-width: $body-max-width;
+
+    margin: 0.7em auto 0.7em auto;
+
+    color: $black;
+}
+
+.curriculum-vitae .contact {
+    font-size: 0.8em;
+}
+
+.curriculum-vitae .picture .btn {
+    display: block;
+    float: right;
+}
+.curriculum-vitae .picture img {
+    max-height: 6em;
+
+    padding: 0.2em;
+
+    background-color: $whiter;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+}
+
+.curriculum-vitae .title {
+    margin: 0;
+
+    text-align: center;
+}
+
+.curriculum-vitae .skill-table {
+    width: 100%;
+    cursor: default;
+
+    font-weight: bold;
+}
+.curriculum-vitae .skill-table .vals {
+    min-width: 4em;
+    max-width: 12em;
+
+    padding-left: 1em;
+}
+.curriculum-vitae .skill-table .vals span {
+    margin: 0 0.05em;
+}
+
+.curriculum-vitae .experiences .experience h4 {
+    margin: 0;
+}
+.curriculum-vitae .experiences .experience h5 {
+    margin: 0 0 0 3em;
+}
+.curriculum-vitae .experiences .experience .description {
+    font-size: 0.9em;
+}
+.curriculum-vitae .experiences .experience .description p {
+    margin: 0.4em 0;
+}
+.curriculum-vitae .experiences .experience .description p:first-child {
+    margin: 0 0 0.4em 0;
+}
+.curriculum-vitae .experiences .experience .description p:last-child {
+    margin: 0.4em 0 0 0;
+}
+
+.curriculum-vitae .contact {
+    min-width: 220px;
+    width: 30%;
+
+    margin: auto;
+}
+
+.curriculum-vitae .contact [class^=grid-] [class^=cell-] {
+    text-align: center;
+}
+
+.curriculum-vitae .contact [class^=cv-badge-] {
+    width: 1.6em;
+    height: 1.5em;
+    display: inline-block;
+
+    margin: auto;
+    padding: 0.25em 0.31em;
+
+    color: $whiter;
+    font-size: 1.5em;
+
+    border-radius: 1000em;
+
+    transition: background-color 200ms;
+}
+.curriculum-vitae .contact [class^=cv-badge-]:hover {
+    color: $whiter;
+}
+
+/* Raw */
+.curriculum-vitae-raw {
+    font-size: 14px;
+}
+
+.curriculum-vitae .contact-raw {
+    width: 100%;
+}
+
+.curriculum-vitae .contact .cv-badge-raw {
+    width: auto;
+    display: inline-block;
+
+    padding: 0.25em 1em;
+}
+/* !Raw */
+
+.curriculum-vitae .contact .cv-badge-website {
+    background-color: $green;
+}
+.curriculum-vitae .contact .cv-badge-website:hover {
+    background-color: $green-border;
+}
+
+.curriculum-vitae .contact .cv-badge-phone {
+    background-color: $orange;
+}
+.curriculum-vitae .contact .cv-badge-phone:hover {
+    background-color: $orange-focus;
+}
+
+.curriculum-vitae .contact .cv-badge-mail {
+    background-color: $red;
+}
+.curriculum-vitae .contact .cv-badge-mail:hover {
+    background-color: $red-focus;
+}
+
+.curriculum-vitae .contact .cv-badge-github {
+    color: $black;
+    background-color: $light-light-grey;
+}
+.curriculum-vitae .contact .cv-badge-github:hover {
+    color: $black;
+    background-color: $light-grey;
+}
+
+.curriculum-vitae .contact .cv-badge-twitter {
+    background-color: $twitter;
+}
+.curriculum-vitae .contact .cv-badge-twitter:hover {
+    background-color: $twitter-focus;
+}
+
+.curriculum-vitae .contact .cv-badge-facebook {
+    background-color: $facebook;
+}
+.curriculum-vitae .contact .cv-badge-facebook:hover {
+    background-color: $facebook-focus;
+}
+/* !CV */
 
 .footer {
     margin: 0 auto;
