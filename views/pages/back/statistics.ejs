@@ -1,1 +1,102 @@
 <h2 class="inset content-title"><span class="icon-stats"></span>&nbsp;&nbsp;Statistics</h2>
+
+<div class="statistics">
+  <div class="grid-12">
+    <div class="cell-3 cell-mobile-6">
+      <a href="/articles" class="ticket-link">
+        <div class="top-ticket top-ticket-articles">
+          <span class="number"><%= articleCount %></span>&nbsp;&nbsp;<span class="ticket-text">articles written</span>
+          <div class="back-icon">
+            <span class="icon-newspaper"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell-3 cell-mobile-6">
+      <a href="#" class="ticket-link">
+        <div class="top-ticket top-ticket-comments">
+          <span class="number">X</span>&nbsp;&nbsp;<span class="ticket-text">comments</span>
+          <div class="back-icon">
+            <span class="icon-question"></span>
+          </div>
+        </div>
+      </a> 
+    </div>
+
+    <div class="cell-3 cell-mobile-6">
+      <a href="/reports" class="ticket-link">
+        <div class="top-ticket top-ticket-reports">
+          <span class="number"><%= openReportCount %></span>&nbsp;&nbsp;<span class="ticket-text">reports still open</span>
+          <div class="back-icon">
+            <span class="icon-signup"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell-3 cell-mobile-6">
+      <a href="/share" class="ticket-link">
+        <div class="top-ticket top-ticket-links">
+          <span class="number"><%= linkCount %></span>&nbsp;&nbsp;<span class="ticket-text">links to share</span>
+          <div class="back-icon">
+            <span class="icon-share"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="page-section-padding"></div>
+
+    <div class="cell-6 cell-mobile-12">
+      <div class="graph-box">
+        <div class="graph">
+          <h3>Articles, by date</h3>
+
+          <div id="graph-articles-by-date"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+<script type="application/javascript">
+  <% var articleByDateDates = ['x'];
+     var articleByDateData = ['Articles written'];
+     for (var i = 0 ; articleByDateList.length > i ; ++i) {
+  articleByDateDates.push(articleByDateList[i].date + '-01');
+  articleByDateData.push(articleByDateList[i].count);
+  } %>
+
+  $(document).ready(function() {
+  var articleByDateGraph = c3.generate({
+  bindto: '#graph-articles-by-date',
+  data: {
+  x: 'x',
+  columns: [
+  <%- JSON.stringify(articleByDateDates) %>,
+  <%- JSON.stringify(articleByDateData) %>,
+  ],
+  type: 'spline'
+  },
+  axis: {
+  x: {
+  type: 'timeseries',
+  tick: {
+  format: '%Y-%m'
+  }
+  }
+  }
+  });
+  });
+</script>
+
+<link rel="stylesheet" href="/css/c3" />
+<script type="application/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="application/javascript" src="/js/c3.min"></script>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
