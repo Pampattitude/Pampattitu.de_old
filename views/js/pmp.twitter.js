@@ -30,7 +30,7 @@ $(document).ready(function() {
                 var $tweetText = $('span.text', twDiv);
 
                 if (!data.latestTweets || !data.latestTweets.length) {
-                    $('a', twDiv).attr('href', 'https//twitter.com/Pampattitude');
+                    $('a', twDiv).attr('href', 'https://twitter.com/Pampattitude');
                     $tweetText.writeText('Could not get latest tweet...');
                     return ;
                 }
