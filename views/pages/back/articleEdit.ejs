@@ -1,0 +1,78 @@
+<h2 class="inset content-title"><span class="icon-pencil2"></span>&nbsp;&nbsp;Edit article</h2>
+
+<script type="application/javascript">
+  var updateTechnicalName = function() {};
+  $(document).ready(function() {
+  updateTechnicalName = function() {
+  var title = $('.article-edit-box input[name="title"]').val();
+  var updatedTitle = title.replace(/ /g, '_').replace(/[^A-Za-z0-9\-_]/g, '');
+
+  $('.article-edit-box input[name="technicalName"]').val(updatedTitle);
+  };
+  });
+</script>
+
+<div class="article-edit-box">
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 75%;" class="elem-title">Title</td>
+        <td style="width: 25%;" class="elem-title">Technical name</td>
+      </tr>
+      <tr>
+        <td><input type="text" name="title" value="<% if ('undefined' !== typeof article) { %><%= article.title %><% } %>" placeholder="Title..." onkeyup="updateTechnicalName();" /></td>
+        <td><input type="text" name="technicalName" value="<% if ('undefined' !== typeof article) { %><%= article.technicalName %><% } %>" placeholder="Technical name..." disabled /></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="elem-title">Image</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="url" name="img" value="<% if ('undefined' !== typeof article) { %><%= article.img %><% } %>" placeholder="Image..." /></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="elem-title">Caption</td>
+      </tr>
+      <tr class="caption-row">
+        <td colspan="2"><textarea name="caption" class="grow" rows="1"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="button" class="btn" onclick="$('.caption-row > td').append('<br /><textarea name=&quot;caption&quot; class=&quot;grow&quot; rows=&quot;1&quot;></textarea>')"><span class="icon-plus"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="elem-title">Content</td>
+      </tr>
+      <tr>
+        <td colspan="2"><textarea name="content" placeholder="Content..." rows="12"><% if ('undefined' !== typeof article) { %><%- article.content %><% } %></textarea></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="elem-title">Tags</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="text" name="tags" value="<% if ('undefined' !== typeof article) { %><%= article.tags.join(' ') %><% } %>" placeholder="Tags..." /></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-section-padding"></div>
+
+  <button type="submit" class="btn save-button"><span class="icon-disk"></span>&nbsp;&nbsp;Save</button>
+  <button class="btn preview-button"><span class="icon-eye"></span>&nbsp;&nbsp;Preview</button>
+
+  <div class="clear"></div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
+
+
+<script type="application/javascript" src="//cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.4/jquery.autosize.min.js"></script>
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('textarea.grow').autosize();
+    });
+</script>

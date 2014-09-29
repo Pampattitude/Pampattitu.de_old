@@ -1,1 +1,86 @@
+<%
+   var formatDate = function(date) {
+   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+   var dateSuffix = 'th';
+   if (1 == date.getDate() || 21 == date.getDate())
+   dateSuffix = 'st';
+   if (2 == date.getDate() || 22 == date.getDate())
+   dateSuffix = 'nd';
+   if (3 == date.getDate() || 23 == date.getDate())
+   dateSuffix = 'rd';
+
+   return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + '<sup>' + dateSuffix + '</sup>, ' + date.getFullYear();
+   };
+%>
+
 <h2 class="inset content-title"><span class="icon-newspaper"></span>&nbsp;&nbsp;Articles</h2>
+
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('[data-title]').each(function() {
+            var elem = this;
+
+            console.log($(document).height(), $(elem)[0].getBoundingClientRect().top, $(document).height() - $(elem)[0].getBoundingClientRect().top)
+            var newTooltip = $('<div class="tooltip-box"><div class="tooltip tooltip-hidden" style="bottom: ' + ($(document).height() - $(elem)[0].getBoundingClientRect().top) + 'px;left:' + ($(elem)[0].getBoundingClientRect().left) + 'px;">' + $(elem).attr('data-title') + '</div></div>');
+
+            $('body').append(newTooltip);
+
+            $(elem).hover(function() { // In
+                $('.tooltip', newTooltip).addClass('tooltip-visible');
+                $('.tooltip', newTooltip).removeClass('tooltip-hidden');
+            },
+            function() { // Out
+                $('.tooltip', newTooltip).removeClass('tooltip-visible');
+                $('.tooltip', newTooltip).addClass('tooltip-hidden');
+            });
+
+            $(elem).removeAttr('data-title');
+        });
+    });
+</script>
+
+<div class="article-list">
+  <div class="grid-3">
+    <% for (var i = 0 ; articleList.length > i ; ++i) {
+    var article = articleList[i]; %>
+    <div class="<% if (article.featured) { %>cell-3<% } else { %>cell-1<% } %> cell-mobile-3 article-marg" style="background-image: url('<%= article.img %>'); background-size: cover;">
+      <div class="article<% if (article.featured) { %> featured<% } %>">
+        <div class="action-list">
+          <a href="http://beta.pampattitu.de/article/<%= article.technicalName %>" class="btn btn-inverse hint--left" data-hint="View on main website"><span class="icon-eye"></span></a>
+          <a href="/article/edit/<%= article.technicalName %>" class="btn btn-blue hidden-mobile hint--left" data-hint="Edit"><span class="icon-pencil2"></span></a>
+        </div>
+
+        <div class="article-data">
+          <h3><% if (true == article.featured) { %><span class="icon-star3"></span>&nbsp;&nbsp;<% } %><%= article.title %></h3>
+          <div class="metadata">
+            <% if ('Pampa' != article.author) { %>by <%= article.author %> on<% } %>
+            <%- formatDate(article.created) %>
+          </div>
+
+          <p class="caption">
+            <%= article.caption %>
+          </p>
+
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+    <!-- New article -->
+    <div class="cell-1 article-marg hidden-mobile">
+      <a href="/article/edit" class="new-article hint--bottom" data-hint="Write new article">
+        <span class="icon-plus"></span>
+      </a>
+    </div>
+    <!-- !New article -->
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+<!-- Bottom padding from footer -->
+<div class="page-section-padding"></div>
+<!-- !Bottom padding from footer -->
