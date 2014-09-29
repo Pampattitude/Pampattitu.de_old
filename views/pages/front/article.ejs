@@ -38,9 +38,9 @@
   <!-- Article tags -->
   <div class="inset tags">
     <ul class="unstyled flat">
-      <li class="tag-group"><a href="/search/<%= article.tags.join('%20') %>"><span class="icon-tags hidden-hover"></span></a></li>
+      <li class="tag-group"><a href="/search/<%= article.tags.join('%20') %>" class="hint--bottom" data-hint="Search for &quot;<%= article.tags.join(' ') %>&quot;"><span class="icon-tags hidden-hover"></span></a></li>
       <% for (var i = 0 ; article.tags.length > i ; ++i) { %>
-      <li class="tag"><a href="/search/<%= article.tags[i] %>"><span class="icon-tag"></span>&nbsp;&nbsp;<%= article.tags[i] %></a></li>
+      <li class="tag"><a href="/search/<%= article.tags[i] %>" class="hint--bottom" data-hint="Search for &quot;<%= article.tags[i] %>&quot;"><span class="icon-tag"></span>&nbsp;&nbsp;<%= article.tags[i] %></a></li>
       <% if (article.tags.length != i + 1) { %>
       <li></li>
       <% } %>
