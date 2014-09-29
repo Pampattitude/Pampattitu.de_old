@@ -13,6 +13,7 @@ var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         commonFront.setCommonFields(res);
 
+        res.locals.title = 'Send a report';
         res.locals.inlineScripts.push('/js/pmp.reportForm');
         res.locals.contentPath = 'pages/front/report';
 

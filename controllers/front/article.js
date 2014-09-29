@@ -39,6 +39,8 @@ var controller_ = function() {
                     res.locals.article = article;
                     res.locals.comments = comments;
                     // res.locals.inlineStyles.push('article');
+
+                    res.locals.title = article.title;
                     res.locals.contentPath = 'pages/front/article';
 
                     return renderCallback();

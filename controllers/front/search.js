@@ -92,7 +92,8 @@ var controller_ = function() {
                 res.locals.pageCount = finalArticleList.length / articlesPerPage;
                 res.locals.actualPage = pageNumber;
                 res.locals.searchString = req.params.data;
-                // res.locals.inlineStyles.push('search');
+
+                res.locals.title = 'Search in website';
                 res.locals.contentPath = 'pages/front/search';
 
                 return renderCallback();
