@@ -17,7 +17,22 @@ var execute = function() {
         });
     };
 
+    var cleanFetchedLinks = function() {
+        var cleanFetchedLinksScript = require(__dirname + '/cleanFetchedLinks');
+        var waitTime = 60 * 60 * 1000; // Every 60 minutes
+
+        return cleanFetchedLinksScript.execute(function(err) {
+            if (err)
+                consoleLib.error(err);
+
+            return setTimeout(function() {
+                return cleanFetchedLinks();
+            }, waitTime);
+        });
+    };
+
     retrieveRedditPosts();
+    cleanFetchedLinks();
 
     return ;
 };

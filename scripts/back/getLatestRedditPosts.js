@@ -19,14 +19,13 @@ var config = {
 
     minTimeForRequest: 2000, // ms, because 30 requests per minute tops
 };
-console.log(config.minDate);
 
 var execute = function(scriptCallback) {
     var postsToKeep = [];
 
-    var tomorrow = function() {
+    var theDayAfterTomorrow = function() {
         var tom = new Date();
-        tom.setDate(tom.getDate() + 1);
+        tom.setDate(tom.getDate() + 2);
         return tom;
     };
 
@@ -37,6 +36,9 @@ var execute = function(scriptCallback) {
         return requestLib({
             uri: 'http://api.reddit.com/r/' + subReddit + '/new.json',
             method: 'GET',
+            headers: {
+                'User-Agent': 'Pambot/0.1 by Pampattitu.de',
+            },
         },
         function(err, res, body, warn) {
             if (err)
@@ -108,6 +110,8 @@ var execute = function(scriptCallback) {
             },
             {
                 $setOnInsert: {
+                    state: 'new',
+
                     source: 'reddit',
                     subSource: post.subreddit,
 
@@ -116,9 +120,9 @@ var execute = function(scriptCallback) {
                     externalId: post.id,
 
                     postDate: new Date(post.created_utc * 1000),
-                    postExpiryDate: tomorrow(),
+                    postExpiryDate: theDayAfterTomorrow(),
 
-                    created: new Date(),        
+                    created: new Date(),
                 },
             },
             {
