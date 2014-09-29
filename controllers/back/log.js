@@ -27,6 +27,7 @@ var controller_ = function() {
                 res.locals.lines = tailStdout;
                 res.locals.lineNumber = parseInt(wcStdout, 10);
 
+                res.locals.title = 'Logs';
                 res.locals.contentPath = 'pages/back/log';
 
                 return renderCallback();

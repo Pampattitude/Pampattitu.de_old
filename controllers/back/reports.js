@@ -27,6 +27,7 @@ var controller_ = function() {
 
             res.locals.reportList = reports;
 
+            res.locals.title = 'Reports';
             res.locals.contentPath = 'pages/back/reports';
 
             return renderCallback();

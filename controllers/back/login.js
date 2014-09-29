@@ -15,6 +15,7 @@ var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         commonBack.setCommonFields(res);
 
+        res.locals.title = 'Login';
         res.locals.buttonMenu = 'pages/back/nobutton-menu';
         res.locals.contentPath = 'pages/back/login';
 

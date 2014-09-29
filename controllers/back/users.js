@@ -23,6 +23,7 @@ var controller_ = function() {
 
             res.locals.userList = users;
 
+            res.locals.title = 'Users';
             res.locals.contentPath = 'pages/back/users';
 
             return renderCallback();

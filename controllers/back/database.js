@@ -12,6 +12,7 @@ var controller_ = function() {
     this.render = function(req, res, renderCallback) {
         commonBack.setCommonFields(res);
 
+        res.locals.title = 'Database';
         res.locals.contentPath = 'pages/back/database';
 
         return renderCallback();
